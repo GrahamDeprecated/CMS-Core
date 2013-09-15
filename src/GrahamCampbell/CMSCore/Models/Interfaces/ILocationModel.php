@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,13 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class Navigation extends Facade {
+interface ILocationModel {
 
     /**
-     * Get the registered name of the component.
+     * Get location.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function getLocation();
 
 }

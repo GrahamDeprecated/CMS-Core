@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,27 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
+use Carbon;
 
-class Navigation extends Facade {
+trait TraitDateModel {
 
     /**
-     * Get the registered name of the component.
+     * Get the date.
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getDate() {
+        $date = new Carbon($this->date);
+        return $date;
+    }
+
+    /**
+     * Get the formatted date.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
-
+    public function getFormattedDate() {
+        $date = new Carbon($this->date);
+        return $date->format('l jS F Y \\- H:i:s');
+    }
 }

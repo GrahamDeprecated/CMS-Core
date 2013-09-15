@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Providers;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,15 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
+class EventProvider extends BaseProvider implements Interfaces\IPaginateProvider {
 
-class Navigation extends Facade {
+    use Common\TraitPaginateProvider;
 
     /**
-     * Get the registered name of the component.
+     * The name of the model to provide.
      *
-     * @return string
+     * @var string
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    protected $model = 'GrahamCampbell\BootstrapCMS\Models\Event';
 
 }

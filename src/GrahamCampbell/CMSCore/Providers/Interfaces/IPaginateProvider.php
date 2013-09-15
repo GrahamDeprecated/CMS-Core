@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Providers\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,20 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class Navigation extends Facade {
+interface IPaginateProvider {
 
     /**
-     * Get the registered name of the component.
+     * Get a paginated list of the models.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function paginate();
+
+    /**
+     * Get the paginate links.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function links();
 
 }

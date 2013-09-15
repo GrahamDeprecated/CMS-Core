@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,27 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class Navigation extends Facade {
+interface IBelongsToPost {
 
     /**
-     * Get the registered name of the component.
+     * Get the post relation.
      *
-     * @return string
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function post();
+
+    /**
+     * Get the post model.
+     *
+     * @return \GrahamCampbell\BootstrapCMS\Models\Post
+     */
+    public function getPost($columns = array('*'));
+
+    /**
+     * Get the post id.
+     *
+     * @return int
+     */
+    public function getPostId();
 
 }

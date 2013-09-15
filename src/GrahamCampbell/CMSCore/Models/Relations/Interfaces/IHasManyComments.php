@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,34 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class Navigation extends Facade {
+interface IHasManyComments {
 
     /**
-     * Get the registered name of the component.
+     * Get the comment relation.
      *
-     * @return string
+     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function comments();
+
+    /**
+     * Get the comment collection.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getComments();
+
+    /**
+     * Get the specified comment.
+     *
+     * @return \GrahamCampbell\BootstrapCMS\Models\Comment
+     */
+    public function findComment($id, $columns = array('*'));
+
+    /**
+     * Delete all comments.
+     *
+     * @return void
+     */
+    public function deleteComments();
 
 }

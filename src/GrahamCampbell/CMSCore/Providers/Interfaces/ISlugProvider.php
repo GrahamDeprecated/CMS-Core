@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Providers\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,15 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class Navigation extends Facade {
+interface ISlugProvider {
 
     /**
-     * Get the registered name of the component.
+     * Find an existing model by slug.
      *
-     * @return string
+     * @param  string  $slug
+     * @param  array   $input
+     * @return mixed
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function find($slug, array $columns = array('*'));
 
 }

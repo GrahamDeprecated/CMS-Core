@@ -47,6 +47,24 @@ class CMSCoreServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
+        $this->app['commentprovider'] = $this->app->share(function($app) {
+            return new Providers\CommentProvider;
+        });
+        $this->app['eventprovider'] = $this->app->share(function($app) {
+            return new Providers\EventProvider;
+        });
+        $this->app['groupprovider'] = $this->app->share(function($app) {
+            return new Providers\GroupProvider;
+        });
+        $this->app['pageprovider'] = $this->app->share(function($app) {
+            return new Providers\PageProvider;
+        });
+        $this->app['postprovider'] = $this->app->share(function($app) {
+            return new Providers\PostProvider;
+        });
+        $this->app['userprovider'] = $this->app->share(function($app) {
+            return new Providers\UserProvider;
+        });
         $this->app['navigation'] = $this->app->share(function($app) {
             return new Classes\Navigation;
         });
@@ -58,6 +76,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('navigation');
+        return array('commentprovider', 'eventprovider', 'groupprovider', 'pageprovider', 'postprovider', 'userprovider', 'navigation');
     }
 }

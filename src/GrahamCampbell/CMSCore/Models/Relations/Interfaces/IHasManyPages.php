@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,34 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class Navigation extends Facade {
+interface IHasManyPages {
 
     /**
-     * Get the registered name of the component.
+     * Get the page relation.
      *
-     * @return string
+     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function pages();
+
+    /**
+     * Get the page collection.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getPages();
+
+    /**
+     * Get the specified page.
+     *
+     * @return \GrahamCampbell\BootstrapCMS\Models\Page
+     */
+    public function findPage($slug, $columns = array('*'));
+
+    /**
+     * Delete all pages.
+     *
+     * @return void
+     */
+    public function deletePages();
 
 }

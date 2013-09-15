@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,32 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class Navigation extends Facade {
+trait TraitNameModel {
 
     /**
-     * Get the registered name of the component.
+     * Get first_name.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function getFirstName() {
+        return $this->first_name;
+    }
 
+    /**
+     * Get last_name.
+     *
+     * @return string
+     */
+    public function getLastName() {
+        return $this->last_name;
+    }
+
+    /**
+     * Get combined name.
+     *
+     * @return string
+     */
+    public function getName() {
+        return $this->first_name.' '.$this->last_name;
+    }
 }

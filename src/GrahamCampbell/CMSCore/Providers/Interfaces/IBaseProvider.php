@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Providers\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,30 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class Navigation extends Facade {
+interface IBaseProvider {
 
     /**
-     * Get the registered name of the component.
+     * Create a new model.
      *
-     * @return string
+     * @param  array  $input
+     * @return mixed
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function create(array $input);
+
+    /**
+     * Find an existing model.
+     *
+     * @param  int    $id
+     * @param  array  $input
+     * @return mixed
+     */
+    public function find($id, array $columns = array('*'));
+
+    /**
+     * Get a list of the models.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function index();
 
 }

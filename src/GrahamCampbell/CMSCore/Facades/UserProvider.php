@@ -22,13 +22,13 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class Navigation extends Facade {
+class UserProvider extends Facade {
 
     /**
      * Get the registered name of the component.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    protected static function getFacadeAccessor() { return 'userprovider'; }
 
 }

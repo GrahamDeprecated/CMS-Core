@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,34 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class Navigation extends Facade {
+interface IHasManyEvents {
 
     /**
-     * Get the registered name of the component.
+     * Get the event relation.
      *
-     * @return string
+     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function events();
+
+    /**
+     * Get the event collection.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getEvents();
+
+    /**
+     * Get the specified event.
+     *
+     * @return \GrahamCampbell\BootstrapCMS\Models\Event
+     */
+    public function findEvent($id, $columns = array('*'));
+
+    /**
+     * Delete all events.
+     *
+     * @return void
+     */
+    public function deleteEvents();
 
 }

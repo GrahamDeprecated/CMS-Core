@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,34 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
+use Carbon;
 
-class Navigation extends Facade {
+trait TraitBaseModel {
 
     /**
-     * Get the registered name of the component.
+     * Get id.
      *
-     * @return string
+     * @return int
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function getId() {
+        return $this->id;
+    }
 
+    /**
+     * Get created_at.
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getCreatedAt() {
+        return new Carbon($this->created_at);
+    }
+
+    /**
+     * Get updated_at.
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getUpdatedAt() {
+        return new Carbon($this->updated_at);
+    }
 }

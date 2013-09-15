@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,17 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
+use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
 
-class Navigation extends Facade {
+class Throttle extends SentryThrottle implements Interfaces\IBaseModel {
+
+    use Common\TraitBaseModel;
 
     /**
-     * Get the registered name of the component.
+     * The table the throttles are stored in.
      *
-     * @return string
+     * @var string
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    protected $table = 'throttle';
 
 }

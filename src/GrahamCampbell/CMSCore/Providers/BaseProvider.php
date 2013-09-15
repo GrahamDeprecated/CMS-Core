@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Providers;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
+abstract class BaseProvider implements Interfaces\IBaseProvider {
 
-class Navigation extends Facade {
-
-    /**
-     * Get the registered name of the component.
-     *
-     * @return string
-     */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    use Common\TraitBaseProvider;
 
 }

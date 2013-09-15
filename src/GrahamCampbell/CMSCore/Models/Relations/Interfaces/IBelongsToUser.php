@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,41 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class Navigation extends Facade {
+interface IBelongsToUser {
 
     /**
-     * Get the registered name of the component.
+     * Get the user relation.
      *
-     * @return string
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    public function user();
+
+    /**
+     * Get the user model.
+     *
+     * @return \GrahamCampbell\BootstrapCMS\Models\User
+     */
+    public function getUser($columns = array('*'));
+
+    /**
+     * Get the user id.
+     *
+     * @return int
+     */
+    public function getUserId();
+
+    /**
+     * Get the user email.
+     *
+     * @return int
+     */
+    public function getUserEmail();
+
+    /**
+     * Get the user name.
+     *
+     * @return int
+     */
+    public function getUserName();
 
 }

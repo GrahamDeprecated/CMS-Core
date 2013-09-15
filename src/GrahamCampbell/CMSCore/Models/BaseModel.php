@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,17 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
+use Eloquent;
 
-class Navigation extends Facade {
+abstract class BaseModel extends Eloquent implements Interfaces\IBaseModel {
+
+    use Common\TraitBaseModel;
 
     /**
-     * Get the registered name of the component.
+     * A list of methods protected from mass assignment.
      *
-     * @return string
+     * @var array
      */
-    protected static function getFacadeAccessor() { return 'navigation'; }
+    protected $guarded = array('_token', '_method', 'id');
 
 }
