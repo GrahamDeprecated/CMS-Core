@@ -1,0 +1,26 @@
+{
+    "name": "graham-campbell/cmscore",
+    "description": "CMS Core Provides Some Core Functionality For Bootstrap CMS",
+    "keywords": ["laravel", "framework", "cms core", "cms", "core", "CMS", "CMS Core", "CMS-Core", "Graham Campbell", "GrahamCampbell"],
+    "license": "GNU Affero General Public License v3",
+    "authors": [
+        {
+            "name": "Graham Campbell",
+            "email": "graham@mineuk.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "illuminate/support": "4.0.*@stable"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.8.*@stable",
+        "phpunit/phpunit": "3.7.*@stable"
+    },
+    "autoload": {
+        "psr-0": {
+            "GrahamCampbell\\CMSCore": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
