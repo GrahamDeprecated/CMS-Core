@@ -1,5 +1,5 @@
 {
-    "name": "graham-campbell/cmscore",
+    "name": "graham-campbell/cms-core",
     "description": "CMS Core Provides Some Core Functionality For Bootstrap CMS",
     "keywords": ["laravel", "framework", "cms core", "cms", "core", "CMS", "CMS Core", "CMS-Core", "Graham Campbell", "GrahamCampbell"],
     "license": "GNU Affero General Public License v3",
@@ -18,7 +18,7 @@
         "iron-io/iron_mq": "1.4.*",
         "graham-campbell/binput": "dev-develop",
         "graham-campbell/passwd": "dev-develop",
-        "graham-campbell/htmlmin": "dev-develop",
+        "graham-campbell/htmlmin": "dev-develop"
     },
     "require-dev": {
         "mockery/mockery": "0.8.*@stable",

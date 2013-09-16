@@ -4,8 +4,8 @@ CMS Core
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/CMS-Core/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Build Status](https://travis-ci.org/GrahamCampbell/CMS-Core.png?branch=master)](https://travis-ci.org/GrahamCampbell/CMS-Core)
-[![Latest Version](https://poser.pugx.org/graham-campbell/cmscore/v/stable.png)](https://packagist.org/packages/graham-campbell/cmscore)
-[![Total Downloads](https://poser.pugx.org/graham-campbell/cmscore/downloads.png)](https://packagist.org/packages/graham-campbell/cmscore)
+[![Latest Version](https://poser.pugx.org/graham-campbell/cms-core/v/stable.png)](https://packagist.org/packages/graham-campbell/cms-core)
+[![Total Downloads](https://poser.pugx.org/graham-campbell/cms-core/downloads.png)](https://packagist.org/packages/graham-campbell/cms-core)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core/badges/quality-score.png?s=5b1bca08ae3b2c0cdfc2be27541d5dd077e03200)](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/CMS-Core.png)](http://stillmaintained.com/GrahamCampbell/CMS-Core)
 
@@ -35,7 +35,7 @@ Please check the system requirements before installing CMS Core.
 
 To get the latest version of CMS Core, simply require it in your `composer.json` file.
 
-`"graham-campbell/cmscore": "dev-master"`
+`"graham-campbell/cms-core": "dev-master"`
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
