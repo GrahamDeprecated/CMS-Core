@@ -6,7 +6,7 @@ CMS Core
 [![Build Status](https://travis-ci.org/GrahamCampbell/CMS-Core.png?branch=master)](https://travis-ci.org/GrahamCampbell/CMS-Core)
 [![Latest Version](https://poser.pugx.org/graham-campbell/cms-core/v/stable.png)](https://packagist.org/packages/graham-campbell/cms-core)
 [![Total Downloads](https://poser.pugx.org/graham-campbell/cms-core/downloads.png)](https://packagist.org/packages/graham-campbell/cms-core)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core/badges/quality-score.png?s=5b1bca08ae3b2c0cdfc2be27541d5dd077e03200)](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core/badges/quality-score.png?s=abade2f7af64ae1b36516618be72c26f9fd560bc)](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/CMS-Core.png)](http://stillmaintained.com/GrahamCampbell/CMS-Core)
 
 
