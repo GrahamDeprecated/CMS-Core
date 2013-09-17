@@ -24,10 +24,10 @@ class CommentTest extends ModelTestCase implements Relations\Interfaces\IBelongs
 
     use Relations\Common\TraitBelongsToUserTestCase;
 
-    protected $model = 'GrahamCampbell\BootstrapCMS\Models\Comment';
+    protected $model = 'GrahamCampbell\CMSCore\Models\Comment';
 
     protected function extraModelTests() {
-        $this->assertInstanceOf('GrahamCampbell\BootstrapCMS\Models\BaseModel', $this->object);
+        $this->assertInstanceOf('GrahamCampbell\CMSCore\Models\BaseModel', $this->object);
     }
 
     public function testGetBody() {
