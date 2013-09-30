@@ -69,9 +69,9 @@ class CMSCoreServiceProvider extends ServiceProvider {
             return new Classes\Navigation;
         });
 
-        Artisan::add(new GrahamCampbell\CMSCore\Commands\AppUpdate);
-        Artisan::add(new GrahamCampbell\CMSCore\Commands\AppInstall);
-        Artisan::add(new GrahamCampbell\CMSCore\Commands\AppReset);
+        Artisan::add(new Commands\AppUpdate);
+        Artisan::add(new Commands\AppInstall);
+        Artisan::add(new Commands\AppReset);
     }
 
     /**
