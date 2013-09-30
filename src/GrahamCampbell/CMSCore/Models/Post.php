@@ -99,7 +99,7 @@ class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBody
      * Create a new post.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Post
      */
     public static function create(array $input) {
         $return = parent::create($input);
@@ -111,7 +111,7 @@ class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBody
      * Update an existing post.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Post
      */
     public function update(array $input = array()) {
         $return = parent::update($input);

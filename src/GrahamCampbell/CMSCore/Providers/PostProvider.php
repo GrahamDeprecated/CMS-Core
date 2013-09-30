@@ -29,7 +29,7 @@ class PostProvider extends BaseProvider implements Interfaces\IPaginateProvider 
      *
      * @var string
      */
-    protected $model = 'GrahamCampbell\BootstrapCMS\Models\Post';
+    protected $model = 'GrahamCampbell\CMSCore\Models\Post';
 
 }
 

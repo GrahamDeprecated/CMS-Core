@@ -28,13 +28,13 @@ trait TraitBelongsToUser {
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user() {
-        return $this->belongsTo('GrahamCampbell\BootstrapCMS\Models\User');
+        return $this->belongsTo('GrahamCampbell\CMSCore\Models\User');
     }
 
     /**
      * Get the user model.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\User
+     * @return \GrahamCampbell\CMSCore\Models\User
      */
     public function getUser($columns = array('*')) {
         return $this->user()->first($columns);

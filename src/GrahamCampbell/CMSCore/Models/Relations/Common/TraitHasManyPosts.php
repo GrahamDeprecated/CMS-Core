@@ -28,7 +28,7 @@ trait TraitHasManyPosts {
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
     public function posts() {
-        return $this->hasMany('GrahamCampbell\BootstrapCMS\Models\Post');
+        return $this->hasMany('GrahamCampbell\CMSCore\Models\Post');
     }
 
     /**
@@ -37,7 +37,7 @@ trait TraitHasManyPosts {
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getPosts() {
-        $model = 'GrahamCampbell\BootstrapCMS\Models\Post';
+        $model = 'GrahamCampbell\CMSCore\Models\Post';
 
         if (property_exists($model, 'order')) {
             return $this->posts()->orderBy($model::$order, $model::$sort)->get($model::$index);
@@ -48,7 +48,7 @@ trait TraitHasManyPosts {
     /**
      * Get the specified post.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Post
      */
     public function findPost($id, $columns = array('*')) {
         return $this->posts()->find($id, $columns);

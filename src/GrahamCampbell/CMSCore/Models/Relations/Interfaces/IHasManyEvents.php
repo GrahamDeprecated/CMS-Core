@@ -39,7 +39,7 @@ interface IHasManyEvents {
     /**
      * Get the specified event.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\Event
+     * @return \GrahamCampbell\CMSCore\Models\Event
      */
     public function findEvent($id, $columns = array('*'));
 

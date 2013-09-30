@@ -39,7 +39,7 @@ interface IHasManyPosts {
     /**
      * Get the specified post.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Post
      */
     public function findPost($id, $columns = array('*'));
 

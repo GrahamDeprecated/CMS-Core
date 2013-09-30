@@ -27,6 +27,6 @@ class CommentProvider extends BaseProvider {
      *
      * @var string
      */
-    protected $model = 'GrahamCampbell\BootstrapCMS\Models\Comment';
+    protected $model = 'GrahamCampbell\CMSCore\Models\Comment';
 
 }

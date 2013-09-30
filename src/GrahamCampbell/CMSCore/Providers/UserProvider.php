@@ -29,7 +29,7 @@ class UserProvider extends BaseProvider implements Interfaces\IPaginateProvider 
      *
      * @var string
      */
-    protected $model = 'GrahamCampbell\BootstrapCMS\Models\User';
+    protected $model = 'GrahamCampbell\CMSCore\Models\User';
 
 }
 

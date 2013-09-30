@@ -39,7 +39,7 @@ interface IHasManyPages {
     /**
      * Get the specified page.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\Page
+     * @return \GrahamCampbell\CMSCore\Models\Page
      */
     public function findPage($slug, $columns = array('*'));
 

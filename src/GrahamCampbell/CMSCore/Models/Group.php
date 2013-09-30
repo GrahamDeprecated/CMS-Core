@@ -67,7 +67,7 @@ class Group extends SentryGroup implements Interfaces\IBaseModel {
      * Create a new group.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\Group
+     * @return \GrahamCampbell\CMSCore\Models\Group
      */
     public static function create(array $input) {
         $return = parent::create($input);
@@ -79,7 +79,7 @@ class Group extends SentryGroup implements Interfaces\IBaseModel {
      * Update an existing group.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\Group
+     * @return \GrahamCampbell\CMSCore\Models\Group
      */
     public function update(array $input = array()) {
         $return = parent::update($input);

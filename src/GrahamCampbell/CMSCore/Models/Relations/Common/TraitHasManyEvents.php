@@ -28,7 +28,7 @@ trait TraitHasManyEvents {
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
     public function events() {
-        return $this->hasMany('GrahamCampbell\BootstrapCMS\Models\Event');
+        return $this->hasMany('GrahamCampbell\CMSCore\Models\Event');
     }
 
     /**
@@ -37,7 +37,7 @@ trait TraitHasManyEvents {
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getEvents() {
-        $model = 'GrahamCampbell\BootstrapCMS\Models\Event';
+        $model = 'GrahamCampbell\CMSCore\Models\Event';
 
         if (property_exists($model, 'order')) {
             return $this->events()->orderBy($model::$order, $model::$sort)->get($model::$index);
@@ -49,7 +49,7 @@ trait TraitHasManyEvents {
     /**
      * Get the specified event.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\Event
+     * @return \GrahamCampbell\CMSCore\Models\Event
      */
     public function findEvent($id, $columns = array('*')) {
         return $this->events()->find($id, $columns);

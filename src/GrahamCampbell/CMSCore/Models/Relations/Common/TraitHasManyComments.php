@@ -28,7 +28,7 @@ trait TraitHasManyComments {
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
     public function comments() {
-        return $this->hasMany('GrahamCampbell\BootstrapCMS\Models\Comment');
+        return $this->hasMany('GrahamCampbell\CMSCore\Models\Comment');
     }
 
     /**
@@ -37,7 +37,7 @@ trait TraitHasManyComments {
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getComments() {
-        $model = 'GrahamCampbell\BootstrapCMS\Models\Comment';
+        $model = 'GrahamCampbell\CMSCore\Models\Comment';
 
         if (property_exists($model, 'order')) {
             return $this->comments()->orderBy($model::$order, $model::$sort)->get($model::$index);
@@ -49,7 +49,7 @@ trait TraitHasManyComments {
     /**
      * Get the specified comment.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\Comment
+     * @return \GrahamCampbell\CMSCore\Models\Comment
      */
     public function findComment($id, $columns = array('*')) {
         return $this->comments()->find($id, $columns);

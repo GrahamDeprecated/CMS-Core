@@ -77,7 +77,7 @@ class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\IName
      * Create a new user.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\User
+     * @return \GrahamCampbell\CMSCore\Models\User
      */
     public static function create(array $input) {
         $return = parent::create($input);
@@ -89,7 +89,7 @@ class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\IName
      * Update an existing user.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\User
+     * @return \GrahamCampbell\CMSCore\Models\User
      */
     public function update(array $input = array()) {
         $return = parent::update($input);

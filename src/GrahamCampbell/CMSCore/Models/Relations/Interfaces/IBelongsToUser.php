@@ -32,7 +32,7 @@ interface IBelongsToUser {
     /**
      * Get the user model.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\User
+     * @return \GrahamCampbell\CMSCore\Models\User
      */
     public function getUser($columns = array('*'));
 

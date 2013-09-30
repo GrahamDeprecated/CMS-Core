@@ -27,6 +27,6 @@ class GroupProvider extends BaseProvider {
      *
      * @var string
      */
-    protected $model = 'GrahamCampbell\BootstrapCMS\Models\Group';
+    protected $model = 'GrahamCampbell\CMSCore\Models\Group';
 
 }

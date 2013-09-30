@@ -32,7 +32,7 @@ interface IBelongsToPost {
     /**
      * Get the post model.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Post
      */
     public function getPost($columns = array('*'));
 

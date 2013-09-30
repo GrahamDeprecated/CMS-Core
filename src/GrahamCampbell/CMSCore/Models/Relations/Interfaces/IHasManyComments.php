@@ -39,7 +39,7 @@ interface IHasManyComments {
     /**
      * Get the specified comment.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\Comment
+     * @return \GrahamCampbell\CMSCore\Models\Comment
      */
     public function findComment($id, $columns = array('*'));
 

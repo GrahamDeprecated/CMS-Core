@@ -29,6 +29,6 @@ class EventProvider extends BaseProvider implements Interfaces\IPaginateProvider
      *
      * @var string
      */
-    protected $model = 'GrahamCampbell\BootstrapCMS\Models\Event';
+    protected $model = 'GrahamCampbell\CMSCore\Models\Event';
 
 }

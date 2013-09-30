@@ -88,7 +88,7 @@ class Comment extends BaseModel implements Interfaces\IBodyModel, Relations\Inte
      * Create a new comment.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\Comment
+     * @return \GrahamCampbell\CMSCore\Models\Comment
      */
     public static function create(array $input) {
         $return = parent::create($input);
@@ -100,7 +100,7 @@ class Comment extends BaseModel implements Interfaces\IBodyModel, Relations\Inte
      * Update an existing comment.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\Comment
+     * @return \GrahamCampbell\CMSCore\Models\Comment
      */
     public function update(array $input = array()) {
         $return = parent::update($input);

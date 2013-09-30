@@ -122,7 +122,7 @@ class Page extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISlug
      * Create a new page.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\Page
+     * @return \GrahamCampbell\CMSCore\Models\Page
      */
     public static function create(array $input) {
         $return = parent::create($input);
@@ -134,7 +134,7 @@ class Page extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISlug
      * Update an existing page.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\Page
+     * @return \GrahamCampbell\CMSCore\Models\Page
      */
     public function update(array $input = array()) {
         $return = parent::update($input);

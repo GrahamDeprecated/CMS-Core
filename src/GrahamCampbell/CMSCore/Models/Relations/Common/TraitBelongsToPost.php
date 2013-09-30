@@ -28,13 +28,13 @@ trait TraitBelongsToPost {
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function post() {
-        return $this->belongsTo('GrahamCampbell\BootstrapCMS\Models\Post');
+        return $this->belongsTo('GrahamCampbell\CMSCore\Models\Post');
     }
 
     /**
      * Get the post model.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Post
      */
     public function getPost($columns = array('*')) {
         return $this->post()->first($columns);

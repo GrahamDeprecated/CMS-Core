@@ -29,7 +29,7 @@ class PageProvider extends BaseProvider implements Interfaces\IPaginateProvider,
      *
      * @var string
      */
-    protected $model = 'GrahamCampbell\BootstrapCMS\Models\Page';
+    protected $model = 'GrahamCampbell\CMSCore\Models\Page';
 
 }
 

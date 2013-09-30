@@ -28,7 +28,7 @@ trait TraitHasManyPages {
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
     public function pages() {
-        return $this->hasMany('GrahamCampbell\BootstrapCMS\Models\Page');
+        return $this->hasMany('GrahamCampbell\CMSCore\Models\Page');
     }
 
     /**
@@ -37,7 +37,7 @@ trait TraitHasManyPages {
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getPages() {
-        $model = 'GrahamCampbell\BootstrapCMS\Models\Page';
+        $model = 'GrahamCampbell\CMSCore\Models\Page';
 
         if (property_exists($model, 'order')) {
             return $this->pages()->orderBy($model::$order, $model::$sort)->get($model::$index);
@@ -49,7 +49,7 @@ trait TraitHasManyPages {
     /**
      * Get the specified page.
      *
-     * @return \GrahamCampbell\BootstrapCMS\Models\Page
+     * @return \GrahamCampbell\CMSCore\Models\Page
      */
     public function findPage($slug, $columns = array('*')) {
         return $this->pages()->where('slug', '=', $slug)->first($columns);

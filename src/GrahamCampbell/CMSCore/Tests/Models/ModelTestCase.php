@@ -22,7 +22,7 @@
 
 use Artisan;
 
-use GrahamCampbell\BootstrapCMS\Tests\TestCase;
+use GrahamCampbell\CMSCore\Tests\TestCase;
 
 abstract class ModelTestCase extends TestCase {
 

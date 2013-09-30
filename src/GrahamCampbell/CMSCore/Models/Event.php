@@ -92,7 +92,7 @@ class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBod
      * Create a new event.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\Event
+     * @return \GrahamCampbell\CMSCore\Models\Event
      */
     public static function create(array $input) {
         $return = parent::create($input);
@@ -104,7 +104,7 @@ class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBod
      * Update an existing event.
      *
      * @param  array  $input
-     * @return \GrahamCampbell\BootstrapCMS\Models\Event
+     * @return \GrahamCampbell\CMSCore\Models\Event
      */
     public function update(array $input = array()) {
         $return = parent::update($input);
