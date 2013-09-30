@@ -21,7 +21,6 @@
  */
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Artisan;
 
 class CMSCoreServiceProvider extends ServiceProvider {
 
@@ -68,10 +67,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
         $this->app['navigation'] = $this->app->share(function($app) {
             return new Classes\Navigation;
         });
-
-        Artisan::add(new Commands\AppUpdate);
-        Artisan::add(new Commands\AppInstall);
-        Artisan::add(new Commands\AppReset);
     }
 
     /**
