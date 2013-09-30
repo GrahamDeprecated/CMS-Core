@@ -35,7 +35,11 @@ abstract class ModelTestCase extends TestCase {
         parent::setUp();
 
         Artisan::call('migrate', array('--package' => 'cartalyst/sentry'));
-        Artisan::call('migrate', array('--seed' => true));
+        Artisan::call('migrate', array('--package' => 'graham-campbell/cms-core'));
+        Artisan::call('migrate');
+        Artisan::call('db:seed',  array('class' => 'GrahamCampbell\CMSCore\Seeds\DatabaseSeeder'));
+        Artisan::call('db:seed');
+
 
         $this->object = new $this->model;
         $this->instance = $this->object->find(1);

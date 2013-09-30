@@ -68,6 +68,10 @@ class CMSCoreServiceProvider extends ServiceProvider {
         $this->app['navigation'] = $this->app->share(function($app) {
             return new Classes\Navigation;
         });
+
+        Artisan::add(new GrahamCampbell\CMSCore\Commands\AppUpdate);
+        Artisan::add(new GrahamCampbell\CMSCore\Commands\AppInstall);
+        Artisan::add(new GrahamCampbell\CMSCore\Commands\AppReset);
     }
 
     /**
