@@ -25,6 +25,9 @@
         "phpunit/phpunit": "3.7.*@stable"
     },
     "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
         "psr-0": {
             "GrahamCampbell\\CMSCore": "src/"
         }
