@@ -30,13 +30,13 @@ class DatabaseSeeder extends Seeder {
     public function run() {
         Eloquent::unguard();
 
-        $this->call('SentryGroupSeeder');
-        $this->call('SentryUserSeeder');
-        $this->call('SentryUserGroupSeeder');
+        $this->call('GrahamCampbell\CMSCore\Seeds\SentryGroupSeeder');
+        $this->call('GrahamCampbell\CMSCore\Seeds\SentryUserSeeder');
+        $this->call('GrahamCampbell\CMSCore\Seeds\SentryUserGroupSeeder');
 
-        $this->call('PagesTableSeeder');
-        $this->call('PostsTableSeeder');
-        $this->call('CommentsTableSeeder');
-        $this->call('EventsTableSeeder');
+        $this->call('GrahamCampbell\CMSCore\Seeds\PagesTableSeeder');
+        $this->call('GrahamCampbell\CMSCore\Seeds\PostsTableSeeder');
+        $this->call('GrahamCampbell\CMSCore\Seeds\CommentsTableSeeder');
+        $this->call('GrahamCampbell\CMSCore\Seeds\EventsTableSeeder');
     }
 }
