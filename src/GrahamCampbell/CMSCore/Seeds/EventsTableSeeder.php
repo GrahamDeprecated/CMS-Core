@@ -20,6 +20,10 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 class EventsTableSeeder extends Seeder {
 
     /**

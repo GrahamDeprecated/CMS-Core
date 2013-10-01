@@ -20,6 +20,11 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use VTalbot\Markdown\Facades\Markdown;
+use Illuminate\Support\Facades\File;
+
 class PagesTableSeeder extends Seeder {
 
     /**

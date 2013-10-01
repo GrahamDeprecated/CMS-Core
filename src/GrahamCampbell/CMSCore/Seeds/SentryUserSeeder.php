@@ -20,6 +20,10 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Cartalyst\Sentry\Facades\Laravel\Sentry;
+
 class SentryUserSeeder extends Seeder {
 
     /**

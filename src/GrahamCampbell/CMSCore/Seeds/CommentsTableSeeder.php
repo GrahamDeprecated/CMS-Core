@@ -20,6 +20,9 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 class CommentsTableSeeder extends Seeder {
 
     /**
