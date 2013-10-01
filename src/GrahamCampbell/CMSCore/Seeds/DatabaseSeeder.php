@@ -20,6 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use Illuminate\Database\Seeder;
+
 class DatabaseSeeder extends Seeder {
 
     /**
