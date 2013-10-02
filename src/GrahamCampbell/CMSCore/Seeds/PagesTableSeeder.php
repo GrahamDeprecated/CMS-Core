@@ -24,6 +24,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use VTalbot\Markdown\Facades\Markdown;
 use Illuminate\Support\Facades\File;
+use DateTime;
 
 class PagesTableSeeder extends Seeder {
 
