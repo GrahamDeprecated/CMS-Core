@@ -38,7 +38,7 @@ class PagesTableSeeder extends Seeder {
         $home = array(
             'title' => 'Home',
             'slug'  => 'home',
-            'body'  => Markdown::string(File::get(dirname(__FILE__).'page-home.md')),
+            'body'  => Markdown::string(File::get(dirname(__FILE__).'/page-home.md')),
             'show_title' => false,
             'icon'       => 'icon-home',
             'user_id'    => 1,
@@ -51,7 +51,7 @@ class PagesTableSeeder extends Seeder {
         $about = array(
             'title' => 'About',
             'slug'  => 'about',
-            'body'  => '<div class="row-fluid"><div class="span8">'.Markdown::string(File::get(dirname(__FILE__).'page-about.md')).'</div></div>',
+            'body'  => '<div class="row-fluid"><div class="span8">'.Markdown::string(File::get(dirname(__FILE__).'/page-about.md')).'</div></div>',
             'user_id'    => 1,
             'icon'       => 'icon-info-sign',
             'created_at' => new DateTime,
