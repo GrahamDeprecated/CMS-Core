@@ -37,7 +37,7 @@ abstract class ModelTestCase extends TestCase {
         Artisan::call('migrate', array('--package' => 'cartalyst/sentry'));
         Artisan::call('migrate', array('--package' => 'graham-campbell/cms-core'));
         Artisan::call('migrate');
-        Artisan::call('db:seed',  array('class' => 'GrahamCampbell\CMSCore\Seeds\DatabaseSeeder'));
+        Artisan::call('db:seed',  array('--class' => 'GrahamCampbell\CMSCore\Seeds\DatabaseSeeder'));
         Artisan::call('db:seed');
 
 
