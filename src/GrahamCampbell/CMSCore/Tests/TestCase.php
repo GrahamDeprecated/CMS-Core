@@ -24,6 +24,12 @@ use Orchestra\Testbench\TestCase as Testbench;
 
 abstract class TestCase extends Testbench {
 
+    public function setUp() {
+        parent::setUp();
+
+        $this->app = $this->createApplication();
+    }
+
     protected function getEnvironmentSetUp($app) {
         $app['config']->set('database.default', 'testbench');
         $app['config']->set('database.connections.testbench', array(
