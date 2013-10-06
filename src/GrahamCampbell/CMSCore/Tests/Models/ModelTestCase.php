@@ -34,7 +34,7 @@ abstract class ModelTestCase extends TestCase {
 
         $this->app['artisan']->call('migrate', array(
             '--path' => 'src/migrations', 
-            '--database' => 'testbench',
+            '--database' => 'testbench'
         ));
 
         $this->app['artisan']->call('db:seed',  array('--class' => 'GrahamCampbell\CMSCore\Seeds\DatabaseSeeder'));

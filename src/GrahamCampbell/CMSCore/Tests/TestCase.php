@@ -29,7 +29,7 @@ abstract class TestCase extends Testbench {
         $app['config']->set('database.connections.testbench', array(
             'driver'   => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix'   => ''
         ));
     }
 }
