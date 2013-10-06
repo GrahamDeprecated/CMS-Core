@@ -20,8 +20,6 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Artisan;
-
 use GrahamCampbell\CMSCore\Tests\TestCase;
 
 abstract class ModelTestCase extends TestCase {
@@ -34,12 +32,12 @@ abstract class ModelTestCase extends TestCase {
     public function setUp() {
         parent::setUp();
 
-        Artisan::call('migrate', array('--package' => 'cartalyst/sentry'));
-        Artisan::call('migrate', array('--package' => 'graham-campbell/cms-core'));
-        Artisan::call('migrate');
-        Artisan::call('db:seed',  array('--class' => 'GrahamCampbell\CMSCore\Seeds\DatabaseSeeder'));
-        Artisan::call('db:seed');
+        $this->app['artisan']->call('migrate', array(
+            '--path' => 'src/migrations', 
+            '--database' => 'testbench',
+        ));
 
+        $this->app['artisan']->call('db:seed',  array('--class' => 'GrahamCampbell\CMSCore\Seeds\DatabaseSeeder'));
 
         $this->object = new $this->model;
         $this->instance = $this->object->find(1);

@@ -20,8 +20,16 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Orchestra\Testbench\TestCase as LaravelTestCase;
+use Orchestra\Testbench\TestCase as Testbench;
 
-abstract class TestCase extends LaravelTestCase {
+abstract class TestCase extends Testbench {
 
+    protected function getEnvironmentSetUp($app) {
+        $app['config']->set('database.default', 'testbench');
+        $app['config']->set('database.connections.testbench', array(
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ));
+    }
 }
