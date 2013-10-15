@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": ">=5.4.7",
+        "illuminate/support": "4.0.x",
         "orchestra/testbench": "2.0.*",
         "cartalyst/sentry": "2.0.*",
         "pda/pheanstalk": "2.1.*",
