@@ -34,6 +34,9 @@ abstract class ModelTestCase extends TestCase {
     public function setUp() {
         parent::setUp();
 
+        // Install Sentry
+	$this->call('migrate', array('--package' => 'cartalyst/sentry'));
+        
         Artisan::call('migrate', array('--path' => '../../src/migrations', '--database' => 'testbench'));
         Artisan::call('db:seed', array('--class' => 'GrahamCampbell\CMSCore\Seeds\DatabaseSeeder'));
 
