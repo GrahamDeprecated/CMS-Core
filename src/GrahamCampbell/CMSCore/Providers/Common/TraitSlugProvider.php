@@ -31,6 +31,13 @@ trait TraitSlugProvider {
      */
     public function find($slug, array $columns = array('*')) {
         $model = $this->model;
-        return $model::where('slug', '=', $slug)->first($columns);
+
+        $model = $model::where('slug', '=', $slug)->first($columns);
+
+        // TODO
+
+        // $model->registerRelations($this->relations);
+
+        return $model;
     }
 }

@@ -42,7 +42,14 @@ trait TraitBaseProvider {
      */
     public function find($id, array $columns = array('*')) {
         $model = $this->model;
-        return $model::find($id, $columns);
+
+        $model = $model::find($id, $columns);
+
+        // TODO
+
+        // $model->registerRelations($this->relations);
+
+        return $model;
     }
 
     /**
@@ -58,5 +65,13 @@ trait TraitBaseProvider {
         }
 
         return $model::get($model::$index);
+    }
+
+    public function belongsToRelation($model) {
+        // TODO
+    }
+
+    public function hasManyRelation($model) {
+        // TODO
     }
 }

@@ -24,6 +24,24 @@ use Carbon;
 
 trait TraitBaseModel {
 
+    // TODO
+
+    /**
+     * PHP call function.
+     *
+     * @return void
+     */
+    // public function __call($method, $arguments) {
+    //     foreach ($this->relations as $relation) {
+    //         if (method_exists($relation, $method)) {
+    //             return call_user_func_array(array($relation, $method), $arguments);
+    //         }
+    //     }
+
+    //     // eloquent method calling
+    //     parent::__call;
+    // }
+
     /**
      * Get id.
      *
@@ -49,5 +67,70 @@ trait TraitBaseModel {
      */
     public function getUpdatedAt() {
         return new Carbon($this->updated_at);
+    }
+
+    /**
+     * Register some model relations.
+     *
+     * @return void
+     */
+    public function registerRelations($relations) {
+        // TODO
+    }
+
+    protected function belongsToModel($model) {
+        return $this->belongsTo($model);
+    }
+
+    protected function getBelongsToModel($model, $columns = array('*')) {
+        return $this->belongsTo($model)->first($columns);
+    }
+
+    protected function getBelongsToModelId(model, $columns = array('*')) {
+        return $this->{$model::$name.'_id'};
+    }
+
+    /**
+     * Get a "has many" model relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
+     */
+    protected function hasManyModels($model) {
+        return $this->hasMany($model);
+    }
+
+    /**
+     * Get a "has many" model collection.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    protected function getHasManyModels($model) {
+        if (property_exists($model, 'order')) {
+            return $this->hasMany($model)->orderBy($model::$order, $model::$sort)->get($model::$index);
+        }
+
+        return $this->hasMany($model)->get($model::$index);
+    }
+
+    /**
+     * Get the specified "has many" model.
+     *
+     * @return mixed
+     */
+    protected function findHasManyModel($model, $id, $columns = array('*')) {
+        return $this->hasMany($model)->find($id, $columns);
+    }
+
+    /**
+     * Delete all "has many" models.
+     *
+     * @return void
+     */
+    protected function deleteHasManyModels($model) {
+        $items = $this->hasMany($model)->get(array('id'));
+
+        foreach($items as $item) {
+            $item->delete();
+        }
     }
 }
