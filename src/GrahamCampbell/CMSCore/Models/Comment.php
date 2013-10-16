@@ -34,6 +34,13 @@ class Comment extends BaseModel implements Interfaces\IBodyModel, Relations\Inte
     protected $table = 'comments';
 
     /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'comment';
+
+    /**
      * The columns to select when displaying an index.
      *
      * @var array

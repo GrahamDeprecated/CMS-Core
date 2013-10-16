@@ -36,6 +36,13 @@ class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\IName
     protected $table = 'users';
 
     /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'user';
+
+    /**
      * The columns to select when displaying an index.
      *
      * @var array

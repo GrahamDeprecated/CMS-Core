@@ -34,6 +34,13 @@ class Page extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISlug
     protected $table = 'pages';
 
     /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'page';
+
+    /**
      * The columns to select when displaying an index.
      *
      * @var array

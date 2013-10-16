@@ -34,6 +34,13 @@ class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBody
     protected $table = 'posts';
 
     /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'post';
+
+    /**
      * The columns to select when displaying an index.
      *
      * @var array

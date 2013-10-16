@@ -33,4 +33,11 @@ class Throttle extends SentryThrottle implements Interfaces\IBaseModel {
      */
     protected $table = 'throttle';
 
+    /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'throttle';
+
 }

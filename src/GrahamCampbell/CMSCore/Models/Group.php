@@ -36,6 +36,13 @@ class Group extends SentryGroup implements Interfaces\IBaseModel {
     protected $table = 'groups';
 
     /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'group';
+
+    /**
      * The columns to select when displaying an index.
      *
      * @var array

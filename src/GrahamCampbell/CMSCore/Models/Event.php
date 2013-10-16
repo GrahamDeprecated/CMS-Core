@@ -34,6 +34,13 @@ class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBod
     protected $table = 'events';
 
     /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'event';
+
+    /**
      * The columns to select when displaying an index.
      *
      * @var array
