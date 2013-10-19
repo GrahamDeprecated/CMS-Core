@@ -152,9 +152,49 @@ class Navigation {
      * @return array
      */
     protected function getBar() {
-        // set the bar home route
-        $nav = goGet('bar');
+        // $raw = $this->goGet('bar');
 
+        // new nav array
+        $nav = array();
+
+        // add the profile links
+        $nav[] = array('title' => 'View Profile', 'slug' => 'account/profile', 'icon' => 'icon-cog');
+
+        // add the admin links
+        if (Sentry::getUser()->hasAccess('admin')) {
+            $nav[] = array('title' => 'View Logs', 'slug' => 'logviewer', 'icon' => 'icon-wrench');
+            $nav[] = array('title' => 'Cloudflare', 'slug' => 'cloudflare', 'icon' => 'icon-cloud');
+        }
+
+        // add the view users link
+        if (Sentry::getUser()->hasAccess('mod')) {
+            $nav[] = array('title' => 'View Users', 'slug' => 'users', 'icon' => 'icon-user');
+        }
+
+        // add the create user link
+        if (Sentry::getUser()->hasAccess('admin')) {
+            $nav[] = array('title' => 'Create User', 'slug' => 'users/create', 'icon' => 'icon-star');
+        }
+
+        // add the create page link
+        if (Sentry::getUser()->hasAccess('edit')) {
+            $nav[] = array('title' => 'Create Page', 'slug' => 'pages/create', 'icon' => 'icon-pencil');
+        }
+
+        // add the create post link
+        if (Config::get('cms.blogging')) {
+            if (Sentry::getUser()->hasAccess('blog')) {
+                $nav[] = array('title' => 'Create Post', 'slug' => 'blog/posts/create', 'icon' => 'icon-book');
+            }
+        }
+
+        // add the create event link
+        if (Config::get('cms.events')) {
+            if (Sentry::getUser()->hasAccess('edit')) {
+                $nav[] = array('title' => 'Create Event', 'slug' => 'events/create', 'icon' => 'icon-calendar');
+            }
+        }
+        
         // add the extra items to the nav bar
         foreach ($this->bar as $item) {
             $nav[] = $item;
@@ -170,8 +210,10 @@ class Navigation {
      * @return array
      */
     protected function getAdmin() {
-        // set the admin home route
-        $nav = goGet('admin');
+        // $raw = $this->goGet('admin');
+
+        // new nav array
+        $nav = array();
 
         // add the extra items to the nav bar
         foreach ($this->admin as $item) {
@@ -251,8 +293,7 @@ class Navigation {
      * @return array
      */
     protected function sendGetBar() {
-        // TODO
-        return array();
+        // never called
     }
 
     /**
@@ -261,8 +302,7 @@ class Navigation {
      * @return array
      */
     protected function sendGetAdmin() {
-        // TODO
-        return array(array('title' => 'Admin', 'slug' => 'admin', 'icon' => '', 'active' => false));
+        // never called
     }
 
     /**
