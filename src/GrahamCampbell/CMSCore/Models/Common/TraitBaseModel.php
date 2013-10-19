@@ -86,7 +86,7 @@ trait TraitBaseModel {
         return $this->belongsTo($model)->first($columns);
     }
 
-    protected function getBelongsToModelId($model, $columns = array('*')) {
+    protected function getBelongsToModelId(model, $columns = array('*')) {
         return $this->{$model::$name.'_id'};
     }
 
