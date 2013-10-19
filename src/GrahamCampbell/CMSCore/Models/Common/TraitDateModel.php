@@ -20,7 +20,7 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Carbon;
+use Carbon\Carbon;
 
 trait TraitDateModel {
 
