@@ -80,6 +80,22 @@ class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\IName
         return $this->email;
     }
 
+
+    /**
+     * Get activated_at.
+     *
+     * @return mixed
+     */
+    public function getActivatedAt() {
+        $activated = $this->activated_at;
+
+        if ($activated) {
+            return new Carbon($activated);
+        }
+
+        return 'Not Activated';
+    }
+
     /**
      * Create a new user.
      *
