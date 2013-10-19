@@ -34,10 +34,21 @@ abstract class ModelTestCase extends TestCase {
     public function setUp() {
         parent::setUp();
 
-        $this->call('migrate', array('--package' => 'cartalyst/sentry'));
+        $this->app['router']->enableFilters();
 
-        $this->call('migrate', array('--path' => '../../src/migrations', '--database' => 'testbench'));
-        $this->call('db:seed', array('--class' => 'GrahamCampbell\CMSCore\Seeds\DatabaseSeeder'));
+        $artisan = $this->app->make('artisan');
+
+        $artisan->call('migrate', [
+            '--database' => 'testbench',
+            '--path'     => '../vendor/cartalyst/sentry/src/migrations',
+        ]);
+
+        $artisan->call('migrate', [
+            '--database' => 'testbench',
+            '--path'     => 'migrations',
+        ]);
+
+        $artisan->call('db:seed', array('--class' => 'GrahamCampbell\CMSCore\Seeds\DatabaseSeeder'));
 
         $this->object = new $this->model;
         $this->instance = $this->object->find(1);

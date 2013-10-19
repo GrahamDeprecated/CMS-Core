@@ -32,4 +32,37 @@ abstract class TestCase extends Testbench {
             'prefix'   => ''
         ));
     }
+
+    protected function getApplicationProviders() {
+        return array(
+            'Illuminate\Foundation\Providers\ArtisanServiceProvider',
+            'Illuminate\Auth\AuthServiceProvider',
+            'Illuminate\Cache\CacheServiceProvider',
+            'Illuminate\Foundation\Providers\CommandCreatorServiceProvider',
+            'Illuminate\Session\CommandsServiceProvider',
+            'Illuminate\Foundation\Providers\ComposerServiceProvider',
+            'Illuminate\Routing\ControllerServiceProvider',
+            'Illuminate\Cookie\CookieServiceProvider',
+            'Illuminate\Database\DatabaseServiceProvider',
+            'Illuminate\Encryption\EncryptionServiceProvider',
+            'Illuminate\Filesystem\FilesystemServiceProvider',
+            'Illuminate\Hashing\HashServiceProvider',
+            'Illuminate\Html\HtmlServiceProvider',
+            'Illuminate\Foundation\Providers\KeyGeneratorServiceProvider',
+            'Illuminate\Log\LogServiceProvider',
+            'Illuminate\Mail\MailServiceProvider',
+            'Illuminate\Database\MigrationServiceProvider',
+            'Illuminate\Pagination\PaginationServiceProvider',
+            'Illuminate\Foundation\Providers\PublisherServiceProvider',
+            'Illuminate\Queue\QueueServiceProvider',
+            'Illuminate\Redis\RedisServiceProvider',
+            'Illuminate\Auth\Reminders\ReminderServiceProvider',
+            'Illuminate\Database\SeedServiceProvider',
+            'Illuminate\Session\SessionServiceProvider',
+            'Illuminate\Translation\TranslationServiceProvider',
+            'Illuminate\Validation\ValidationServiceProvider',
+            'Illuminate\View\ViewServiceProvider',
+            'GrahamCampbell\CMSCore\CMSCoreServiceProvider'
+        );
+    }
 }
