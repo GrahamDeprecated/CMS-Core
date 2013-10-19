@@ -23,6 +23,7 @@
 use Cache;
 use Config;
 use Request;
+use Sentry;
 use URL;
 
 use GrahamCampbell\CMSCore\Models\Page;
