@@ -21,6 +21,7 @@
  */
 
 use Event as LaravelEvent;
+use Carbon\Carbon;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
 
@@ -84,16 +85,20 @@ class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\IName
     /**
      * Get activated_at.
      *
-     * @return mixed
+     * @return \Carbon\Carbon
      */
     public function getActivatedAt() {
-        $activated = $this->activated_at;
+        $activated_at = $this->activated_at;
 
-        if ($activated) {
-            return new Carbon($activated);
+        if ($activated_at) {
+            return new Carbon($activated_at);
         }
 
-        return 'Not Activated';
+        if ($this->activated) {
+            return $this->getCreatedAt();
+        }
+
+        return null;
     }
 
     /**
