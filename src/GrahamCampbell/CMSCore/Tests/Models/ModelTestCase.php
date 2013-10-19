@@ -38,15 +38,9 @@ abstract class ModelTestCase extends TestCase {
 
         $artisan = $this->app->make('artisan');
 
-        $artisan->call('migrate', [
-            '--database' => 'testbench',
-            '--path'     => '../vendor/cartalyst/sentry/src/migrations',
-        ]);
+        $artisan->call('migrate', array('--path' => '../vendor/cartalyst/sentry/src/migrations'));
 
-        $artisan->call('migrate', [
-            '--database' => 'testbench',
-            '--path'     => 'migrations',
-        ]);
+        $artisan->call('migrate', array('--path' => 'migrations'));
 
         $artisan->call('db:seed', array('--class' => 'GrahamCampbell\CMSCore\Seeds\DatabaseSeeder'));
 

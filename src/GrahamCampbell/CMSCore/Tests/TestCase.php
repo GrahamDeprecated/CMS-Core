@@ -25,44 +25,21 @@ use Orchestra\Testbench\TestCase as Testbench;
 abstract class TestCase extends Testbench {
 
     protected function getEnvironmentSetUp($app) {
-        $app['config']->set('database.default', 'testbench');
-        $app['config']->set('database.connections.testbench', array(
+        $app['path.base'] = realpath(__DIR__.'/../../../../src');
+
+        $app['config']->set('database.default', 'sqlite');
+        $app['config']->set('database.connections.sqlite', array(
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => ''
         ));
     }
 
-    protected function getApplicationProviders() {
+    protected function getPackageProviders() {
         return array(
-            'Illuminate\Foundation\Providers\ArtisanServiceProvider',
-            'Illuminate\Auth\AuthServiceProvider',
-            'Illuminate\Cache\CacheServiceProvider',
-            'Illuminate\Foundation\Providers\CommandCreatorServiceProvider',
-            'Illuminate\Session\CommandsServiceProvider',
-            'Illuminate\Foundation\Providers\ComposerServiceProvider',
-            'Illuminate\Routing\ControllerServiceProvider',
-            'Illuminate\Cookie\CookieServiceProvider',
-            'Illuminate\Database\DatabaseServiceProvider',
-            'Illuminate\Encryption\EncryptionServiceProvider',
-            'Illuminate\Filesystem\FilesystemServiceProvider',
-            'Illuminate\Hashing\HashServiceProvider',
-            'Illuminate\Html\HtmlServiceProvider',
-            'Illuminate\Foundation\Providers\KeyGeneratorServiceProvider',
-            'Illuminate\Log\LogServiceProvider',
-            'Illuminate\Mail\MailServiceProvider',
-            'Illuminate\Database\MigrationServiceProvider',
-            'Illuminate\Pagination\PaginationServiceProvider',
-            'Illuminate\Foundation\Providers\PublisherServiceProvider',
-            'Illuminate\Queue\QueueServiceProvider',
-            'Illuminate\Redis\RedisServiceProvider',
-            'Illuminate\Auth\Reminders\ReminderServiceProvider',
-            'Illuminate\Database\SeedServiceProvider',
-            'Illuminate\Session\SessionServiceProvider',
-            'Illuminate\Translation\TranslationServiceProvider',
-            'Illuminate\Validation\ValidationServiceProvider',
-            'Illuminate\View\ViewServiceProvider',
-            'GrahamCampbell\CMSCore\CMSCoreServiceProvider'
+            'Cartalyst\Sentry\SentryServiceProvider',
+            'GrahamCampbell\CMSCore\CMSCoreServiceProvider',
+            'VTalbot\Markdown\MarkdownServiceProvider'
         );
     }
 }
