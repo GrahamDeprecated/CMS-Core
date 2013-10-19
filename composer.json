@@ -16,6 +16,7 @@
         "pda/pheanstalk": "2.1.*",
         "aws/aws-sdk-php": "2.4.*",
         "iron-io/iron_mq": "1.4.*",
+        "vtalbot/markdown": "1.4.*",
         "graham-campbell/binput": "dev-develop",
         "graham-campbell/passwd": "dev-develop",
         "graham-campbell/htmlmin": "dev-develop"
