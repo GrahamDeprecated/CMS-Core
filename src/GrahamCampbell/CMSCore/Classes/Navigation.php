@@ -210,15 +210,10 @@ class Navigation {
      * @return array
      */
     protected function getAdmin() {
-        $raw = $this->goGet('admin');
+        $nav = $this->goGet('admin');
 
-        // separate the first page
-        $value = $raw[0];
-        unset($raw[0]);
-        // the page slug is prepended by 'pages/'
-        $value['slug'] = 'pages/'.$value['slug'];
-        // make sure it is at the very start of the nav bar
-        $nav[] = $value;
+        // fix the homepage link
+        $nav[0]['slug'] = 'pages/'.$nav[0]['slug'];
 
         // add the admin links
         if (Sentry::getUser()->hasAccess('admin')) {
@@ -413,6 +408,20 @@ class Navigation {
     public function refresh($name = 'main') {
         if (Config::get('cms.cache') === true) {
             $this->setCache($name, $this->sendGet($name));
+        }
+    }
+
+    /**
+     * Refresh the raw nav var by name in the cache if the cache in enabled.
+     *
+     * @param  string  $name
+     * @return void
+     */
+    public function regen() {
+        if (Config::get('cms.cache') === true) {
+            $this->flushCache();
+            $this->setCache($name, $this->sendGet('main'));
+            $this->setCache($name, $this->sendGet('admin'));
         }
     }
 
