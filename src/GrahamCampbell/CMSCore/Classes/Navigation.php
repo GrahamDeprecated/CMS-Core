@@ -27,6 +27,7 @@ use Sentry;
 use URL;
 
 use GrahamCampbell\CMSCore\Models\Page;
+use GrahamCampbell\CMSCore\Facades\PageProvider;
 
 class Navigation {
 
@@ -209,7 +210,26 @@ class Navigation {
      * @return array
      */
     protected function getAdmin() {
-        $nav = $this->goGet('admin');
+        $raw = $this->goGet('admin');
+
+        // separate the first page
+        $value = $raw[0];
+        unset($raw[0]);
+        // the page slug is prepended by 'pages/'
+        $value['slug'] = 'pages/'.$value['slug'];
+        // make sure it is at the very start of the nav bar
+        $nav[] = $value;
+
+        // add the admin links
+        if (Sentry::getUser()->hasAccess('admin')) {
+            $nav[] = array('title' => 'Logs', 'slug' => 'logviewer', 'icon' => 'icon-wrench');
+            $nav[] = array('title' => 'Cloudflare', 'slug' => 'cloudflare', 'icon' => 'icon-cloud');
+        }
+
+        // add the view users link
+        if (Sentry::getUser()->hasAccess('mod')) {
+            $nav[] = array('title' => 'Users', 'slug' => 'users', 'icon' => 'icon-user');
+        }
 
         // add the extra items to the nav bar
         foreach ($this->admin as $item) {
@@ -298,7 +318,7 @@ class Navigation {
      * @return array
      */
     protected function sendGetAdmin() {
-        return array(Page::find(1)->get(array('title', 'slug', 'icon'))->toArray());
+        return array(PageProvider::find('home', array('title', 'slug', 'icon'))->toArray());
     }
 
     /**
