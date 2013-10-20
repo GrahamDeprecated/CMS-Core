@@ -420,8 +420,8 @@ class Navigation {
     public function regen() {
         if (Config::get('cms.cache') === true) {
             $this->flushCache();
-            $this->setCache($name, $this->sendGet('main'));
-            $this->setCache($name, $this->sendGet('admin'));
+            $this->setCache('main', $this->sendGet('main'));
+            $this->setCache('admin', $this->sendGet('admin'));
         }
     }
 
