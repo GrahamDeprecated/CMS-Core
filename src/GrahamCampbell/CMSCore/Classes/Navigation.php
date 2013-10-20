@@ -163,7 +163,7 @@ class Navigation {
         // add the admin links
         if (Sentry::getUser()->hasAccess('admin')) {
             $nav[] = array('title' => 'View Logs', 'slug' => 'logviewer', 'icon' => 'icon-wrench');
-            $nav[] = array('title' => 'Caching', 'slug' => 'caching', 'icon' => 'icon-hdd');
+            $nav[] = array('title' => 'Caching', 'slug' => 'caching', 'icon' => 'icon-dashboard');
             $nav[] = array('title' => 'CloudFlare', 'slug' => 'cloudflare', 'icon' => 'icon-cloud');
         }
 
@@ -219,7 +219,7 @@ class Navigation {
         // add the admin links
         if (Sentry::getUser()->hasAccess('admin')) {
             $nav[] = array('title' => 'Logs', 'slug' => 'logviewer', 'icon' => 'icon-wrench');
-            $nav[] = array('title' => 'Caching', 'slug' => 'caching', 'icon' => 'icon-hdd');
+            $nav[] = array('title' => 'Caching', 'slug' => 'caching', 'icon' => 'icon-dashboard');
             $nav[] = array('title' => 'CloudFlare', 'slug' => 'cloudflare', 'icon' => 'icon-cloud');
         }
 
