@@ -116,7 +116,7 @@ class Navigation {
         // separate the first page
         $value = $raw[0];
         unset($raw[0]);
-        // the page slug is preppended by 'pages/'
+        // the page slug is prepended by 'pages/'
         $value['slug'] = 'pages/'.$value['slug'];
         // make sure it is at the very start of the nav bar
         $nav[] = $value;
@@ -153,9 +153,7 @@ class Navigation {
      * @return array
      */
     protected function getBar() {
-        // $raw = $this->goGet('bar');
-
-        // new nav array
+        // $nav = $this->goGet('bar');
         $nav = array();
 
         // add the profile links
@@ -211,10 +209,7 @@ class Navigation {
      * @return array
      */
     protected function getAdmin() {
-        // $raw = $this->goGet('admin');
-
-        // new nav array
-        $nav = array();
+        $nav = $this->goGet('admin');
 
         // add the extra items to the nav bar
         foreach ($this->admin as $item) {
@@ -303,7 +298,7 @@ class Navigation {
      * @return array
      */
     protected function sendGetAdmin() {
-        // never called
+        return array(Page::find(1)->get(array('title', 'slug', 'icon'))->toArray());
     }
 
     /**
