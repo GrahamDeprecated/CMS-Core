@@ -127,16 +127,6 @@ class Navigation {
             $nav[] = $item;
         }
 
-        // add the blog page after the fist page if blogging is enabled
-        if (Config::get('cms.blogging')) {
-            $nav[] = array('title' => 'Blog', 'slug' => 'blog/posts', 'icon' => 'icon-book');
-        }
-
-        // add the events page after the fist page if events are enabled
-        if (Config::get('cms.events')) {
-            $nav[] = array('title' => 'Events', 'slug' => 'events', 'icon' => 'icon-calendar');
-        }
-
         // add the remaining pages to the nav bar
         foreach ($raw as $key => $value) {
             // each page slug is preppended by 'pages/'
@@ -156,45 +146,6 @@ class Navigation {
     protected function getBar() {
         // $nav = $this->goGet('bar');
         $nav = array();
-
-        // add the profile links
-        $nav[] = array('title' => 'View Profile', 'slug' => 'account/profile', 'icon' => 'icon-cog');
-
-        // add the admin links
-        if (Sentry::getUser()->hasAccess('admin')) {
-            $nav[] = array('title' => 'View Logs', 'slug' => 'logviewer', 'icon' => 'icon-wrench');
-            $nav[] = array('title' => 'Caching', 'slug' => 'caching', 'icon' => 'icon-dashboard');
-            $nav[] = array('title' => 'CloudFlare', 'slug' => 'cloudflare', 'icon' => 'icon-cloud');
-        }
-
-        // add the view users link
-        if (Sentry::getUser()->hasAccess('mod')) {
-            $nav[] = array('title' => 'View Users', 'slug' => 'users', 'icon' => 'icon-user');
-        }
-
-        // add the create user link
-        if (Sentry::getUser()->hasAccess('admin')) {
-            $nav[] = array('title' => 'Create User', 'slug' => 'users/create', 'icon' => 'icon-star');
-        }
-
-        // add the create page link
-        if (Sentry::getUser()->hasAccess('edit')) {
-            $nav[] = array('title' => 'Create Page', 'slug' => 'pages/create', 'icon' => 'icon-pencil');
-        }
-
-        // add the create post link
-        if (Config::get('cms.blogging')) {
-            if (Sentry::getUser()->hasAccess('blog')) {
-                $nav[] = array('title' => 'Create Post', 'slug' => 'blog/posts/create', 'icon' => 'icon-book');
-            }
-        }
-
-        // add the create event link
-        if (Config::get('cms.events')) {
-            if (Sentry::getUser()->hasAccess('edit')) {
-                $nav[] = array('title' => 'Create Event', 'slug' => 'events/create', 'icon' => 'icon-calendar');
-            }
-        }
         
         // add the extra items to the nav bar
         foreach ($this->bar as $item) {
@@ -215,18 +166,6 @@ class Navigation {
 
         // fix the homepage link
         $nav[0]['slug'] = 'pages/'.$nav[0]['slug'];
-
-        // add the admin links
-        if (Sentry::getUser()->hasAccess('admin')) {
-            $nav[] = array('title' => 'Logs', 'slug' => 'logviewer', 'icon' => 'icon-wrench');
-            $nav[] = array('title' => 'Caching', 'slug' => 'caching', 'icon' => 'icon-dashboard');
-            $nav[] = array('title' => 'CloudFlare', 'slug' => 'cloudflare', 'icon' => 'icon-cloud');
-        }
-
-        // add the view users link
-        if (Sentry::getUser()->hasAccess('mod')) {
-            $nav[] = array('title' => 'Users', 'slug' => 'users', 'icon' => 'icon-user');
-        }
 
         // add the extra items to the nav bar
         foreach ($this->admin as $item) {
