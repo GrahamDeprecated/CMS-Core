@@ -18,7 +18,7 @@
 
     <div class="col-lg-4">
         <h2>Forking</h2>
-        <p>Feel free to fork this project and use it anywhere you want, in compliance with the <a href="https://github.com/GrahamCampbell/Bootstrap-CMS/blob/master/LICENSE.md">license</a>. Before submitting a pull request, you should ensure that your fork is up to date.</p>
+        <p>Feel free to fork this project and use it anywhere, in compliance with the <a href="https://github.com/GrahamCampbell/Bootstrap-CMS/blob/master/LICENSE.md">license</a>. Before submitting a pull request, you should ensure that your fork is up to date.</p>
         <p>
             <a class="btn" href="<?php echo URL::route("pages.show", array("pages" => "about")); ?>">View details &raquo;</a>
         </p>
