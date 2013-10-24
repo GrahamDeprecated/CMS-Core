@@ -9,6 +9,7 @@
 Bootstrap CMS is a PHP CMS powered by [Laravel 4.0](http://laravel.com) with [Sentry 2.0](http://docs.cartalyst.com/sentry-2).  
 
 * Bootstrap CMS was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
+* Bootstrap CMS relies on my [CMS Core](https://github.com/GrahamCampbell/CMS-Core) package.  
 * Bootstrap CMS uses [Travis CI](https://travis-ci.org/GrahamCampbell/Bootstrap-CMS) to run tests to check if it's working as it should.  
 * Bootstrap CMS uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Bootstrap-CMS) to run additional tests and checks.  
 * Bootstrap CMS uses [Composer](https://getcomposer.org) to load and manage dependencies.  
@@ -52,7 +53,7 @@ Please check the system requirements before installing Bootstrap CMS.
 
 1. You may install by cloning from github, or via composer.  
   * Github: `git clone git@github.com:GrahamCampbell/Bootstrap-CMS.git`
-  * Composer: `composer create-project graham-campbell/bootstrap-cms --prefer-dist`
+  * Composer: `composer create-project graham-campbell/bootstrap-cms --prefer-dist -s dev`
 2. From a command line open in the folder, run `composer install`.  
 3. Enter your database details into `app/config/databse.php`.  
 4. Run `php artisan app:install` to setup and seed your database.  
@@ -102,7 +103,7 @@ Bootstrap CMS natively supports [Google Analytics](http://www.google.com/analyti
 
 ## Setting Up Themes
 
-Bootstrap CMS also ships with 13 themes from [Bootswatch](http://bootswatch.com/2).  
+Bootstrap CMS also ships with 13 themes, 11 from [Bootswatch](http://bootswatch.com/2).  
 
 1. You can set your theme in `app/config/theme.php`.  
 2. You can also set your nav bar style in `app/config/theme.php`.  
