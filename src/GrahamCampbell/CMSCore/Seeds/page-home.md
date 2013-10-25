@@ -1,7 +1,17 @@
-<div class="jumbotron">
-    <h1><?php echo Config::get("cms.name"); ?></h1>
-    <p class="lead">Powered by Laravel 4 with Sentry 2</p>
-    <a class="btn btn-lg btn-success" href="<?php echo URL::route("account.register"); ?>">Sign Up Today</a>
+<div class="hidden-xs">
+    <div class="jumbotron">
+        <h1><?php echo Config::get("cms.name"); ?></h1>
+        <p class="lead">Powered by Laravel 4 with Sentry 2</p>
+        <a class="btn btn-lg btn-success" href="<?php echo URL::route("account.register"); ?>">Sign Up Today</a>
+    </div>
+</div>
+
+<div class="visible-xs">
+    <div class="jumbotron">
+        <h1><?php echo Config::get("cms.name"); ?></h1>
+        <p class="lead">Powered by Laravel 4 with Sentry</p>
+        <a class="btn btn-lg btn-success" href="<?php echo URL::route("account.register"); ?>">Sign Up Today</a>
+    </div>
 </div>
 
 <hr>
