@@ -1,6 +1,11 @@
 <div class="hidden-xs">
     <div class="jumbotron">
-        <h1><?php echo Config::get("cms.name"); ?></h1>
+        <div class="hidden-sm">
+            <h1><?php echo Config::get("cms.name"); ?></h1>
+        </div>
+        <div class="visible-sm">
+            <h1><?php echo Config::get("cms.name"); ?></h1>
+        </div>
         <p class="lead">Powered by Laravel 4 with Sentry 2</p>
         <a class="btn btn-lg btn-success" href="<?php echo URL::route("account.register"); ?>">Sign Up Today</a>
     </div>
