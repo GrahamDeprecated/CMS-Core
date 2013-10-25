@@ -10,7 +10,7 @@
 
     <div class="col-lg-4">
         <h2>Welcome</h2>
-        <p>Bootstrap CMS is a PHP CMS powered by <a href="http://laravel.com">Laravel 4.0</a> with <a href="http://docs.cartalyst.com/sentry-2">Sentry 2.0</a>. Bootstrap CMS was created by, and is maintained by <a href="https://github.com/GrahamCampbell">Graham Campbell<a>.</p>
+        <p>Bootstrap CMS is a PHP CMS powered by <a href="http://laravel.com">Laravel 4.0</a> with <a href="http://docs.cartalyst.com/sentry-2">Sentry 2.0</a>. Bootstrap CMS was created by, and is maintained by <a href="https://github.com/GrahamCampbell">Graham Campbell</a>.</p>
         <p>
             <a class="btn" href="<?php echo URL::route("pages.show", array("pages" => "about")); ?>">View details &raquo;</a>
         </p>
@@ -18,7 +18,7 @@
 
     <div class="col-lg-4">
         <h2>Forking</h2>
-        <p>Feel free to fork this project and use it anywhere, in compliance with the <a href="https://github.com/GrahamCampbell/Bootstrap-CMS/blob/master/LICENSE.md">license</a>. Before submitting a pull request, you should ensure that your fork is up to date.</p>
+        <p>Feel free to fork this project and use it anywhere, in compliance with the <a href="https://github.com/GrahamCampbell/Bootstrap-CMS/blob/master/LICENSE.md">license</a>. Before submitting a pull request, please ensure your fork is up to date.</p>
         <p>
             <a class="btn" href="<?php echo URL::route("pages.show", array("pages" => "about")); ?>">View details &raquo;</a>
         </p>
