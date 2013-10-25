@@ -23,7 +23,7 @@
 
 <div class="row">
 
-    <div class="col-lg-4">
+    <div class="col-md-4">
         <h2>Welcome</h2>
         <p>Bootstrap CMS is a PHP CMS powered by <a href="http://laravel.com">Laravel 4.0</a> with <a href="http://docs.cartalyst.com/sentry-2">Sentry 2.0</a>. Bootstrap CMS was created by, and is maintained by <a href="https://github.com/GrahamCampbell">Graham Campbell</a>.</p>
         <p>
@@ -31,7 +31,7 @@
         </p>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-md-4">
         <h2>Forking</h2>
         <p>Feel free to fork this project and use it anywhere, in compliance with the <a href="https://github.com/GrahamCampbell/Bootstrap-CMS/blob/master/LICENSE.md">license</a>. Before submitting a pull request, please ensure your fork is up to date.</p>
         <p>
@@ -39,7 +39,7 @@
         </p>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-md-4">
         <h2>More</h2>
         <p>The back-end leverages queuing and caching to keep it fast and smooth, while the front-end would also not be possible without <a href="http://getbootstrap.com">Bootstrap</a> and <a href="http://jquery.com">jQuery</a>.</p>
         <p>
