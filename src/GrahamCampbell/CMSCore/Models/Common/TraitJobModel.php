@@ -23,11 +23,20 @@
 trait TraitJobModel {
 
     /**
-     * Get slug.
+     * Get job_id.
      *
-     * @return string
+     * @return int
      */
     public function getJobId() {
         return $this->job_id;
+    }
+
+    /**
+     * Get tries.
+     *
+     * @return int
+     */
+    public function getTries() {
+        return $this->tries;
     }
 }

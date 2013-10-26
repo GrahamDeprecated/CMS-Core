@@ -35,6 +35,7 @@ class CreateJobsTable extends Migration {
         Schema::create('jobs', function(Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('job_id')->unsigned();
+            $table->integer('tries')->unsigned()->default(0);
             $table->timestamps();
             $table->engine = 'InnoDB';
         });
