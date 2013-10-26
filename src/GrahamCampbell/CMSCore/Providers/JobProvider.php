@@ -20,9 +20,7 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class JobProvider extends BaseProvider implements Interfaces\IJobProvider {
-
-    use Common\TraitJobProvider;
+class JobProvider extends BaseProvider {
 
     /**
      * The name of the model to provide.
