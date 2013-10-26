@@ -86,7 +86,7 @@ class Queuing {
      * @return int
      */
     protected function time($time = null) {
-        if (get_class($time) = 'Carbon\Carbon') {
+        if (get_class($time) == 'Carbon\Carbon') {
             return $this->times(Carbon::now()->diffInSeconds($time));
         }
 
