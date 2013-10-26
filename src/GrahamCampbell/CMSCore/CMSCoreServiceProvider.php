@@ -67,6 +67,9 @@ class CMSCoreServiceProvider extends ServiceProvider {
         $this->app['navigation'] = $this->app->share(function($app) {
             return new Classes\Navigation;
         });
+        $this->app['queuing'] = $this->app->share(function($app) {
+            return new Classes\Queuing;
+        });
     }
 
     /**
@@ -75,6 +78,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('commentprovider', 'eventprovider', 'groupprovider', 'pageprovider', 'postprovider', 'userprovider', 'navigation');
+        return array('commentprovider', 'eventprovider', 'groupprovider', 'pageprovider', 'postprovider', 'userprovider', 'navigation', 'queuing');
     }
 }
