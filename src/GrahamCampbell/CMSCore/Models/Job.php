@@ -59,9 +59,7 @@ class Job extends BaseModel implements Interfaces\IJobModel {
      *
      * @var array
      */
-    public static $rules = array(
-        'job_id' => 'required'
-    );
+    public static $rules = array();
 
     /**
      * The page factory.

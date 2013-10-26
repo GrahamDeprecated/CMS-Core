@@ -69,7 +69,7 @@ class Queuing {
      */
     protected function roll($delay, $job, $data, $queue) {
         // push to the database server
-        $job = JobProvider::create(array('job_id' => $id));
+        $job = JobProvider::create();
 
         // save job id
         $data['job_id'] = $job->getId();
