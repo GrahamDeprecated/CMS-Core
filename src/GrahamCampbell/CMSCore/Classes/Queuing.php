@@ -26,7 +26,7 @@ use GrahamCampbell\CMSCore\Facades\JobProvider;
 
 class Queuing {
 
-     /**
+    /**
      * The minimum delay for a delayed queue push.
      *
      * @var array
@@ -76,7 +76,7 @@ class Queuing {
         $job = JobProvider::create(array('job_id' => $id));
 
         // push to the queuing server
-        if (is_int($time)) {
+        if (is_int($delay)) {
             $time = $this->time($delay);
             Queue::later($time, $job, $data, $queue);
         } else {
