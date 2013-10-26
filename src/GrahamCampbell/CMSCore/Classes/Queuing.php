@@ -69,10 +69,10 @@ class Queuing {
      */
     protected function roll($delay, $job, $data, $queue) {
         // push to the database server
-        $job = JobProvider::create(array());
+        $model = JobProvider::create(array());
 
         // save job id
-        $data['job_id'] = $job->getId();
+        $data['model_id'] = $model->getId();
 
         // push to the queuing server
         if ($delay === false) {
@@ -83,7 +83,7 @@ class Queuing {
         }
 
         // return the job
-        return $job;
+        return $model;
     }
 
     /**
