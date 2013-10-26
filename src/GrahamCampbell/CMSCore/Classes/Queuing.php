@@ -27,7 +27,7 @@ use GrahamCampbell\CMSCore\Facades\JobProvider;
 class Queuing {
 
      /**
-     * The minimum delay for a queue push.
+     * The minimum delay for a delayed queue push.
      *
      * @var array
      */
@@ -42,7 +42,7 @@ class Queuing {
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
     public function push($job, $data = '', $queue = null) {
-        return $this->roll(null, $job, $data, $queue);
+        return $this->roll(false, $job, $data, $queue);
     }
 
     /**
@@ -61,28 +61,36 @@ class Queuing {
     /**
      * Do the queue rolling work.
      *
-     * @param  \Carbon\Carbon|int  $delay
+     * @param  mixed  $delay
      * @param  string  $job
      * @param  mixed   $data
      * @param  string  $queue
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
     protected function roll($delay, $job, $data, $queue) {
-        // get the corrected time
-        $time = $this->time($delay);
+        // generate an id
+        $id = uniqid();
+        $data['job_id'] = $id;
 
-        // push the job and get the id
-        $id = Queue::later($time, $job, $data, $queue);
+        // push to the database server
+        $job = JobProvider::create(array('job_id' => $id));
 
-        // if the job has an id, mark it as queued in the database
-        if (!empty($id)) {
-            return JobProvider::create(array('job_id' => $id));
+        // push to the queuing server
+        if (is_int($time)) {
+            $time = $this->time($delay);
+            Queue::later($time, $job, $data, $queue);
+        } else {
+            Queue::push($job, $data, $queue);
         }
+
+        // return the job
+        return $job;
     }
 
     /**
      * Convert to a valid time.
      *
+     * @param  mixed  $time
      * @return int
      */
     protected function time($time = null) {
@@ -100,6 +108,7 @@ class Queuing {
     /**
      * Convert to a valid time strictly.
      *
+     * @param  mixed  $time
      * @return int
      */
     protected function times($time = null) {
