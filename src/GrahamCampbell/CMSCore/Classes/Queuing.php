@@ -41,7 +41,7 @@ class Queuing {
      * @param  string  $queue
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
-    public function push($job, $data = '', $queue = null) {
+    public function push($job, $data = array(), $queue = null) {
         return $this->roll(false, $job, $data, $queue);
     }
 
@@ -54,7 +54,7 @@ class Queuing {
      * @param  string  $queue
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
-    public function later($delay, $job, $data = '', $queue = null) {
+    public function later($delay, $job, $data = array(), $queue = null) {
         return $this->roll($delay, $job, $data, $queue);
     }
 
@@ -75,11 +75,11 @@ class Queuing {
         $data['job_id'] = $job->getId();
 
         // push to the queuing server
-        if (is_int($delay)) {
+        if ($delay === false) {
+            Queue::push($job, $data, $queue);
+        } else {
             $time = $this->time($delay);
             Queue::later($time, $job, $data, $queue);
-        } else {
-            Queue::push($job, $data, $queue);
         }
 
         // return the job
