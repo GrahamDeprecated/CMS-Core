@@ -30,4 +30,13 @@ trait TraitJobModel {
     public function getTries() {
         return $this->tries;
     }
+
+    /**
+     * Get task.
+     *
+     * @return string
+     */
+    public function getTask() {
+        return $this->task;
+    }
 }

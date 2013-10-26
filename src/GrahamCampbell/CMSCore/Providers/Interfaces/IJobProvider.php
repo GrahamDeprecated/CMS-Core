@@ -1,4 +1,4 @@
-<?php
+<?php namespace GrahamCampbell\CMSCore\Providers\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,33 +20,41 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-
-class CreateJobsTable extends Migration {
+interface IJobProvider {
 
     /**
-     * Run the migrations.
+     * Clear all jobs of specified type.
      *
-     * @return void
+     * @return string
      */
-    public function up() {
-        Schema::create('jobs', function(Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->smallInteger('tries')->unsigned()->default(0);
-            $table->string('task');
-            $table->timestamps();
-            $table->engine = 'InnoDB';
-        });
-    }
+    public function clear($task);
 
     /**
-     * Reverse the migrations.
+     * Clear all cron jobs only.
      *
-     * @return void
+     * @return string
      */
-    public function down() {
-        Schema::drop('jobs');
-    }
+    public function clearCrons();
+
+    /**
+     * Clear all the mail jobs only.
+     *
+     * @return string
+     */
+    public function clearMail();
+
+    /**
+     * Clear all jobs except crons, including mail jobs.
+     *
+     * @return string
+     */
+    public function clearJobs();
+
+    /**
+     * Clear all jobs.
+     *
+     * @return string
+     */
+    public function clearAll();
+
 }

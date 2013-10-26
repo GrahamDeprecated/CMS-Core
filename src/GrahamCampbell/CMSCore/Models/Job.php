@@ -45,7 +45,7 @@ class Job extends BaseModel implements Interfaces\IJobModel {
      *
      * @var array
      */
-    public static $index = array('id', 'tries');
+    public static $index = array('id', 'tries', 'task');
 
     /**
      * The direction to order by when displaying an index.
@@ -59,7 +59,7 @@ class Job extends BaseModel implements Interfaces\IJobModel {
      *
      * @var array
      */
-    public static $rules = array();
+    public static $rules = array('task');
 
     /**
      * The page factory.
@@ -68,7 +68,8 @@ class Job extends BaseModel implements Interfaces\IJobModel {
      */
     public static $factory = array(
         'id'    => 1,
-        'tries' => 0
+        'tries' => 0,
+        'task'  => 'GrahamCampbell\BootstrapCMS\Handlers\MailHandler'
     );
 
     /**

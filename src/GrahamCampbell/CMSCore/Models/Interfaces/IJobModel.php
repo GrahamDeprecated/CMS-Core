@@ -29,4 +29,11 @@ interface IJobModel {
      */
     public function getTries();
 
+    /**
+     * Get task.
+     *
+     * @return task
+     */
+    public function getTask();
+
 }
