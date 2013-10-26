@@ -68,12 +68,11 @@ class Queuing {
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
     protected function roll($delay, $job, $data, $queue) {
-        // generate an id
-        $id = uniqid();
-        $data['job_id'] = $id;
-
         // push to the database server
         $job = JobProvider::create(array('job_id' => $id));
+
+        // save job id
+        $data['job_id'] = $job->getId();
 
         // push to the queuing server
         if (is_int($delay)) {

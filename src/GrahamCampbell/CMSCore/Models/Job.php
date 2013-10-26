@@ -45,7 +45,7 @@ class Job extends BaseModel implements Interfaces\IJobModel {
      *
      * @var array
      */
-    public static $index = array('id', 'job_id', 'tries');
+    public static $index = array('id', 'tries');
 
     /**
      * The direction to order by when displaying an index.
@@ -69,8 +69,8 @@ class Job extends BaseModel implements Interfaces\IJobModel {
      * @var array
      */
     public static $factory = array(
-        'id'     => 1,
-        'job_id' => 1
+        'id'    => 1,
+        'tries' => 0
     );
 
     /**

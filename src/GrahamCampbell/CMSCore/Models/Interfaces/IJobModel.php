@@ -23,13 +23,6 @@
 interface IJobModel {
 
     /**
-     * Get job_id.
-     *
-     * @return int
-     */
-    public function getJobId();
-
-    /**
      * Get tries.
      *
      * @return int
