@@ -55,6 +55,9 @@ class CMSCoreServiceProvider extends ServiceProvider {
         $this->app['groupprovider'] = $this->app->share(function($app) {
             return new Providers\GroupProvider;
         });
+        $this->app['jobprovider'] = $this->app->share(function($app) {
+            return new Providers\JobProvider;
+        });
         $this->app['pageprovider'] = $this->app->share(function($app) {
             return new Providers\PageProvider;
         });
