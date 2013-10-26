@@ -27,6 +27,6 @@ interface IJobModel {
      *
      * @return string
      */
-    public function getJob();
+    public function getJobId();
 
 }
