@@ -20,8 +20,95 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use Queue;
+use Carbon\Carbon;
 use GrahamCampbell\CMSCore\Facades\JobProvider;
 
 class Queuing {
-    // coming soon
+
+     /**
+     * The minimum delay for a queue push.
+     *
+     * @var array
+     */
+    protected $delay = 5;
+
+    /**
+     * Push a new job onto the queue.
+     *
+     * @param  string  $job
+     * @param  mixed   $data
+     * @param  string  $queue
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function push($job, $data = '', $queue = null) {
+        return $this->roll(null, $job, $data, $queue);
+    }
+
+    /**
+     * Push a new delayed job onto the queue.
+     *
+     * @param  \Carbon\Carbon|int  $delay
+     * @param  string  $job
+     * @param  mixed   $data
+     * @param  string  $queue
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function later($delay, $job, $data = '', $queue = null) {
+        return $this->roll($delay, $job, $data, $queue);
+    }
+
+    /**
+     * Do the queue rolling work.
+     *
+     * @param  \Carbon\Carbon|int  $delay
+     * @param  string  $job
+     * @param  mixed   $data
+     * @param  string  $queue
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    protected function roll($delay, $job, $data, $queue) {
+        // get the corrected time
+        $time = $this->time($delay);
+
+        // push the job and get the id
+        $id = Queue::later($time, $job, $data, $queue);
+
+        // if the job has an id, mark it as queued in the database
+        if (!empty($id)) {
+            return JobProvider::create(array('job_id' => $id));
+        }
+    }
+
+    /**
+     * Convert to a valid time.
+     *
+     * @return int
+     */
+    protected function time($time = null) {
+        if (get_class($time) = 'Carbon\Carbon') {
+            return $this->times(Carbon::now()->diffInSeconds($time));
+        }
+
+        if (is_int($time)) {
+            return $this->times($time);
+        }
+
+        return $this->times();
+    }
+
+    /**
+     * Convert to a valid time strictly.
+     *
+     * @return int
+     */
+    protected function times($time = null) {
+        if (is_int($time)) {
+            if ($time >= $this->delay) {
+                return $time;
+            }
+        }
+
+        return $this->delay;
+    }
 }
