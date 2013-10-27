@@ -49,7 +49,7 @@ interface IBaseModel {
      * @param  array  $input
      * @return mixed
      */
-    public static function create(array $input = array());
+    public static function create(array $input);
 
     /**
      * Update an existing model.
