@@ -109,7 +109,7 @@ class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBod
      * @param  array  $input
      * @return mixed
      */
-    protected function beforeDelete(array $input) {
+    public function beforeDelete(array $input) {
         $this->deleteInvites();
     }
 }

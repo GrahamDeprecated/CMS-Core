@@ -106,7 +106,7 @@ class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBody
      * @param  array  $input
      * @return mixed
      */
-    protected function beforeDelete(array $input) {
+    public function beforeDelete(array $input) {
         $this->deleteComments();
     }
 }
