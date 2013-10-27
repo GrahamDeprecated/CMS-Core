@@ -58,11 +58,11 @@ trait TraitBaseModel {
      * @param  array  $input
      * @return mixed
      */
-    public static function create(array $input = array()) {
+    public static function create(array $input) {
         LaravelEvent::fire(static::$name.'.creating');
-        $this->beforeCreate($input);
+        static::beforeCreate($input);
         $return = parent::create($input);
-        $this->afterCreate($input, $return);
+        static::afterCreate($input, $return);
         LaravelEvent::fire(static::$name.'.created');
         return $return;
     }
@@ -73,7 +73,7 @@ trait TraitBaseModel {
      * @param  array  $input
      * @return mixed
      */
-    protected function beforeCreate(array $input) {}
+    public static function beforeCreate(array $input) {}
 
     /**
      * After creating a new model.
@@ -82,7 +82,7 @@ trait TraitBaseModel {
      * @param  mixed  $return
      * @return mixed
      */
-    protected function afterCreate(array $input, $return) {}
+    public static function afterCreate(array $input, $return) {}
 
     /**
      * Update an existing model.
@@ -105,7 +105,7 @@ trait TraitBaseModel {
      * @param  array  $input
      * @return mixed
      */
-    protected function beforeUpdate(array $input) {}
+    public function beforeUpdate(array $input) {}
 
     /**
      * After updating an existing model.
@@ -114,7 +114,7 @@ trait TraitBaseModel {
      * @param  mixed  $return
      * @return mixed
      */
-    protected function afterUpdate(array $input, $return) {}
+    public function afterUpdate(array $input, $return) {}
 
     /**
      * Delete an existing model.
@@ -136,7 +136,7 @@ trait TraitBaseModel {
      * @param  array  $input
      * @return mixed
      */
-    protected function beforeDelete(array $input) {}
+    public function beforeDelete(array $input) {}
 
     /**
      * After deleting an existing model.
@@ -145,6 +145,6 @@ trait TraitBaseModel {
      * @param  mixed  $return
      * @return mixed
      */
-    protected function afterDelete(array $input, $return) {}
+    public function afterDelete(array $input, $return) {}
 
 }
