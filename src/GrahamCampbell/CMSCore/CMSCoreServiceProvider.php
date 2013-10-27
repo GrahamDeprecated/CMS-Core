@@ -73,6 +73,9 @@ class CMSCoreServiceProvider extends ServiceProvider {
         $this->app['queuing'] = $this->app->share(function($app) {
             return new Classes\Queuing;
         });
+        $this->app['cron'] = $this->app->share(function($app) {
+            return new Classes\Cron;
+        });
     }
 
     /**
@@ -81,6 +84,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('commentprovider', 'eventprovider', 'groupprovider', 'pageprovider', 'postprovider', 'userprovider', 'navigation', 'queuing');
+        return array('commentprovider', 'eventprovider', 'groupprovider', 'pageprovider', 'postprovider', 'userprovider', 'navigation', 'queuing', 'cron');
     }
 }
