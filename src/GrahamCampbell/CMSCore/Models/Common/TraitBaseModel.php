@@ -59,11 +59,11 @@ trait TraitBaseModel {
      * @return mixed
      */
     public static function create(array $input = array()) {
-        LaravelEvent::fire(self::$name.'.precreate');
-        LaravelEvent::fire(self::$name.'.creating');
+        LaravelEvent::fire(static::$name.'.precreate');
+        LaravelEvent::fire(static::$name.'.creating');
         $return = parent::create($input);
-        LaravelEvent::fire(self::$name.'.created');
-        LaravelEvent::fire(self::$name.'.postcreate');
+        LaravelEvent::fire(static::$name.'.created');
+        LaravelEvent::fire(static::$name.'.postcreate');
         return $return;
     }
 
@@ -74,11 +74,11 @@ trait TraitBaseModel {
      * @return mixed
      */
     public function update(array $input = array()) {
-        LaravelEvent::fire(self::$name.'.preupdate');
-        LaravelEvent::fire(self::$name.'.updating');
+        LaravelEvent::fire(static::$name.'.preupdate');
+        LaravelEvent::fire(static::$name.'.updating');
         $return = parent::update($input);
-        LaravelEvent::fire(self::$name.'.updated');
-        LaravelEvent::fire(self::$name.'.postupdate');
+        LaravelEvent::fire(static::$name.'.updated');
+        LaravelEvent::fire(static::$name.'.postupdate');
         return $return;
     }
 
@@ -88,11 +88,11 @@ trait TraitBaseModel {
      * @return void
      */
     public function delete() {
-        LaravelEvent::fire(self::$name.'.predelete');
-        LaravelEvent::fire(self::$name.'.deleting');
+        LaravelEvent::fire(static::$name.'.predelete');
+        LaravelEvent::fire(static::$name.'.deleting');
         $return = parent::delete();
-        LaravelEvent::fire(self::$name.'.deleted');
-        LaravelEvent::fire(self::$name.'.postdelete');
+        LaravelEvent::fire(static::$name.'.deleted');
+        LaravelEvent::fire(static::$name.'.postdelete');
         return $return;
     }
 }
