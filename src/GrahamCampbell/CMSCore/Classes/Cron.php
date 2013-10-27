@@ -39,7 +39,7 @@ class Cron {
     /**
      * Stop the cron jobs.
      *
-     * @return null
+     * @return void
      */
     public function stop() {
         return JobProvider::clearCrons();

@@ -23,38 +23,165 @@
 interface IJobProvider {
 
     /**
+     * Get all jobs of specified type.
+     *
+     * @param  string  $task
+     * @param  array   $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getType($task, array $columns = array('*'));
+
+    /**
      * Clear all jobs of specified type.
      *
-     * @return null
+     * @param  string  $task
+     * @return void
      */
-    public function clear($task);
+    public function clearType($task);
+
+    /**
+     * Get all old jobs of specified type.
+     *
+     * @param  string  $task
+     * @param  int     $age
+     * @param  array   $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getOldType($task, $age = 68400, array $columns = array('*'));
+    /**
+     * Clear all jobs of specified type.
+     *
+     * @param  string  $task
+     * @param  int     $age
+     * @return void
+     */
+    public function clearOldType($task, $age = 68400);
+
+    /**
+     * Get all cron jobs.
+     *
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getCrons(array $columns = array('*'));
 
     /**
      * Clear all cron jobs.
      *
-     * @return null
+     * @return void
      */
     public function clearCrons();
 
     /**
-     * Clear all the mail jobs.
+     * Get all old cron jobs.
      *
-     * @return null
+     * @param  int    $age
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getOldCrons($age = 68400, array $columns = array('*'));
+
+    /**
+     * Clear all old cron jobs.
+     *
+     * @param  int  $age
+     * @return void
+     */
+    public function clearOldCrons($age = 68400);
+
+    /**
+     * Get all mail jobs.
+     *
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getMail(array $columns = array('*'));
+    /**
+     * Clear all mail jobs.
+     *
+     * @return void
      */
     public function clearMail();
 
     /**
+     * Get all old mail jobs.
+     *
+     * @param  int    $age
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getOldCrons($age = 68400, array $columns = array('*'));
+
+    /**
+     * Clear all old mail jobs.
+     *
+     * @param  int  $age
+     * @return void
+     */
+    public function clearOldCrons($age = 68400);
+
+    /**
+     * Get all jobs except crons, including mail jobs.
+     *
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getJobs(array $columns = array('*'));
+
+    /**
      * Clear all jobs except crons, including mail jobs.
      *
-     * @return null
+     * @return void
      */
     public function clearJobs();
 
     /**
+     * Get all old jobs except crons, including mail jobs.
+     *
+     * @param  int    $age
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getOldJobs($age = 68400, array $columns = array('*'));
+
+    /**
+     * Clear all old jobs except crons, including mail jobs.
+     *
+     * @param  int  $age
+     * @return void
+     */
+    public function clearOldJobs($age = 68400);
+
+    /**
+     * Get all jobs.
+     *
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAll(array $columns = array('*'));
+
+    /**
      * Clear all jobs.
      *
-     * @return null
+     * @return void
      */
     public function clearAll();
+
+    /**
+     * Get all old jobs.
+     *
+     * @param  int    $age
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllOld($age = 68400, array $columns = array('*'));
+
+    /**
+     * Clear all old jobs.
+     *
+     * @param  int  $age
+     * @return void
+     */
+    public function clearAllOld();
 
 }
