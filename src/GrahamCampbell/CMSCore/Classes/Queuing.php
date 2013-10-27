@@ -46,6 +46,27 @@ class Queuing {
     }
 
     /**
+     * Push a new mail job onto the queue.
+     *
+     * @param  mixed   $data
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function pushMail($data = array(), $queue = null) {
+        return $this->roll(false, 'GrahamCampbell\BootstrapCMS\Handlers\MailHandler', $data, $queue);
+    }
+
+    /**
+     * Push a new cron job onto the queue.
+     *
+     * @param  mixed   $data
+     * @param  string  $queue
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function pushCron($data = array(), $queue = null) {
+        return $this->roll(false, 'GrahamCampbell\BootstrapCMS\Handlers\CronHandler', $data, $queue);
+    }
+
+    /**
      * Push a new delayed job onto the queue.
      *
      * @param  \Carbon\Carbon|int  $delay
@@ -56,6 +77,29 @@ class Queuing {
      */
     public function later($delay, $job, $data = array(), $queue = null) {
         return $this->roll($delay, $job, $data, $queue);
+    }
+
+    /**
+     * Push a new delayed mail job onto the queue.
+     *
+     * @param  \Carbon\Carbon|int  $delay
+     * @param  mixed   $data
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function pushMail($delay, $data = array(), $queue = null) {
+        return $this->roll($delay, 'GrahamCampbell\BootstrapCMS\Handlers\MailHandler', $data, $queue);
+    }
+
+    /**
+     * Push a new delayed cron job onto the queue.
+     *
+     * @param  \Carbon\Carbon|int  $delay
+     * @param  mixed   $data
+     * @param  string  $queue
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function pushCron($delay, $data = array(), $queue = null) {
+        return $this->roll($delay, 'GrahamCampbell\BootstrapCMS\Handlers\CronHandler', $data, $queue);
     }
 
     /**
