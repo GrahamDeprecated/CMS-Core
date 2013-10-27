@@ -139,7 +139,7 @@ trait TraitJobProvider {
      * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getOldCrons($age = 68400, array $columns = array('*')) {
+    public function getOldMail($age = 68400, array $columns = array('*')) {
         return $this->getOldType('GrahamCampbell\BootstrapCMS\Handlers\MailHandler', $age, $columns);
     }
 
@@ -149,7 +149,7 @@ trait TraitJobProvider {
      * @param  int  $age
      * @return void
      */
-    public function clearOldCrons($age = 68400) {
+    public function clearOldMail($age = 68400) {
         return $this->clearOldType('GrahamCampbell\BootstrapCMS\Handlers\MailHandler', $age);
     }
 

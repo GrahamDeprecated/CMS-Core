@@ -110,7 +110,7 @@ interface IJobProvider {
      * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getOldCrons($age = 68400, array $columns = array('*'));
+    public function getOldMail($age = 68400, array $columns = array('*'));
 
     /**
      * Clear all old mail jobs.
@@ -118,7 +118,7 @@ interface IJobProvider {
      * @param  int  $age
      * @return void
      */
-    public function clearOldCrons($age = 68400);
+    public function clearOldMail($age = 68400);
 
     /**
      * Get all jobs except crons, including mail jobs.
