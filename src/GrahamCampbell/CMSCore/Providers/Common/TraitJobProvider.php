@@ -216,7 +216,7 @@ trait TraitJobProvider {
      * @return void
      */
     public function clearAll() {
-        foreach($this->getAll(array('id'))) as $job) {
+        foreach($this->getAll(array('id')) as $job) {
             $job->delete();
         }
     }
@@ -240,7 +240,7 @@ trait TraitJobProvider {
      * @return void
      */
     public function clearAllOld() {
-        foreach($this->getAllOld(array('id'))) as $job) {
+        foreach($this->getAllOld(array('id')) as $job) {
             $job->delete();
         }
     }
