@@ -20,6 +20,7 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use Event;
 use Illuminate\Support\ServiceProvider;
 
 class CMSCoreServiceProvider extends ServiceProvider {
@@ -38,6 +39,15 @@ class CMSCoreServiceProvider extends ServiceProvider {
      */
     public function boot() {
         $this->package('graham-campbell/cmscore');
+
+        $subscriber = new GrahamCampbell\CMSCore\Subscribers\EventSubscriber;
+        Event::subscribe($subscriber);
+
+        $subscriber = new GrahamCampbell\CMSCore\Subscribers\PostSubscriber;
+        Event::subscribe($subscriber);
+
+        $subscriber = new GrahamCampbell\CMSCore\Subscribers\UserSubscriber;
+        Event::subscribe($subscriber);
     }
 
     /**

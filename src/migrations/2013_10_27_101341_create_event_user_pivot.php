@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Common;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,23 +20,32 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitJobModel {
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateEventUserPivot extends Migration {
 
     /**
-     * Get tries.
+     * Run the migrations.
      *
-     * @return int
+     * @return void
      */
-    public function getTries() {
-        return $this->tries;
+    public function up() {
+        Schema::create('event_user', function(Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->integer('event_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->primary(array('event_id', 'user_id'));
+        });
     }
 
     /**
-     * Get task.
+     * Reverse the migrations.
      *
-     * @return string
+     * @return void
      */
-    public function getTask() {
-        return $this->task;
+    public function down() {
+        Schema::drop('event_user');
     }
 }

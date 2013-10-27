@@ -79,7 +79,7 @@ class Page extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISlug
         'body'       => 'required',
         'show_title' => 'required',
         'show_nav'   => 'required',
-        'user_id'    => 'required',
+        'user_id'    => 'required'
     );
 
     /**
@@ -95,7 +95,7 @@ class Page extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISlug
         'show_title' => true,
         'show_nav'   => true,
         'icon'       => '',
-        'user_id'    => 1,
+        'user_id'    => 1
     );
 
     /**
@@ -123,41 +123,5 @@ class Page extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISlug
      */
     public function getIcon() {
         return $this->icon;
-    }
-
-    /**
-     * Create a new page.
-     *
-     * @param  array  $input
-     * @return \GrahamCampbell\CMSCore\Models\Page
-     */
-    public static function create(array $input) {
-        $return = parent::create($input);
-        LaravelEvent::fire('page.created');
-        return $return;
-    }
-
-    /**
-     * Update an existing page.
-     *
-     * @param  array  $input
-     * @return \GrahamCampbell\CMSCore\Models\Page
-     */
-    public function update(array $input = array()) {
-        $return = parent::update($input);
-        LaravelEvent::fire('page.updated');
-        return $return;
-    }
-
-    /**
-     * Delete an existing page.
-     *
-     * @param  array  $input
-     * @return void
-     */
-    public function delete() {
-        $return = parent::delete();
-        LaravelEvent::fire('page.deleted');
-        return $return;
     }
 }

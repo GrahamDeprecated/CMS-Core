@@ -1,4 +1,4 @@
-<?php
+<?php namespace GrahamCampbell\CMSCore\Subscribers;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,33 +20,25 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-
-class CreateJobsTable extends Migration {
+class UserSubscriber {
 
     /**
-     * Run the migrations.
+     * Register the listeners for the subscriber.
      *
-     * @return void
+     * @param  Illuminate\Events\Dispatcher  $events
+     * @return array
      */
-    public function up() {
-        Schema::create('jobs', function(Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->smallInteger('tries')->unsigned()->default(0);
-            $table->string('task');
-            $table->timestamps();
-        });
+    public function subscribe($events) {
+        $events->listen('user.deleting', 'GrahamCampbell\BootstrapCMS\Subscribers\UserSubscriber@onUserDeleting');
     }
 
     /**
-     * Reverse the migrations.
+     * Handle a user.deleting event.
      *
+     * @param  mixed  $event
      * @return void
      */
-    public function down() {
-        Schema::drop('jobs');
+    public function onUserDeleting($event) {
+        //
     }
 }

@@ -77,7 +77,7 @@ class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBody
         'title'   => 'required',
         'summary' => 'required',
         'body'    => 'required',
-        'user_id' => 'required',
+        'user_id' => 'required'
     );
 
     /**
@@ -90,7 +90,7 @@ class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBody
         'title'   => 'String',
         'summary' => 'Summary of a post.',
         'body'    => 'The body of a post.',
-        'user_id' => 1,
+        'user_id' => 1
     );
 
     /**
@@ -103,30 +103,6 @@ class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBody
     }
 
     /**
-     * Create a new post.
-     *
-     * @param  array  $input
-     * @return \GrahamCampbell\CMSCore\Models\Post
-     */
-    public static function create(array $input) {
-        $return = parent::create($input);
-        LaravelEvent::fire('post.created');
-        return $return;
-    }
-
-    /**
-     * Update an existing post.
-     *
-     * @param  array  $input
-     * @return \GrahamCampbell\CMSCore\Models\Post
-     */
-    public function update(array $input = array()) {
-        $return = parent::update($input);
-        LaravelEvent::fire('post.updated');
-        return $return;
-    }
-
-    /**
      * Delete an existing post.
      *
      * @param  array  $input
@@ -134,8 +110,6 @@ class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBody
      */
     public function delete() {
         $this->deleteComments();
-        $return = parent::delete();
-        LaravelEvent::fire('post.deleted');
-        return $return;
+        return parent::delete();
     }
 }

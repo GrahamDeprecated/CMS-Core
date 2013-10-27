@@ -33,13 +33,13 @@ class CreatePostsTable extends Migration {
      */
     public function up() {
         Schema::create('posts', function(Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->string('title');
             $table->string('summary');
             $table->text('body');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
-            $table->engine = 'InnoDB';
         });
     }
 

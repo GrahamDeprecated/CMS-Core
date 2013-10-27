@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,54 +20,55 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Event as LaravelEvent;
-
-use Cartalyst\Sentry\Groups\Eloquent\Group as SentryGroup;
-
-class Group extends SentryGroup implements Interfaces\IBaseModel {
-
-    use Common\TraitBaseModel;
+interface IBelongsToManyUsers {
 
     /**
-     * The table the groups are stored in.
+     * Get the event relation.
      *
-     * @var string
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    protected $table = 'groups';
+    public function invites();
 
     /**
-     * The model name.
+     * Get the event collection.
      *
-     * @var string
+     * @return \Illuminate\Database\Eloquent\Collection
      */
-    public static $name = 'group';
+    public function getInvites();
 
     /**
-     * The columns to select when displaying an index.
+     * Get the specified user.
      *
-     * @var array
+     * @return \GrahamCampbell\CMSCore\Models\User
      */
-    public static $index = array('id', 'name');
+    public function findInvite($id, $columns = array('*'));
 
     /**
-     * The max groups per page when displaying a paginated index.
+     * Link an user.
      *
-     * @var int
+     * @return void
      */
-    public static $paginate = 20;
+    public function addInvite($id);
 
     /**
-     * The columns to order by when displaying an index.
+     * Unlink an user.
      *
-     * @var string
+     * @return void
      */
-    public static $order = 'name';
+    public function deleteInvite($id);
 
     /**
-     * The direction to order by when displaying an index.
+     * Link some users.
      *
-     * @var string
+     * @return void
      */
-    public static $sort = 'asc';
+    public function setInvites($ids);
+
+    /**
+     * Unlink all users.
+     *
+     * @return void
+     */
+    public function deleteInvites();
 
 }

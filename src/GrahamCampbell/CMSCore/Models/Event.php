@@ -22,9 +22,9 @@
 
 use Event as LaravelEvent;
 
-class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBodyModel, Interfaces\IDateModel, Interfaces\ILocationModel, Relations\Interfaces\IBelongsToUser {
+class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBodyModel, Interfaces\IDateModel, Interfaces\ILocationModel, Relations\Interfaces\IBelongsToUser, Relations\Interfaces\IBelongsToManyUsers {
 
-    use Common\TraitTitleModel, Common\TraitBodyModel, Common\TraitDateModel, Common\TraitLocationModel, Relations\Common\TraitBelongsToUser;
+    use Common\TraitTitleModel, Common\TraitBodyModel, Common\TraitDateModel, Common\TraitLocationModel, Relations\Common\TraitBelongsToUser, Relations\Common\TraitBelongsToManyUsers;
 
     /**
      * The table the events are stored in.
@@ -78,7 +78,7 @@ class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBod
         'location' => 'required',
         'date'     => 'required',
         'body'     => 'required',
-        'user_id'  => 'required',
+        'user_id'  => 'required'
     );
 
     /**
@@ -92,42 +92,26 @@ class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBod
         'location' => 'text',
         'date'     => '2013-08-01 12:34:56',
         'body'     => 'The body of a post.',
-        'user_id'  => 1,
+        'mailed'   => 0,
+        'user_id'  => 1
     );
 
     /**
-     * Create a new event.
+     * Get mailed.
      *
-     * @param  array  $input
-     * @return \GrahamCampbell\CMSCore\Models\Event
+     * @return boolean
      */
-    public static function create(array $input) {
-        $return = parent::create($input);
-        LaravelEvent::fire('event.created');
-        return $return;
-    }
-
-    /**
-     * Update an existing event.
-     *
-     * @param  array  $input
-     * @return \GrahamCampbell\CMSCore\Models\Event
-     */
-    public function update(array $input = array()) {
-        $return = parent::update($input);
-        LaravelEvent::fire('event.updated');
-        return $return;
+    public function getMailed() {
+        return $this->mailed;
     }
 
     /**
      * Delete an existing event.
      *
-     * @param  array  $input
      * @return void
      */
     public function delete() {
-        $return = parent::delete();
-        LaravelEvent::fire('event.deleted');
-        return $return;
+        $this->
+        return parent::delete();
     }
 }

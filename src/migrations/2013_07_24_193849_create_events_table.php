@@ -33,14 +33,15 @@ class CreateEventsTable extends Migration {
      */
     public function up() {
         Schema::create('events', function(Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->string('title');
             $table->text('body');
             $table->timestamp('date');
             $table->text('location');
+            $table->boolean('mailed')->default(false);
             $table->integer('user_id')->unsigned();
             $table->timestamps();
-            $table->engine = 'InnoDB';
         });
     }
 

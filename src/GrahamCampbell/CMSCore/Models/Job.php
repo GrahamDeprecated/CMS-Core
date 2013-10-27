@@ -22,9 +22,7 @@
 
 use Event as LaravelEvent;
 
-class Job extends BaseModel implements Interfaces\IJobModel {
-
-    use Common\TraitJobModel;
+class Job extends BaseModel {
 
     /**
      * The table the jobs are stored in.
@@ -73,38 +71,20 @@ class Job extends BaseModel implements Interfaces\IJobModel {
     );
 
     /**
-     * Create a new job.
+     * Get tries.
      *
-     * @param  array  $input
-     * @return \GrahamCampbell\CMSCore\Models\Job
+     * @return int
      */
-    public static function create(array $input) {
-        $return = parent::create($input);
-        LaravelEvent::fire('job.created');
-        return $return;
+    public function getTries() {
+        return $this->tries;
     }
 
     /**
-     * Update an existing job.
+     * Get task.
      *
-     * @param  array  $input
-     * @return \GrahamCampbell\CMSCore\Models\Job
+     * @return string
      */
-    public function update(array $input = array()) {
-        $return = parent::update($input);
-        LaravelEvent::fire('job.updated');
-        return $return;
-    }
-
-    /**
-     * Delete an existing job.
-     *
-     * @param  array  $input
-     * @return void
-     */
-    public function delete() {
-        $return = parent::delete();
-        LaravelEvent::fire('job.deleted');
-        return $return;
+    public function getTask() {
+        return $this->task;
     }
 }

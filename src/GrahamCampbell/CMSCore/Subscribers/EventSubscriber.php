@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Subscribers;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,20 +20,25 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IJobModel {
+class EventSubscriber {
 
     /**
-     * Get tries.
+     * Register the listeners for the subscriber.
      *
-     * @return int
+     * @param  Illuminate\Events\Dispatcher  $events
+     * @return array
      */
-    public function getTries();
+    public function subscribe($events) {
+        $events->listen('event.deleting', 'GrahamCampbell\BootstrapCMS\Subscribers\EventSubscriber@onEventDeleting');
+    }
 
     /**
-     * Get task.
+     * Handle an event.deleting event.
      *
-     * @return task
+     * @param  mixed  $event
+     * @return void
      */
-    public function getTask();
-
+    public function onEventDeleting($event) {
+        $event->deleteInvites();
+    }
 }

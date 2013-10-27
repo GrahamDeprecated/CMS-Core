@@ -50,4 +50,48 @@ trait TraitBaseModel {
     public function getUpdatedAt() {
         return new Carbon($this->updated_at);
     }
+
+    /**
+     * Create a new model.
+     *
+     * @param  array  $input
+     * @return mixed
+     */
+    public static function create(array $input = array()) {
+        LaravelEvent::fire(self::$name.'.precreate');
+        LaravelEvent::fire(self::$name.'.creating');
+        $return = parent::create($input);
+        LaravelEvent::fire(self::$name.'.created');
+        LaravelEvent::fire(self::$name.'.postcreate');
+        return $return;
+    }
+
+    /**
+     * Update an existing model.
+     *
+     * @param  array  $input
+     * @return mixed
+     */
+    public function update(array $input = array()) {
+        LaravelEvent::fire(self::$name.'.preupdate');
+        LaravelEvent::fire(self::$name.'.updating');
+        $return = parent::update($input);
+        LaravelEvent::fire(self::$name.'.updated');
+        LaravelEvent::fire(self::$name.'.postupdate');
+        return $return;
+    }
+
+    /**
+     * Delete an existing model.
+     *
+     * @return void
+     */
+    public function delete() {
+        LaravelEvent::fire(self::$name.'.predelete');
+        LaravelEvent::fire(self::$name.'.deleting');
+        $return = parent::delete();
+        LaravelEvent::fire(self::$name.'.deleted');
+        LaravelEvent::fire(self::$name.'.postdelete');
+        return $return;
+    }
 }

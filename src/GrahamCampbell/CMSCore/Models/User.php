@@ -25,9 +25,9 @@ use Carbon\Carbon;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
 
-class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\INameModel, Relations\Interfaces\IHasManyPages, Relations\Interfaces\IHasManyPosts, Relations\Interfaces\IHasManyEvents, Relations\Interfaces\IHasManyComments {
+class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\INameModel, Relations\Interfaces\IHasManyPages, Relations\Interfaces\IHasManyPosts, Relations\Interfaces\IHasManyEvents, Relations\Interfaces\IHasManyComments, Relations\Interfaces\IBelongsToManyEvents {
 
-    use Common\TraitBaseModel, Common\TraitNameModel, Relations\Common\TraitHasManyPages, Relations\Common\TraitHasManyPosts, Relations\Common\TraitHasManyEvents, Relations\Common\TraitHasManyComments;
+    use Common\TraitBaseModel, Common\TraitNameModel, Relations\Common\TraitHasManyPages, Relations\Common\TraitHasManyPosts, Relations\Common\TraitHasManyEvents, Relations\Common\TraitHasManyComments, Relations\Common\TraitBelongsToManyEvents;
 
     /**
      * The table the users are stored in.
@@ -102,42 +102,17 @@ class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\IName
     }
 
     /**
-     * Create a new user.
-     *
-     * @param  array  $input
-     * @return \GrahamCampbell\CMSCore\Models\User
-     */
-    public static function create(array $input) {
-        $return = parent::create($input);
-        LaravelEvent::fire('user.created');
-        return $return;
-    }
-
-    /**
-     * Update an existing user.
-     *
-     * @param  array  $input
-     * @return \GrahamCampbell\CMSCore\Models\User
-     */
-    public function update(array $input = array()) {
-        $return = parent::update($input);
-        LaravelEvent::fire('user.updated');
-        return $return;
-    }
-
-    /**
      * Delete an existing user.
      *
      * @param  array  $input
      * @return void
      */
     public function delete() {
+        $this->deleteInvites();
         $this->deletePages();
         $this->deletePosts();
         $this->deleteEvents();
         $this->deleteComments();
-        $return = parent::delete();
-        LaravelEvent::fire('user.deleted');
-        return $return;
+        return parent::delete();
     }
 }
