@@ -86,7 +86,7 @@ class Queuing {
      * @param  mixed   $data
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
-    public function pushMail($delay, $data = array(), $queue = null) {
+    public function laterMail($delay, $data = array(), $queue = null) {
         return $this->roll($delay, 'GrahamCampbell\BootstrapCMS\Handlers\MailHandler', $data, $queue);
     }
 
@@ -98,7 +98,7 @@ class Queuing {
      * @param  string  $queue
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
-    public function pushCron($delay, $data = array(), $queue = null) {
+    public function laterCron($delay, $data = array(), $queue = null) {
         return $this->roll($delay, 'GrahamCampbell\BootstrapCMS\Handlers\CronHandler', $data, $queue);
     }
 
