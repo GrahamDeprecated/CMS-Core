@@ -20,8 +20,6 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Event as LaravelEvent;
-
 class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBodyModel, Interfaces\IDateModel, Interfaces\ILocationModel, Relations\Interfaces\IBelongsToUser, Relations\Interfaces\IBelongsToManyUsers {
 
     use Common\TraitTitleModel, Common\TraitBodyModel, Common\TraitDateModel, Common\TraitLocationModel, Relations\Common\TraitBelongsToUser, Relations\Common\TraitBelongsToManyUsers;

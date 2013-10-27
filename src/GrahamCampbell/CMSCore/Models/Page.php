@@ -20,8 +20,6 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Event as LaravelEvent;
-
 class Page extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISlugModel, Interfaces\IBodyModel, Relations\Interfaces\IBelongsToUser {
 
     use Common\TraitTitleModel, Common\TraitSlugModel, Common\TraitBodyModel, Relations\Common\TraitBelongsToUser;

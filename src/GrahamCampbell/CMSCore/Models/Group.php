@@ -20,8 +20,6 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Event as LaravelEvent;
-
 use Cartalyst\Sentry\Groups\Eloquent\Group as SentryGroup;
 
 class Group extends SentryGroup implements Interfaces\IBaseModel {

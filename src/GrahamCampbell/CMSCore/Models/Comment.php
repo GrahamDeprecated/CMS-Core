@@ -20,8 +20,6 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Event as LaravelEvent;
-
 class Comment extends BaseModel implements Interfaces\IBodyModel, Relations\Interfaces\IBelongsToPost, Relations\Interfaces\IBelongsToUser {
 
     use Common\TraitBodyModel, Relations\Common\TraitBelongsToPost, Relations\Common\TraitBelongsToUser;

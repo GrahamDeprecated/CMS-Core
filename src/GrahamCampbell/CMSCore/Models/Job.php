@@ -20,8 +20,6 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Event as LaravelEvent;
-
 class Job extends BaseModel {
 
     /**

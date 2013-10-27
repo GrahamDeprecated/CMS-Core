@@ -20,9 +20,6 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Event as LaravelEvent;
-use Carbon\Carbon;
-
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
 
 class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\INameModel, Relations\Interfaces\IHasManyPages, Relations\Interfaces\IHasManyPosts, Relations\Interfaces\IHasManyEvents, Relations\Interfaces\IHasManyComments, Relations\Interfaces\IBelongsToManyEvents {
