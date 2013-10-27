@@ -104,12 +104,12 @@ class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBod
     }
 
     /**
-     * Delete an existing event.
+     * Before deleting an existing model.
      *
-     * @return void
+     * @param  array  $input
+     * @return mixed
      */
-    public function delete() {
+    protected function beforeDelete(array $input) {
         $this->deleteInvites();
-        return parent::delete();
     }
 }

@@ -101,13 +101,12 @@ class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBody
     }
 
     /**
-     * Delete an existing post.
+     * Before deleting an existing model.
      *
      * @param  array  $input
-     * @return void
+     * @return mixed
      */
-    public function delete() {
+    protected function beforeDelete(array $input) {
         $this->deleteComments();
-        return parent::delete();
     }
 }

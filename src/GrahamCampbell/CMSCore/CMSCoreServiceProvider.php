@@ -39,15 +39,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
      */
     public function boot() {
         $this->package('graham-campbell/cmscore');
-
-        $subscriber = new Subscribers\EventSubscriber;
-        Event::subscribe($subscriber);
-
-        $subscriber = new Subscribers\PostSubscriber;
-        Event::subscribe($subscriber);
-
-        $subscriber = new Subscribers\UserSubscriber;
-        Event::subscribe($subscriber);
     }
 
     /**

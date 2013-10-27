@@ -59,13 +59,30 @@ trait TraitBaseModel {
      * @return mixed
      */
     public static function create(array $input = array()) {
-        LaravelEvent::fire(static::$name.'.precreate');
         LaravelEvent::fire(static::$name.'.creating');
+        $this->beforeCreate($input);
         $return = parent::create($input);
+        $this->afterCreate($input, $return);
         LaravelEvent::fire(static::$name.'.created');
-        LaravelEvent::fire(static::$name.'.postcreate');
         return $return;
     }
+
+    /**
+     * Before creating a new model.
+     *
+     * @param  array  $input
+     * @return mixed
+     */
+    protected function beforeCreate(array $input) {}
+
+    /**
+     * After creating a new model.
+     *
+     * @param  array  $input
+     * @param  mixed  $return
+     * @return mixed
+     */
+    protected function afterCreate(array $input, $return) {}
 
     /**
      * Update an existing model.
@@ -74,13 +91,30 @@ trait TraitBaseModel {
      * @return mixed
      */
     public function update(array $input = array()) {
-        LaravelEvent::fire(static::$name.'.preupdate');
         LaravelEvent::fire(static::$name.'.updating');
+        $this->beforeUpdate($input);
         $return = parent::update($input);
+        $this->afterUpdate($input, $return);
         LaravelEvent::fire(static::$name.'.updated');
-        LaravelEvent::fire(static::$name.'.postupdate');
         return $return;
     }
+
+    /**
+     * Before updating an existing new model.
+     *
+     * @param  array  $input
+     * @return mixed
+     */
+    protected function beforeUpdate(array $input) {}
+
+    /**
+     * After updating an existing model.
+     *
+     * @param  array  $input
+     * @param  mixed  $return
+     * @return mixed
+     */
+    protected function afterUpdate(array $input, $return) {}
 
     /**
      * Delete an existing model.
@@ -88,11 +122,29 @@ trait TraitBaseModel {
      * @return void
      */
     public function delete() {
-        LaravelEvent::fire(static::$name.'.predelete');
         LaravelEvent::fire(static::$name.'.deleting');
+        $this->beforeDelete($input);
         $return = parent::delete();
+        $this->afterDelete($input, $return);
         LaravelEvent::fire(static::$name.'.deleted');
-        LaravelEvent::fire(static::$name.'.postdelete');
         return $return;
     }
+
+    /**
+     * Before deleting an existing model.
+     *
+     * @param  array  $input
+     * @return mixed
+     */
+    protected function beforeDelete(array $input) {}
+
+    /**
+     * After deleting an existing model.
+     *
+     * @param  array  $input
+     * @param  mixed  $return
+     * @return mixed
+     */
+    protected function afterDelete(array $input, $return) {}
+
 }
