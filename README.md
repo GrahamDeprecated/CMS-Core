@@ -43,10 +43,11 @@ Once CMS Core is installed, you need to register the service provider. Open up `
 
 `'GrahamCampbell\CMSCore\CMSCoreServiceProvider'`
 
-You can register the Navigation and Queuing facades in the `aliases` key of your `app/config/app.php` file if you like.
+You can register the three facades in the `aliases` key of your `app/config/app.php` file if you like.
 
 `'Navigation' => 'GrahamCampbell\CMSCore\Facades\Navigation'`
 `'Queuing' => 'GrahamCampbell\CMSCore\Facades\Queuing'`
+`'Cron' => 'GrahamCampbell\CMSCore\Facades\Cron'`
 
 
 ## Updating Your Fork
