@@ -109,7 +109,7 @@ class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBod
      * @return void
      */
     public function delete() {
-        $this->
+        $this->deleteInvites();
         return parent::delete();
     }
 }
