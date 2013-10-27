@@ -42,6 +42,6 @@ class Cron {
      * @return null
      */
     public function stop() {
-        return JobHandler::clearCrons();
+        return JobProvider::clearCrons();
     }
 }
