@@ -25,35 +25,35 @@ interface IJobProvider {
     /**
      * Clear all jobs of specified type.
      *
-     * @return string
+     * @return null
      */
     public function clear($task);
 
     /**
-     * Clear all cron jobs only.
+     * Clear all cron jobs.
      *
-     * @return string
+     * @return null
      */
     public function clearCrons();
 
     /**
-     * Clear all the mail jobs only.
+     * Clear all the mail jobs.
      *
-     * @return string
+     * @return null
      */
     public function clearMail();
 
     /**
      * Clear all jobs except crons, including mail jobs.
      *
-     * @return string
+     * @return null
      */
     public function clearJobs();
 
     /**
      * Clear all jobs.
      *
-     * @return string
+     * @return null
      */
     public function clearAll();
 

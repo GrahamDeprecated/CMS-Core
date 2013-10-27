@@ -25,7 +25,7 @@ trait TraitJobProvider {
     /**
      * Clear all jobs of specified type.
      *
-     * @return string
+     * @return null
      */
     public function clear($task) {
         $model = $this->model;
@@ -35,9 +35,9 @@ trait TraitJobProvider {
     }
 
     /**
-     * Clear all cron jobs only.
+     * Clear all cron jobs.
      *
-     * @return string
+     * @return null
      */
     public function clearCrons() {
         $model = $this->model;
@@ -47,9 +47,9 @@ trait TraitJobProvider {
     }
 
     /**
-     * Clear all the mail jobs only.
+     * Clear all the mail jobs.
      *
-     * @return string
+     * @return null
      */
     public function clearMail() {
         $model = $this->model;
@@ -61,7 +61,7 @@ trait TraitJobProvider {
     /**
      * Clear all jobs except crons, including mail jobs.
      *
-     * @return string
+     * @return null
      */
     public function clearJobs() {
         $model = $this->model;
@@ -73,7 +73,7 @@ trait TraitJobProvider {
     /**
      * Clear all jobs.
      *
-     * @return string
+     * @return null
      */
     public function clearAll() {
         $model = $this->model;
