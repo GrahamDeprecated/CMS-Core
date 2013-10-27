@@ -52,23 +52,6 @@ interface IBaseModel {
     public static function create(array $input = array());
 
     /**
-     * Before creating a new model.
-     *
-     * @param  array  $input
-     * @return mixed
-     */
-    protected function beforeCreate(array $input);
-
-    /**
-     * After creating a new model.
-     *
-     * @param  array  $input
-     * @param  mixed  $return
-     * @return mixed
-     */
-    protected function afterCreate(array $input, $return);
-
-    /**
      * Update an existing model.
      *
      * @param  array  $input
@@ -77,44 +60,10 @@ interface IBaseModel {
     public function update(array $input = array());
 
     /**
-     * Before updating an existing new model.
-     *
-     * @param  array  $input
-     * @return mixed
-     */
-    protected function beforeUpdate(array $input);
-
-    /**
-     * After updating an existing model.
-     *
-     * @param  array  $input
-     * @param  mixed  $return
-     * @return mixed
-     */
-    protected function afterUpdate(array $input, $return);
-
-    /**
      * Delete an existing model.
      *
      * @return void
      */
     public function delete();
-
-    /**
-     * Before deleting an existing model.
-     *
-     * @param  array  $input
-     * @return mixed
-     */
-    protected function beforeDelete(array $input);
-
-    /**
-     * After deleting an existing model.
-     *
-     * @param  array  $input
-     * @param  mixed  $return
-     * @return mixed
-     */
-    protected function afterDelete(array $input, $return);
 
 }
