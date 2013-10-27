@@ -103,18 +103,16 @@ interface IBaseModel {
     /**
      * Before deleting an existing model.
      *
-     * @param  array  $input
      * @return mixed
      */
-    public function beforeDelete(array $input);
+    public function beforeDelete();
 
     /**
      * After deleting an existing model.
      *
-     * @param  array  $input
      * @param  mixed  $return
      * @return mixed
      */
-    public function afterDelete(array $input, $return);
+    public function afterDelete($return);
 
 }

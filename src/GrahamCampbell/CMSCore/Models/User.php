@@ -101,10 +101,9 @@ class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\IName
     /**
      * Before deleting an existing model.
      *
-     * @param  array  $input
      * @return mixed
      */
-    public function beforeDelete(array $input) {
+    public function beforeDelete() {
         $this->deleteInvites();
         $this->deletePages();
         $this->deletePosts();
