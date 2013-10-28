@@ -66,6 +66,7 @@ trait TraitBaseProvider {
      * @return int
      */
     public function count() {
+        $model = $this->model;
         return $model::where('id', '>=', 1)->count();
     }
 }
