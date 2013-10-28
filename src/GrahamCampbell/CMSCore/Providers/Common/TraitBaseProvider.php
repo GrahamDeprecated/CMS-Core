@@ -59,4 +59,13 @@ trait TraitBaseProvider {
 
         return $model::get($model::$index);
     }
+
+    /**
+     * Get the number of rows.
+     *
+     * @return int
+     */
+    public function count() {
+        return $model::where('id', '>=', 1)->count();
+    }
 }

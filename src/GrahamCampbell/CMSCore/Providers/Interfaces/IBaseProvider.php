@@ -46,4 +46,11 @@ interface IBaseProvider {
      */
     public function index();
 
+    /**
+     * Get the number of rows.
+     *
+     * @return int
+     */
+    public function count();
+
 }
