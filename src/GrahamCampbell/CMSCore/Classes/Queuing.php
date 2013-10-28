@@ -20,6 +20,7 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use Config;
 use Queue;
 use Carbon\Carbon;
 use GrahamCampbell\CMSCore\Facades\JobProvider;
@@ -112,6 +113,13 @@ class Queuing {
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
     protected function roll($delay, $job, $data, $queue) {
+        // check the job
+        if ($job == 'GrahamCampbell\BootstrapCMS\Handlers\CronHandler') {
+            if (Config::get('queue.default') == 'sync') {
+                throw new \InvalidArgumentException('A cron job cannot run on the sync queue.');
+            }
+        }
+
         // push to the database server
         $model = JobProvider::create(array('task' => $job));
 
