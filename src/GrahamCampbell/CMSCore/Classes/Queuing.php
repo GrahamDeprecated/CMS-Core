@@ -139,6 +139,51 @@ class Queuing {
     }
 
     /**
+     * Clear the queue.
+     *
+     * @param  string  $queue
+     * @return array
+     */
+    protected function clear($queue = null) {
+        JobProvider::clearAll();
+        $queue = Queue::getQueue($queue);
+
+        if (Config::get('queue.default') == 'beanstalkd') {
+            $pheanstalk = Queue::getPheanstalk();
+            try {
+                while($job = $pheanstalk->peekReady($queue)) {
+                    $pheanstalk->delete($job);
+                }
+            } catch (\Pheanstalk_Exception_ServerException $e) {}
+            try {
+                while($job = $pheanstalk->peekDelayed($queue)) {
+                    $pheanstalk->delete($job);
+                }
+            } catch (\Pheanstalk_Exception_ServerException $e) {}
+            try {
+                while($job = $pheanstalk->peekBuried($queue)) {
+                    $pheanstalk->delete($job);
+                }
+            } catch (\Pheanstalk_Exception_ServerException $e) {}
+        } elseif (Config::get('queue.default') == 'iron') {
+            $iron = Queue::getIron();
+            $iron->clearQueue();
+        }
+
+        JobProvider::clearAll();
+    }
+
+    /**
+     * Get the queue length.
+     *
+     * @param  string  $queue
+     * @return int
+     */
+    public function length($queue = null) {
+        return JobProvider::count();
+    }
+
+    /**
      * Convert to a valid time.
      *
      * @param  mixed  $time
