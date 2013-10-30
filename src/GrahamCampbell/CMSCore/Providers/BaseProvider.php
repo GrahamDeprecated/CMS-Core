@@ -63,6 +63,18 @@ abstract class BaseProvider {
     }
 
     /**
+     * Find all models.
+     *
+     * @param  int    $id
+     * @param  array  $input
+     * @return mixed
+     */
+    public function all(array $columns = array('*')) {
+        $model = $this->model;
+        return $model::all($columns);
+    }
+
+    /**
      * Get a list of the models.
      *
      * @return \Illuminate\Database\Eloquent\Collection
