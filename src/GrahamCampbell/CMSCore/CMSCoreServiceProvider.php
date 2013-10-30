@@ -20,7 +20,6 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Event;
 use Illuminate\Support\ServiceProvider;
 
 class CMSCoreServiceProvider extends ServiceProvider {
