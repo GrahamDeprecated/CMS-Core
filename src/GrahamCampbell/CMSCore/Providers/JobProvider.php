@@ -90,7 +90,7 @@ class JobProvider extends BaseProvider {
     public function getOldTask($task, $age = 68400, array $columns = array('*')) {
         $model = $this->model;
         $task = $this->task($task);
-        return $model::where(function($query) use ($task, $age, $columns) { $query->where('task', '=', $task)->where('timestamp', '<=', time() - ($age)); })->get($columns);
+        return $model::where(function($query) use ($task, $age, $columns) { $query->where('task', '=', $task)->where('updated_at', '<=', time() - ($age)); })->get($columns);
     }
 
     /**
@@ -142,7 +142,7 @@ class JobProvider extends BaseProvider {
     public function getOldQueue($queue, $age = 68400, array $columns = array('*')) {
         $model = $this->model;
         $queue = $this->queue($queue);
-        return $model::where(function($query) use ($queue, $age, $columns) { $query->where('queue', '=', $queue)->where('timestamp', '<=', time() - ($age)); })->get($columns);
+        return $model::where(function($query) use ($queue, $age, $columns) { $query->where('queue', '=', $queue)->where('updated_at', '<=', time() - ($age)); })->get($columns);
     }
 
     /**
@@ -309,7 +309,7 @@ class JobProvider extends BaseProvider {
      */
     public function getAllOld($age = 68400, array $columns = array('*')) {
         $model = $this->model;
-        return $model::where('timestamp', '<=', time() - ($age))->get($columns);
+        return $model::where('updated_at', '<=', time() - ($age))->get($columns);
     }
 
     /**
