@@ -37,6 +37,13 @@ class Job extends BaseModel {
     public static $name = 'job';
 
     /**
+     * The model soft delete flag.
+     *
+     * @var boolean
+     */
+    protected $softDelete = true;
+
+    /**
      * The columns to select when displaying an index.
      *
      * @var array

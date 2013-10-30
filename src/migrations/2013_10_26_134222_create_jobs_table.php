@@ -39,6 +39,7 @@ class CreateJobsTable extends Migration {
             $table->string('task');
             $table->string('queue');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
