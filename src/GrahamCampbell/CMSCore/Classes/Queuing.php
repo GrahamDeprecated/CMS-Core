@@ -116,10 +116,10 @@ class Queuing extends BaseClass {
 
         // push to the queuing server
         if ($delay === false) {
-            $this->app['queue']->push($job, $data, $queue);
+            $this->app['queue']->push($task, $data, $queue);
         } else {
             $time = $this->time($delay);
-            $this->app['queue']->later($time, $job, $data, $queue);
+            $this->app['queue']->later($time, $task, $data, $queue);
         }
 
         // return the model
@@ -144,7 +144,7 @@ class Queuing extends BaseClass {
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
     public function pushCron(array $data = array()) {
-        return $this->laterCron(false, $job, $data);
+        return $this->laterCron(false, $data);
     }
 
     /**
@@ -165,7 +165,7 @@ class Queuing extends BaseClass {
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
     public function pushMail(array $data = array()) {
-        return $this->laterMail(false, $job, $data);
+        return $this->laterMail(false, $data);
     }
 
     /**
