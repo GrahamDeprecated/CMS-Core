@@ -103,7 +103,7 @@ class Queuing extends BaseClass {
     protected function queue($delay, $task, $data, $queue) {
         // check the job
         if ($this->app['config']['queue.default'] == 'sync') {
-            if ($this->getTask('cron') = $task) {
+            if ($this->getTask('cron') == $task) {
                 throw new \InvalidArgumentException('A cron job cannot run on the sync queue.');
             }
         }
