@@ -101,18 +101,17 @@ class Queuing extends BaseClass {
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
     protected function queue($delay, $task, $data, $queue) {
-        // check the job
         if ($this->app['config']['queue.default'] == 'sync') {
+            // check the job
             if ($this->getTask('cron') == $task) {
                 throw new \InvalidArgumentException('A cron job cannot run on the sync queue.');
             }
+        } else {
+            // push to the database server
+            $model = $this->app['jobprovider']->create(array('task' => $task, 'queue' => $queue));
+            // save model id
+            $data['model_id'] = $model->getId();
         }
-
-        // push to the database server
-        $model = $this->app['jobprovider']->create(array('task' => $task, 'queue' => $queue));
-
-        // save model id
-        $data['model_id'] = $model->getId();
 
         // push to the queuing server
         if ($delay === false) {
