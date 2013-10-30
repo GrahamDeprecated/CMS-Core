@@ -199,7 +199,7 @@ class Queuing extends BaseClass {
      */
     protected function clear($type) {
         $this->app['jobprovider']->clearQueue($type);
-        $queue = getQueue($type);
+        $queue = $this->getQueue($type);
 
         if ($this->app['config']['queue.default'] == 'beanstalkd') {
             $pheanstalk = $this->app['queue']->getPheanstalk();
