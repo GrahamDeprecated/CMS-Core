@@ -122,7 +122,9 @@ class Queuing extends BaseClass {
         }
 
         // return the model
-        return $model;
+        if ($model) {
+            return $model;
+        }
     }
 
     /**
