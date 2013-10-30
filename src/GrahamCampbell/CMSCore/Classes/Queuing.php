@@ -20,12 +20,9 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Config;
-use Queue;
 use Carbon\Carbon;
-use GrahamCampbell\CMSCore\Facades\JobProvider;
 
-class Queuing {
+class Queuing extends BaseClass {
 
     /**
      * The minimum delay for a delayed queue push.
@@ -35,152 +32,27 @@ class Queuing {
     protected $delay = 5;
 
     /**
-     * Push a new job onto the queue.
+     * Get the queue to use.
      *
-     * @param  string  $job
-     * @param  mixed   $data
-     * @param  string  $queue
-     * @return \GrahamCampbell\CMSCore\Models\Job
+     * @param  string  $type
+     * @return string
      */
-    public function push($job, $data = array(), $queue = null) {
-        return $this->roll(false, $job, $data, $queue);
-    }
-
-    /**
-     * Push a new mail job onto the queue.
-     *
-     * @param  mixed   $data
-     * @return \GrahamCampbell\CMSCore\Models\Job
-     */
-    public function pushMail($data = array(), $queue = null) {
-        return $this->roll(false, 'GrahamCampbell\BootstrapCMS\Handlers\MailHandler', $data, $queue);
-    }
-
-    /**
-     * Push a new cron job onto the queue.
-     *
-     * @param  mixed   $data
-     * @param  string  $queue
-     * @return \GrahamCampbell\CMSCore\Models\Job
-     */
-    public function pushCron($data = array(), $queue = null) {
-        return $this->roll(false, 'GrahamCampbell\BootstrapCMS\Handlers\CronHandler', $data, $queue);
-    }
-
-    /**
-     * Push a new delayed job onto the queue.
-     *
-     * @param  \Carbon\Carbon|int  $delay
-     * @param  string  $job
-     * @param  mixed   $data
-     * @param  string  $queue
-     * @return \GrahamCampbell\CMSCore\Models\Job
-     */
-    public function later($delay, $job, $data = array(), $queue = null) {
-        return $this->roll($delay, $job, $data, $queue);
-    }
-
-    /**
-     * Push a new delayed mail job onto the queue.
-     *
-     * @param  \Carbon\Carbon|int  $delay
-     * @param  mixed   $data
-     * @return \GrahamCampbell\CMSCore\Models\Job
-     */
-    public function laterMail($delay, $data = array(), $queue = null) {
-        return $this->roll($delay, 'GrahamCampbell\BootstrapCMS\Handlers\MailHandler', $data, $queue);
-    }
-
-    /**
-     * Push a new delayed cron job onto the queue.
-     *
-     * @param  \Carbon\Carbon|int  $delay
-     * @param  mixed   $data
-     * @param  string  $queue
-     * @return \GrahamCampbell\CMSCore\Models\Job
-     */
-    public function laterCron($delay, $data = array(), $queue = null) {
-        return $this->roll($delay, 'GrahamCampbell\BootstrapCMS\Handlers\CronHandler', $data, $queue);
-    }
-
-    /**
-     * Do the queue rolling work.
-     *
-     * @param  mixed  $delay
-     * @param  string  $job
-     * @param  mixed   $data
-     * @param  string  $queue
-     * @return \GrahamCampbell\CMSCore\Models\Job
-     */
-    protected function roll($delay, $job, $data, $queue) {
-        // check the job
-        if ($job == 'GrahamCampbell\BootstrapCMS\Handlers\CronHandler') {
-            if (Config::get('queue.default') == 'sync') {
-                throw new \InvalidArgumentException('A cron job cannot run on the sync queue.');
-            }
-        }
-
-        // push to the database server
-        $model = JobProvider::create(array('task' => $job));
-
-        // save job id
-        $data['model_id'] = $model->getId();
-
-        // push to the queuing server
-        if ($delay === false) {
-            Queue::push($job, $data, $queue);
+    protected function getQueue($type) {
+        if ($this->app['config']['queue.default'] == 'sync') {
+            return $type;
         } else {
-            $time = $this->time($delay);
-            Queue::later($time, $job, $data, $queue);
+            return $this->app['config']['queue.connections.'.$this->app['config']['queue.default'].'.'.$type];
         }
-
-        // return the job
-        return $model;
     }
 
     /**
-     * Clear the queue.
+     * Get the task to use.
      *
-     * @param  string  $queue
-     * @return array
+     * @param  string  $type
+     * @return string
      */
-    protected function clear($queue = null) {
-        JobProvider::clearAll();
-        $queue = Queue::getQueue($queue);
-
-        if (Config::get('queue.default') == 'beanstalkd') {
-            $pheanstalk = Queue::getPheanstalk();
-            try {
-                while($job = $pheanstalk->peekReady($queue)) {
-                    $pheanstalk->delete($job);
-                }
-            } catch (\Pheanstalk_Exception_ServerException $e) {}
-            try {
-                while($job = $pheanstalk->peekDelayed($queue)) {
-                    $pheanstalk->delete($job);
-                }
-            } catch (\Pheanstalk_Exception_ServerException $e) {}
-            try {
-                while($job = $pheanstalk->peekBuried($queue)) {
-                    $pheanstalk->delete($job);
-                }
-            } catch (\Pheanstalk_Exception_ServerException $e) {}
-        } elseif (Config::get('queue.default') == 'iron') {
-            $iron = Queue::getIron();
-            $iron->clearQueue();
-        }
-
-        JobProvider::clearAll();
-    }
-
-    /**
-     * Get the queue length.
-     *
-     * @param  string  $queue
-     * @return int
-     */
-    public function length($queue = null) {
-        return JobProvider::count();
+    protected function getTask($type) {
+        return 'GrahamCampbell\BootstrapCMS\Handlers\\'.ucfirst($type).'Handler';
     }
 
     /**
@@ -217,5 +89,195 @@ class Queuing {
         }
 
         return $this->delay;
+    }
+
+    /**
+     * Do the actual job queuing.
+     *
+     * @param  mixed   $delay
+     * @param  string  $task
+     * @param  mixed   $data
+     * @param  string  $queue
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    protected function queue($delay, $task, $data, $queue) {
+        // check the job
+        if ($this->app['config']['queue.default'] == 'sync') {
+            if ($this->getTask('cron') = $task) {
+                throw new \InvalidArgumentException('A cron job cannot run on the sync queue.');
+            }
+        }
+
+        // push to the database server
+        $model = $this->app['jobprovider']->create(array('task' => $task, 'queue' => $queue));
+
+        // save model id
+        $data['model_id'] = $model->getId();
+
+        // push to the queuing server
+        if ($delay === false) {
+            $this->app['queue']->push($job, $data, $queue);
+        } else {
+            $time = $this->time($delay);
+            $this->app['queue']->later($time, $job, $data, $queue);
+        }
+
+        // return the model
+        return $model;
+    }
+
+    /**
+     * Push a new delayed cron job onto the queue.
+     *
+     * @param  mixed  $delay
+     * @param  array  $data
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function laterCron($delay, array $data = array()) {
+        return $this->queue($delay, $this->getTask('cron'), $data, $this->getQueue('cron'));
+    }
+
+    /**
+     * Push a new cron job onto the queue.
+     *
+     * @param  array  $data
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function pushCron(array $data = array()) {
+        return $this->laterCron(false, $job, $data);
+    }
+
+    /**
+     * Push a new delayed mail job onto the queue.
+     *
+     * @param  mixed  $delay
+     * @param  array  $data
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function laterMail($delay, array $data = array()) {
+        return $this->queue($delay, $this->getTask('mail'), $data, $this->getQueue('mail'));
+    }
+
+    /**
+     * Push a new mail job onto the queue.
+     *
+     * @param  array  $data
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function pushMail(array $data = array()) {
+        return $this->laterMail(false, $job, $data);
+    }
+
+    /**
+     * Push a new delayed job onto the queue.
+     *
+     * @param  mixed   $delay
+     * @param  string  $job
+     * @param  array   $data
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function laterJob($delay, $job, array $data = array()) {
+        return $this->queue($delay, $this->getTask($job), $data, $this->getQueue('queue'));
+    }
+
+    /**
+     * Push a new job onto the queue.
+     *
+     * @param  string  $job
+     * @param  array   $data
+     * @return \GrahamCampbell\CMSCore\Models\Job
+     */
+    public function pushJob($job, array $data = array()) {
+        return $this->laterJob(false, $job, $data);
+    }
+
+    /**
+     * Clear the specified queue.
+     *
+     * @param  string  $type
+     * @return void
+     */
+    protected function clear($type) {
+        $this->app['jobprovider']->clearQueue($type);
+        $queue = getQueue($type);
+
+        if ($this->app['config']['queue.default'] == 'beanstalkd') {
+            $pheanstalk = $this->app['queue']->getPheanstalk();
+            try {
+                while($job = $pheanstalk->peekReady($queue)) {
+                    $pheanstalk->delete($job);
+                }
+            } catch (\Pheanstalk_Exception_ServerException $e) {}
+            try {
+                while($job = $pheanstalk->peekDelayed($queue)) {
+                    $pheanstalk->delete($job);
+                }
+            } catch (\Pheanstalk_Exception_ServerException $e) {}
+            try {
+                while($job = $pheanstalk->peekBuried($queue)) {
+                    $pheanstalk->delete($job);
+                }
+            } catch (\Pheanstalk_Exception_ServerException $e) {}
+        } elseif ($this->app['config']['queue.default'] == 'iron') {
+            $iron = $this->app['queue']->getIron();
+            $iron->clearQueue();
+        }
+
+        $this->app['jobprovider']->clearAll();
+    }
+
+    /**
+     * Clear all cron jobs.
+     *
+     * @return void
+     */
+    public function clearCron() {
+        $this->clear('cron');
+        $this->clear('cron');
+    }
+
+    /**
+     * Clear all mail jobs.
+     *
+     * @return void
+     */
+    public function clearMail() {
+        $this->clear('mail');
+        $this->clear('mail');
+    }
+
+    /**
+     * Clear all other jobs.
+     *
+     * @return void
+     */
+    public function clearJobs() {
+        $this->clear('jobs');
+        $this->clear('jobs');
+    }
+
+    /**
+     * Clear all jobs.
+     *
+     * @return void
+     */
+    public function clearAll() {
+        $this->clear('cron');
+        $this->clear('mail');
+        $this->clear('jobs');
+        $this->clear('cron');
+        $this->clear('mail');
+        $this->clear('jobs');
+        $this->app['jobprovider']->clearAll();
+    }
+
+    /**
+     * Get the queue length.
+     *
+     * @param  string  $queue
+     * @return int
+     */
+    public function length($queue) {
+        return $this->app['jobprovider']->count();
     }
 }

@@ -48,34 +48,34 @@ class CMSCoreServiceProvider extends ServiceProvider {
      */
     public function register() {
         $this->app['commentprovider'] = $this->app->share(function($app) {
-            return new Providers\CommentProvider;
+            return new Providers\CommentProvider($app);
         });
         $this->app['eventprovider'] = $this->app->share(function($app) {
-            return new Providers\EventProvider;
+            return new Providers\EventProvider($app);
         });
         $this->app['groupprovider'] = $this->app->share(function($app) {
-            return new Providers\GroupProvider;
+            return new Providers\GroupProvider($app);
         });
         $this->app['jobprovider'] = $this->app->share(function($app) {
-            return new Providers\JobProvider;
+            return new Providers\JobProvider($app);
         });
         $this->app['pageprovider'] = $this->app->share(function($app) {
-            return new Providers\PageProvider;
+            return new Providers\PageProvider($app);
         });
         $this->app['postprovider'] = $this->app->share(function($app) {
-            return new Providers\PostProvider;
+            return new Providers\PostProvider($app);
         });
         $this->app['userprovider'] = $this->app->share(function($app) {
-            return new Providers\UserProvider;
+            return new Providers\UserProvider($app);
         });
         $this->app['navigation'] = $this->app->share(function($app) {
-            return new Classes\Navigation;
+            return new Classes\Navigation($app);
         });
         $this->app['queuing'] = $this->app->share(function($app) {
-            return new Classes\Queuing;
+            return new Classes\Queuing($app);
         });
         $this->app['cron'] = $this->app->share(function($app) {
-            return new Classes\Cron;
+            return new Classes\Cron($app);
         });
     }
 
@@ -85,6 +85,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('commentprovider', 'eventprovider', 'groupprovider', 'pageprovider', 'postprovider', 'userprovider', 'navigation', 'queuing', 'cron');
+        return array('commentprovider', 'eventprovider', 'groupprovider', 'jobprovider', 'pageprovider', 'postprovider', 'userprovider', 'navigation', 'queuing', 'cron');
     }
 }

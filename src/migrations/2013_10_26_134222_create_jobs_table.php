@@ -37,6 +37,7 @@ class CreateJobsTable extends Migration {
             $table->increments('id')->unsigned();
             $table->smallInteger('tries')->unsigned()->default(0);
             $table->string('task');
+            $table->string('queue');
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@ use URL;
 use GrahamCampbell\CMSCore\Models\Page;
 use GrahamCampbell\CMSCore\Facades\PageProvider;
 
-class Navigation {
+class Navigation extends BaseClass {
 
     /**
      * An extra array of items to be added to the main nav bar.

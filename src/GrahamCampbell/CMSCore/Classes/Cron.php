@@ -20,10 +20,7 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Queuing;
-use GrahamCampbell\CMSCore\Facades\JobProvider;
-
-class Cron {
+class Cron extends BaseClass {
 
     /**
      * Start the cron jobs after a delay.
@@ -33,7 +30,7 @@ class Cron {
      */
     public function start($delay = 1000) {
         $this->stop();
-        return Queuing::laterCron($delay);
+        return $this->app['queuing']->laterCron($delay);
     }
 
     /**
@@ -42,6 +39,6 @@ class Cron {
      * @return void
      */
     public function stop() {
-        return JobProvider::clearCrons();
+        return $this->app['queuing']->clearCron();
     }
 }

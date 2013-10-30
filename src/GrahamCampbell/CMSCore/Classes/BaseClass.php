@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Providers\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Classes;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,37 +20,22 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IBaseProvider {
+abstract class BaseClass {
 
     /**
-     * Create a new model.
+     * The application instance.
      *
-     * @param  array  $input
-     * @return mixed
+     * @var \Illuminate\Foundation\Application
      */
-    public function create(array $input);
+    protected $app;
 
     /**
-     * Find an existing model.
+     * Create a new instance.
      *
-     * @param  int    $id
-     * @param  array  $input
-     * @return mixed
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
      */
-    public function find($id, array $columns = array('*'));
-
-    /**
-     * Get a list of the models.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function index();
-
-    /**
-     * Get the number of rows.
-     *
-     * @return int
-     */
-    public function count();
-
+    public function __construct($app) {
+        $this->app = $app;
+    }
 }
