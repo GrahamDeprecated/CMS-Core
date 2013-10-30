@@ -220,7 +220,7 @@ class Queuing extends BaseClass {
             } catch (\Pheanstalk_Exception_ServerException $e) {}
         } elseif ($this->app['config']['queue.default'] == 'iron') {
             $iron = $this->app['queue']->getIron();
-            $iron->clearQueue();
+            $iron->clearQueue($queue);
         }
 
         $this->app['jobprovider']->clearAll();
