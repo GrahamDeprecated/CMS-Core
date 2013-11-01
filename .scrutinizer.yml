@@ -9,5 +9,13 @@ tools:
     php_pdepend: true
     php_analyzer:
         enabled: true
-        doc_comment_fixes: true
+        config:
+            checkstyle: true
+            verify_php_doc_comments: true
+            doc_comment_fixes: true
+            use_statement_fixes:
+                enabled: true
+                remove_unused: true
+                preserve_multiple: false
+                order_alphabetically: true
     sensiolabs_security_checker: true
