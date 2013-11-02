@@ -43,7 +43,7 @@ class Comment extends BaseModel implements Interfaces\IBodyModel, Relations\Inte
      *
      * @var array
      */
-    public static $index = array('id', 'body', 'user_id', 'created_at');
+    public static $index = array('id', 'body', 'user_id', 'created_at', 'version');
 
     /**
      * The max comments per page when displaying a paginated index.
@@ -86,7 +86,16 @@ class Comment extends BaseModel implements Interfaces\IBodyModel, Relations\Inte
         'id'      => 1,
         'body'    => 'This a comment!',
         'user_id' => 1,
-        'post_id' => 1
+        'post_id' => 1,
+        'version' => 1
     );
 
+    /**
+     * Get version.
+     *
+     * @return int
+     */
+    public function getVersion() {
+        return $this->version;
+    }
 }
