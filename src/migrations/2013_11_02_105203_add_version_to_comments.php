@@ -23,7 +23,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use GrahamCampbell\CMSCore\Providers\CommentProvider;
+use GrahamCampbell\CMSCore\Facades\CommentProvider;
 
 class AddVersionToComments extends Migration {
 
