@@ -36,13 +36,17 @@ trait TraitBelongsToManyEvents {
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getInvites() {
+    public function getInvites($columns = null) {
         $model = 'GrahamCampbell\CMSCore\Models\Event';
 
+        if (is_null($columns)) {
+            $columns = $model::$index;
+        }
+
         if (property_exists($model, 'order')) {
-            return $this->invites()->orderBy($model::$order, $model::$sort)->get($model::$index);
+            return $this->invites()->orderBy($model::$order, $model::$sort)->get($columns);
         }        
-        return $this->invites()->get($model::$index);
+        return $this->invites()->get($columns);
     }
 
     /**

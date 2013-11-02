@@ -36,14 +36,18 @@ trait TraitHasManyPages {
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPages() {
+    public function getPages($columns = null) {
         $model = 'GrahamCampbell\CMSCore\Models\Page';
 
-        if (property_exists($model, 'order')) {
-            return $this->pages()->orderBy($model::$order, $model::$sort)->get($model::$index);
+        if (is_null($columns)) {
+            $columns = $model::$index;
         }
 
-        return $this->pages()->get($model::$index);
+        if (property_exists($model, 'order')) {
+            return $this->pages()->orderBy($model::$order, $model::$sort)->get($columns);
+        }
+
+        return $this->pages()->get($columns);
     }
 
     /**

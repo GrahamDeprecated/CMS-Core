@@ -36,14 +36,18 @@ trait TraitHasManyEvents {
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getEvents() {
+    public function getEvents($columns = null) {
         $model = 'GrahamCampbell\CMSCore\Models\Event';
 
-        if (property_exists($model, 'order')) {
-            return $this->events()->orderBy($model::$order, $model::$sort)->get($model::$index);
+        if (is_null($columns)) {
+            $columns = $model::$index;
         }
 
-        return $this->events()->get($model::$index);
+        if (property_exists($model, 'order')) {
+            return $this->events()->orderBy($model::$order, $model::$sort)->get($columns);
+        }
+
+        return $this->events()->get($columns);
     }
 
     /**

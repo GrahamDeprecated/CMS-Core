@@ -36,14 +36,18 @@ trait TraitHasManyComments {
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getComments() {
+    public function getComments($columns = null) {
         $model = 'GrahamCampbell\CMSCore\Models\Comment';
 
-        if (property_exists($model, 'order')) {
-            return $this->comments()->orderBy($model::$order, $model::$sort)->get($model::$index);
+        if (is_null($columns)) {
+            $columns = $model::$index;
         }
 
-        return $this->comments()->get($model::$index);
+        if (property_exists($model, 'order')) {
+            return $this->comments()->orderBy($model::$order, $model::$sort)->get($columns);
+        }
+
+        return $this->comments()->get($columns);
     }
 
     /**

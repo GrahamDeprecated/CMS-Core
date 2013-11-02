@@ -36,13 +36,17 @@ trait TraitHasManyPosts {
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPosts() {
+    public function getPosts($columns = null) {
         $model = 'GrahamCampbell\CMSCore\Models\Post';
 
+        if (is_null($columns)) {
+            $columns = $model::$index;
+        }
+
         if (property_exists($model, 'order')) {
-            return $this->posts()->orderBy($model::$order, $model::$sort)->get($model::$index);
+            return $this->posts()->orderBy($model::$order, $model::$sort)->get($columns);
         }        
-        return $this->posts()->get($model::$index);
+        return $this->posts()->get($columns);
     }
 
     /**
