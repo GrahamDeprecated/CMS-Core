@@ -278,7 +278,7 @@ class Queuing extends BaseClass {
      * @param  string  $queue
      * @return int
      */
-    public function length($queue) {
+    public function length() {
         return $this->app['jobprovider']->count();
     }
 }
