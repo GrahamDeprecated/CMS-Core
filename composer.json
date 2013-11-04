@@ -19,7 +19,8 @@
         "vtalbot/markdown": "1.4.*",
         "graham-campbell/binput": "dev-develop",
         "graham-campbell/passwd": "dev-develop",
-        "graham-campbell/htmlmin": "dev-develop"
+        "graham-campbell/htmlmin": "dev-develop",
+        "graham-campbell/cloudflare-api": "dev-develop"
     },
     "require-dev": {
         "mockery/mockery": "0.8.*@stable",
