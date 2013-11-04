@@ -180,10 +180,10 @@ class Navigation extends BaseClass {
         if ($this->app['config']['cms.cache'] === true) {
             // check if the cache needs regenerating
             if ($this->validCache($name)) {
-                // if not, then pull from the cache
+                // if so, then pull from the cache
                 $value = $this->getCache($name);
                 // check if the value is valid
-                if ($this->validValue($value)) {
+                if (!$this->validValue($value)) {
                     // if is invalid, do the work
                     $value = $this->sendGet($name);
                     // add the value from the work to the cache
@@ -307,7 +307,11 @@ class Navigation extends BaseClass {
      * @return bool
      */
     protected function validValue($value) {
-        return (is_null($value) || !is_array($value));
+        if (is_null($value) || !is_array($value)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
