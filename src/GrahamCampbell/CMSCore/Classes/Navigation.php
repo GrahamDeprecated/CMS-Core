@@ -176,21 +176,13 @@ class Navigation extends BaseClass {
      * @return array
      */
     protected function goGet($name) {
-        // if caching is enabled
+        // check if we are using the cache
         if ($this->app['config']['cms.cache'] === true) {
-            // check if the cache needs regenerating
-            if ($this->validCache($name)) {
-                // if so, then pull from the cache
-                $value = $this->getCache($name);
-                // check if the value is valid
-                if (!$this->validValue($value)) {
-                    // if is invalid, do the work
-                    $value = $this->sendGet($name);
-                    // add the value from the work to the cache
-                    $this->setCache($name, $value);
-                }
-            } else {
-                // if regeneration is needed, do the work
+            // if so, then pull from the cache
+            $value = $this->getCache($name);
+            // check if the value is valid
+            if (!$this->validValue($value)) {
+                // if is invalid, do the work
                 $value = $this->sendGet($name);
                 // add the value from the work to the cache
                 $this->setCache($name, $value);
@@ -291,22 +283,12 @@ class Navigation extends BaseClass {
     }
 
     /**
-     * Check of the nav var by name is cached and is current.
-     *
-     * @param  string  $name
-     * @return bool
-     */
-    protected function validCache($name) {
-        return $this->app['cache']->section('nav')->has($name);
-    }
-
-    /**
-     * Check of the nav var by name is not corrupt.
+     * Check of the nav var is not corrupt.
      *
      * @param  string  $value
      * @return bool
      */
-    protected function validValue($value) {
+    protected function validCache($value) {
         if (is_null($value) || !is_array($value)) {
             return false;
         }
