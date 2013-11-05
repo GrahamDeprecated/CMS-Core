@@ -181,7 +181,7 @@ class Navigation extends BaseClass {
             // if so, then pull from the cache
             $value = $this->getCache($name);
             // check if the value is valid
-            if (!$this->validValue($value)) {
+            if (!$this->validCache($value)) {
                 // if is invalid, do the work
                 $value = $this->sendGet($name);
                 // add the value from the work to the cache
