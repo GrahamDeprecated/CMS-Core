@@ -52,6 +52,12 @@ class CMSCoreServiceProvider extends ServiceProvider {
         $this->app['eventprovider'] = $this->app->share(function($app) {
             return new Providers\EventProvider($app);
         });
+        $this->app['fileprovider'] = $this->app->share(function($app) {
+            return new Providers\FileProvider($app);
+        });
+        $this->app['folderprovider'] = $this->app->share(function($app) {
+            return new Providers\FolderProvider($app);
+        });
         $this->app['groupprovider'] = $this->app->share(function($app) {
             return new Providers\GroupProvider($app);
         });
@@ -63,6 +69,15 @@ class CMSCoreServiceProvider extends ServiceProvider {
         });
         $this->app['postprovider'] = $this->app->share(function($app) {
             return new Providers\PostProvider($app);
+        });
+        $this->app['replyprovider'] = $this->app->share(function($app) {
+            return new Providers\ReplyProvider($app);
+        });
+        $this->app['sectionprovider'] = $this->app->share(function($app) {
+            return new Providers\SectionProvider($app);
+        });
+        $this->app['topicprovider'] = $this->app->share(function($app) {
+            return new Providers\TopicProvider($app);
         });
         $this->app['userprovider'] = $this->app->share(function($app) {
             return new Providers\UserProvider($app);
@@ -84,6 +99,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('commentprovider', 'eventprovider', 'groupprovider', 'jobprovider', 'pageprovider', 'postprovider', 'userprovider', 'navigation', 'queuing', 'cron');
+        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'groupprovider', 'jobprovider', 'pageprovider', 'postprovider', 'replyprovider', 'sectionprovider', 'topicprovider', 'userprovider', 'navigation', 'queuing', 'cron');
     }
 }
