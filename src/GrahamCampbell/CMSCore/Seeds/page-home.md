@@ -7,7 +7,11 @@
             <h1><?php echo Config::get("cms.name"); ?></h1>
         </div>
         <p class="lead">Powered by Laravel 4 with Sentry 2</p>
-        <a class="btn btn-lg btn-success" href="<?php echo URL::route("account.register"); ?>">Sign Up Today</a>
+        @if (Config::get('cms.regallowed'))
+            <a class="btn btn-lg btn-success" href="<?php echo URL::route("account.register"); ?>">Sign Up Today</a>
+        @else
+            <a class="btn btn-lg btn-success" href="<?php echo URL::route("pages.show", array("pages" => "about")); ?>">More Information</a>
+        @endif
     </div>
 </div>
 
@@ -15,7 +19,11 @@
     <div class="jumbotron">
         <h1><?php echo Config::get("cms.name"); ?></h1>
         <p class="lead">Powered by Laravel 4 with Sentry</p>
-        <a class="btn btn-lg btn-success" href="<?php echo URL::route("account.register"); ?>">Sign Up Today</a>
+        @if (Config::get('cms.regallowed'))
+            <a class="btn btn-lg btn-success" href="<?php echo URL::route("account.register"); ?>">Sign Up Today</a>
+        @else
+            <a class="btn btn-lg btn-success" href="<?php echo URL::route("pages.show", array("pages" => "about")); ?>">More Information</a>
+        @endif
     </div>
 </div>
 
