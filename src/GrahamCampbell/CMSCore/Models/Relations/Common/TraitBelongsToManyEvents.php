@@ -28,7 +28,7 @@ trait TraitBelongsToManyEvents {
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function invites() {
-        return $this->belongsToMany('GrahamCampbell\CMSCore\Models\Event');
+        return $this->belongsToMany('GrahamCampbell\CMSCore\Models\Event', 'events_users');
     }
 
     /**
