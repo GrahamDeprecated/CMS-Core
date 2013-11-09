@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,34 +20,32 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+trait TraitBelongsToTopic {
 
     /**
-     * Get the post relation.
+     * Get the topic relation.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function posts();
+    public function topic() {
+        return $this->belongsTo('GrahamCampbell\CMSCore\Models\Topic');
+    }
 
     /**
-     * Get the post collection.
+     * Get the topic model.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \GrahamCampbell\CMSCore\Models\Topic
      */
-    public function getPosts($columns = null);
+    public function getTopic($columns = array('*')) {
+        return $this->topic()->first($columns);
+    }
 
     /**
-     * Get the specified post.
+     * Get the topic id.
      *
-     * @return \GrahamCampbell\CMSCore\Models\Post
+     * @return int
      */
-    public function findPost($id, $columns = array('*'));
-
-    /**
-     * Delete all posts.
-     *
-     * @return void
-     */
-    public function deletePosts();
-
+    public function getTopicId() {
+        return $this->topic_id;
+    }
 }

@@ -34,7 +34,7 @@ interface IHasManyEvents {
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getEvents();
+    public function getEvents($columns = null);
 
     /**
      * Get the specified event.

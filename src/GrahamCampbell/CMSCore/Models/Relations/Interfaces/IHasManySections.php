@@ -20,34 +20,34 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+interface IHasManySections {
 
     /**
-     * Get the post relation.
+     * Get the section relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function posts();
+    public function sections();
 
     /**
-     * Get the post collection.
+     * Get the section collection.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPosts($columns = null);
+    public function getSections($columns = null);
 
     /**
-     * Get the specified post.
+     * Get the specified section.
      *
-     * @return \GrahamCampbell\CMSCore\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Section
      */
-    public function findPost($id, $columns = array('*'));
+    public function findSection($id, $columns = array('*'));
 
     /**
-     * Delete all posts.
+     * Delete all sections.
      *
      * @return void
      */
-    public function deletePosts();
+    public function deleteSections();
 
 }

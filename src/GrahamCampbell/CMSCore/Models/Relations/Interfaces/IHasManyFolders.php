@@ -20,34 +20,34 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+interface IHasManyFolders {
 
     /**
-     * Get the post relation.
+     * Get the folder relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function posts();
+    public function folders();
 
     /**
-     * Get the post collection.
+     * Get the folder collection.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPosts($columns = null);
+    public function getFolders($columns = null);
 
     /**
-     * Get the specified post.
+     * Get the specified folder.
      *
-     * @return \GrahamCampbell\CMSCore\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Folder
      */
-    public function findPost($id, $columns = array('*'));
+    public function findFolder($id, $columns = array('*'));
 
     /**
-     * Delete all posts.
+     * Delete all folders.
      *
      * @return void
      */
-    public function deletePosts();
+    public function deleteFolders();
 
 }

@@ -34,7 +34,7 @@ interface IBelongsToManyUsers {
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getInvites();
+    public function getInvites($columns = null);
 
     /**
      * Get the specified user.

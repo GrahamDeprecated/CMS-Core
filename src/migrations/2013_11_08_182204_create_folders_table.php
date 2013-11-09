@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,34 +20,34 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateFoldersTable extends Migration {
 
     /**
-     * Get the post relation.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
-     */
-    public function posts();
-
-    /**
-     * Get the post collection.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getPosts($columns = null);
-
-    /**
-     * Get the specified post.
-     *
-     * @return \GrahamCampbell\CMSCore\Models\Post
-     */
-    public function findPost($id, $columns = array('*'));
-
-    /**
-     * Delete all posts.
+     * Run the migrations.
      *
      * @return void
      */
-    public function deletePosts();
+    public function up() {
+        Schema::create('folders', function(Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->increments('id')->unsigned();
+            $table->string('title');
+            $table->text('summary');
+            $table->integer('user_id')->unsigned();
+            $table->timestamps();
+        });
+    }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down() {
+        Schema::drop('folders');
+    }
 }

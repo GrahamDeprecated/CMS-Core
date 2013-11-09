@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,34 +20,52 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+trait TraitHasManyFiles {
 
     /**
-     * Get the post relation.
+     * Get the file relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function posts();
+    public function files() {
+        return $this->hasMany('GrahamCampbell\CMSCore\Models\File');
+    }
 
     /**
-     * Get the post collection.
+     * Get the file collection.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPosts($columns = null);
+    public function getFiles($columns = null) {
+        $model = 'GrahamCampbell\CMSCore\Models\File';
+
+        if (is_null($columns)) {
+            $columns = $model::$index;
+        }
+
+        if (property_exists($model, 'order')) {
+            return $this->files()->orderBy($model::$order, $model::$sort)->get($columns);
+        }        
+        return $this->files()->get($columns);
+    }
 
     /**
-     * Get the specified post.
+     * Get the specified file.
      *
-     * @return \GrahamCampbell\CMSCore\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\File
      */
-    public function findPost($id, $columns = array('*'));
+    public function findFile($id, $columns = array('*')) {
+        return $this->files()->find($id, $columns);
+    }
 
     /**
-     * Delete all posts.
+     * Delete all files.
      *
      * @return void
      */
-    public function deletePosts();
-
+    public function deleteFiles() {
+        foreach($this->getFiles(array('id')) as $file) {
+            $file->delete();
+        }
+    }
 }

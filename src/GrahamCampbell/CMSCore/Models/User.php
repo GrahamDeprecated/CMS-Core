@@ -23,9 +23,9 @@
 use Carbon\Carbon;
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
 
-class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\INameModel, Relations\Interfaces\IHasManyPages, Relations\Interfaces\IHasManyPosts, Relations\Interfaces\IHasManyEvents, Relations\Interfaces\IHasManyComments, Relations\Interfaces\IBelongsToManyEvents {
+class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\INameModel, Relations\Interfaces\IHasManyPages, Relations\Interfaces\IHasManyPosts, Relations\Interfaces\IHasManyEvents, Relations\Interfaces\IHasManySections, Relations\Interfaces\IHasManyTopics, Relations\Interfaces\IHasManyFolders, Relations\Interfaces\IHasManyFiles, Relations\Interfaces\IHasManyComments,  Relations\Interfaces\IHasManyReplies, Relations\Interfaces\IBelongsToManyEvents {
 
-    use Common\TraitBaseModel, Common\TraitNameModel, Relations\Common\TraitHasManyPages, Relations\Common\TraitHasManyPosts, Relations\Common\TraitHasManyEvents, Relations\Common\TraitHasManyComments, Relations\Common\TraitBelongsToManyEvents;
+    use Common\TraitBaseModel, Common\TraitNameModel, Relations\Common\TraitHasManyPages, Relations\Common\TraitHasManyPosts, Relations\Common\TraitHasManyEvents, Relations\Common\TraitHasManySections, Relations\Common\TraitHasManyTopics, Relations\Common\TraitHasManyFolders, Relations\Common\TraitHasManyFiles, Relations\Common\TraitHasManyComments, Relations\Common\TraitHasManyReplies, Relations\Common\TraitBelongsToManyEvents;
 
     /**
      * The table the users are stored in.
@@ -109,6 +109,11 @@ class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\IName
         $this->deletePages();
         $this->deletePosts();
         $this->deleteEvents();
+        $this->deleteSections();
+        $this->deleteTopics();
+        $this->deleteFolders();
+        $this->deleteFiles();
+        $this->deleteReplies();
         $this->deleteComments();
     }
 }

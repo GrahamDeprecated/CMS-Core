@@ -34,7 +34,7 @@ interface IHasManyComments {
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getComments();
+    public function getComments($columns = null);
 
     /**
      * Get the specified comment.

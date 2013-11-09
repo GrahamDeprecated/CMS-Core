@@ -20,34 +20,34 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+interface IHasManyFiles {
 
     /**
-     * Get the post relation.
+     * Get the file relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function posts();
+    public function files();
 
     /**
-     * Get the post collection.
+     * Get the file collection.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPosts($columns = null);
+    public function getFiles($columns = null);
 
     /**
-     * Get the specified post.
+     * Get the specified file.
      *
-     * @return \GrahamCampbell\CMSCore\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\File
      */
-    public function findPost($id, $columns = array('*'));
+    public function findFile($id, $columns = array('*'));
 
     /**
-     * Delete all posts.
+     * Delete all files.
      *
      * @return void
      */
-    public function deletePosts();
+    public function deleteFiles();
 
 }

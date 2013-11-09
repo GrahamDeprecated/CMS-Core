@@ -20,4 +20,81 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class Section extends BaseModel {}
+class Section extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISummaryModel, Relations\Interfaces\IHasManyTopics, Relations\Interfaces\IBelongsToUser {
+
+    use Common\TraitTitleModel, Common\TraitSummaryModel, Relations\Common\TraitHasManyTopics, Relations\Common\TraitBelongsToUser;
+
+    /**
+     * The table the sections are stored in.
+     *
+     * @var string
+     */
+    protected $table = 'sections';
+
+    /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'section';
+
+    /**
+     * The columns to select when displaying an index.
+     *
+     * @var array
+     */
+    public static $index = array('id', 'title', 'summary', 'created_at');
+
+    /**
+     * The max sections per page when displaying a paginated index.
+     *
+     * @var int
+     */
+    public static $paginate = 10;
+
+    /**
+     * The columns to order by when displaying an index.
+     *
+     * @var string
+     */
+    public static $order = 'id';
+
+    /**
+     * The direction to order by when displaying an index.
+     *
+     * @var string
+     */
+    public static $sort = 'desc';
+
+    /**
+     * The section validation rules.
+     *
+     * @var array
+     */
+    public static $rules = array(
+        'title'   => 'required',
+        'summary' => 'required',
+        'user_id' => 'required'
+    );
+
+    /**
+     * The section factory.
+     *
+     * @var array
+     */
+    public static $factory = array(
+        'id'      => 1,
+        'title'   => 'Section',
+        'summary' => 'The is a section with topics in.',
+        'user_id' => 1
+    );
+
+    /**
+     * Before deleting an existing model.
+     *
+     * @return mixed
+     */
+    public function beforeDelete() {
+        $this->deleteTopics();
+    }
+}

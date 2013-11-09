@@ -34,7 +34,7 @@ interface IBelongsToManyEvents {
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getInvites();
+    public function getInvites($columns = null);
 
     /**
      * Get the specified event.
@@ -56,6 +56,7 @@ interface IBelongsToManyEvents {
      * @return void
      */
     public function deleteInvite($id);
+
     /**
      * Link some events.
      *

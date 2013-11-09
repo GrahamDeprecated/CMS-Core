@@ -20,34 +20,27 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+interface IBelongsToTopic {
 
     /**
-     * Get the post relation.
+     * Get the topic relation.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function posts();
+    public function topic();
 
     /**
-     * Get the post collection.
+     * Get the topic model.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \GrahamCampbell\CMSCore\Models\Topic
      */
-    public function getPosts($columns = null);
+    public function getTopic($columns = array('*'));
 
     /**
-     * Get the specified post.
+     * Get the topic id.
      *
-     * @return \GrahamCampbell\CMSCore\Models\Post
+     * @return int
      */
-    public function findPost($id, $columns = array('*'));
-
-    /**
-     * Delete all posts.
-     *
-     * @return void
-     */
-    public function deletePosts();
+    public function getTopicId();
 
 }

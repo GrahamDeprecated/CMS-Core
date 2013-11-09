@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,34 +20,52 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+trait TraitHasManyTopics {
 
     /**
-     * Get the post relation.
+     * Get the topic relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function posts();
+    public function topics() {
+        return $this->hasMany('GrahamCampbell\CMSCore\Models\Topic');
+    }
 
     /**
-     * Get the post collection.
+     * Get the topic collection.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPosts($columns = null);
+    public function getTopics($columns = null) {
+        $model = 'GrahamCampbell\CMSCore\Models\Topic';
+
+        if (is_null($columns)) {
+            $columns = $model::$index;
+        }
+
+        if (property_exists($model, 'order')) {
+            return $this->topics()->orderBy($model::$order, $model::$sort)->get($columns);
+        }        
+        return $this->topics()->get($columns);
+    }
 
     /**
-     * Get the specified post.
+     * Get the specified topic.
      *
-     * @return \GrahamCampbell\CMSCore\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Topic
      */
-    public function findPost($id, $columns = array('*'));
+    public function findTopic($id, $columns = array('*')) {
+        return $this->topics()->find($id, $columns);
+    }
 
     /**
-     * Delete all posts.
+     * Delete all topics.
      *
      * @return void
      */
-    public function deletePosts();
-
+    public function deleteTopics() {
+        foreach($this->getTopics(array('id')) as $topic) {
+            $topic->delete();
+        }
+    }
 }

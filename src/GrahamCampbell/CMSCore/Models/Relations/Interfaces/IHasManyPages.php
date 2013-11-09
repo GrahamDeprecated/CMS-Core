@@ -34,7 +34,7 @@ interface IHasManyPages {
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPages();
+    public function getPages($columns = null);
 
     /**
      * Get the specified page.
@@ -42,7 +42,6 @@ interface IHasManyPages {
      * @return \GrahamCampbell\CMSCore\Models\Page
      */
     public function findPage($slug, $columns = array('*'));
-
     /**
      * Delete all pages.
      *

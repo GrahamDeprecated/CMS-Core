@@ -20,4 +20,85 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class Topic extends BaseModel {}
+class Topic extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBodyModel, Interfaces\ISummaryModel, Relations\Interfaces\IHasManyReplies, Relations\Interfaces\IBelongsToSection, Relations\Interfaces\IBelongsToUser {
+
+    use Common\TraitTitleModel, Common\TraitBodyModel, Common\TraitSummaryModel, Relations\Common\TraitHasManyReplies, Relations\Common\TraitBelongsToSection, Relations\Common\TraitBelongsToUser;
+
+    /**
+     * The table the topics are stored in.
+     *
+     * @var string
+     */
+    protected $table = 'topics';
+
+    /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'topic';
+
+    /**
+     * The columns to select when displaying an index.
+     *
+     * @var array
+     */
+    public static $index = array('id', 'title', 'summary');
+
+    /**
+     * The max topics per page when displaying a paginated index.
+     *
+     * @var int
+     */
+    public static $paginate = 10;
+
+    /**
+     * The columns to order by when displaying an index.
+     *
+     * @var string
+     */
+    public static $order = 'id';
+
+    /**
+     * The direction to order by when displaying an index.
+     *
+     * @var string
+     */
+    public static $sort = 'desc';
+
+    /**
+     * The topic validation rules.
+     *
+     * @var array
+     */
+    public static $rules = array(
+        'title'      => 'required',
+        'summary'    => 'required',
+        'body'       => 'required',
+        'section_id' => 'required',
+        'user_id'    => 'required'
+    );
+
+    /**
+     * The topic factory.
+     *
+     * @var array
+     */
+    public static $factory = array(
+        'id'         => 1,
+        'title'      => 'String',
+        'summary'    => 'Summary of a topic.',
+        'body'       => 'The body of a topic.',
+        'section_id' => 1,
+        'user_id'    => 1
+    );
+
+    /**
+     * Before deleting an existing model.
+     *
+     * @return mixed
+     */
+    public function beforeDelete() {
+        $this->deleteReplies();
+    }
+}

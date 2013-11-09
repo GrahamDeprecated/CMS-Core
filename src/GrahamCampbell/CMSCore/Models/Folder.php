@@ -20,4 +20,81 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class Folder extends BaseModel {}
+class Folder extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISummaryModel, Relations\Interfaces\IHasManyFiles, Relations\Interfaces\IBelongsToUser {
+
+    use Common\TraitTitleModel, Common\TraitSummaryModel, Relations\Common\TraitHasManyFiles, Relations\Common\TraitBelongsToUser;
+
+    /**
+     * The table the folders are stored in.
+     *
+     * @var string
+     */
+    protected $table = 'folders';
+
+    /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'folder';
+
+    /**
+     * The columns to select when displaying an index.
+     *
+     * @var array
+     */
+    public static $index = array('id', 'title', 'summary', 'created_at');
+
+    /**
+     * The max folders per page when displaying a paginated index.
+     *
+     * @var int
+     */
+    public static $paginate = 10;
+
+    /**
+     * The columns to order by when displaying an index.
+     *
+     * @var string
+     */
+    public static $order = 'id';
+
+    /**
+     * The direction to order by when displaying an index.
+     *
+     * @var string
+     */
+    public static $sort = 'desc';
+
+    /**
+     * The folder validation rules.
+     *
+     * @var array
+     */
+    public static $rules = array(
+        'title'   => 'required',
+        'summary' => 'required',
+        'user_id' => 'required'
+    );
+
+    /**
+     * The folder factory.
+     *
+     * @var array
+     */
+    public static $factory = array(
+        'id'      => 1,
+        'title'   => 'Folder',
+        'summary' => 'The is a folder with stuff in.',
+        'user_id' => 1
+    );
+
+    /**
+     * Before deleting an existing model.
+     *
+     * @return mixed
+     */
+    public function beforeDelete() {
+        $this->deleteFiles();
+    }
+}

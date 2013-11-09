@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,34 +20,32 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+trait TraitBelongsToFolder {
 
     /**
-     * Get the post relation.
+     * Get the folder relation.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function posts();
+    public function folder() {
+        return $this->belongsTo('GrahamCampbell\CMSCore\Models\Folder');
+    }
 
     /**
-     * Get the post collection.
+     * Get the folder model.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \GrahamCampbell\CMSCore\Models\Folder
      */
-    public function getPosts($columns = null);
+    public function getFolder($columns = array('*')) {
+        return $this->folder()->first($columns);
+    }
 
     /**
-     * Get the specified post.
+     * Get the folder id.
      *
-     * @return \GrahamCampbell\CMSCore\Models\Post
+     * @return int
      */
-    public function findPost($id, $columns = array('*'));
-
-    /**
-     * Delete all posts.
-     *
-     * @return void
-     */
-    public function deletePosts();
-
+    public function getFolderId() {
+        return $this->folder_id;
+    }
 }

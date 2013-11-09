@@ -20,34 +20,34 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+interface IHasManyReplies {
 
     /**
-     * Get the post relation.
+     * Get the reply relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function posts();
+    public function replies();
 
     /**
-     * Get the post collection.
+     * Get the reply collection.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPosts($columns = null);
+    public function getReplies($columns = null);
 
     /**
-     * Get the specified post.
+     * Get the specified reply.
      *
-     * @return \GrahamCampbell\CMSCore\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Reply
      */
-    public function findPost($id, $columns = array('*'));
+    public function findReply($id, $columns = array('*'));
 
     /**
-     * Delete all posts.
+     * Delete all replies.
      *
      * @return void
      */
-    public function deletePosts();
+    public function deleteReplies();
 
 }

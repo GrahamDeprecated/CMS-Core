@@ -20,4 +20,114 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class File extends BaseModel {}
+use File as LaravelFile;
+
+class File extends BaseModel implements Interfaces\ITitleModel, Relations\Interfaces\IBelongsToUser, Relations\Interfaces\IBelongsToFolder {
+
+    use Common\TraitTitleModel, Relations\Common\TraitBelongsToUser, Relations\Common\TraitBelongsToFolder;
+
+    /**
+     * The table the files are stored in.
+     *
+     * @var string
+     */
+    protected $table = 'files';
+
+    /**
+     * The model name.
+     *
+     * @var string
+     */
+    public static $name = 'file';
+
+    /**
+     * The columns to select when displaying an index.
+     *
+     * @var array
+     */
+    public static $index = array('id', 'title', 'format', 'created_at');
+
+    /**
+     * The max files per page when displaying a paginated index.
+     *
+     * @var int
+     */
+    public static $paginate = 20;
+
+    /**
+     * The columns to order by when displaying an index.
+     *
+     * @var string
+     */
+    public static $order = 'id';
+
+    /**
+     * The direction to order by when displaying an index.
+     *
+     * @var string
+     */
+    public static $sort = 'desc';
+
+    /**
+     * The file validation rules.
+     *
+     * @var array
+     */
+    public static $rules = array(
+        'title'     => 'required',
+        'format'    => 'required',
+        'summary'   => 'required',
+        'user_id'   => 'required',
+        'folder_id' => 'required'
+    );
+
+    /**
+     * The file factory.
+     *
+     * @var array
+     */
+    public static $factory = array(
+        'id'        => 1,
+        'title'     => 'File',
+        'format'    => 'docx',
+        'summary'   => 'This is an example word document.',
+        'user_id'   => 1,
+        'folder_id' => 1
+    );
+
+    /**
+     * Get the file format.
+     *
+     * @return string
+     */
+    public function getFormat() {
+        return $this->format;
+    }
+
+    /**
+     * Get the file name.
+     *
+     * @return string
+     */
+    public function getName() {
+        return $this->id.'.'.$this->format;
+    }
+
+    /**
+     * Get the file path.
+     *
+     * @return string
+     */
+    public function getPath() {
+        return storage_path().'/files/'.$this->getName();
+    }
+
+    /**
+     * Before deleting an existing model.
+     *
+     * @return mixed
+     */
+    public function beforeDelete() {
+        LaravelFile::delete($this->getPath());
+    }
+}

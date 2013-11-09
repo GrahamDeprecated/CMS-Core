@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Models\Relations\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,34 +20,53 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
+trait TraitHasManyReplies {
 
     /**
-     * Get the post relation.
+     * Get the reply relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function posts();
+    public function replies() {
+        return $this->hasMany('GrahamCampbell\CMSCore\Models\Reply');
+    }
 
     /**
-     * Get the post collection.
+     * Get the reply collection.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPosts($columns = null);
+    public function getReplies($columns = null) {
+        $model = 'GrahamCampbell\CMSCore\Models\Reply';
+
+        if (is_null($columns)) {
+            $columns = $model::$index;
+        }
+
+        if (property_exists($model, 'order')) {
+            return $this->replies()->orderBy($model::$order, $model::$sort)->get($columns);
+        }
+
+        return $this->replies()->get($columns);
+    }
 
     /**
-     * Get the specified post.
+     * Get the specified reply.
      *
-     * @return \GrahamCampbell\CMSCore\Models\Post
+     * @return \GrahamCampbell\CMSCore\Models\Reply
      */
-    public function findPost($id, $columns = array('*'));
+    public function findReply($id, $columns = array('*')) {
+        return $this->replies()->find($id, $columns);
+    }
 
     /**
-     * Delete all posts.
+     * Delete all replies.
      *
      * @return void
      */
-    public function deletePosts();
-
+    public function deleteReplies() {
+        foreach($this->getReplies(array('id')) as $reply) {
+            $reply->delete();
+        }
+    }
 }
