@@ -26,6 +26,7 @@ Basically, expect no support what so ever. This includes, but is not exclusive t
 * No support or help will be given during installation or updating.  
   * No database migration support between updates
   * Updates may not be backwards compatible
+  * From V0.4, a migration path will always be provided between tagged releases
 * Some of the config may be for features that don't exist yet.  
   * Some config may even brake the entire site
   * Just remember, this software comes WITHOUT ANY WARRANTY
@@ -66,23 +67,32 @@ Please check the system requirements before installing Bootstrap CMS.
 7. Additionally, you may to setup some of Bootstrap CMS's other features (see below).  
   * Some things, like [caching](#setting-up-caching) and [queuing](#setting-up-queing), are disabled out of the box
   * This is to allow Bootstrap CMS to work with minimal setup
+  * Please note that queuing is required in order to use the cron functionality which can do things like notify users of upcoming events, or send out weekly activity digests
 
 <br>
 
 ## Setting Up Queuing
 
+Bootstrap CMS provides queuing functionality, and when enabled, requires 3 separate queues.  
+  * One queue (the mail queue) will be used for sending emails
+  * One queue (the cron queue) will be used for all cron jobs
+  * One queue (the default queue) will be used for all other jobs
+  * These queues must be separate to avoid unexpected functionality
+
 Note that `beanstalkd` requires a local server, while `sqs` and `iron` are cloud based.  
+Also note that `sqs` support is not 100% complete and is mainly untested.  
 
 1. Choose your poison - I'd recommend [IronMQ](http://www.iron.io/mq).  
 2. Enter your queuing server details into `app/config/queue.php`.  
 3. You can also set a separate mail queue in `app/config/mail.php`.  
-4. For [IronMQ](http://www.iron.io/mq), the queue subscription path is `/queue/receive`.  
+4. For [IronMQ](http://www.iron.io/mq), you can run the command `php artisan queue:iron http://yoursite.com` (where `http://yoursite.com` is your site's base URL without a tailing slash, not the subscription URL).  
 5. You can find out more about queuing by heading over to the [Laravel Docs](http://laravel.com/docs/queues).  
 
 <br>
 
 ## Setting Up Caching
 
+Bootstrap CMS provides caching functionality, and when enabled, requires a caching server.  
 Note that caching will not work with Laravel's `file` or `database` cache drivers.  
 
 1. Choose your poison - I'd recommend [Redis](http://redis.io).  
@@ -103,7 +113,7 @@ Bootstrap CMS natively supports [Google Analytics](http://www.google.com/analyti
 
 ## Setting Up Themes
 
-Bootstrap CMS also ships with 13 themes, 11 from [Bootswatch](http://bootswatch.com/2).  
+Bootstrap CMS also ships with 13 themes, 11 from [Bootswatch](http://bootswatch.com).  
 
 1. You can set your theme in `app/config/theme.php`.  
 2. You can also set your nav bar style in `app/config/theme.php`.  
