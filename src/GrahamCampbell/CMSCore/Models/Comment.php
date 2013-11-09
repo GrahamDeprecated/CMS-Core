@@ -20,9 +20,9 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class Comment extends BaseModel implements Interfaces\IBodyModel, Relations\Interfaces\IBelongsToPost, Relations\Interfaces\IBelongsToUser {
+class Comment extends BaseModel implements Interfaces\IBodyModel, Interfaces\IVersionModel, Relations\Interfaces\IBelongsToPost, Relations\Interfaces\IBelongsToUser {
 
-    use Common\TraitBodyModel, Relations\Common\TraitBelongsToPost, Relations\Common\TraitBelongsToUser;
+    use Common\TraitBodyModel, Common\TraitVersionModel, Relations\Common\TraitBelongsToPost, Relations\Common\TraitBelongsToUser;
 
     /**
      * The table the comments are stored in.
@@ -44,13 +44,6 @@ class Comment extends BaseModel implements Interfaces\IBodyModel, Relations\Inte
      * @var array
      */
     public static $index = array('id', 'body', 'user_id', 'created_at', 'version');
-
-    /**
-     * The max comments per page when displaying a paginated index.
-     *
-     * @var int
-     */
-    public static $paginate = 20;
 
     /**
      * The columns to order by when displaying an index.
@@ -89,13 +82,4 @@ class Comment extends BaseModel implements Interfaces\IBodyModel, Relations\Inte
         'post_id' => 1,
         'version' => 1
     );
-
-    /**
-     * Get version.
-     *
-     * @return int
-     */
-    public function getVersion() {
-        return $this->version;
-    }
 }

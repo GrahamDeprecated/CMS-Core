@@ -20,9 +20,9 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBodyModel, Relations\Interfaces\IHasManyComments, Relations\Interfaces\IBelongsToUser {
+class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBodyModel, Interfaces\ISummaryModel, Relations\Interfaces\IHasManyComments, Relations\Interfaces\IBelongsToUser {
 
-    use Common\TraitTitleModel, Common\TraitBodyModel, Relations\Common\TraitHasManyComments, Relations\Common\TraitBelongsToUser;
+    use Common\TraitTitleModel, Common\TraitBodyModel, Common\TraitSummaryModel, Relations\Common\TraitHasManyComments, Relations\Common\TraitBelongsToUser;
 
     /**
      * The table the posts are stored in.
@@ -90,15 +90,6 @@ class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBody
         'body'    => 'The body of a post.',
         'user_id' => 1
     );
-
-    /**
-     * Get summary.
-     *
-     * @return string
-     */
-    public function getSummary() {
-        return $this->summary;
-    }
 
     /**
      * Before deleting an existing model.
