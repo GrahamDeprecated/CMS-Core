@@ -49,8 +49,8 @@ class JobProvider extends BaseProvider {
      * @param  string  $type
      * @return string
      */
-    protected function task($type) {
-        return 'GrahamCampbell\BootstrapCMS\Handlers\\'.ucfirst($type).'Handler';
+    protected function task($type, $location = 'GrahamCampbell\CMSCore\Handlers') {
+        return $location.'\\'.ucfirst($type).'Handler';
     }
 
     /**
@@ -60,9 +60,9 @@ class JobProvider extends BaseProvider {
      * @param  array   $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getTask($task, array $columns = array('*')) {
+    public function getTask($task, array $columns = array('*'), $location = 'GrahamCampbell\CMSCore\Handlers') {
         $model = $this->model;
-        $task = $this->task($task);
+        $task = $this->task($task, $location);
         return $model::where('task', '=', $task)->get($columns);
     }
 
@@ -74,9 +74,9 @@ class JobProvider extends BaseProvider {
      * @param  array   $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getDeletedTask($task, array $columns = array('*')) {
+    public function getDeletedTask($task, array $columns = array('*'), $location = 'GrahamCampbell\CMSCore\Handlers') {
         $model = $this->model;
-        $task = $this->task($task);
+        $task = $this->task($task, $location);
         return $model::onlyTrashed()->where('task', '=', $task)->get($columns);
     }
 
@@ -112,9 +112,9 @@ class JobProvider extends BaseProvider {
      * @param  array   $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getOldTask($task, $age = 68400, array $columns = array('*')) {
+    public function getOldTask($task, $age = 68400, array $columns = array('*'), $location = 'GrahamCampbell\CMSCore\Handlers') {
         $model = $this->model;
-        $task = $this->task($task);
+        $task = $this->task($task, $location);
         return $model::where(function($query) use ($task, $age, $columns) { $query->where('task', '=', $task)->where('updated_at', '<=', time() - ($age)); })->get($columns);
     }
 
@@ -126,9 +126,9 @@ class JobProvider extends BaseProvider {
      * @param  array   $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getOldDeletedTask($task, $age = 478800, array $columns = array('*')) {
+    public function getOldDeletedTask($task, $age = 478800, array $columns = array('*'), $location = 'GrahamCampbell\CMSCore\Handlers') {
         $model = $this->model;
-        $task = $this->task($task);
+        $task = $this->task($task, $location);
         return $model::onlyTrashed()->where(function($query) use ($task, $age, $columns) { $query->where('task', '=', $task)->where('deleted_at', '<=', time() - ($age)); })->get($columns);
     }
 

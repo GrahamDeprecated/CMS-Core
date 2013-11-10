@@ -72,7 +72,7 @@ class Job extends BaseModel {
     public static $factory = array(
         'id'    => 1,
         'tries' => 0,
-        'task'  => 'GrahamCampbell\BootstrapCMS\Handlers\MailHandler'
+        'task'  => 'GrahamCampbell\CMSCore\Handlers\MailHandler'
     );
 
     /**

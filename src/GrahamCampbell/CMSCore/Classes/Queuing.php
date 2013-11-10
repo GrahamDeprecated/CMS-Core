@@ -51,8 +51,8 @@ class Queuing extends BaseClass {
      * @param  string  $type
      * @return string
      */
-    protected function getTask($type) {
-        return 'GrahamCampbell\BootstrapCMS\Handlers\\'.ucfirst($type).'Handler';
+    protected function getTask($type, $location = 'GrahamCampbell\CMSCore\Handlers') {
+        return $location.'\\'.ucfirst($type).'Handler';
     }
 
     /**
@@ -100,10 +100,10 @@ class Queuing extends BaseClass {
      * @param  string  $queue
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
-    protected function queue($delay, $task, $data, $queue) {
+    protected function queue($delay, $task, $data, $queue, $location = 'GrahamCampbell\CMSCore\Handlers') {
         if ($this->app['config']['queue.default'] == 'sync') {
             // check the job
-            if ($this->getTask('cron') == $task) {
+            if ($this->getTask('cron', $location) == $task) {
                 throw new \InvalidArgumentException('A cron job cannot run on the sync queue.');
             }
         } else {
@@ -177,8 +177,8 @@ class Queuing extends BaseClass {
      * @param  array   $data
      * @return \GrahamCampbell\CMSCore\Models\Job
      */
-    public function laterJob($delay, $job, array $data = array()) {
-        return $this->queue($delay, $this->getTask($job), $data, $this->getQueue('queue'));
+    public function laterJob($delay, $job, array $data = array(), $location = 'GrahamCampbell\CMSCore\Handlers') {
+        return $this->queue($delay, $this->getTask($job, $location), $data, $this->getQueue('queue'));
     }
 
     /**
