@@ -23,7 +23,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use GrahamCampbell\CMSCore\Facades\PagesProvider;
+use GrahamCampbell\CMSCore\Facades\PageProvider;
 
 class AddStuffToPages extends Migration {
 
@@ -38,7 +38,7 @@ class AddStuffToPages extends Migration {
             $table->text('js')->default('');
         });
         foreach (PageProvider::all() as $page) {
-            $page::update(array('css' => '', 'js' => ''));
+            $page->update(array('css' => '', 'js' => ''));
         }
     }
 

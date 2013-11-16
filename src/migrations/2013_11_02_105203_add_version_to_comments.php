@@ -37,7 +37,7 @@ class AddVersionToComments extends Migration {
             $table->integer('version')->unsigned()->default(1);
         });
         foreach (CommentProvider::all() as $comment) {
-            $comment::update(array('version' => 1));
+            $comment->update(array('version' => 1));
         }
     }
 
