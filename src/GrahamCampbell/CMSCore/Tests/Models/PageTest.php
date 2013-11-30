@@ -42,6 +42,14 @@ class PageTest extends ModelTestCase implements Relations\Interfaces\IBelongsToU
         $this->assertEquals($this->instance->getBody(), $this->instance->body);
     }
 
+    public function testGetCSS() {
+        $this->assertEquals($this->instance->getCSS(), $this->instance->css);
+    }
+
+    public function testGetJS() {
+        $this->assertEquals($this->instance->getJS(), $this->instance->js);
+    }
+
     public function testGetShowTitle() {
         $this->assertEquals($this->instance->getShowTitle(), $this->instance->show_title);
     }
