@@ -90,11 +90,11 @@ class Page extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISlug
         'title'      => 'Page Title',
         'slug'       => 'page-title',
         'body'       => 'This is the page body!',
-        'css'        => '',
-        'js'         => '',
+        'css'        => 'ccs',
+        'js'         => 'js',
         'show_title' => true,
         'show_nav'   => true,
-        'icon'       => '',
+        'icon'       => 'home',
         'user_id'    => 1
     );
 
