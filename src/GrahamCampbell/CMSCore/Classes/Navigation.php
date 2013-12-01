@@ -94,7 +94,7 @@ class Navigation {
      * @param  string  $cacheconfig
      * @return void
      */
-    public function __construct(Request $request, UrlGenerator $url, Repository $cache, PageProvider $pageprovider, $cacheconfig) {
+    public function __construct(Request $request, UrlGenerator $url, CacheManager $cache, PageProvider $pageprovider, $cacheconfig) {
         $this->request = $request;
         $this->url = $url;
         $this->cache = $cache;
