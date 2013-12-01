@@ -47,49 +47,40 @@ class CMSCoreServiceProvider extends ServiceProvider {
      */
     public function register() {
         $this->app['commentprovider'] = $this->app->share(function($app) {
-            return new Providers\CommentProvider($app);
+            return new Providers\CommentProvider;
         });
         $this->app['eventprovider'] = $this->app->share(function($app) {
-            return new Providers\EventProvider($app);
+            return new Providers\EventProvider;
         });
         $this->app['fileprovider'] = $this->app->share(function($app) {
-            return new Providers\FileProvider($app);
+            return new Providers\FileProvider;
         });
         $this->app['folderprovider'] = $this->app->share(function($app) {
-            return new Providers\FolderProvider($app);
+            return new Providers\FolderProvider;
         });
         $this->app['groupprovider'] = $this->app->share(function($app) {
-            return new Providers\GroupProvider($app);
-        });
-        $this->app['jobprovider'] = $this->app->share(function($app) {
-            return new Providers\JobProvider($app);
+            return new Providers\GroupProvider;
         });
         $this->app['pageprovider'] = $this->app->share(function($app) {
-            return new Providers\PageProvider($app);
+            return new Providers\PageProvider;
         });
         $this->app['postprovider'] = $this->app->share(function($app) {
-            return new Providers\PostProvider($app);
+            return new Providers\PostProvider;
         });
         $this->app['replyprovider'] = $this->app->share(function($app) {
-            return new Providers\ReplyProvider($app);
+            return new Providers\ReplyProvider;
         });
         $this->app['sectionprovider'] = $this->app->share(function($app) {
-            return new Providers\SectionProvider($app);
+            return new Providers\SectionProvider;
         });
         $this->app['topicprovider'] = $this->app->share(function($app) {
-            return new Providers\TopicProvider($app);
+            return new Providers\TopicProvider;
         });
         $this->app['userprovider'] = $this->app->share(function($app) {
-            return new Providers\UserProvider($app);
+            return new Providers\UserProvider;
         });
         $this->app['navigation'] = $this->app->share(function($app) {
-            return new Classes\Navigation($app);
-        });
-        $this->app['queuing'] = $this->app->share(function($app) {
-            return new Classes\Queuing($app);
-        });
-        $this->app['cron'] = $this->app->share(function($app) {
-            return new Classes\Cron($app);
+            return new Classes\Navigation($app['request'], $app['url'], $app['cache'], $app['pageprovider'], $app['config']['cms.cache']);
         });
     }
 
@@ -99,6 +90,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'groupprovider', 'jobprovider', 'pageprovider', 'postprovider', 'replyprovider', 'sectionprovider', 'topicprovider', 'userprovider', 'navigation', 'queuing', 'cron');
+        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'groupprovider', 'pageprovider', 'postprovider', 'replyprovider', 'sectionprovider', 'topicprovider', 'userprovider', 'navigation');
     }
 }

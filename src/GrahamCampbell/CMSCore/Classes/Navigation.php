@@ -20,6 +20,10 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
+use Illuminate\Cache\CacheManager;
+use GrahamCampbell\CMSCore\Providers\PageProvider;
 use GrahamCampbell\CMSCore\Models\Page;
 
 class Navigation extends BaseClass {
@@ -44,6 +48,59 @@ class Navigation extends BaseClass {
      * @var array
      */
     protected $admin = array();
+
+    /**
+     * The request instance.
+     *
+     * @var \Illuminate\Http\Request
+     */
+    protected $request;
+
+    /**
+     * The url instance.
+     *
+     * @var \Illuminate\Routing\UrlGenerator
+     */
+    protected $url;
+
+    /**
+     * The cache instance.
+     *
+     * @var \Illuminate\Cache\CacheManager
+     */
+    protected $cache;
+
+    /**
+     * The pageprovider instance.
+     *
+     * @var \GrahamCampbell\CMSCore\Providers\PageProvider
+     */
+    protected $pageprovider;
+
+    /**
+     * The cache config.
+     *
+     * @var string
+     */
+    protected $cacheconfig;
+
+    /**
+     * Create a new instance.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Routing\UrlGenerator  $url
+     * @param  \Illuminate\Cache\CacheManager  $cache
+     * @param  \GrahamCampbell\CMSCore\Providers\PageProvider  $pageprovider
+     * @param  string  $cacheconfig
+     * @return void
+     */
+    public function __construct(Request $request, UrlGenerator $url, Repository $cache, PageProvider $pageprovider, $cacheconfig) {
+        $this->request = $request;
+        $this->url = $url;
+        $this->cache = $cache;
+        $this->pageprovider = $pageprovider;
+        $this->cacheconfig = $cacheconfig;
+    }
 
     /**
      * Get the processed nav var by name.
@@ -71,7 +128,7 @@ class Navigation extends BaseClass {
             // check if it is local
             if (isset($value['slug'])) {
                 // if the request starts with the slug
-                if ($this->app['request']->is($value['slug']) || $this->app['request']->is($value['slug'].'/*')) {
+                if ($this->request->is($value['slug']) || $this->request->is($value['slug'].'/*')) {
                     // then the navigation item is active, or selected
                     $nav[$key]['active'] = true;
                 } else {
@@ -89,7 +146,7 @@ class Navigation extends BaseClass {
             // if the url is not set
             if (!isset($value['url'])) {
                 // set the url based on the slug
-                $nav[$key]['url'] = $this->app['url']->to($value['slug']);
+                $nav[$key]['url'] = $this->url->to($value['slug']);
             }
             // remove any remaining slugs
             unset($nav[$key]['slug']);
@@ -177,7 +234,7 @@ class Navigation extends BaseClass {
      */
     protected function goGet($name) {
         // check if we are using the cache
-        if ($this->app['config']['cms.cache'] === true) {
+        if ($this->cacheconfig === true) {
             // if so, then pull from the cache
             $value = $this->getCache($name);
             // check if the value is valid
@@ -239,7 +296,7 @@ class Navigation extends BaseClass {
      * @return array
      */
     protected function sendGetAdmin() {
-        return array($this->app['pageprovider']->find('home', array('title', 'slug', 'icon'))->toArray());
+        return array($this->pageprovider->find('home', array('title', 'slug', 'icon'))->toArray());
     }
 
     /**
@@ -249,7 +306,7 @@ class Navigation extends BaseClass {
      * @return array
      */
     protected function getCache($name) {
-        return $this->app['cache']->section('nav')->get($name);
+        return $this->cache->section('nav')->get($name);
     }
 
     /**
@@ -260,7 +317,7 @@ class Navigation extends BaseClass {
      * @return void
      */
     protected function setCache($name, $value) {
-        $this->app['cache']->section('nav')->forever($name, $value);
+        $this->cache->section('nav')->forever($name, $value);
     }
 
     /**
@@ -269,7 +326,7 @@ class Navigation extends BaseClass {
      * @return void
      */
     protected function flushCache() {
-        $this->app['cache']->section('nav')->flush();
+        $this->cache->section('nav')->flush();
     }
 
     /**
@@ -279,7 +336,7 @@ class Navigation extends BaseClass {
      * @return void
      */
     protected function purgeCache($name) {
-        $this->app['cache']->section('nav')->forget($name);
+        $this->cache->section('nav')->forget($name);
     }
 
     /**
@@ -302,7 +359,7 @@ class Navigation extends BaseClass {
      * @return void
      */
     public function flush() {
-        if ($this->app['config']['cms.cache'] === true) {
+        if ($this->cacheconfig === true) {
             $this->flushCache();
         }
     }
@@ -314,7 +371,7 @@ class Navigation extends BaseClass {
      * @return void
      */
     public function purge($name = 'main') {
-        if ($this->app['config']['cms.cache'] === true) {
+        if ($this->cacheconfig === true) {
             $this->purgeCache($name);
         }
     }
@@ -326,7 +383,7 @@ class Navigation extends BaseClass {
      * @return void
      */
     public function refresh($name = 'main') {
-        if ($this->app['config']['cms.cache'] === true) {
+        if ($this->cacheconfig === true) {
             $this->setCache($name, $this->sendGet($name));
         }
     }
@@ -338,7 +395,7 @@ class Navigation extends BaseClass {
      * @return void
      */
     public function regen() {
-        if ($this->app['config']['cms.cache'] === true) {
+        if ($this->cacheconfig === true) {
             $this->flushCache();
             $this->setCache('main', $this->sendGet('main'));
             $this->setCache('admin', $this->sendGet('admin'));

@@ -20,82 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-abstract class BaseProvider {
+abstract class BaseProvider implements Interfaces\IBaseProvider {
 
-    /**
-     * The application instance.
-     *
-     * @var \Illuminate\Foundation\Application
-     */
-    protected $app;
+    use Common\TraitBaseProvider;
 
-    /**
-     * Create a new instance.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return void
-     */
-    public function __construct($app) {
-        $this->app = $app;
-    }
-
-    /**
-     * Create a new model.
-     *
-     * @param  array  $input
-     * @return mixed
-     */
-    public function create(array $input) {
-        $model = $this->model;
-        return $model::create($input);
-    }
-
-    /**
-     * Find an existing model.
-     *
-     * @param  int    $id
-     * @param  array  $input
-     * @return mixed
-     */
-    public function find($id, array $columns = array('*')) {
-        $model = $this->model;
-        return $model::find($id, $columns);
-    }
-
-    /**
-     * Find all models.
-     *
-     * @param  int    $id
-     * @param  array  $input
-     * @return mixed
-     */
-    public function all(array $columns = array('*')) {
-        $model = $this->model;
-        return $model::all($columns);
-    }
-
-    /**
-     * Get a list of the models.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function index() {
-        $model = $this->model;
-
-        if (property_exists($model, 'order')) {
-            return $model::orderBy($model::$order, $model::$sort)->get($model::$index);
-        }
-
-        return $model::get($model::$index);
-    }
-
-    /**
-     * Get the number of rows.
-     *
-     * @return int
-     */
-    public function count() {
-        $model = $this->model;
-        return $model::where('id', '>=', 1)->count();
-    }
 }

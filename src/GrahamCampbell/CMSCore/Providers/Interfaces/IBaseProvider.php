@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Handlers;
+<?php namespace GrahamCampbell\CMSCore\Providers\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,38 +20,46 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Cron;
-use JobProvider;
-
-class CronHandler extends BaseHandler {
+interface IBaseProvider {
 
     /**
-     * Run the task (called by BaseHandler).
+     * Create a new model.
      *
-     * @return void
+     * @param  array  $input
+     * @return mixed
      */
-    protected function run() {
-        $data = $this->data;
-        JobProvider::clearOldJobs();
-    }
+    public function create(array $input);
 
     /**
-     * Run after a job success (called by BaseHandler).
+     * Find an existing model.
      *
-     * @return void
+     * @param  int    $id
+     * @param  array  $input
+     * @return mixed
      */
-    protected function afterSuccess() {
-        Cron::start();
-    }
+    public function find($id, array $columns = array('*'));
 
     /**
-     * Run after a job abortion (called by BaseHandler).
+     * Find all models.
      *
-     * @return void
+     * @param  int    $id
+     * @param  array  $input
+     * @return mixed
      */
-    protected function afterAbortion() {
-        if ($this->model) {
-            Cron::start(500);
-        }
-    }
+    public function all(array $columns = array('*'));
+
+    /**
+     * Get a list of the models.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function index();
+
+    /**
+     * Get the number of rows.
+     *
+     * @return int
+     */
+    public function count();
+
 }

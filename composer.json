@@ -20,6 +20,7 @@
         "graham-campbell/binput": "dev-develop",
         "graham-campbell/passwd": "dev-develop",
         "graham-campbell/htmlmin": "dev-develop",
+        "graham-campbell/queuing": "dev-develop",
         "graham-campbell/cloudflare-api": "dev-develop"
     },
     "require-dev": {
