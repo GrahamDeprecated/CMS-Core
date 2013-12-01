@@ -26,7 +26,7 @@ use Illuminate\Cache\CacheManager;
 use GrahamCampbell\CMSCore\Providers\PageProvider;
 use GrahamCampbell\CMSCore\Models\Page;
 
-class Navigation extends BaseClass {
+class Navigation {
 
     /**
      * An extra array of items to be added to the main nav bar.
