@@ -20,7 +20,7 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Event as LaravelEvent;
+use Illuminate\Support\Facades\Event as LaravelEvent;
 use Carbon\Carbon;
 
 trait TraitBaseModel {
