@@ -20,7 +20,7 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Eloquent;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 abstract class BaseModel extends Eloquent implements Interfaces\IBaseModel {
 
