@@ -20,11 +20,18 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use File as LaravelFile;
+use Illuminate\Support\Facades\File as LaravelFile;
+use GrahamCampbell\Core\Models\BaseModel;
+use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
+use GrahamCampbell\Core\Models\Common\TraitTitleMode;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToFolder;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToFolder;
 
-class File extends BaseModel implements Interfaces\ITitleModel, Relations\Interfaces\IBelongsToUser, Relations\Interfaces\IBelongsToFolder {
+class File extends BaseModel implements ITitleModel, IBelongsToUser, IBelongsToFolder {
 
-    use Common\TraitTitleModel, Relations\Common\TraitBelongsToUser, Relations\Common\TraitBelongsToFolder;
+    use TraitTitleModel, TraitBelongsToUser, TraitBelongsToFolder;
 
     /**
      * The table the files are stored in.

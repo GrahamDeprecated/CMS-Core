@@ -22,10 +22,28 @@
 
 use Carbon\Carbon;
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
+use GrahamCampbell\Core\Models\Interfaces\IBaseModel;
+use GrahamCampbell\Core\Models\Common\TraitBaseModel;
+use GrahamCampbell\Core\Models\Interfaces\INameModel;
+use GrahamCampbell\Core\Models\Common\TraitNameModel;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyPages;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyPages;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyPosts;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyPosts;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyEvents;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyEvents;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyFolders;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyFolders;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyFiles;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyFiles;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyComments;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyComments;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToManyEvents;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToManyEvents;
 
-class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\INameModel, Relations\Interfaces\IHasManyPages, Relations\Interfaces\IHasManyPosts, Relations\Interfaces\IHasManyEvents, Relations\Interfaces\IHasManySections, Relations\Interfaces\IHasManyTopics, Relations\Interfaces\IHasManyFolders, Relations\Interfaces\IHasManyFiles, Relations\Interfaces\IHasManyComments,  Relations\Interfaces\IHasManyReplies, Relations\Interfaces\IBelongsToManyEvents {
+class User extends SentryUser implements IBaseModel, INameModel, IHasManyPages, IHasManyPosts, IHasManyEvents, IHasManyFolders, IHasManyFiles, IHasManyComments, IBelongsToManyEvents {
 
-    use Common\TraitBaseModel, Common\TraitNameModel, Relations\Common\TraitHasManyPages, Relations\Common\TraitHasManyPosts, Relations\Common\TraitHasManyEvents, Relations\Common\TraitHasManySections, Relations\Common\TraitHasManyTopics, Relations\Common\TraitHasManyFolders, Relations\Common\TraitHasManyFiles, Relations\Common\TraitHasManyComments, Relations\Common\TraitHasManyReplies, Relations\Common\TraitBelongsToManyEvents;
+    use TraitBaseModel, TraitNameModel, TraitHasManyPages, TraitHasManyPosts, TraitHasManyEvents, TraitHasManyFolders, TraitHasManyFiles, TraitHasManyComments, TraitBelongsToManyEvents;
 
     /**
      * The table the users are stored in.
@@ -109,11 +127,8 @@ class User extends SentryUser implements Interfaces\IBaseModel, Interfaces\IName
         $this->deletePages();
         $this->deletePosts();
         $this->deleteEvents();
-        $this->deleteSections();
-        $this->deleteTopics();
         $this->deleteFolders();
         $this->deleteFiles();
-        $this->deleteReplies();
         $this->deleteComments();
     }
 }

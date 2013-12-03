@@ -20,9 +20,19 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class Page extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISlugModel, Interfaces\IBodyModel, Relations\Interfaces\IBelongsToUser {
+use GrahamCampbell\Core\Models\BaseModel;
+use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
+use GrahamCampbell\Core\Models\Common\TraitTitleModel;
+use GrahamCampbell\Core\Models\Interfaces\ISlugModel;
+use GrahamCampbell\Core\Models\Common\TraitSlugModel;
+use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
+use GrahamCampbell\Core\Models\Common\TraitBodyModel;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 
-    use Common\TraitTitleModel, Common\TraitSlugModel, Common\TraitBodyModel, Relations\Common\TraitBelongsToUser;
+class Page extends BaseModel implements ITitleModel, ISlugModel, IBodyModel, IBelongsToUser {
+
+    use TraitTitleModel, TraitSlugModel, TraitBodyModel, TraitBelongsToUser;
 
     /**
      * The table the pages are stored in.

@@ -20,9 +20,19 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class Folder extends BaseModel implements Interfaces\ITitleModel, Interfaces\ISummaryModel, Relations\Interfaces\IHasManyFiles, Relations\Interfaces\IBelongsToUser {
+use GrahamCampbell\Core\Models\BaseModel;
+use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
+use GrahamCampbell\Core\Models\Common\TraitTitleModel;
+use GrahamCampbell\Core\Models\Interfaces\ISummaryModel;
+use GrahamCampbell\Core\Models\Common\TraitSummaryModel;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyFiles;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyFiles;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 
-    use Common\TraitTitleModel, Common\TraitSummaryModel, Relations\Common\TraitHasManyFiles, Relations\Common\TraitBelongsToUser;
+class Folder extends BaseModel implements ITitleModel, ISummaryModel, IHasManyFiles, IBelongsToUser {
+
+    use TraitTitleModel, TraitSummaryModel, TraitHasManyFiles, TraitBelongsToUser;
 
     /**
      * The table the folders are stored in.

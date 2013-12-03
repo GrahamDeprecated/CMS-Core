@@ -20,9 +20,21 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class Post extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBodyModel, Interfaces\ISummaryModel, Relations\Interfaces\IHasManyComments, Relations\Interfaces\IBelongsToUser {
+use GrahamCampbell\Core\Models\BaseModel;
+use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
+use GrahamCampbell\Core\Models\Common\TraitTitleModel;
+use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
+use GrahamCampbell\Core\Models\Common\TraitBodyModel;
+use GrahamCampbell\Core\Models\Interfaces\ISummaryModel;
+use GrahamCampbell\Core\Models\Common\TraitSummaryModel;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyComments;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyComments;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 
-    use Common\TraitTitleModel, Common\TraitBodyModel, Common\TraitSummaryModel, Relations\Common\TraitHasManyComments, Relations\Common\TraitBelongsToUser;
+class Post extends BaseModel implements ITitleModel, IBodyModel, ISummaryModel, IHasManyComments, IBelongsToUser {
+
+    use TraitTitleModel, TraitBodyModel, TraitSummaryModel, TraitHasManyComments, TraitBelongsToUser;
 
     /**
      * The table the posts are stored in.

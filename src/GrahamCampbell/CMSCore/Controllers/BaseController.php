@@ -21,16 +21,16 @@
  */
 
 use App;
-use Controller;
 use Config;
 use Event;
 use Log;
-use Request;
 use View;
 
 use Sentry;
 
 use Navigation;
+
+use GrahamCampbell\Core\Controllers\BaseController as Controller;
 
 abstract class BaseController extends Controller {
 
@@ -84,17 +84,6 @@ abstract class BaseController extends Controller {
         $this->beforeFilter('auth:blog', array('only' => $this->blogs));
         $this->beforeFilter('auth:mod', array('only' => $this->mods));
         $this->beforeFilter('auth:admin', array('only' => $this->admins));
-    }
-
-    /**
-     * Setup the layout used by the controller.
-     *
-     * @return void
-     */
-    protected function setupLayout() {
-        if (!is_null($this->layout)) {
-            $this->layout = View::make($this->layout);
-        }
     }
 
     /**
@@ -164,17 +153,6 @@ abstract class BaseController extends Controller {
             return Sentry::getUser()->getId();
         } else {
             return 1;
-        }
-    }
-
-    /**
-     * Check ajax request.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    protected function checkAjax() {
-        if (!Request::ajax()) {
-            return App::abort(405, 'Ajax Is Required');
         }
     }
 

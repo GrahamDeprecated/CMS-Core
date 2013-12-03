@@ -20,9 +20,19 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class Comment extends BaseModel implements Interfaces\IBodyModel, Interfaces\IVersionModel, Relations\Interfaces\IBelongsToPost, Relations\Interfaces\IBelongsToUser {
+use GrahamCampbell\Core\Models\BaseModel;
+use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
+use GrahamCampbell\Core\Models\Common\TraitBodyModel;
+use GrahamCampbell\Core\Models\Interfaces\IVersionModel;
+use GrahamCampbell\Core\Models\Common\TraitVersionModel;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToPost;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToPost;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 
-    use Common\TraitBodyModel, Common\TraitVersionModel, Relations\Common\TraitBelongsToPost, Relations\Common\TraitBelongsToUser;
+class Comment extends BaseModel implements IBodyModel, IVersionModel, IBelongsToPost, IBelongsToUser {
+
+    use TraitBodyModel, TraitVersionModel, TraitBelongsToPost, TraitBelongsToUser;
 
     /**
      * The table the comments are stored in.

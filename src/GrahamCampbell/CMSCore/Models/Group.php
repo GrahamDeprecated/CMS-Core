@@ -21,10 +21,12 @@
  */
 
 use Cartalyst\Sentry\Groups\Eloquent\Group as SentryGroup;
+use GrahamCampbell\Core\Models\Interfaces\IBaseModel;
+use GrahamCampbell\Core\Models\Common\TraitBaseModel;
 
-class Group extends SentryGroup implements Interfaces\IBaseModel {
+class Group extends SentryGroup implements IBaseModel {
 
-    use Common\TraitBaseModel;
+    use TraitBaseModel;
 
     /**
      * The table the groups are stored in.

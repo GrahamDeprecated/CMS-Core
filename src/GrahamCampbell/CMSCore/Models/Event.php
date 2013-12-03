@@ -20,9 +20,23 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class Event extends BaseModel implements Interfaces\ITitleModel, Interfaces\IBodyModel, Interfaces\IDateModel, Interfaces\ILocationModel, Relations\Interfaces\IBelongsToUser, Relations\Interfaces\IBelongsToManyUsers {
+use GrahamCampbell\Core\Models\BaseModel;
+use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
+use GrahamCampbell\Core\Models\Common\TraitTitleMode;
+use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
+use GrahamCampbell\Core\Models\Common\TraitBodyModel;
+use GrahamCampbell\Core\Models\Interfaces\IDateModel;
+use GrahamCampbell\Core\Models\Common\TraitDateModel;
+use GrahamCampbell\CMSCore\Models\Interfaces\ILocationModel;
+use GrahamCampbell\CMSCore\Models\Common\TraitLocationModel;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToManyUsers;
+use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToManyUsers;
 
-    use Common\TraitTitleModel, Common\TraitBodyModel, Common\TraitDateModel, Common\TraitLocationModel, Relations\Common\TraitBelongsToUser, Relations\Common\TraitBelongsToManyUsers;
+class Event extends BaseModel implements ITitleModel, IBodyModel, IDateModel, ILocationModel, IBelongsToUser, IBelongsToManyUsers {
+
+    use TraitTitleModel, TraitBodyModel, TraitDateModel, TraitLocationModel, TraitBelongsToUser, TraitBelongsToManyUsers;
 
     /**
      * The table the events are stored in.

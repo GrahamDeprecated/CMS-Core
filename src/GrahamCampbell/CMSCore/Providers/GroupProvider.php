@@ -20,6 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use GrahamCampbell\Core\Providers\BaseProvider;
+
 class GroupProvider extends BaseProvider {
 
     /**

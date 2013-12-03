@@ -20,9 +20,13 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class FileProvider extends BaseProvider implements Interfaces\IPaginateProvider {
+use GrahamCampbell\Core\Providers\BaseProvider;
+use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
+use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
 
-    use Common\TraitPaginateProvider;
+class FileProvider extends BaseProvider implements IPaginateProvider {
+
+    use TraitPaginateProvider;
 
     /**
      * The name of the model to provide.

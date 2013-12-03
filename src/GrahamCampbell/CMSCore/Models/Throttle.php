@@ -21,10 +21,12 @@
  */
 
 use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
+use GrahamCampbell\Core\Models\Interfaces\IBaseModel;
+use GrahamCampbell\Core\Models\Common\TraitBaseModel;
 
-class Throttle extends SentryThrottle implements Interfaces\IBaseModel {
+class Throttle extends SentryThrottle implements IBaseModel {
 
-    use Common\TraitBaseModel;
+    use TraitBaseModel;
 
     /**
      * The table the throttles are stored in.

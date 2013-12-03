@@ -20,9 +20,15 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class PageProvider extends BaseProvider implements Interfaces\IPaginateProvider, Interfaces\ISlugProvider {
+use GrahamCampbell\Core\Providers\BaseProvider;
+use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
+use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
+use GrahamCampbell\Core\Providers\Interfaces\ISlugProvider;
+use GrahamCampbell\Core\Providers\Common\TraitSlugProvider;
 
-    use Common\TraitPaginateProvider, Common\TraitSlugProvider;
+class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvider {
+
+    use TraitPaginateProvider, TraitSlugProvider;
 
     /**
      * The name of the model to provide.
@@ -32,4 +38,3 @@ class PageProvider extends BaseProvider implements Interfaces\IPaginateProvider,
     protected $model = 'GrahamCampbell\CMSCore\Models\Page';
 
 }
-
