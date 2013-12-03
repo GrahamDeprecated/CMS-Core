@@ -22,7 +22,7 @@
 
 use GrahamCampbell\Core\Models\BaseModel;
 use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
-use GrahamCampbell\Core\Models\Common\TraitTitleMode;
+use GrahamCampbell\Core\Models\Common\TraitTitleModel;
 use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
 use GrahamCampbell\Core\Models\Common\TraitBodyModel;
 use GrahamCampbell\Core\Models\Interfaces\IDateModel;

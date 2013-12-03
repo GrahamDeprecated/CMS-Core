@@ -23,7 +23,7 @@
 use Illuminate\Support\Facades\File as LaravelFile;
 use GrahamCampbell\Core\Models\BaseModel;
 use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
-use GrahamCampbell\Core\Models\Common\TraitTitleMode;
+use GrahamCampbell\Core\Models\Common\TraitTitleModel;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToFolder;
