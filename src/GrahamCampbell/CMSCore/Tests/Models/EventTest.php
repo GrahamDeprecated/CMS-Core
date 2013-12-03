@@ -29,7 +29,7 @@ class EventTest extends ModelTestCase implements Relations\Interfaces\IBelongsTo
     protected $model = 'GrahamCampbell\CMSCore\Models\Event';
 
     protected function extraModelTests() {
-        $this->assertInstanceOf('GrahamCampbell\CMSCore\Models\BaseModel', $this->object);
+        $this->assertInstanceOf('GrahamCampbell\Core\Models\BaseModel', $this->object);
     }
 
     public function testGetTitle() {

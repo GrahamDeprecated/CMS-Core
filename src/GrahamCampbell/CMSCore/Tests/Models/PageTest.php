@@ -27,7 +27,7 @@ class PageTest extends ModelTestCase implements Relations\Interfaces\IBelongsToU
     protected $model = 'GrahamCampbell\CMSCore\Models\Page';
 
     protected function extraModelTests() {
-        $this->assertInstanceOf('GrahamCampbell\CMSCore\Models\BaseModel', $this->object);
+        $this->assertInstanceOf('GrahamCampbell\Core\Models\BaseModel', $this->object);
     }
 
     public function testGetTitle() {

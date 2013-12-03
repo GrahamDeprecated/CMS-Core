@@ -27,7 +27,7 @@ class PostTest extends ModelTestCase implements Relations\Interfaces\IBelongsToU
     protected $model = 'GrahamCampbell\CMSCore\Models\Post';
 
     protected function extraModelTests() {
-        $this->assertInstanceOf('GrahamCampbell\CMSCore\Models\BaseModel', $this->object);
+        $this->assertInstanceOf('GrahamCampbell\Core\Models\BaseModel', $this->object);
     }
 
     public function testGetTitle() {

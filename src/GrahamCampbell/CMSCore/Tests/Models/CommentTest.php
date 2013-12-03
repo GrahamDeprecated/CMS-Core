@@ -27,7 +27,7 @@ class CommentTest extends ModelTestCase implements Relations\Interfaces\IBelongs
     protected $model = 'GrahamCampbell\CMSCore\Models\Comment';
 
     protected function extraModelTests() {
-        $this->assertInstanceOf('GrahamCampbell\CMSCore\Models\BaseModel', $this->object);
+        $this->assertInstanceOf('GrahamCampbell\Core\Models\BaseModel', $this->object);
     }
 
     public function testGetBody() {
