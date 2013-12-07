@@ -96,7 +96,7 @@ abstract class BaseController extends Controller {
             Event::fire('view.make', array(array('View' => $view, 'User' => true)));
 
             // debugging
-            Log::info(Navigation::getMain());
+            Log::info('navigation debugging', Navigation::getMain());
 
             if ($admin) {
                 if (Sentry::getUser()->hasAccess('admin')) {
@@ -112,6 +112,9 @@ abstract class BaseController extends Controller {
             }
         } else {
             Event::fire('view.make', array(array('View' => $view, 'User' => false)));
+
+            // debugging
+            Log::info('navigation debugging', Navigation::getMain());
 
             $data['site_name'] = Config::get('cms.name');
             $data['navigation'] = Navigation::getHTML('default', false, $data = array('title' => $data['site_name'], 'inverse' => Config::get('theme.inverse')));
