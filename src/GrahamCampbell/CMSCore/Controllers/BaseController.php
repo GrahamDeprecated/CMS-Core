@@ -23,13 +23,11 @@
 use App;
 use Config;
 use Event;
-use Log;
 use View;
 
 use Sentry;
 
-use Navigation;
-
+use GrahamCampbell\Navigation\Facades\Navigation;
 use GrahamCampbell\Core\Controllers\BaseController as Controller;
 
 abstract class BaseController extends Controller {
@@ -95,9 +93,6 @@ abstract class BaseController extends Controller {
         if (Sentry::check()) {
             Event::fire('view.make', array(array('View' => $view, 'User' => true)));
 
-            // debugging
-            Log::info('navigation debugging', Navigation::getMain());
-
             if ($admin) {
                 if (Sentry::getUser()->hasAccess('admin')) {
                     $data['site_name'] = 'Admin Panel';
@@ -112,9 +107,6 @@ abstract class BaseController extends Controller {
             }
         } else {
             Event::fire('view.make', array(array('View' => $view, 'User' => false)));
-
-            // debugging
-            Log::info('navigation debugging', Navigation::getMain());
 
             $data['site_name'] = Config::get('cms.name');
             $data['navigation'] = Navigation::getHTML('default', false, array('title' => $data['site_name'], 'inverse' => Config::get('theme.inverse')));
