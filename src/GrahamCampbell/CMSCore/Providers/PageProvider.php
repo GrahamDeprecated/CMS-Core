@@ -57,7 +57,6 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
     /**
      * Get the page navigation.
      *
-     * @param  string  $name
      * @return array
      */
     public function navigation() {
@@ -101,7 +100,6 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
     /**
      * Refresh the page navigation cache.
      *
-     * @param  string  $name
      * @return void
      */
     public function refresh() {
@@ -122,7 +120,6 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
     /**
      * Get the page navigation from the cache.
      *
-     * @param  string  $name
      * @return array
      */
     protected function getCache() {
@@ -132,8 +129,7 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
     /**
      * Set the page navigation in the cache.
      *
-     * @param  string  $name
-     * @param  string  $value
+     * @param  array  $value
      * @return void
      */
     protected function setCache($value) {
@@ -143,11 +139,11 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
     /**
      * Check of the nav var is not corrupt.
      *
-     * @param  string  $value
+     * @param  array  $value
      * @return bool
      */
     protected function validCache($value) {
-        if (is_null($value) || !is_array($value)) {
+        if (is_null($value) || !is_array($value) || empty($value)) {
             return false;
         }
 
