@@ -98,14 +98,14 @@ abstract class BaseController extends Controller {
             if ($admin) {
                 if (Sentry::getUser()->hasAccess('admin')) {
                     $data['site_name'] = 'Admin Panel';
-                    $data['navigation'] = Navigation::getHTML('admin', 'admin', array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
+                    $data['navigation'] = Navigation::getHTML('admin', 'admin', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
                 } else {
                     $data['site_name'] = Config::get('cms.name');
-                    $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
+                    $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
                 }
             } else {
                 $data['site_name'] = Config::get('cms.name');
-                $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
+                $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
             }
         } else {
             PageProvider::setNavUser(false);
