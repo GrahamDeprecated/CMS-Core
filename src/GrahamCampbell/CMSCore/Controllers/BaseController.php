@@ -28,6 +28,7 @@ use View;
 use Sentry;
 
 use GrahamCampbell\Navigation\Facades\Navigation;
+use GrahamCampbell\CMSCore\Facades\PageProvider;
 use GrahamCampbell\Core\Controllers\BaseController as Controller;
 
 abstract class BaseController extends Controller {
@@ -91,6 +92,7 @@ abstract class BaseController extends Controller {
      */
     protected function viewMake($view, $data = array(), $admin = false) {
         if (Sentry::check()) {
+            PageProvider::getNavUser(true);
             Event::fire('view.make', array(array('View' => $view, 'User' => true)));
 
             if ($admin) {
@@ -106,6 +108,7 @@ abstract class BaseController extends Controller {
                 $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
             }
         } else {
+            PageProvider::setNavUser(false);
             Event::fire('view.make', array(array('View' => $view, 'User' => false)));
 
             $data['site_name'] = Config::get('cms.name');

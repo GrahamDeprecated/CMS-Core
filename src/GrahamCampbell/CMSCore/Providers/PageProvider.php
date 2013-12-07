@@ -48,6 +48,13 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
     protected $nav = array();
 
     /**
+     * The navigation user boolean.
+     *
+     * @var bool
+     */
+    protected $user = false;
+
+    /**
      * Get the page navigation.
      *
      * @param  string  $name
@@ -145,5 +152,24 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
         }
 
         return true;
+    }
+
+    /**
+     * Get the navigation user boolean.
+     *
+     * @return bool
+     */
+    public function getNavUser() {
+        return $this->user;
+    }
+
+    /**
+     * Set the navigation user boolean.
+     *
+     * @param  bool  $user
+     * @return void
+     */
+    public function setNavUser($user) {
+        $this->user = $user;
     }
 }
