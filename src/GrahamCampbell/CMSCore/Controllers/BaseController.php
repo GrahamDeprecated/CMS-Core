@@ -101,14 +101,14 @@ abstract class BaseController extends Controller {
             if ($admin) {
                 if (Sentry::getUser()->hasAccess('admin')) {
                     $data['site_name'] = 'Admin Panel';
-                    $data['navigation'] = Navigation::getHTML('admin', 'admin', $data = array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
+                    $data['navigation'] = Navigation::getHTML('admin', 'admin', array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
                 } else {
                     $data['site_name'] = Config::get('cms.name');
-                    $data['navigation'] = Navigation::getHTML('default', 'default', $data = array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
+                    $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
                 }
             } else {
                 $data['site_name'] = Config::get('cms.name');
-                $data['navigation'] = Navigation::getHTML('default', 'default', $data = array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
+                $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
             }
         } else {
             Event::fire('view.make', array(array('View' => $view, 'User' => false)));
@@ -117,7 +117,7 @@ abstract class BaseController extends Controller {
             Log::info('navigation debugging', Navigation::getMain());
 
             $data['site_name'] = Config::get('cms.name');
-            $data['navigation'] = Navigation::getHTML('default', false, $data = array('title' => $data['site_name'], 'inverse' => Config::get('theme.inverse')));
+            $data['navigation'] = Navigation::getHTML('default', false, array('title' => $data['site_name'], 'inverse' => Config::get('theme.inverse')));
         }
 
         return View::make($view, $data);
