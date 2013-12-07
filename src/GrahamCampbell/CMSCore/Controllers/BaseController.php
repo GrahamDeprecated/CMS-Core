@@ -92,7 +92,7 @@ abstract class BaseController extends Controller {
      */
     protected function viewMake($view, $data = array(), $admin = false) {
         if (Sentry::check()) {
-            PageProvider::getNavUser(true);
+            PageProvider::setNavUser(true);
             Event::fire('view.make', array(array('View' => $view, 'User' => true)));
 
             if ($admin) {
