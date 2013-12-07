@@ -39,28 +39,28 @@ abstract class BaseController extends Controller {
      *
      * @var array
      */
-    private $users  = array();
+    private $users = array();
 
     /**
      * A list of methods protected by edit permissions.
      *
      * @var array
      */
-    private $edits  = array();
+    private $edits = array();
 
     /**
      * A list of methods protected by blog permissions.
      *
      * @var array
      */
-    private $blogs  = array();
+    private $blogs = array();
 
     /**
      * A list of methods protected by mod permissions.
      *
      * @var array
      */
-    private $mods   = array();
+    private $mods = array();
 
     /**
      * A list of methods protected by admin permissions.
