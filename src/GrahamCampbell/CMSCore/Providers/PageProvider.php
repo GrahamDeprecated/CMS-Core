@@ -84,9 +84,9 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      * @param  string  $name
      * @return void
      */
-    public function refresh($name = 'main') {
+    public function refresh() {
         if (Config::get('cms.cache') === true) {
-            $this->setCache($this->sendGet($name));
+            $this->setCache($this->sendGet());
         }
     }
 
