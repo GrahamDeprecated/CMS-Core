@@ -41,15 +41,25 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
     protected $model = 'GrahamCampbell\CMSCore\Models\Page';
 
     /**
+     * A cache of the page navigation.
+     *
+     * @var array
+     */
+    protected $nav = array();
+
+    /**
      * Get the page navigation.
      *
      * @param  string  $name
      * @return array
      */
     public function navigation() {
-        // check if we are using the cache
-        if (Config::get('cms.cache') === true) {
-            // if so, then pull from the cache
+        // caching logic
+        if ($this->validCache($this->nav)) {
+            // if is valid, get the value from the class cache
+            $value = $this->nav;
+        } elseif (Config::get('cms.cache') === true) {
+            // if caching is enabled, pull from the cache
             $value = $this->getCache();
             // check if the value is valid
             if (!$this->validCache($value)) {
@@ -62,6 +72,9 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
             // do the work because caching is disabled
             $value = $this->sendGet($name);
         }
+
+        // cache the value in the class
+        $this->nav = $value;
 
         // spit out the value
         return $value;
