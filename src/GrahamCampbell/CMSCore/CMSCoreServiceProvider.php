@@ -79,9 +79,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
         $this->app['userprovider'] = $this->app->share(function($app) {
             return new Providers\UserProvider;
         });
-        $this->app['navigation'] = $this->app->share(function($app) {
-            return new Classes\Navigation($app['request'], $app['url'], $app['cache'], $app['pageprovider'], $app['config']['cms.cache']);
-        });
     }
 
     /**
@@ -90,6 +87,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'groupprovider', 'pageprovider', 'postprovider', 'replyprovider', 'sectionprovider', 'topicprovider', 'userprovider', 'navigation');
+        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'groupprovider', 'pageprovider', 'postprovider', 'replyprovider', 'sectionprovider', 'topicprovider', 'userprovider');
     }
 }

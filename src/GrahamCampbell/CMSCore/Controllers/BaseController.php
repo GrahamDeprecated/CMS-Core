@@ -98,23 +98,20 @@ abstract class BaseController extends Controller {
             if ($admin) {
                 if (Sentry::getUser()->hasAccess('admin')) {
                     $data['site_name'] = 'Admin Panel';
-                    $data['nav_main'] = Navigation::get('admin');
+                    $data['navigation'] = Navigation::getHTML('admin', 'admin', $data = array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
                 } else {
                     $data['site_name'] = Config::get('cms.name');
-                    $data['nav_main'] = Navigation::get('main');
+                    $data['navigation'] = Navigation::getHTML('default', 'default', $data = array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
                 }
             } else {
                 $data['site_name'] = Config::get('cms.name');
-                $data['nav_main'] = Navigation::get('main');
+                $data['navigation'] = Navigation::getHTML('default', 'default', $data = array('title' => $data['site_name'], 'side' => 'dropdown', 'inverse' => Config::get('theme.inverse')));
             }
-
-            $data['nav_bar'] = Navigation::get('bar');
         } else {
             Event::fire('view.make', array(array('View' => $view, 'User' => false)));
 
             $data['site_name'] = Config::get('cms.name');
-            $data['nav_main'] = Navigation::get('main');
-            $data['nav_bar'] = array();
+            $data['navigation'] = Navigation::getHTML('default', false, $data = array('title' => $data['site_name'], 'inverse' => Config::get('theme.inverse')));
         }
 
         return View::make($view, $data);

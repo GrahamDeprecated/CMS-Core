@@ -25,6 +25,9 @@ use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
 use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
 use GrahamCampbell\Core\Providers\Interfaces\ISlugProvider;
 use GrahamCampbell\Core\Providers\Common\TraitSlugProvider;
+use GrahamCampbell\CMSCore\Models\Page;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
 
 class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvider {
 
@@ -37,4 +40,97 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      */
     protected $model = 'GrahamCampbell\CMSCore\Models\Page';
 
+    /**
+     * Get the page navigation.
+     *
+     * @param  string  $name
+     * @return array
+     */
+    public function navigation() {
+        // check if we are using the cache
+        if (Config::get('cms.cache') === true) {
+            // if so, then pull from the cache
+            $value = $this->getCache();
+            // check if the value is valid
+            if (!$this->validCache($value)) {
+                // if is invalid, do the work
+                $value = $this->sendGet();
+                // add the value from the work to the cache
+                $this->setCache($value);
+            }
+        } else {
+            // do the work because caching is disabled
+            $value = $this->sendGet($name);
+        }
+
+        // spit out the value
+        return $value;
+    }
+
+    /**
+     * Flush the page navigation from the cache.
+     *
+     * @return void
+     */
+    public function flush() {
+        if (Config::get('cms.cache') === true) {
+            Cache::forget('navigation');
+        }
+    }
+
+    /**
+     * Refresh the page navigation cache.
+     *
+     * @param  string  $name
+     * @return void
+     */
+    public function refresh($name = 'main') {
+        if (Config::get('cms.cache') === true) {
+            $this->setCache($this->sendGet($name));
+        }
+    }
+
+    /**
+     * Get the page navigation by working.
+     *
+     * @return array
+     */
+    protected function sendGet() {
+        return Page::where('show_nav', '=', true)->get(array('title', 'slug', 'icon'))->toArray();
+    }
+
+    /**
+     * Get the page navigation from the cache.
+     *
+     * @param  string  $name
+     * @return array
+     */
+    protected function getCache() {
+        return Cache::get('navigation');
+    }
+
+    /**
+     * Set the page navigation in the cache.
+     *
+     * @param  string  $name
+     * @param  string  $value
+     * @return void
+     */
+    protected function setCache($value) {
+        Cache::forever('navigation', $value);
+    }
+
+    /**
+     * Check of the nav var is not corrupt.
+     *
+     * @param  string  $value
+     * @return bool
+     */
+    protected function validCache($value) {
+        if (is_null($value) || !is_array($value)) {
+            return false;
+        }
+
+        return true;
+    }
 }
