@@ -95,6 +95,9 @@ abstract class BaseController extends Controller {
         if (Sentry::check()) {
             Event::fire('view.make', array(array('View' => $view, 'User' => true)));
 
+            // debugging
+            Log::info(Navigation::getMain());
+
             if ($admin) {
                 if (Sentry::getUser()->hasAccess('admin')) {
                     $data['site_name'] = 'Admin Panel';
