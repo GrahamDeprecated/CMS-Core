@@ -19,8 +19,7 @@
         "graham-campbell/htmlmin": "dev-develop",
         "graham-campbell/binput": "dev-develop",
         "graham-campbell/passwd": "dev-develop",
-        "graham-campbell/navigation": "dev-master",
-        "graham-campbell/cloudflare-api": "dev-develop"
+        "graham-campbell/navigation": "dev-master"
     },
     "require-dev": {
         "mockery/mockery": "0.8.*@stable",
