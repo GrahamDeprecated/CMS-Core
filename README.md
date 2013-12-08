@@ -40,10 +40,6 @@ To get the latest version of CMS Core, simply require it in your `composer.json`
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
-You will need to register the [Laravel CoreAPI](https://github.com/GrahamCampbell/Laravel-CoreAPI) service provider before you attempt to load the Laravel CloudFlare API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
-
-`'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`
-
 You will need to register many service providers before you attempt to load the CMS Core service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
 `'GrahamCampbell\Queuing\QueuingServiceProvider'`
