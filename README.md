@@ -15,7 +15,7 @@ CMS Core
 CMS Core provides some core functionality for [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS).  
 
 * CMS Core was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
-* CMS Core relies on many of my packages including [Laravel Core](https://github.com/GrahamCampbell/Laravel-Core), [Laravel Queuing](https://github.com/GrahamCampbell/Laravel-Queuing), and [Laravel HTMLMin](https://github.com/GrahamCampbell/Laravel-HTMLMin).  
+* CMS Core relies on many of my packages including [Laravel Core](https://github.com/GrahamCampbell/Laravel-Core) and [Laravel Queuing](https://github.com/GrahamCampbell/Laravel-Queuing).  
 * CMS Core uses [Travis CI](https://travis-ci.org/GrahamCampbell/CMS-Core) to run tests to check if it's working as it should.  
 * CMS Core uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core) to run additional tests and checks.  
 * CMS Core uses [Composer](https://getcomposer.org) to load and manage dependencies.  
@@ -52,8 +52,6 @@ You will need to register many service providers before you attempt to load the 
 `'GrahamCampbell\Binput\BinputServiceProvider'`
 `'GrahamCampbell\Passwd\PasswdServiceProvider'`
 `'GrahamCampbell\Navigation\NavigationServiceProvider'`
-`'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`
-`'GrahamCampbell\CloudFlareAPI\CloudFlareAPIServiceProvider'`
 
 Once CMS Core is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
