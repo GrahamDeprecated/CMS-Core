@@ -38,8 +38,8 @@ abstract class TestCase extends Testbench {
     protected function getPackageProviders() {
         return array(
             'Cartalyst\Sentry\SentryServiceProvider',
-            'GrahamCampbell\CMSCore\CMSCoreServiceProvider',
-            'VTalbot\Markdown\MarkdownServiceProvider'
+            'GrahamCampbell\Markdown\MarkdownServiceProvider',
+            'GrahamCampbell\CMSCore\CMSCoreServiceProvider'
         );
     }
 }

@@ -22,7 +22,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use VTalbot\Markdown\Facades\Markdown;
+use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Support\Facades\File;
 use DateTime;
 
@@ -39,7 +39,7 @@ class PagesTableSeeder extends Seeder {
         $home = array(
             'title' => 'Home',
             'slug'  => 'home',
-            'body'  => Markdown::string(File::get(dirname(__FILE__).'/page-home.md')),
+            'body'  => Markdown::parse(File::get(dirname(__FILE__).'/page-home.md')),
             'show_title' => false,
             'icon'       => 'home',
             'user_id'    => 1,
@@ -52,7 +52,7 @@ class PagesTableSeeder extends Seeder {
         $about = array(
             'title' => 'About',
             'slug'  => 'about',
-            'body'  => '<div class="row"><div class="col-lg-8">'.Markdown::string(File::get(dirname(__FILE__).'/page-about.md')).'</div></div>',
+            'body'  => '<div class="row"><div class="col-lg-8">'.Markdown::parse(File::get(dirname(__FILE__).'/page-about.md')).'</div></div>',
             'user_id'    => 1,
             'icon'       => 'info-circle',
             'created_at' => new DateTime,

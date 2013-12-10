@@ -13,11 +13,11 @@
         "php": ">=5.4.7",
         "orchestra/testbench": "2.0.*",
         "cartalyst/sentry": "2.0.*",
-        "vtalbot/markdown": "1.4.*",
         "lightgear/asset": "1.2",
         "graham-campbell/core": "dev-master",
         "graham-campbell/queuing": "dev-master",
         "graham-campbell/htmlmin": "dev-develop",
+        "graham-campbell/markdown": "dev-develop",
         "graham-campbell/binput": "dev-develop",
         "graham-campbell/passwd": "dev-develop",
         "graham-campbell/navigation": "dev-master"
