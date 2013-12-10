@@ -15,12 +15,12 @@
         "cartalyst/sentry": "2.0.*",
         "vtalbot/markdown": "1.4.*",
         "lightgear/asset": "1.2",
-        "graham-campbell/core": "0.1.*-alpha",
-        "graham-campbell/queuing": "0.1.*-alpha",
-        "graham-campbell/htmlmin": "0.3.*-alpha",
-        "graham-campbell/binput": "0.3.*-alpha",
-        "graham-campbell/passwd": "0.3.*-alpha",
-        "graham-campbell/navigation": "0.1.*-alpha"
+        "graham-campbell/core": "dev-master",
+        "graham-campbell/queuing": "dev-master",
+        "graham-campbell/htmlmin": "dev-develop",
+        "graham-campbell/binput": "dev-develop",
+        "graham-campbell/passwd": "dev-develop",
+        "graham-campbell/navigation": "dev-master"
     },
     "require-dev": {
         "mockery/mockery": "0.8.*@stable",
