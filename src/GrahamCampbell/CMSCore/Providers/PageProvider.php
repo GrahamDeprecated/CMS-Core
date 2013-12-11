@@ -76,7 +76,7 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
             }
         } else {
             // do the work because caching is disabled
-            $value = $this->sendGet($name);
+            $value = $this->sendGet();
         }
 
         // cache the value in the class
