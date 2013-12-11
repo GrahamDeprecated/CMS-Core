@@ -12,19 +12,19 @@
     "require": {
         "php": ">=5.4.7",
         "orchestra/testbench": "2.0.*",
-        "cartalyst/sentry": "2.0.*",
+        "cartalyst/sentry": "2.1.*",
         "lightgear/asset": "1.2",
-        "graham-campbell/core": "dev-master",
-        "graham-campbell/queuing": "dev-master",
-        "graham-campbell/htmlmin": "dev-develop",
-        "graham-campbell/markdown": "dev-develop",
-        "graham-campbell/binput": "dev-develop",
-        "graham-campbell/passwd": "dev-develop",
-        "graham-campbell/navigation": "dev-master"
+        "graham-campbell/core": "0.1.*",
+        "graham-campbell/queuing": "0.1.*",
+        "graham-campbell/htmlmin": "0.3.*",
+        "graham-campbell/markdown": "0.2.*",
+        "graham-campbell/binput": "0.3.*",
+        "graham-campbell/passwd": "0.3.*",
+        "graham-campbell/navigation": "0.1.*"
     },
     "require-dev": {
-        "mockery/mockery": "0.8.*@stable",
-        "phpunit/phpunit": "3.7.*@stable"
+        "mockery/mockery": "0.8.*",
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
         "classmap": [
@@ -34,5 +34,6 @@
             "GrahamCampbell\\CMSCore": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
