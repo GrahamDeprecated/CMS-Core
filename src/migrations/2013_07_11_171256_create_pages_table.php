@@ -32,7 +32,7 @@ class CreatePagesTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('pages', function(Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->string('title');

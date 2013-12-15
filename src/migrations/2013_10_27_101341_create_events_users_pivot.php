@@ -32,7 +32,7 @@ class CreateEventsUsersPivot extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('events_users', function(Blueprint $table) {
+        Schema::create('events_users', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->integer('event_id')->unsigned();
             $table->integer('user_id')->unsigned();

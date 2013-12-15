@@ -32,7 +32,7 @@ class CreateEventsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('events', function(Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->string('title');

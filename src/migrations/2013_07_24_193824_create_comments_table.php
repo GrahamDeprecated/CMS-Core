@@ -32,7 +32,7 @@ class CreateCommentsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('comments', function(Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->text('body');

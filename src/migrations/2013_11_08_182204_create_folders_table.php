@@ -32,7 +32,7 @@ class CreateFoldersTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('folders', function(Blueprint $table) {
+        Schema::create('folders', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->string('title');

@@ -33,7 +33,7 @@ class AddStuffToPages extends Migration {
      * @return void
      */
     public function up() {
-        Schema::table('pages', function($table) {
+        Schema::table('pages', function ($table) {
             $table->text('css')->default('');
             $table->text('js')->default('');
         });
@@ -48,7 +48,7 @@ class AddStuffToPages extends Migration {
      * @return void
      */
     public function down() {
-        Schema::table('pages', function($table) {
+        Schema::table('pages', function ($table) {
             $table->dropColumn('css');
             $table->dropColumn('js');
         });

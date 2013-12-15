@@ -33,7 +33,7 @@ class AddVersionToComments extends Migration {
      * @return void
      */
     public function up() {
-        Schema::table('comments', function($table) {
+        Schema::table('comments', function ($table) {
             $table->integer('version')->unsigned()->default(1);
         });
         foreach (CommentProvider::all() as $comment) {
@@ -47,7 +47,7 @@ class AddVersionToComments extends Migration {
      * @return void
      */
     public function down() {
-        Schema::table('comments', function($table) {
+        Schema::table('comments', function ($table) {
             $table->dropColumn('version');
         });
     }
