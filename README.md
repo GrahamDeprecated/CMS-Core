@@ -25,8 +25,8 @@ CMS Core provides some core functionality for [Bootstrap CMS](https://github.com
 
 ## System Requirements
 
-* PHP 5.4+ or PHP 5.5+ is required.
-* You will need [Laravel 4](http://laravel.com) because this package is designed for it.  
+* PHP 5.4.7+ or PHP 5.5+ is required.
+* You will need [Laravel 4.0](http://laravel.com) because this package is designed for it.  
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of CMS Core.  
 
 
@@ -80,7 +80,7 @@ Please submit pull requests against the develop branch.
 * Any pull requests made against the master branch will be closed immediately.  
 * If you plan to fix a bug, please create a branch called `fix-`, followed by an appropriate name.  
 * If you plan to add a feature, please create a branch called `feature-`, followed by an appropriate name.  
-* Please indent with 4 spaces rather than tabs, and make sure your code is commented.  
+* Please follow PSR-2 standards except namespace declarations should be on the same line as `<?php`.  
 
 
 ## License
