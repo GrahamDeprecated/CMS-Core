@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore;
+<?php namespace GrahamCampbell\CMSCore\Support;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -21,6 +21,14 @@
  */
 
 use Illuminate\Support\ServiceProvider;
+use GrahamCampbell\CMSCore\Providers\CommentProvider;
+use GrahamCampbell\CMSCore\Providers\EventProvider;
+use GrahamCampbell\CMSCore\Providers\FileProvider;
+use GrahamCampbell\CMSCore\Providers\FolderProvider;
+use GrahamCampbell\CMSCore\Providers\GroupProvider;
+use GrahamCampbell\CMSCore\Providers\PageProvider;
+use GrahamCampbell\CMSCore\Providers\PostProvider;
+use GrahamCampbell\CMSCore\Providers\UserProvider;
 
 class CMSCoreServiceProvider extends ServiceProvider {
 
@@ -47,37 +55,28 @@ class CMSCoreServiceProvider extends ServiceProvider {
      */
     public function register() {
         $this->app['commentprovider'] = $this->app->share(function ($app) {
-            return new Providers\CommentProvider;
+            return new CommentProvider;
         });
         $this->app['eventprovider'] = $this->app->share(function ($app) {
-            return new Providers\EventProvider;
+            return new EventProvider;
         });
         $this->app['fileprovider'] = $this->app->share(function ($app) {
-            return new Providers\FileProvider;
+            return new FileProvider;
         });
         $this->app['folderprovider'] = $this->app->share(function ($app) {
-            return new Providers\FolderProvider;
+            return new FolderProvider;
         });
         $this->app['groupprovider'] = $this->app->share(function ($app) {
-            return new Providers\GroupProvider;
+            return new GroupProvider;
         });
         $this->app['pageprovider'] = $this->app->share(function ($app) {
-            return new Providers\PageProvider;
+            return new PageProvider;
         });
         $this->app['postprovider'] = $this->app->share(function ($app) {
-            return new Providers\PostProvider;
-        });
-        $this->app['replyprovider'] = $this->app->share(function ($app) {
-            return new Providers\ReplyProvider;
-        });
-        $this->app['sectionprovider'] = $this->app->share(function ($app) {
-            return new Providers\SectionProvider;
-        });
-        $this->app['topicprovider'] = $this->app->share(function ($app) {
-            return new Providers\TopicProvider;
+            return new PostProvider;
         });
         $this->app['userprovider'] = $this->app->share(function ($app) {
-            return new Providers\UserProvider;
+            return new UserProvider;
         });
     }
 
@@ -87,6 +86,6 @@ class CMSCoreServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'groupprovider', 'pageprovider', 'postprovider', 'replyprovider', 'sectionprovider', 'topicprovider', 'userprovider');
+        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'groupprovider', 'pageprovider', 'postprovider', 'userprovider');
     }
 }

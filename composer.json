@@ -55,7 +55,14 @@
             "src/migrations"
         ],
         "psr-0": {
-            "GrahamCampbell\\CMSCore": "src/"
+            "GrahamCampbell\\CMSCore\\Commands": "src/",
+            "GrahamCampbell\\CMSCore\\Facades": "src/",
+            "GrahamCampbell\\CMSCore\\Handlers": "src/",
+            "GrahamCampbell\\CMSCore\\Models": "src/",
+            "GrahamCampbell\\CMSCore\\Providers": "src/",
+            "GrahamCampbell\\CMSCore\\Seeds": "src/",
+            "GrahamCampbell\\CMSCore\\Support": "src/",
+            "GrahamCampbell\\CMSCore\\Tests": "tests/"
         }
     },
     "extra": {
