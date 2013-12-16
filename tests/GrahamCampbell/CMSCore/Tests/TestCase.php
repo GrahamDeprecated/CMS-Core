@@ -38,7 +38,14 @@ abstract class TestCase extends Testbench {
     protected function getPackageProviders() {
         return array(
             'Cartalyst\Sentry\SentryServiceProvider',
+            'Lightgear\Asset\AssetServiceProvider',
+            'GrahamCampbell\Queuing\QueuingServiceProvider',
+            'GrahamCampbell\HTMLMin\HTMLMinServiceProvider',
             'GrahamCampbell\Markdown\MarkdownServiceProvider',
+            'GrahamCampbell\Security\SecurityServiceProvider',
+            'GrahamCampbell\Binput\BinputServiceProvider',
+            'GrahamCampbell\Passwd\PasswdServiceProvider',
+            'GrahamCampbell\Navigation\NavigationServiceProvider',
             'GrahamCampbell\CMSCore\Support\CMSCoreServiceProvider'
         );
     }
