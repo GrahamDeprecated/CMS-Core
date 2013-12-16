@@ -48,7 +48,7 @@ trait TraitHasManyPosts
 
         if (property_exists($model, 'order')) {
             return $this->posts()->orderBy($model::$order, $model::$sort)->get($columns);
-        }        
+        }
         return $this->posts()->get($columns);
     }
 

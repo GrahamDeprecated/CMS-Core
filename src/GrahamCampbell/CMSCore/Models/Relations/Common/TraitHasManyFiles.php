@@ -48,7 +48,7 @@ trait TraitHasManyFiles
 
         if (property_exists($model, 'order')) {
             return $this->files()->orderBy($model::$order, $model::$sort)->get($columns);
-        } 
+        }
        
         return $this->files()->get($columns);
     }
