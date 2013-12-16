@@ -3,10 +3,10 @@ CMS Core
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/CMS-Core/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-[![Build Status](https://travis-ci.org/GrahamCampbell/CMS-Core.png?branch=master)](https://travis-ci.org/GrahamCampbell/CMS-Core)
-[![Latest Version](https://poser.pugx.org/graham-campbell/cms-core/v/stable.png)](https://packagist.org/packages/graham-campbell/cms-core)
-[![Total Downloads](https://poser.pugx.org/graham-campbell/cms-core/downloads.png)](https://packagist.org/packages/graham-campbell/cms-core)
+[![Build Status](https://travis-ci.org/GrahamCampbell/CMS-Core.png?branch=develop)](https://travis-ci.org/GrahamCampbell/CMS-Core)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core/badges/quality-score.png?s=abade2f7af64ae1b36516618be72c26f9fd560bc)](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core)
+[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/CMS-Core/badge.png?branch=develop)](https://coveralls.io/r/GrahamCampbell/CMS-Core?branch=develop)
+[![Latest Version](https://poser.pugx.org/graham-campbell/cms-core/v/stable.png)](https://packagist.org/packages/graham-campbell/cms-core)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/CMS-Core.png)](http://stillmaintained.com/GrahamCampbell/CMS-Core)
 
 
