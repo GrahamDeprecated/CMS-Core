@@ -39,7 +39,7 @@ abstract class TestCase extends Testbench {
         return array(
             'Cartalyst\Sentry\SentryServiceProvider',
             'GrahamCampbell\Markdown\MarkdownServiceProvider',
-            'GrahamCampbell\CMSCore\CMSCoreServiceProvider'
+            'GrahamCampbell\CMSCore\Support\CMSCoreServiceProvider'
         );
     }
 }
