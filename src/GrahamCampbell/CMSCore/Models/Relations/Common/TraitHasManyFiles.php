@@ -72,7 +72,7 @@ trait TraitHasManyFiles
      */
     public function deleteFiles()
     {
-        foreach($this->getFiles(array('id')) as $file) {
+        foreach ($this->getFiles(array('id')) as $file) {
             $file->delete();
         }
     }

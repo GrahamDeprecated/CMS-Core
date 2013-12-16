@@ -94,7 +94,8 @@ class CMSCoreServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides() {
+    public function provides()
+    {
         return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'groupprovider', 'pageprovider', 'postprovider', 'userprovider');
     }
 }

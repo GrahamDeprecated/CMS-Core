@@ -72,7 +72,7 @@ trait TraitHasManyComments
      */
     public function deleteComments()
     {
-        foreach($this->getComments(array('id')) as $comment) {
+        foreach ($this->getComments(array('id')) as $comment) {
             $comment->delete();
         }
     }

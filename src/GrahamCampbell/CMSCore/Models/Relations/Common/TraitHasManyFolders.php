@@ -72,7 +72,7 @@ trait TraitHasManyFolders
      */
     public function deleteFolders()
     {
-        foreach($this->getFolders(array('id')) as $folder) {
+        foreach ($this->getFolders(array('id')) as $folder) {
             $folder->delete();
         }
     }
