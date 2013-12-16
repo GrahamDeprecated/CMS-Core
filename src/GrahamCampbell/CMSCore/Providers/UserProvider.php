@@ -24,8 +24,8 @@ use GrahamCampbell\Core\Providers\BaseProvider;
 use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
 use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
 
-class UserProvider extends BaseProvider implements IPaginateProvider {
-
+class UserProvider extends BaseProvider implements IPaginateProvider
+{
     use TraitPaginateProvider;
 
     /**
@@ -34,6 +34,4 @@ class UserProvider extends BaseProvider implements IPaginateProvider {
      * @var string
      */
     protected $model = 'GrahamCampbell\CMSCore\Models\User';
-
 }
-

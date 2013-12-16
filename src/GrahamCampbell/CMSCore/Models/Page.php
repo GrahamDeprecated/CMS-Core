@@ -27,12 +27,16 @@ use GrahamCampbell\Core\Models\Interfaces\ISlugModel;
 use GrahamCampbell\Core\Models\Common\TraitSlugModel;
 use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
 use GrahamCampbell\Core\Models\Common\TraitBodyModel;
+use GrahamCampbell\CMSCore\Models\Interfaces\INavModel;
+use GrahamCampbell\CMSCore\Models\Common\TraitNavModel;
+use GrahamCampbell\CMSCore\Models\Interfaces\IPageModel;
+use GrahamCampbell\CMSCore\Models\Common\TraitPageModel;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 
-class Page extends BaseModel implements ITitleModel, ISlugModel, IBodyModel, IBelongsToUser {
-
-    use TraitTitleModel, TraitSlugModel, TraitBodyModel, TraitBelongsToUser;
+class Page extends BaseModel implements ITitleModel, ISlugModel, IBodyModel, INavModel, IPageModel, IBelongsToUser
+{
+    use TraitTitleModel, TraitSlugModel, TraitBodyModel, TraitNavModel, TraitPageModel, TraitBelongsToUser;
 
     /**
      * The table the pages are stored in.
@@ -107,49 +111,4 @@ class Page extends BaseModel implements ITitleModel, ISlugModel, IBodyModel, IBe
         'icon'       => 'home',
         'user_id'    => 1
     );
-
-    /**
-     * Get css.
-     *
-     * @return string
-     */
-    public function getCSS() {
-        return $this->css;
-    }
-
-    /**
-     * Get js.
-     *
-     * @return string
-     */
-    public function getJS() {
-        return $this->js;
-    }
-
-    /**
-     * Get show_title.
-     *
-     * @return int
-     */
-    public function getShowTitle() {
-        return $this->show_title;
-    }
-
-    /**
-     * Get show_nav.
-     *
-     * @return int
-     */
-    public function getShowNav() {
-        return $this->show_nav;
-    }
-
-    /**
-     * Get icon.
-     *
-     * @return string
-     */
-    public function getIcon() {
-        return $this->icon;
-    }
 }

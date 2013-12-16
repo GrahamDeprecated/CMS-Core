@@ -22,9 +22,10 @@
 
 use Orchestra\Testbench\TestCase as Testbench;
 
-abstract class TestCase extends Testbench {
-
-    protected function getEnvironmentSetUp($app) {
+abstract class TestCase extends Testbench
+{
+    protected function getEnvironmentSetUp($app)
+    {
         $app['path.base'] = realpath(__DIR__.'/../../../../src');
 
         $app['config']->set('database.default', 'sqlite');
@@ -35,7 +36,8 @@ abstract class TestCase extends Testbench {
         ));
     }
 
-    protected function getPackageProviders() {
+    protected function getPackageProviders()
+    {
         return array(
             'Cartalyst\Sentry\SentryServiceProvider',
             'Lightgear\Asset\AssetServiceProvider',

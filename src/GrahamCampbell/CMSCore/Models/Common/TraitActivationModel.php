@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,12 +20,35 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface ILocationModel
+trait TraitPageModel
 {
     /**
-     * Get location.
+     * Get css.
      *
      * @return string
      */
-    public function getLocation();
+    public function getCSS()
+    {
+        return $this->css;
+    }
+
+    /**
+     * Get js.
+     *
+     * @return string
+     */
+    public function getJS()
+    {
+        return $this->js;
+    }
+
+    /**
+     * Get show_title.
+     *
+     * @return int
+     */
+    public function getShowTitle()
+    {
+        return $this->show_title;
+    }
 }

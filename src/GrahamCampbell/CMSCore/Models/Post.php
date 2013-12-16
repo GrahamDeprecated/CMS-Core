@@ -32,8 +32,8 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyComments;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 
-class Post extends BaseModel implements ITitleModel, IBodyModel, ISummaryModel, IHasManyComments, IBelongsToUser {
-
+class Post extends BaseModel implements ITitleModel, IBodyModel, ISummaryModel, IHasManyComments, IBelongsToUser
+{
     use TraitTitleModel, TraitBodyModel, TraitSummaryModel, TraitHasManyComments, TraitBelongsToUser;
 
     /**
@@ -108,7 +108,8 @@ class Post extends BaseModel implements ITitleModel, IBodyModel, ISummaryModel, 
      *
      * @return mixed
      */
-    public function beforeDelete() {
+    public function beforeDelete()
+    {
         $this->deleteComments();
     }
 }

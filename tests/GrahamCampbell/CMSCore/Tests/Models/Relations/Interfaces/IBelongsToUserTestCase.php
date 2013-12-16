@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IBelongsToUserTestCase {
-
+interface IBelongsToUserTestCase
+{
     public function testGetUserId();
 
     public function testRelationWithUser();

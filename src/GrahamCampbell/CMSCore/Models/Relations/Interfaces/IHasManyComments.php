@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyComments {
-
+interface IHasManyComments
+{
     /**
      * Get the comment relation.
      *
@@ -32,6 +32,7 @@ interface IHasManyComments {
     /**
      * Get the comment collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getComments($columns = null);
@@ -39,6 +40,8 @@ interface IHasManyComments {
     /**
      * Get the specified comment.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Comment
      */
     public function findComment($id, $columns = array('*'));
@@ -49,5 +52,4 @@ interface IHasManyComments {
      * @return void
      */
     public function deleteComments();
-
 }

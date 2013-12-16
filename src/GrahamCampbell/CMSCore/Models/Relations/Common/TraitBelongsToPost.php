@@ -20,23 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitBelongsToPost {
-
+trait TraitBelongsToPost
+{
     /**
      * Get the post relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function post() {
+    public function post()
+    {
         return $this->belongsTo('GrahamCampbell\CMSCore\Models\Post');
     }
 
     /**
      * Get the post model.
      *
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Post
      */
-    public function getPost($columns = array('*')) {
+    public function getPost($columns = array('*'))
+    {
         return $this->post()->first($columns);
     }
 
@@ -45,7 +48,8 @@ trait TraitBelongsToPost {
      *
      * @return int
      */
-    public function getPostId() {
+    public function getPostId()
+    {
         return $this->post_id;
     }
 }

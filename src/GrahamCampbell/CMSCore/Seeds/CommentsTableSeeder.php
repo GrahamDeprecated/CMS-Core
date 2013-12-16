@@ -20,18 +20,19 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use DateTime;
 
-class CommentsTableSeeder extends Seeder {
-
+class CommentsTableSeeder extends Seeder
+{
     /**
      * Run the database seeding.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         DB::table('comments')->delete();
 
         $comment = array(
@@ -39,7 +40,7 @@ class CommentsTableSeeder extends Seeder {
             'user_id'    => 1,
             'post_id'    => 1,
             'created_at' => new DateTime,
-            'updated_at' => new DateTime,
+            'updated_at' => new DateTime
         );
 
         DB::table('comments')->insert($comment);

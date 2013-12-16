@@ -24,14 +24,15 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 
-class SentryGroupSeeder extends Seeder {
-
+class SentryGroupSeeder extends Seeder
+{
     /**
      * Run the database seeding.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         DB::table('groups')->delete();
 
         // users

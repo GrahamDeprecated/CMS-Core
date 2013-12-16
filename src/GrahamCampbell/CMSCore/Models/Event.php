@@ -27,6 +27,8 @@ use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
 use GrahamCampbell\Core\Models\Common\TraitBodyModel;
 use GrahamCampbell\Core\Models\Interfaces\IDateModel;
 use GrahamCampbell\Core\Models\Common\TraitDateModel;
+use GrahamCampbell\CMSCore\Models\Interfaces\IMailedModel;
+use GrahamCampbell\CMSCore\Models\Common\TraitMailedModel;
 use GrahamCampbell\CMSCore\Models\Interfaces\ILocationModel;
 use GrahamCampbell\CMSCore\Models\Common\TraitLocationModel;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
@@ -34,9 +36,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToManyUsers;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToManyUsers;
 
-class Event extends BaseModel implements ITitleModel, IBodyModel, IDateModel, ILocationModel, IBelongsToUser, IBelongsToManyUsers {
-
-    use TraitTitleModel, TraitBodyModel, TraitDateModel, TraitLocationModel, TraitBelongsToUser, TraitBelongsToManyUsers;
+class Event extends BaseModel implements ITitleModel, IBodyModel, IDateModel, IMailedModel, ILocationModel, IBelongsToUser, IBelongsToManyUsers
+{
+    use TraitTitleModel, TraitBodyModel, TraitDateModel, TraitMailedModel, TraitLocationModel, TraitBelongsToUser, TraitBelongsToManyUsers;
 
     /**
      * The table the events are stored in.
@@ -109,20 +111,12 @@ class Event extends BaseModel implements ITitleModel, IBodyModel, IDateModel, IL
     );
 
     /**
-     * Get mailed.
-     *
-     * @return boolean
-     */
-    public function getMailed() {
-        return $this->mailed;
-    }
-
-    /**
      * Before deleting an existing model.
      *
      * @return mixed
      */
-    public function beforeDelete() {
+    public function beforeDelete()
+    {
         $this->deleteInvites();
     }
 }

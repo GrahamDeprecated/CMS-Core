@@ -19,20 +19,20 @@
  * @copyright  Copyright (C) 2013  Graham Campbell
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-
+use DateTime;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use DateTime;
 
-class EventsTableSeeder extends Seeder {
-
+class EventsTableSeeder extends Seeder
+{
     /**
      * Run the database seeding.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         DB::table('events')->delete();
 
         $date = Carbon::now();
@@ -44,7 +44,7 @@ class EventsTableSeeder extends Seeder {
             'body'       => 'This is an example event.',
             'user_id'    => 1,
             'created_at' => new DateTime,
-            'updated_at' => new DateTime,
+            'updated_at' => new DateTime
         );
 
         DB::table('events')->insert($event);

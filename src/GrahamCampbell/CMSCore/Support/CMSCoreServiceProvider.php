@@ -30,8 +30,8 @@ use GrahamCampbell\CMSCore\Providers\PageProvider;
 use GrahamCampbell\CMSCore\Providers\PostProvider;
 use GrahamCampbell\CMSCore\Providers\UserProvider;
 
-class CMSCoreServiceProvider extends ServiceProvider {
-
+class CMSCoreServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -44,7 +44,8 @@ class CMSCoreServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
+    public function boot()
+    {
         $this->package('graham-campbell/cmscore');
     }
 
@@ -53,28 +54,36 @@ class CMSCoreServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         $this->app['commentprovider'] = $this->app->share(function ($app) {
             return new CommentProvider;
         });
+
         $this->app['eventprovider'] = $this->app->share(function ($app) {
             return new EventProvider;
         });
+
         $this->app['fileprovider'] = $this->app->share(function ($app) {
             return new FileProvider;
         });
+
         $this->app['folderprovider'] = $this->app->share(function ($app) {
             return new FolderProvider;
         });
+
         $this->app['groupprovider'] = $this->app->share(function ($app) {
             return new GroupProvider;
         });
+
         $this->app['pageprovider'] = $this->app->share(function ($app) {
             return new PageProvider;
         });
+
         $this->app['postprovider'] = $this->app->share(function ($app) {
             return new PostProvider;
         });
+
         $this->app['userprovider'] = $this->app->share(function ($app) {
             return new UserProvider;
         });

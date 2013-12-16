@@ -20,12 +20,12 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface ILocationModel
+interface IMailedModel
 {
     /**
-     * Get location.
+     * Get mailed.
      *
-     * @return string
+     * @return boolean
      */
-    public function getLocation();
+    public function getMailed();
 }

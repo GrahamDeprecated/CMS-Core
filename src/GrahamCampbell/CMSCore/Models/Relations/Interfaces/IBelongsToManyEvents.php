@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IBelongsToManyEvents {
-
+interface IBelongsToManyEvents
+{
     /**
      * Get the event relation.
      *
@@ -32,6 +32,7 @@ interface IBelongsToManyEvents {
     /**
      * Get the event collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getInvites($columns = null);
@@ -39,6 +40,8 @@ interface IBelongsToManyEvents {
     /**
      * Get the specified event.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Event
      */
     public function findInvite($id, $columns = array('*'));
@@ -46,6 +49,7 @@ interface IBelongsToManyEvents {
     /**
      * Link an event.
      *
+     * @param  int  $id
      * @return void
      */
     public function addInvite($id);
@@ -53,6 +57,7 @@ interface IBelongsToManyEvents {
     /**
      * Unlink an event.
      *
+     * @param  int  $id
      * @return void
      */
     public function deleteInvite($id);
@@ -60,6 +65,7 @@ interface IBelongsToManyEvents {
     /**
      * Link some events.
      *
+     * @param  array  $ids
      * @return void
      */
     public function setInvites($ids);
@@ -70,5 +76,4 @@ interface IBelongsToManyEvents {
      * @return void
      */
     public function deleteInvites();
-
 }

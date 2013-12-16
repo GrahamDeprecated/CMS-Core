@@ -41,8 +41,8 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyComments;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToManyEvents;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToManyEvents;
 
-class User extends SentryUser implements IBaseModel, INameModel, IHasManyPages, IHasManyPosts, IHasManyEvents, IHasManyFolders, IHasManyFiles, IHasManyComments, IBelongsToManyEvents {
-
+class User extends SentryUser implements IBaseModel, INameModel, IHasManyPages, IHasManyPosts, IHasManyEvents, IHasManyFolders, IHasManyFiles, IHasManyComments, IBelongsToManyEvents
+{
     use TraitBaseModel, TraitNameModel, TraitHasManyPages, TraitHasManyPosts, TraitHasManyEvents, TraitHasManyFolders, TraitHasManyFiles, TraitHasManyComments, TraitBelongsToManyEvents;
 
     /**
@@ -93,17 +93,31 @@ class User extends SentryUser implements IBaseModel, INameModel, IHasManyPages, 
      * @param  array  $input
      * @return void
      */
-    public function getEmail() {
+    public function getEmail()
+    {
+        // TODO: Use the TraitEmailModel from the Core package
         return $this->email;
     }
 
+    /**
+     * Get activated.
+     *
+     * @return bool
+     */
+    public function getActivated()
+    {
+        // TODO: Use the TraitActivatedModel from the Core package
+        return $this->activated;
+    }
 
     /**
      * Get activated_at.
      *
      * @return \Carbon\Carbon
      */
-    public function getActivatedAt() {
+    public function getActivatedAt()
+    {
+        // TODO: Use the TraitActivatedModel from the Core package
         $activated_at = $this->activated_at;
 
         if ($activated_at) {
@@ -111,7 +125,7 @@ class User extends SentryUser implements IBaseModel, INameModel, IHasManyPages, 
         }
 
         if ($this->activated) {
-            return $this->getCreatedAt();
+            return $this->created_at;
         }
 
         return null;
@@ -122,7 +136,8 @@ class User extends SentryUser implements IBaseModel, INameModel, IHasManyPages, 
      *
      * @return mixed
      */
-    public function beforeDelete() {
+    public function beforeDelete()
+    {
         $this->deleteInvites();
         $this->deletePages();
         $this->deletePosts();

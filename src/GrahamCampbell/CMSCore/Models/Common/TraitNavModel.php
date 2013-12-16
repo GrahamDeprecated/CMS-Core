@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,12 +20,25 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface ILocationModel
+trait TraitNavModel
 {
     /**
-     * Get location.
+     * Get show_nav.
+     *
+     * @return int
+     */
+    public function getShowNav()
+    {
+        return $this->show_nav;
+    }
+
+    /**
+     * Get icon.
      *
      * @return string
      */
-    public function getLocation();
+    public function getIcon()
+    {
+        return $this->icon;
+    }
 }

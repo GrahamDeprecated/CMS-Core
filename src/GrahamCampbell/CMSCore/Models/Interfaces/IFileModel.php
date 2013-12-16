@@ -20,12 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface ILocationModel
+interface IFileModel
 {
     /**
-     * Get location.
+     * Get the file format.
      *
      * @return string
      */
-    public function getLocation();
+    public function getFormat();
+
+    /**
+     * Get the file name.
+     *
+     * @return string
+     */
+    public function getName();
+
+    /**
+     * Get the file path.
+     *
+     * @return string
+     */
+    public function getPath();
 }

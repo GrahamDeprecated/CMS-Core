@@ -20,12 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface ILocationModel
+interface IPageModel
 {
     /**
-     * Get location.
+     * Get css.
      *
      * @return string
      */
-    public function getLocation();
+    public function getCSS();
+
+    /**
+     * Get js.
+     *
+     * @return string
+     */
+    public function getJS();
+
+    /**
+     * Get show_title.
+     *
+     * @return int
+     */
+    public function getShowTitle();
 }

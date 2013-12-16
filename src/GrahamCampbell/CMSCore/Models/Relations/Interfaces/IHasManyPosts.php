@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPosts {
-
+interface IHasManyPosts
+{
     /**
      * Get the post relation.
      *
@@ -32,6 +32,7 @@ interface IHasManyPosts {
     /**
      * Get the post collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getPosts($columns = null);
@@ -39,6 +40,8 @@ interface IHasManyPosts {
     /**
      * Get the specified post.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Post
      */
     public function findPost($id, $columns = array('*'));
@@ -49,5 +52,4 @@ interface IHasManyPosts {
      * @return void
      */
     public function deletePosts();
-
 }

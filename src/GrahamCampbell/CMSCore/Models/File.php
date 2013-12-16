@@ -24,14 +24,16 @@ use Illuminate\Support\Facades\File as LaravelFile;
 use GrahamCampbell\Core\Models\BaseModel;
 use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
 use GrahamCampbell\Core\Models\Common\TraitTitleModel;
+use GrahamCampbell\CMSCore\Models\Interfaces\IFileModel;
+use GrahamCampbell\CMSCore\Models\Common\TraitFileModel;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToFolder;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToFolder;
 
-class File extends BaseModel implements ITitleModel, IBelongsToUser, IBelongsToFolder {
-
-    use TraitTitleModel, TraitBelongsToUser, TraitBelongsToFolder;
+class File extends BaseModel implements ITitleModel, IFileModel, IBelongsToUser, IBelongsToFolder
+{
+    use TraitTitleModel, TraitFileModel, TraitBelongsToUser, TraitBelongsToFolder;
 
     /**
      * The table the files are stored in.
@@ -103,38 +105,12 @@ class File extends BaseModel implements ITitleModel, IBelongsToUser, IBelongsToF
     );
 
     /**
-     * Get the file format.
-     *
-     * @return string
-     */
-    public function getFormat() {
-        return $this->format;
-    }
-
-    /**
-     * Get the file name.
-     *
-     * @return string
-     */
-    public function getName() {
-        return $this->id.'.'.$this->format;
-    }
-
-    /**
-     * Get the file path.
-     *
-     * @return string
-     */
-    public function getPath() {
-        return storage_path().'/files/'.$this->getName();
-    }
-
-    /**
      * Before deleting an existing model.
      *
      * @return mixed
      */
-    public function beforeDelete() {
+    public function beforeDelete()
+    {
         LaravelFile::delete($this->getPath());
     }
 }

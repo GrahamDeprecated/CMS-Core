@@ -20,23 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitHasManyFiles {
-
+trait TraitHasManyFiles
+{
     /**
      * Get the file relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function files() {
+    public function files()
+    {
         return $this->hasMany('GrahamCampbell\CMSCore\Models\File');
     }
 
     /**
      * Get the file collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getFiles($columns = null) {
+    public function getFiles($columns = null)
+    {
         $model = 'GrahamCampbell\CMSCore\Models\File';
 
         if (is_null($columns)) {
@@ -45,16 +48,20 @@ trait TraitHasManyFiles {
 
         if (property_exists($model, 'order')) {
             return $this->files()->orderBy($model::$order, $model::$sort)->get($columns);
-        }        
+        } 
+       
         return $this->files()->get($columns);
     }
 
     /**
      * Get the specified file.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\File
      */
-    public function findFile($id, $columns = array('*')) {
+    public function findFile($id, $columns = array('*'))
+    {
         return $this->files()->find($id, $columns);
     }
 
@@ -63,7 +70,8 @@ trait TraitHasManyFiles {
      *
      * @return void
      */
-    public function deleteFiles() {
+    public function deleteFiles()
+    {
         foreach($this->getFiles(array('id')) as $file) {
             $file->delete();
         }

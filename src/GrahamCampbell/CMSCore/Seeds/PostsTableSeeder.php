@@ -20,18 +20,19 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use DateTime;
 
-class PostsTableSeeder extends Seeder {
-
+class PostsTableSeeder extends Seeder
+{
     /**
      * Run the database seeding.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         DB::table('posts')->delete();
 
         $post = array(
@@ -40,7 +41,7 @@ class PostsTableSeeder extends Seeder {
             'body'       => 'This is an example blog post.',
             'user_id'    => 1,
             'created_at' => new DateTime,
-            'updated_at' => new DateTime,
+            'updated_at' => new DateTime
         );
 
         DB::table('posts')->insert($post);

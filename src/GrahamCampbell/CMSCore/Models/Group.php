@@ -24,8 +24,8 @@ use Cartalyst\Sentry\Groups\Eloquent\Group as SentryGroup;
 use GrahamCampbell\Core\Models\Interfaces\IBaseModel;
 use GrahamCampbell\Core\Models\Common\TraitBaseModel;
 
-class Group extends SentryGroup implements IBaseModel {
-
+class Group extends SentryGroup implements IBaseModel
+{
     use TraitBaseModel;
 
     /**
@@ -69,5 +69,4 @@ class Group extends SentryGroup implements IBaseModel {
      * @var string
      */
     public static $sort = 'asc';
-
 }

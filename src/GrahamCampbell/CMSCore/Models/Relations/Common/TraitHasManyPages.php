@@ -20,23 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitHasManyPages {
-
+trait TraitHasManyPages
+{
     /**
      * Get the page relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function pages() {
+    public function pages()
+    {
         return $this->hasMany('GrahamCampbell\CMSCore\Models\Page');
     }
 
     /**
      * Get the page collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPages($columns = null) {
+    public function getPages($columns = null)
+    {
         $model = 'GrahamCampbell\CMSCore\Models\Page';
 
         if (is_null($columns)) {
@@ -53,9 +56,12 @@ trait TraitHasManyPages {
     /**
      * Get the specified page.
      *
+     * @param  string  $slug
+     * @param  array   $columns
      * @return \GrahamCampbell\CMSCore\Models\Page
      */
-    public function findPage($slug, $columns = array('*')) {
+    public function findPage($slug, $columns = array('*'))
+    {
         return $this->pages()->where('slug', '=', $slug)->first($columns);
     }
 
@@ -64,7 +70,8 @@ trait TraitHasManyPages {
      *
      * @return void
      */
-    public function deletePages() {
+    public function deletePages()
+    {
         foreach($this->getPages(array('id')) as $page) {
             $page->delete();
         }

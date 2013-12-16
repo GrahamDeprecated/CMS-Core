@@ -25,17 +25,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use GrahamCampbell\CMSCore\Facades\CommentProvider;
 
-class AddVersionToComments extends Migration {
-
+class AddVersionToComments extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         Schema::table('comments', function ($table) {
             $table->integer('version')->unsigned()->default(1);
         });
+
         foreach (CommentProvider::all() as $comment) {
             $comment->update(array('version' => 1));
         }
@@ -46,7 +48,8 @@ class AddVersionToComments extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::table('comments', function ($table) {
             $table->dropColumn('version');
         });

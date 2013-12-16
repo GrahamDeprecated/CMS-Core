@@ -20,23 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitHasManyComments {
-
+trait TraitHasManyComments
+{
     /**
      * Get the comment relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany('GrahamCampbell\CMSCore\Models\Comment');
     }
 
     /**
      * Get the comment collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getComments($columns = null) {
+    public function getComments($columns = null)
+    {
         $model = 'GrahamCampbell\CMSCore\Models\Comment';
 
         if (is_null($columns)) {
@@ -53,9 +56,12 @@ trait TraitHasManyComments {
     /**
      * Get the specified comment.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Comment
      */
-    public function findComment($id, $columns = array('*')) {
+    public function findComment($id, $columns = array('*'))
+    {
         return $this->comments()->find($id, $columns);
     }
 
@@ -64,7 +70,8 @@ trait TraitHasManyComments {
      *
      * @return void
      */
-    public function deleteComments() {
+    public function deleteComments()
+    {
         foreach($this->getComments(array('id')) as $comment) {
             $comment->delete();
         }

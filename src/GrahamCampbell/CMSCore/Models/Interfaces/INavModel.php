@@ -20,12 +20,19 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface ILocationModel
+interface INavModel
 {
     /**
-     * Get location.
+     * Get show_nav.
+     *
+     * @return int
+     */
+    public function getShowNav();
+
+    /**
+     * Get icon.
      *
      * @return string
      */
-    public function getLocation();
+    public function getIcon();
 }

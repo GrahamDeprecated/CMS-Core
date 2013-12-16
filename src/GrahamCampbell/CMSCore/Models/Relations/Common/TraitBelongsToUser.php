@@ -20,23 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitBelongsToUser {
-
+trait TraitBelongsToUser
+{
     /**
      * Get the user relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo('GrahamCampbell\CMSCore\Models\User');
     }
 
     /**
      * Get the user model.
      *
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\User
      */
-    public function getUser($columns = array('*')) {
+    public function getUser($columns = array('*'))
+    {
         return $this->user()->first($columns);
     }
 
@@ -45,16 +48,18 @@ trait TraitBelongsToUser {
      *
      * @return int
      */
-    public function getUserId() {
+    public function getUserId()
+    {
         return $this->user_id;
     }
 
     /**
      * Get the user email.
      *
-     * @return int
+     * @return string
      */
-    public function getUserEmail() {
+    public function getUserEmail()
+    {
         $user = $this->getUser(array('email'));
         return $user->getEmail();
     }
@@ -62,9 +67,10 @@ trait TraitBelongsToUser {
     /**
      * Get the user name.
      *
-     * @return int
+     * @return string
      */
-    public function getUserName() {
+    public function getUserName()
+    {
         $user = $this->getUser(array('first_name', 'last_name'));
         return $user->getName();
     }

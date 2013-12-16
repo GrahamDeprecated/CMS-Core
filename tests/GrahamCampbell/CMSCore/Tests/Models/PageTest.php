@@ -20,9 +20,12 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class PageTest extends ModelTestCase implements Relations\Interfaces\IBelongsToUserTestCase {
+use GrahamCampbell\CMSCore\Tests\Models\Relations\Interfaces\IBelongsToUserTestCase;
+use GrahamCampbell\CMSCore\Tests\Models\Relations\Common\TraitBelongsToUserTestCase;
 
-    use Relations\Common\TraitBelongsToUserTestCase;
+class PageTest extends ModelTestCase implements IBelongsToUserTestCase
+{
+    use TraitBelongsToUserTestCase;
 
     protected $model = 'GrahamCampbell\CMSCore\Models\Page';
 

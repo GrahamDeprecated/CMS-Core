@@ -22,13 +22,15 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class FileProvider extends Facade {
-
+class FileProvider extends Facade
+{
     /**
      * Get the registered name of the component.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'fileprovider'; }
-
+    protected static function getFacadeAccessor()
+    {
+        return 'fileprovider';
+    }
 }

@@ -24,8 +24,8 @@ use GrahamCampbell\Core\Providers\BaseProvider;
 use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
 use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
 
-class FolderProvider extends BaseProvider implements IPaginateProvider {
-
+class FolderProvider extends BaseProvider implements IPaginateProvider
+{
     use TraitPaginateProvider;
 
     /**
@@ -34,5 +34,4 @@ class FolderProvider extends BaseProvider implements IPaginateProvider {
      * @var string
      */
     protected $model = 'GrahamCampbell\CMSCore\Models\Folder';
-
 }

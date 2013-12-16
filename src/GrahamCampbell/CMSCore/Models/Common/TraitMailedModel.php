@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,12 +20,15 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface ILocationModel
+trait TraitMailedModel
 {
     /**
-     * Get location.
+     * Get mailed.
      *
-     * @return string
+     * @return boolean
      */
-    public function getLocation();
+    public function getMailed()
+    {
+        return $this->mailed;
+    }
 }

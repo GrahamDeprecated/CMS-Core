@@ -30,8 +30,8 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyFiles;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 
-class Folder extends BaseModel implements ITitleModel, ISummaryModel, IHasManyFiles, IBelongsToUser {
-
+class Folder extends BaseModel implements ITitleModel, ISummaryModel, IHasManyFiles, IBelongsToUser
+{
     use TraitTitleModel, TraitSummaryModel, TraitHasManyFiles, TraitBelongsToUser;
 
     /**
@@ -104,7 +104,8 @@ class Folder extends BaseModel implements ITitleModel, ISummaryModel, IHasManyFi
      *
      * @return mixed
      */
-    public function beforeDelete() {
+    public function beforeDelete()
+    {
         $this->deleteFiles();
     }
 }

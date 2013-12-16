@@ -22,13 +22,15 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class CommentProvider extends Facade {
-
+class CommentProvider extends Facade
+{
     /**
      * Get the registered name of the component.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'commentprovider'; }
-
+    protected static function getFacadeAccessor()
+    {
+        return 'commentprovider';
+    }
 }

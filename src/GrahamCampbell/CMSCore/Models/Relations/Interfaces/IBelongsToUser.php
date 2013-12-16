@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IBelongsToUser {
-
+interface IBelongsToUser
+{
     /**
      * Get the user relation.
      *
@@ -32,6 +32,7 @@ interface IBelongsToUser {
     /**
      * Get the user model.
      *
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\User
      */
     public function getUser($columns = array('*'));
@@ -46,15 +47,14 @@ interface IBelongsToUser {
     /**
      * Get the user email.
      *
-     * @return int
+     * @return string
      */
     public function getUserEmail();
 
     /**
      * Get the user name.
      *
-     * @return int
+     * @return string
      */
     public function getUserName();
-
 }

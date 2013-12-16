@@ -21,19 +21,19 @@
  */
 
 use DateTime;
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 
-class SentryUserSeeder extends Seeder {
-
+class SentryUserSeeder extends Seeder
+{
     /**
      * Run the database seeding.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         DB::table('users')->delete();
 
         $user = array(

@@ -23,14 +23,15 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class DatabaseSeeder extends Seeder {
-
+class DatabaseSeeder extends Seeder
+{
     /**
      * Run the database seeding.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         Eloquent::unguard();
 
         $this->call('GrahamCampbell\CMSCore\Seeds\SentryGroupSeeder');

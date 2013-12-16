@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyEvents {
-
+interface IHasManyEvents
+{
     /**
      * Get the event relation.
      *
@@ -32,6 +32,7 @@ interface IHasManyEvents {
     /**
      * Get the event collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getEvents($columns = null);
@@ -39,6 +40,8 @@ interface IHasManyEvents {
     /**
      * Get the specified event.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Event
      */
     public function findEvent($id, $columns = array('*'));
@@ -49,5 +52,4 @@ interface IHasManyEvents {
      * @return void
      */
     public function deleteEvents();
-
 }

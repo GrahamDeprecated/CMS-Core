@@ -20,23 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitHasManyPosts {
-
+trait TraitHasManyPosts
+{
     /**
      * Get the post relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function posts() {
+    public function posts()
+    {
         return $this->hasMany('GrahamCampbell\CMSCore\Models\Post');
     }
 
     /**
      * Get the post collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPosts($columns = null) {
+    public function getPosts($columns = null)
+    {
         $model = 'GrahamCampbell\CMSCore\Models\Post';
 
         if (is_null($columns)) {
@@ -52,9 +55,12 @@ trait TraitHasManyPosts {
     /**
      * Get the specified post.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Post
      */
-    public function findPost($id, $columns = array('*')) {
+    public function findPost($id, $columns = array('*'))
+    {
         return $this->posts()->find($id, $columns);
     }
 
@@ -63,7 +69,8 @@ trait TraitHasManyPosts {
      *
      * @return void
      */
-    public function deletePosts() {
+    public function deletePosts()
+    {
         foreach($this->getPosts(array('id')) as $post) {
             $post->delete();
         }
