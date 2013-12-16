@@ -4,8 +4,8 @@ CMS Core
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/CMS-Core/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Build Status](https://travis-ci.org/GrahamCampbell/CMS-Core.png?branch=develop)](https://travis-ci.org/GrahamCampbell/CMS-Core)
+[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/CMS-Core/badge.png?branch=develop)](https://coveralls.io/r/GrahamCampbell/CMS-Core)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core/badges/quality-score.png?s=abade2f7af64ae1b36516618be72c26f9fd560bc)](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core)
-[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/CMS-Core/badge.png?branch=develop)](https://coveralls.io/r/GrahamCampbell/CMS-Core?branch=develop)
 [![Latest Version](https://poser.pugx.org/graham-campbell/cms-core/v/stable.png)](https://packagist.org/packages/graham-campbell/cms-core)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/CMS-Core.png)](http://stillmaintained.com/GrahamCampbell/CMS-Core)
 
@@ -17,7 +17,7 @@ CMS Core provides some core functionality for [Bootstrap CMS](https://github.com
 * CMS Core was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * CMS Core relies on many of my packages including [Laravel Core](https://github.com/GrahamCampbell/Laravel-Core) and [Laravel Queuing](https://github.com/GrahamCampbell/Laravel-Queuing).  
 * CMS Core uses [Travis CI](https://travis-ci.org/GrahamCampbell/CMS-Core) to run tests to check if it's working as it should.  
-* CMS Core uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core) to run additional tests and checks.  
+* CMS Core uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core) and [Coveralls](https://coveralls.io/r/GrahamCampbell/CMS-Core) to run additional tests and checks.  
 * CMS Core uses [Composer](https://getcomposer.org) to load and manage dependencies.  
 * CMS Core provides a [change log](https://github.com/GrahamCampbell/CMS-Core/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/CMS-Core/releases), and a [wiki](https://github.com/GrahamCampbell/CMS-Core/wiki).  
 * CMS Core is licensed under the GNU AGPLv3, available [here](https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md).  
