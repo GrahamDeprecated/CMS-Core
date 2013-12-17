@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests\Models\Relations\Interfaces;
+<?php namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,15 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IBelongsToUserTestCase {
-
-    public function testGetUserId();
-
-    public function testRelationWithUser();
-
-    public function testRelationWithUserId();
-
-    public function testRelationWithUserEmail();
-
-    public function testRelationWithUserName();
+trait TraitMailedModel
+{
+    /**
+     * Get mailed.
+     *
+     * @return boolean
+     */
+    public function getMailed()
+    {
+        return $this->mailed;
+    }
 }

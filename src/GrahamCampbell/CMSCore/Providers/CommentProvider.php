@@ -22,13 +22,12 @@
 
 use GrahamCampbell\Core\Providers\BaseProvider;
 
-class CommentProvider extends BaseProvider {
-
+class CommentProvider extends BaseProvider
+{
     /**
      * The name of the model to provide.
      *
      * @var string
      */
     protected $model = 'GrahamCampbell\CMSCore\Models\Comment';
-
 }

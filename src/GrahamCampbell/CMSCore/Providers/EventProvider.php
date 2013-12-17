@@ -24,8 +24,8 @@ use GrahamCampbell\Core\Providers\BaseProvider;
 use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
 use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
 
-class EventProvider extends BaseProvider implements IPaginateProvider {
-
+class EventProvider extends BaseProvider implements IPaginateProvider
+{
     use TraitPaginateProvider;
 
     /**
@@ -34,5 +34,4 @@ class EventProvider extends BaseProvider implements IPaginateProvider {
      * @var string
      */
     protected $model = 'GrahamCampbell\CMSCore\Models\Event';
-
 }

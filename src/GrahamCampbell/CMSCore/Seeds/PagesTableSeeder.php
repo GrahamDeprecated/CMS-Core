@@ -20,20 +20,21 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Support\Facades\File;
-use DateTime;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
-class PagesTableSeeder extends Seeder {
-
+class PagesTableSeeder extends Seeder
+{
     /**
      * Run the database seeding.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         DB::table('pages')->delete();
 
         $home = array(
@@ -44,7 +45,7 @@ class PagesTableSeeder extends Seeder {
             'icon'       => 'home',
             'user_id'    => 1,
             'created_at' => new DateTime,
-            'updated_at' => new DateTime,
+            'updated_at' => new DateTime
         );
 
         DB::table('pages')->insert($home);
@@ -56,7 +57,7 @@ class PagesTableSeeder extends Seeder {
             'user_id'    => 1,
             'icon'       => 'info-circle',
             'created_at' => new DateTime,
-            'updated_at' => new DateTime,
+            'updated_at' => new DateTime
         );
 
         DB::table('pages')->insert($about);

@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IBelongsToPost {
-
+interface IBelongsToPost
+{
     /**
      * Get the post relation.
      *
@@ -32,6 +32,7 @@ interface IBelongsToPost {
     /**
      * Get the post model.
      *
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Post
      */
     public function getPost($columns = array('*'));
@@ -42,5 +43,4 @@ interface IBelongsToPost {
      * @return int
      */
     public function getPostId();
-
 }

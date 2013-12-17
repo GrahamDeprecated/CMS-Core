@@ -20,23 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitBelongsToFolder {
-
+trait TraitBelongsToFolder
+{
     /**
      * Get the folder relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function folder() {
+    public function folder()
+    {
         return $this->belongsTo('GrahamCampbell\CMSCore\Models\Folder');
     }
 
     /**
      * Get the folder model.
      *
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Folder
      */
-    public function getFolder($columns = array('*')) {
+    public function getFolder($columns = array('*'))
+    {
         return $this->folder()->first($columns);
     }
 
@@ -45,7 +48,8 @@ trait TraitBelongsToFolder {
      *
      * @return int
      */
-    public function getFolderId() {
+    public function getFolderId()
+    {
         return $this->folder_id;
     }
 }

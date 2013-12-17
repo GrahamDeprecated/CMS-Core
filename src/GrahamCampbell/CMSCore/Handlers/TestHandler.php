@@ -20,14 +20,15 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class TestHandler extends BaseHandler {
-
+class TestHandler extends BaseHandler
+{
     /**
      * Run the task (called by BaseHandler).
      *
      * @return void
      */
-    protected function run() {
+    protected function run()
+    {
         throw new \Exception('TestHandler Error Test!');
     }
 }

@@ -24,15 +24,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEventsTable extends Migration {
-
+class CreateEventsTable extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
-        Schema::create('events', function(Blueprint $table) {
+    public function up()
+    {
+        Schema::create('events', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->string('title');
@@ -50,7 +51,8 @@ class CreateEventsTable extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::drop('events');
     }
 }

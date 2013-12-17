@@ -24,8 +24,8 @@ use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
 use GrahamCampbell\Core\Models\Interfaces\IBaseModel;
 use GrahamCampbell\Core\Models\Common\TraitBaseModel;
 
-class Throttle extends SentryThrottle implements IBaseModel {
-
+class Throttle extends SentryThrottle implements IBaseModel
+{
     use TraitBaseModel;
 
     /**
@@ -41,5 +41,4 @@ class Throttle extends SentryThrottle implements IBaseModel {
      * @var string
      */
     public static $name = 'throttle';
-
 }

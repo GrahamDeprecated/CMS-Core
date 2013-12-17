@@ -24,15 +24,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateFoldersTable extends Migration {
-
+class CreateFoldersTable extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
-        Schema::create('folders', function(Blueprint $table) {
+    public function up()
+    {
+        Schema::create('folders', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->string('title');
@@ -47,7 +48,8 @@ class CreateFoldersTable extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::drop('folders');
     }
 }

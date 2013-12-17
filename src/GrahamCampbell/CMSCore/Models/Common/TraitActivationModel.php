@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests;
+<?php namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,26 +20,35 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Orchestra\Testbench\TestCase as Testbench;
-
-abstract class TestCase extends Testbench {
-
-    protected function getEnvironmentSetUp($app) {
-        $app['path.base'] = realpath(__DIR__.'/../../../../src');
-
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', array(
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-            'prefix'   => ''
-        ));
+trait TraitPageModel
+{
+    /**
+     * Get css.
+     *
+     * @return string
+     */
+    public function getCSS()
+    {
+        return $this->css;
     }
 
-    protected function getPackageProviders() {
-        return array(
-            'Cartalyst\Sentry\SentryServiceProvider',
-            'GrahamCampbell\Markdown\MarkdownServiceProvider',
-            'GrahamCampbell\CMSCore\CMSCoreServiceProvider'
-        );
+    /**
+     * Get js.
+     *
+     * @return string
+     */
+    public function getJS()
+    {
+        return $this->js;
+    }
+
+    /**
+     * Get show_title.
+     *
+     * @return int
+     */
+    public function getShowTitle()
+    {
+        return $this->show_title;
     }
 }

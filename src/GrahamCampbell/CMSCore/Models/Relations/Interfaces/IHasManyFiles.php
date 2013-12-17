@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyFiles {
-
+interface IHasManyFiles
+{
     /**
      * Get the file relation.
      *
@@ -32,6 +32,7 @@ interface IHasManyFiles {
     /**
      * Get the file collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getFiles($columns = null);
@@ -39,6 +40,8 @@ interface IHasManyFiles {
     /**
      * Get the specified file.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\File
      */
     public function findFile($id, $columns = array('*'));
@@ -49,5 +52,4 @@ interface IHasManyFiles {
      * @return void
      */
     public function deleteFiles();
-
 }

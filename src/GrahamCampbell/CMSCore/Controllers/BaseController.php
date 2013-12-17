@@ -20,19 +20,17 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use App;
-use Config;
-use Event;
-use View;
-
-use Sentry;
-
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\View;
+use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use GrahamCampbell\Navigation\Facades\Navigation;
 use GrahamCampbell\CMSCore\Facades\PageProvider;
 use GrahamCampbell\Core\Controllers\BaseController as Controller;
 
-abstract class BaseController extends Controller {
-
+abstract class BaseController extends Controller
+{
     /**
      * A list of methods protected by user permissions.
      *
@@ -73,7 +71,8 @@ abstract class BaseController extends Controller {
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->beforeFilter('csrf', array('on' => 'post'));
 
         Sentry::getThrottleProvider()->enable();
@@ -88,9 +87,10 @@ abstract class BaseController extends Controller {
     /**
      * Make a page view.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
-    protected function viewMake($view, $data = array(), $admin = false) {
+    protected function viewMake($view, $data = array(), $admin = false)
+    {
         if (Sentry::check()) {
             PageProvider::setNavUser(true);
             Event::fire('view.make', array(array('View' => $view, 'User' => true)));
@@ -125,7 +125,8 @@ abstract class BaseController extends Controller {
      * @pram  string  $permission
      * @return void
      */
-    protected function setPermission($action, $permission) {
+    protected function setPermission($action, $permission)
+    {
         $this->{$permission.'s'}[] = $action;
     }
 
@@ -135,7 +136,8 @@ abstract class BaseController extends Controller {
      * @pram  array  $permissions
      * @return void
      */
-    protected function setPermissions($permissions) {
+    protected function setPermissions($permissions)
+    {
         foreach ($permissions as $action => $permission) {
             $this->setPermission($action, $permission);
         }
@@ -146,7 +148,8 @@ abstract class BaseController extends Controller {
      *
      * @return int
      */
-    protected function getUserId() {
+    protected function getUserId()
+    {
         if (Sentry::getUser()) {
             return Sentry::getUser()->getId();
         } else {
@@ -160,7 +163,8 @@ abstract class BaseController extends Controller {
      * @param  array   $parameters
      * @return \Illuminate\Http\Response
      */
-    public function missingMethod($parameters = array()) {
+    public function missingMethod($parameters = array())
+    {
         return App::abort(405, 'Missing Controller Method');
     }
 }

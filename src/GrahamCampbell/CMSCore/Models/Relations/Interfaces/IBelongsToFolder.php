@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IBelongsToFolder {
-
+interface IBelongsToFolder
+{
     /**
      * Get the folder relation.
      *
@@ -32,6 +32,7 @@ interface IBelongsToFolder {
     /**
      * Get the folder model.
      *
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Folder
      */
     public function getFolder($columns = array('*'));
@@ -42,5 +43,4 @@ interface IBelongsToFolder {
      * @return int
      */
     public function getFolderId();
-
 }

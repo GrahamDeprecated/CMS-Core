@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,15 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
+interface IBelongsToUserTestCase
+{
+    public function testGetUserId();
 
-class ReplyProvider extends Facade {
+    public function testRelationWithUser();
 
-    /**
-     * Get the registered name of the component.
-     *
-     * @return string
-     */
-    protected static function getFacadeAccessor() { return 'replyprovider'; }
+    public function testRelationWithUserId();
 
+    public function testRelationWithUserEmail();
+
+    public function testRelationWithUserName();
 }

@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,35 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class TopicProvider extends Facade {
-
+trait TraitFileModel
+{
     /**
-     * Get the registered name of the component.
+     * Get the file format.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'topicprovider'; }
+    public function getFormat()
+    {
+        return $this->format;
+    }
 
+    /**
+     * Get the file name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->id.'.'.$this->format;
+    }
+
+    /**
+     * Get the file path.
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return storage_path().'/files/'.$this->getName();
+    }
 }

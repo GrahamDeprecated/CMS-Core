@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Providers;
+<?php namespace GrahamCampbell\CMSCore\Models\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,19 +20,12 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use GrahamCampbell\Core\Providers\BaseProvider;
-use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
-use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
-
-class SectionProvider extends BaseProvider implements IPaginateProvider {
-
-    use TraitPaginateProvider;
-
+interface IMailedModel
+{
     /**
-     * The name of the model to provide.
+     * Get mailed.
      *
-     * @var string
+     * @return boolean
      */
-    protected $model = 'GrahamCampbell\CMSCore\Models\Section';
-
+    public function getMailed();
 }

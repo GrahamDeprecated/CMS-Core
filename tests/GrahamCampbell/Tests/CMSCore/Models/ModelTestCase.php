@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests\Models;
+<?php namespace GrahamCampbell\Tests\CMSCore\Models;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,16 +20,17 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use GrahamCampbell\CMSCore\Tests\TestCase;
+use GrahamCampbell\Tests\CMSCore\TestCase;
 
-abstract class ModelTestCase extends TestCase {
-
+abstract class ModelTestCase extends TestCase
+{
     protected $model; // must be set in the extending class
 
     protected $object;
     protected $instance;
 
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         $this->app['router']->enableFilters();
@@ -46,7 +47,8 @@ abstract class ModelTestCase extends TestCase {
         $this->instance = $this->object->find(1);
     }
 
-    public function testModel() {
+    public function testModel()
+    {
         $this->assertClassHasAttribute('table', $this->model);
         $this->assertClassHasAttribute('guarded', $this->model);
         $this->assertInstanceOf($this->model, $this->object);
@@ -55,19 +57,23 @@ abstract class ModelTestCase extends TestCase {
         $this->extraModelTests();
     }
 
-    protected function extraModelTests() {
+    protected function extraModelTests()
+    {
         // can be set in the extending class
     }
 
-    public function testGetId() {
+    public function testGetId()
+    {
         $this->assertEquals($this->instance->getId(), $this->instance->id);
     }
 
-    public function testGetCreatedAt() {
+    public function testGetCreatedAt()
+    {
         $this->assertEquals($this->instance->getCreatedAt(), $this->instance->created_at);
     }
 
-    public function testGetUpdatedAt() {
+    public function testGetUpdatedAt()
+    {
         $this->assertEquals($this->instance->getUpdatedAt(), $this->instance->updated_at);
     }
 }

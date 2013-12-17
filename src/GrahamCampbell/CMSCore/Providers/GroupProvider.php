@@ -22,13 +22,12 @@
 
 use GrahamCampbell\Core\Providers\BaseProvider;
 
-class GroupProvider extends BaseProvider {
-
+class GroupProvider extends BaseProvider
+{
     /**
      * The name of the model to provide.
      *
      * @var string
      */
     protected $model = 'GrahamCampbell\CMSCore\Models\Group';
-
 }

@@ -25,18 +25,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use GrahamCampbell\CMSCore\Facades\PageProvider;
 
-class AddStuffToPages extends Migration {
-
+class AddStuffToPages extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
-        Schema::table('pages', function($table) {
+    public function up()
+    {
+        Schema::table('pages', function ($table) {
             $table->text('css')->default('');
             $table->text('js')->default('');
         });
+
         foreach (PageProvider::all() as $page) {
             $page->update(array('css' => '', 'js' => ''));
         }
@@ -47,8 +49,9 @@ class AddStuffToPages extends Migration {
      *
      * @return void
      */
-    public function down() {
-        Schema::table('pages', function($table) {
+    public function down()
+    {
+        Schema::table('pages', function ($table) {
             $table->dropColumn('css');
             $table->dropColumn('js');
         });

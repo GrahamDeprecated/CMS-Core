@@ -20,16 +20,17 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use PageProvider;
+use GrahamCampbell\CMSCore\Facades\PageProvider;
 
-class PageCacheHandler extends BaseHandler {
-
+class PageCacheHandler extends BaseHandler
+{
     /**
      * Run the task (called by BaseHandler).
      *
      * @return void
      */
-    protected function run() {
+    protected function run()
+    {
         PageProvider::refresh();
     }
 }

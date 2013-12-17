@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests\Models;
+<?php namespace GrahamCampbell\Tests\CMSCore\Models;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,30 +20,38 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class CommentTest extends ModelTestCase implements Relations\Interfaces\IBelongsToUserTestCase {
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces\IBelongsToUserTestCase;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Common\TraitBelongsToUserTestCase;
 
-    use Relations\Common\TraitBelongsToUserTestCase;
+class CommentTest extends ModelTestCase implements IBelongsToUserTestCase
+{
+    use TraitBelongsToUserTestCase;
 
     protected $model = 'GrahamCampbell\CMSCore\Models\Comment';
 
-    protected function extraModelTests() {
+    protected function extraModelTests()
+    {
         $this->assertInstanceOf('GrahamCampbell\Core\Models\BaseModel', $this->object);
     }
 
-    public function testGetBody() {
+    public function testGetBody()
+    {
         $this->assertEquals($this->instance->getBody(), $this->instance->body);
     }
 
-    public function testGetPostId() {
+    public function testGetPostId()
+    {
         $this->assertEquals($this->instance->getPostId(), $this->instance->post_id);
     }
 
-    public function testRelationWithPost() {
+    public function testRelationWithPost()
+    {
         $this->assertEquals($this->instance->post->first(), $this->instance->getPost());
         $this->assertEquals($this->instance->post_id, $this->instance->getPost()->id);
     }
 
-    public function testRelationWithPostId() {
+    public function testRelationWithPostId()
+    {
         $this->assertEquals($this->instance->getPostId(), $this->instance->getPost()->id);
     }
 }

@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyFolders {
-
+interface IHasManyFolders
+{
     /**
      * Get the folder relation.
      *
@@ -32,6 +32,7 @@ interface IHasManyFolders {
     /**
      * Get the folder collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getFolders($columns = null);
@@ -39,6 +40,8 @@ interface IHasManyFolders {
     /**
      * Get the specified folder.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Folder
      */
     public function findFolder($id, $columns = array('*'));
@@ -49,5 +52,4 @@ interface IHasManyFolders {
      * @return void
      */
     public function deleteFolders();
-
 }

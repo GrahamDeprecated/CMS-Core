@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-interface IHasManyPages {
-
+interface IHasManyPages
+{
     /**
      * Get the page relation.
      *
@@ -32,6 +32,7 @@ interface IHasManyPages {
     /**
      * Get the page collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getPages($columns = null);
@@ -39,14 +40,16 @@ interface IHasManyPages {
     /**
      * Get the specified page.
      *
+     * @param  string  $slug
+     * @param  array   $columns
      * @return \GrahamCampbell\CMSCore\Models\Page
      */
     public function findPage($slug, $columns = array('*'));
+
     /**
      * Delete all pages.
      *
      * @return void
      */
     public function deletePages();
-
 }

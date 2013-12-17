@@ -30,8 +30,8 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToPost;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 
-class Comment extends BaseModel implements IBodyModel, IVersionModel, IBelongsToPost, IBelongsToUser {
-
+class Comment extends BaseModel implements IBodyModel, IVersionModel, IBelongsToPost, IBelongsToUser
+{
     use TraitBodyModel, TraitVersionModel, TraitBelongsToPost, TraitBelongsToUser;
 
     /**

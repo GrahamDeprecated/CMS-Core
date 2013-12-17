@@ -20,17 +20,17 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
+use GrahamCampbell\CMSCore\Models\Page;
 use GrahamCampbell\Core\Providers\BaseProvider;
 use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
 use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
 use GrahamCampbell\Core\Providers\Interfaces\ISlugProvider;
 use GrahamCampbell\Core\Providers\Common\TraitSlugProvider;
-use GrahamCampbell\CMSCore\Models\Page;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 
-class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvider {
-
+class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvider
+{
     use TraitPaginateProvider, TraitSlugProvider;
 
     /**
@@ -59,7 +59,8 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      *
      * @return array
      */
-    public function navigation() {
+    public function navigation()
+    {
         // caching logic
         if ($this->validCache($this->nav)) {
             // if is valid, get the value from the class cache
@@ -91,7 +92,8 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      *
      * @return void
      */
-    public function flush() {
+    public function flush()
+    {
         if (Config::get('cms.cache') === true) {
             Cache::forget('navigation');
         }
@@ -102,7 +104,8 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      *
      * @return void
      */
-    public function refresh() {
+    public function refresh()
+    {
         if (Config::get('cms.cache') === true) {
             $this->setCache($this->sendGet());
         }
@@ -113,7 +116,8 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      *
      * @return array
      */
-    protected function sendGet() {
+    protected function sendGet()
+    {
         return Page::where('show_nav', '=', true)->get(array('title', 'slug', 'icon'))->toArray();
     }
 
@@ -122,7 +126,8 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      *
      * @return array
      */
-    protected function getCache() {
+    protected function getCache()
+    {
         return Cache::get('navigation');
     }
 
@@ -132,7 +137,8 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      * @param  array  $value
      * @return void
      */
-    protected function setCache($value) {
+    protected function setCache($value)
+    {
         Cache::forever('navigation', $value);
     }
 
@@ -142,7 +148,8 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      * @param  array  $value
      * @return bool
      */
-    protected function validCache($value) {
+    protected function validCache($value)
+    {
         if (is_null($value) || !is_array($value) || empty($value)) {
             return false;
         }
@@ -155,7 +162,8 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      *
      * @return bool
      */
-    public function getNavUser() {
+    public function getNavUser()
+    {
         return $this->user;
     }
 
@@ -165,7 +173,8 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      * @param  bool  $user
      * @return void
      */
-    public function setNavUser($user) {
+    public function setNavUser($user)
+    {
         $this->user = $user;
     }
 }

@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests\Models;
+<?php namespace GrahamCampbell\Tests\CMSCore\Models;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -21,36 +21,44 @@
  */
 
 use Carbon\Carbon;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces\IBelongsToUserTestCase;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Common\TraitBelongsToUserTestCase;
 
-class EventTest extends ModelTestCase implements Relations\Interfaces\IBelongsToUserTestCase {
-
-    use Relations\Common\TraitBelongsToUserTestCase;
+class EventTest extends ModelTestCase implements IBelongsToUserTestCase
+{
+    use TraitBelongsToUserTestCase;
 
     protected $model = 'GrahamCampbell\CMSCore\Models\Event';
 
-    protected function extraModelTests() {
+    protected function extraModelTests()
+    {
         $this->assertInstanceOf('GrahamCampbell\Core\Models\BaseModel', $this->object);
     }
 
-    public function testGetTitle() {
+    public function testGetTitle()
+    {
         $this->assertEquals($this->instance->getTitle(), $this->instance->title);
     }
 
-    public function testGetDate() {
+    public function testGetDate()
+    {
         $this->assertEquals($this->instance->getDate(), $this->instance->date);
     }
 
-    public function testGetFormattedDate() {
+    public function testGetFormattedDate()
+    {
         $date = new Carbon($this->instance->date);
         $formatteddate = $date->format('l jS F Y \\- H:i:s');
         $this->assertEquals($this->instance->getFormattedDate(), $formatteddate);
     }
 
-    public function testGetLocation() {
+    public function testGetLocation()
+    {
         $this->assertEquals($this->instance->getLocation(), $this->instance->location);
     }
 
-    public function testGetBody() {
+    public function testGetBody()
+    {
         $this->assertEquals($this->instance->getBody(), $this->instance->body);
     }
 }

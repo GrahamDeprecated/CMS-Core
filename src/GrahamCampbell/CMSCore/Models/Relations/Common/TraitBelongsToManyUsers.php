@@ -20,23 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitBelongsToManyUsers {
-
+trait TraitBelongsToManyUsers
+{
     /**
      * Get the event relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function invites() {
+    public function invites()
+    {
         return $this->belongsToMany('GrahamCampbell\CMSCore\Models\User', 'events_users');
     }
 
     /**
      * Get the event collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getInvites($columns = null) {
+    public function getInvites($columns = null)
+    {
         $model = 'GrahamCampbell\CMSCore\Models\User';
 
         if (is_null($columns)) {
@@ -45,43 +48,53 @@ trait TraitBelongsToManyUsers {
 
         if (property_exists($model, 'order')) {
             return $this->invites()->orderBy($model::$order, $model::$sort)->get($columns);
-        }        
+        }
+
         return $this->invites()->get($columns);
     }
 
     /**
      * Get the specified user.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\User
      */
-    public function findInvite($id, $columns = array('*')) {
+    public function findInvite($id, $columns = array('*'))
+    {
         return $this->invite()->find($id, $columns);
     }
 
     /**
      * Link an user.
      *
+     * @param  int  $id
      * @return void
      */
-    public function addInvite($id) {
+    public function addInvite($id)
+    {
         return $this->invites()->attatch($id);
     }
 
     /**
      * Unlink an user.
      *
+     * @param  int  $id
      * @return void
      */
-    public function deleteInvite($id) {
+    public function deleteInvite($id)
+    {
         return $this->invites()->detach($id);
     }
 
     /**
      * Link some users.
      *
+     * @param  array  $ids
      * @return void
      */
-    public function setInvites($ids) {
+    public function setInvites($ids)
+    {
         return $this->invites()->sync($ids);
     }
 
@@ -90,7 +103,8 @@ trait TraitBelongsToManyUsers {
      *
      * @return void
      */
-    public function deleteInvites() {
+    public function deleteInvites()
+    {
         return $this->invites()->sync(array());
     }
 }

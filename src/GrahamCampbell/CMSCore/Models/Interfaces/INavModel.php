@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Providers;
+<?php namespace GrahamCampbell\CMSCore\Models\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,19 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use GrahamCampbell\Core\Providers\BaseProvider;
-
-class ReplyProvider extends BaseProvider {
+interface INavModel
+{
+    /**
+     * Get show_nav.
+     *
+     * @return int
+     */
+    public function getShowNav();
 
     /**
-     * The name of the model to provide.
+     * Get icon.
      *
-     * @var string
+     * @return string
      */
-    protected $model = 'GrahamCampbell\CMSCore\Models\Reply';
-
+    public function getIcon();
 }

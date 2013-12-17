@@ -24,14 +24,15 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 
-class SentryUserGroupSeeder extends Seeder {
-
+class SentryUserGroupSeeder extends Seeder
+{
     /**
      * Run the database seeding.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         DB::table('users_groups')->delete();
 
         $this->matchUser('admin@dsmg.co.uk', 'Admins');
@@ -51,7 +52,8 @@ class SentryUserGroupSeeder extends Seeder {
      * @param  string  $group
      * @return void
      */
-    protected function matchUser($email, $group) {
+    protected function matchUser($email, $group)
+    {
         return Sentry::getUserProvider()->findByLogin($email)->addGroup(Sentry::getGroupProvider()->findByName($group));
     }
 }

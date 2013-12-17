@@ -20,23 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitHasManyEvents {
-
+trait TraitHasManyEvents
+{
     /**
      * Get the event relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
      */
-    public function events() {
+    public function events()
+    {
         return $this->hasMany('GrahamCampbell\CMSCore\Models\Event');
     }
 
     /**
      * Get the event collection.
      *
+     * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getEvents($columns = null) {
+    public function getEvents($columns = null)
+    {
         $model = 'GrahamCampbell\CMSCore\Models\Event';
 
         if (is_null($columns)) {
@@ -53,9 +56,12 @@ trait TraitHasManyEvents {
     /**
      * Get the specified event.
      *
+     * @param  int    $id
+     * @param  array  $columns
      * @return \GrahamCampbell\CMSCore\Models\Event
      */
-    public function findEvent($id, $columns = array('*')) {
+    public function findEvent($id, $columns = array('*'))
+    {
         return $this->events()->find($id, $columns);
     }
 
@@ -64,8 +70,9 @@ trait TraitHasManyEvents {
      *
      * @return void
      */
-    public function deleteEvents() {
-        foreach($this->getEvents(array('id')) as $event) {
+    public function deleteEvents()
+    {
+        foreach ($this->getEvents(array('id')) as $event) {
             $event->delete();
         }
     }

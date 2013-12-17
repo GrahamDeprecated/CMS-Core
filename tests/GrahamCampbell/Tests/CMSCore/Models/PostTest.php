@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests\Models;
+<?php namespace GrahamCampbell\Tests\CMSCore\Models;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,25 +20,32 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-class PostTest extends ModelTestCase implements Relations\Interfaces\IBelongsToUserTestCase {
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces\IBelongsToUserTestCase;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Common\TraitBelongsToUserTestCase;
 
-    use Relations\Common\TraitBelongsToUserTestCase;
+class PostTest extends ModelTestCase implements IBelongsToUserTestCase
+{
+    use TraitBelongsToUserTestCase;
 
     protected $model = 'GrahamCampbell\CMSCore\Models\Post';
 
-    protected function extraModelTests() {
+    protected function extraModelTests()
+    {
         $this->assertInstanceOf('GrahamCampbell\Core\Models\BaseModel', $this->object);
     }
 
-    public function testGetTitle() {
+    public function testGetTitle()
+    {
         $this->assertEquals($this->instance->getTitle(), $this->instance->title);
     }
 
-    public function testGetSummary() {
+    public function testGetSummary()
+    {
         $this->assertEquals($this->instance->getSummary(), $this->instance->summary);
     }
 
-    public function testGetBody() {
+    public function testGetBody()
+    {
         $this->assertEquals($this->instance->getBody(), $this->instance->body);
     }
 

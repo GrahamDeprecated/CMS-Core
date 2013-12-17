@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Providers;
+<?php namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,19 +20,35 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use GrahamCampbell\Core\Providers\BaseProvider;
-use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
-use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
-
-class TopicProvider extends BaseProvider implements IPaginateProvider {
-
-    use TraitPaginateProvider;
+trait TraitPageModel
+{
+    /**
+     * Get css.
+     *
+     * @return string
+     */
+    public function getCSS()
+    {
+        return $this->css;
+    }
 
     /**
-     * The name of the model to provide.
+     * Get js.
      *
-     * @var string
+     * @return string
      */
-    protected $model = 'GrahamCampbell\CMSCore\Models\Topic';
+    public function getJS()
+    {
+        return $this->js;
+    }
 
+    /**
+     * Get show_title.
+     *
+     * @return int
+     */
+    public function getShowTitle()
+    {
+        return $this->show_title;
+    }
 }

@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Facades;
+<?php namespace GrahamCampbell\CMSCore\Models\Interfaces;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,15 +20,26 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use Illuminate\Support\Facades\Facade;
-
-class SectionProvider extends Facade {
-
+interface IFileModel
+{
     /**
-     * Get the registered name of the component.
+     * Get the file format.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'sectionprovider'; }
+    public function getFormat();
 
+    /**
+     * Get the file name.
+     *
+     * @return string
+     */
+    public function getName();
+
+    /**
+     * Get the file path.
+     *
+     * @return string
+     */
+    public function getPath();
 }

@@ -20,14 +20,15 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-trait TraitLocationModel {
-
+trait TraitLocationModel
+{
     /**
      * Get location.
      *
      * @return string
      */
-    public function getLocation() {
+    public function getLocation()
+    {
         return $this->location;
     }
 }
