@@ -48,7 +48,7 @@ abstract class TestCase extends Testbench
             'GrahamCampbell\Binput\BinputServiceProvider',
             'GrahamCampbell\Passwd\PasswdServiceProvider',
             'GrahamCampbell\Navigation\NavigationServiceProvider',
-            'GrahamCampbell\CMSCore\Support\CMSCoreServiceProvider'
+            'GrahamCampbell\CMSCore\CMSCoreServiceProvider'
         );
     }
 }
