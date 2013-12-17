@@ -6,10 +6,17 @@ CHANGE LOG
 #### Major Release
 
 * Support only laravel 4.1
-* Added more unit tests
+* Improved authentication
+* Improved events
 
 
-## V0.1.1 Alpha (Upcoming)
+## V0.1.2 Alpha (Upcoming)
+#### Minor Release
+
+* Other minor tweaks
+
+
+## V0.1.1 Alpha (17/12/2013)
 #### Minor Release
 
 * Travis and Scrutinizer tweaks
