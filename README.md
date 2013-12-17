@@ -43,10 +43,15 @@ You'll then need to run `composer install` or `composer update` to download it a
 You will need to register many service providers before you attempt to load the CMS Core service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
 `'GrahamCampbell\Queuing\QueuingServiceProvider'`
+
 `'GrahamCampbell\HTMLMin\HTMLMinServiceProvider'`
+
 `'GrahamCampbell\Security\SecurityMinServiceProvider'`
+
 `'GrahamCampbell\Binput\BinputServiceProvider'`
+
 `'GrahamCampbell\Passwd\PasswdServiceProvider'`
+
 `'GrahamCampbell\Navigation\NavigationServiceProvider'`
 
 Once CMS Core is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
