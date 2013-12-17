@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Support;
+<?php namespace GrahamCampbell\CMSCore;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -21,14 +21,6 @@
  */
 
 use Illuminate\Support\ServiceProvider;
-use GrahamCampbell\CMSCore\Providers\CommentProvider;
-use GrahamCampbell\CMSCore\Providers\EventProvider;
-use GrahamCampbell\CMSCore\Providers\FileProvider;
-use GrahamCampbell\CMSCore\Providers\FolderProvider;
-use GrahamCampbell\CMSCore\Providers\GroupProvider;
-use GrahamCampbell\CMSCore\Providers\PageProvider;
-use GrahamCampbell\CMSCore\Providers\PostProvider;
-use GrahamCampbell\CMSCore\Providers\UserProvider;
 
 class CMSCoreServiceProvider extends ServiceProvider
 {
@@ -57,35 +49,35 @@ class CMSCoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['commentprovider'] = $this->app->share(function ($app) {
-            return new CommentProvider;
+            return new Providers\CommentProvider;
         });
 
         $this->app['eventprovider'] = $this->app->share(function ($app) {
-            return new EventProvider;
+            return new Providers\EventProvider;
         });
 
         $this->app['fileprovider'] = $this->app->share(function ($app) {
-            return new FileProvider;
+            return new Providers\FileProvider;
         });
 
         $this->app['folderprovider'] = $this->app->share(function ($app) {
-            return new FolderProvider;
+            return new Providers\FolderProvider;
         });
 
         $this->app['groupprovider'] = $this->app->share(function ($app) {
-            return new GroupProvider;
+            return new Providers\GroupProvider;
         });
 
         $this->app['pageprovider'] = $this->app->share(function ($app) {
-            return new PageProvider;
+            return new Providers\PageProvider;
         });
 
         $this->app['postprovider'] = $this->app->share(function ($app) {
-            return new PostProvider;
+            return new Providers\PostProvider;
         });
 
         $this->app['userprovider'] = $this->app->share(function ($app) {
-            return new UserProvider;
+            return new Providers\UserProvider;
         });
     }
 

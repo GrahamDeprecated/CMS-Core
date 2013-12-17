@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests\Models\Relations\Common;
+<?php namespace GrahamCampbell\Tests\CMSCore\Models\Relations\Common;
 
 /**
  * This file is part of CMS Core by Graham Campbell.

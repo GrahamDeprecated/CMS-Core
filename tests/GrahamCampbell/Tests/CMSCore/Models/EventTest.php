@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests\Models;
+<?php namespace GrahamCampbell\Tests\CMSCore\Models;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,14 +20,15 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use GrahamCampbell\CMSCore\Tests\Models\Relations\Interfaces\IBelongsToUserTestCase;
-use GrahamCampbell\CMSCore\Tests\Models\Relations\Common\TraitBelongsToUserTestCase;
+use Carbon\Carbon;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces\IBelongsToUserTestCase;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Common\TraitBelongsToUserTestCase;
 
-class PostTest extends ModelTestCase implements IBelongsToUserTestCase
+class EventTest extends ModelTestCase implements IBelongsToUserTestCase
 {
     use TraitBelongsToUserTestCase;
 
-    protected $model = 'GrahamCampbell\CMSCore\Models\Post';
+    protected $model = 'GrahamCampbell\CMSCore\Models\Event';
 
     protected function extraModelTests()
     {
@@ -39,15 +40,25 @@ class PostTest extends ModelTestCase implements IBelongsToUserTestCase
         $this->assertEquals($this->instance->getTitle(), $this->instance->title);
     }
 
-    public function testGetSummary()
+    public function testGetDate()
     {
-        $this->assertEquals($this->instance->getSummary(), $this->instance->summary);
+        $this->assertEquals($this->instance->getDate(), $this->instance->date);
+    }
+
+    public function testGetFormattedDate()
+    {
+        $date = new Carbon($this->instance->date);
+        $formatteddate = $date->format('l jS F Y \\- H:i:s');
+        $this->assertEquals($this->instance->getFormattedDate(), $formatteddate);
+    }
+
+    public function testGetLocation()
+    {
+        $this->assertEquals($this->instance->getLocation(), $this->instance->location);
     }
 
     public function testGetBody()
     {
         $this->assertEquals($this->instance->getBody(), $this->instance->body);
     }
-
-    // TODO: test comment relationships
 }

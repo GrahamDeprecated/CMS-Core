@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests\Models;
+<?php namespace GrahamCampbell\Tests\CMSCore\Models;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,7 +20,7 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use GrahamCampbell\CMSCore\Tests\TestCase;
+use GrahamCampbell\Tests\CMSCore\TestCase;
 
 abstract class ModelTestCase extends TestCase
 {

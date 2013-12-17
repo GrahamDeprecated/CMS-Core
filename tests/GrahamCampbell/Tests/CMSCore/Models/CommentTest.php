@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests\Models;
+<?php namespace GrahamCampbell\Tests\CMSCore\Models;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use GrahamCampbell\CMSCore\Tests\Models\Relations\Interfaces\IBelongsToUserTestCase;
-use GrahamCampbell\CMSCore\Tests\Models\Relations\Common\TraitBelongsToUserTestCase;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces\IBelongsToUserTestCase;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Common\TraitBelongsToUserTestCase;
 
 class CommentTest extends ModelTestCase implements IBelongsToUserTestCase
 {

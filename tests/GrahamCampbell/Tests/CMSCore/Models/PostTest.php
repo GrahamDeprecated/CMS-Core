@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests\Models;
+<?php namespace GrahamCampbell\Tests\CMSCore\Models;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -20,14 +20,14 @@
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 
-use GrahamCampbell\CMSCore\Tests\Models\Relations\Interfaces\IBelongsToUserTestCase;
-use GrahamCampbell\CMSCore\Tests\Models\Relations\Common\TraitBelongsToUserTestCase;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces\IBelongsToUserTestCase;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Common\TraitBelongsToUserTestCase;
 
-class PageTest extends ModelTestCase implements IBelongsToUserTestCase
+class PostTest extends ModelTestCase implements IBelongsToUserTestCase
 {
     use TraitBelongsToUserTestCase;
 
-    protected $model = 'GrahamCampbell\CMSCore\Models\Page';
+    protected $model = 'GrahamCampbell\CMSCore\Models\Post';
 
     protected function extraModelTests()
     {
@@ -39,9 +39,9 @@ class PageTest extends ModelTestCase implements IBelongsToUserTestCase
         $this->assertEquals($this->instance->getTitle(), $this->instance->title);
     }
 
-    public function testGetSlug()
+    public function testGetSummary()
     {
-        $this->assertEquals($this->instance->getSlug(), $this->instance->slug);
+        $this->assertEquals($this->instance->getSummary(), $this->instance->summary);
     }
 
     public function testGetBody()
@@ -49,30 +49,5 @@ class PageTest extends ModelTestCase implements IBelongsToUserTestCase
         $this->assertEquals($this->instance->getBody(), $this->instance->body);
     }
 
-    public function testGetCSS()
-    {
-        $this->assertEquals($this->instance->getCSS(), $this->instance->css);
-    }
-
-    public function testGetJS()
-    {
-        $this->assertEquals($this->instance->getJS(), $this->instance->js);
-    }
-
-    public function testGetShowTitle()
-    {
-        $this->assertEquals($this->instance->getShowTitle(), $this->instance->show_title);
-    }
-
-    public function testGetShowNav()
-    {
-        $this->assertEquals($this->instance->getShowNav(), $this->instance->show_nav);
-    }
-
-    public function testGetIcon()
-    {
-        $this->assertEquals($this->instance->getIcon(), $this->instance->icon);
-    }
-
-    // TODO: test nav menu logic
+    // TODO: test comment relationships
 }

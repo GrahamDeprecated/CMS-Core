@@ -32,7 +32,7 @@
     ],
     "require": {
         "php": ">=5.4.7",
-        "orchestra/testbench": "2.0.*",
+        "laravel/framework": "4.0.*",
         "cartalyst/sentry": "2.1.*",
         "lightgear/asset": "1.2",
         "graham-campbell/core": "0.1.*",
@@ -44,25 +44,25 @@
         "graham-campbell/navigation": "0.1.*"
     },
     "require-dev": {
+        "orchestra/testbench": "2.0.*",
         "mockery/mockery": "0.8.*",
         "phpunit/phpunit": "3.7.*",
         "sebastian/finder-facade": "1.1.*",
         "sebastianbergmann/phpcov": "1.1.0",
-        "satooshi/php-coveralls": "dev-master"
+        "satooshi/php-coveralls": "dev-master",
+        "symfony/config": "2.3.*",
+        "symfony/event-dispatcher": "2.3.*",
+        "symfony/stopwatch": "2.3.*",
+        "symfony/yaml": "2.3.*",
+        "guzzle/guzzle": "3.8.*"
     },
     "autoload": {
         "classmap": [
             "src/migrations"
         ],
         "psr-0": {
-            "GrahamCampbell\\CMSCore\\Commands": "src/",
-            "GrahamCampbell\\CMSCore\\Facades": "src/",
-            "GrahamCampbell\\CMSCore\\Handlers": "src/",
-            "GrahamCampbell\\CMSCore\\Models": "src/",
-            "GrahamCampbell\\CMSCore\\Providers": "src/",
-            "GrahamCampbell\\CMSCore\\Seeds": "src/",
-            "GrahamCampbell\\CMSCore\\Support": "src/",
-            "GrahamCampbell\\CMSCore\\Tests": "tests/"
+            "GrahamCampbell\\CMSCore\\": "src/",
+            "GrahamCampbell\\Tests\\CMSCore": "tests/"
         }
     },
     "extra": {

@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Tests;
+<?php namespace GrahamCampbell\Tests\CMSCore;
 
 /**
  * This file is part of CMS Core by Graham Campbell.
