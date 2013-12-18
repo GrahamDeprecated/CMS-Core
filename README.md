@@ -59,7 +59,7 @@ Once CMS Core is installed, you need to register the service provider. Open up `
 There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/CMS-Core
 ) for CMS Core.  
 
-You may see an example of implementation in [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS). [CMS CloudFlare](https://github.com/GrahamCampbell/CMS-CloudFlare), [CMS Contact](https://github.com/GrahamCampbell/CMS-Contact), and [CMS LogViewer](https://github.com/GrahamCampbell/CMS-LogViewer) are all examples of extensions.  
+You may see an example of implementation in [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS). [CMS CloudFlare](https://github.com/GrahamCampbell/CMS-CloudFlare), [CMS Contact](https://github.com/GrahamCampbell/CMS-Contact), and [CMS LogViewer](https://github.com/GrahamCampbell/CMS-LogViewer) are all examples of plugins for the CMS.  
 
 
 ## Updating Your Fork
