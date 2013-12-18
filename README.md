@@ -12,7 +12,7 @@ CMS Core
 
 ## What Is CMS Core?
 
-CMS Core provides some core functionality for [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS).  
+CMS Core provides some core functionality for applications like [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS).  
 
 * CMS Core was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * CMS Core relies on many of my packages including [Laravel Core](https://github.com/GrahamCampbell/Laravel-Core) and [Laravel Queuing](https://github.com/GrahamCampbell/Laravel-Queuing).  
@@ -25,7 +25,7 @@ CMS Core provides some core functionality for [Bootstrap CMS](https://github.com
 
 ## System Requirements
 
-* PHP 5.4.7+ or PHP 5.5+ is required.
+* PHP 5.4.7+ or PHP 5.5+ is required.  
 * You will need [Laravel 4.0](http://laravel.com) because this package is designed for it.  
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of CMS Core.  
 
@@ -34,24 +34,32 @@ CMS Core provides some core functionality for [Bootstrap CMS](https://github.com
 
 Please check the system requirements before installing CMS Core.  
 
-To get the latest version of CMS Core, simply require it in your `composer.json` file.
+To get the latest version of CMS Core, simply require it in your `composer.json` file.  
 
-`"graham-campbell/cms-core": "dev-master"`
+`"graham-campbell/cms-core": "dev-master"`  
 
-You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.  
 
-You will need to register many service providers before you attempt to load the CMS Core service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+You will need to register many service providers before you attempt to load the CMS Core service provider. Open up `app/config/app.php` and add the following to the `providers` key.  
 
 `'GrahamCampbell\Queuing\QueuingServiceProvider'`  
 `'GrahamCampbell\HTMLMin\HTMLMinServiceProvider'`  
 `'GrahamCampbell\Security\SecurityMinServiceProvider'`  
 `'GrahamCampbell\Binput\BinputServiceProvider'`  
 `'GrahamCampbell\Passwd\PasswdServiceProvider'`  
-`'GrahamCampbell\Navigation\NavigationServiceProvider'`
+`'GrahamCampbell\Navigation\NavigationServiceProvider'`  
 
-Once CMS Core is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+Once CMS Core is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.  
 
-`'GrahamCampbell\CMSCore\CMSCoreServiceProvider'`
+`'GrahamCampbell\CMSCore\CMSCoreServiceProvider'`  
+
+
+## Usage
+
+There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/CMS-Core
+) for CMS Core.  
+
+You may see an example of implementation in [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS). [CMS CloudFlare](https://github.com/GrahamCampbell/CMS-CloudFlare), [CMS Contact](https://github.com/GrahamCampbell/CMS-Contact), and [CMS LogViewer](https://github.com/GrahamCampbell/CMS-LogViewer) are all examples of extensions.  
 
 
 ## Updating Your Fork
