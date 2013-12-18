@@ -12,15 +12,18 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
+ */
+
+/**
+ * This is the belongs to user test case interface.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @license    GNU AFFERO GENERAL PUBLIC LICENSE
  * @copyright  Copyright (C) 2013  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-
-interface IBelongsToUserTestCase
+interface BelongsToUserTestCaseInterface
 {
     public function testGetUserId();
 

@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models\Interfaces;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -12,14 +12,19 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
+ */
+
+namespace GrahamCampbell\CMSCore\Models\Interfaces;
+
+/**
+ * This is the nav model interface.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @license    GNU AFFERO GENERAL PUBLIC LICENSE
  * @copyright  Copyright (C) 2013  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-
 interface INavModel
 {
     /**

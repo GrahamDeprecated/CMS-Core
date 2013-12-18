@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -12,13 +12,9 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- *
- * @package    CMS-Core
- * @author     Graham Campbell
- * @license    GNU AFFERO GENERAL PUBLIC LICENSE
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @link       https://github.com/GrahamCampbell/CMS-Core
  */
+
+namespace GrahamCampbell\CMSCore\Models;
 
 use GrahamCampbell\Core\Models\BaseModel;
 use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
@@ -34,6 +30,15 @@ use GrahamCampbell\CMSCore\Models\Common\TraitPageModel;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
 
+/**
+ * This is the page model class.
+ *
+ * @package    CMS-Core
+ * @author     Graham Campbell
+ * @copyright  Copyright (C) 2013  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/CMS-Core
+ */
 class Page extends BaseModel implements ITitleModel, ISlugModel, IBodyModel, INavModel, IPageModel, IBelongsToUser
 {
     use TraitTitleModel, TraitSlugModel, TraitBodyModel, TraitNavModel, TraitPageModel, TraitBelongsToUser;

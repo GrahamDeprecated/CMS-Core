@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Seeds;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -12,17 +12,22 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- *
- * @package    CMS-Core
- * @author     Graham Campbell
- * @license    GNU AFFERO GENERAL PUBLIC LICENSE
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @link       https://github.com/GrahamCampbell/CMS-Core
  */
+
+namespace GrahamCampbell\CMSCore\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
+/**
+ * This is the database seeder class.
+ *
+ * @package    CMS-Core
+ * @author     Graham Campbell
+ * @copyright  Copyright (C) 2013  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/CMS-Core
+ */
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -34,9 +39,9 @@ class DatabaseSeeder extends Seeder
     {
         Eloquent::unguard();
 
-        $this->call('GrahamCampbell\CMSCore\Seeds\SentryGroupSeeder');
-        $this->call('GrahamCampbell\CMSCore\Seeds\SentryUserSeeder');
-        $this->call('GrahamCampbell\CMSCore\Seeds\SentryUserGroupSeeder');
+        $this->call('GrahamCampbell\CMSCore\Seeds\GroupsTableSeeder');
+        $this->call('GrahamCampbell\CMSCore\Seeds\UsersTableSeeder');
+        $this->call('GrahamCampbell\CMSCore\Seeds\UsersGroupsTableSeeder');
 
         $this->call('GrahamCampbell\CMSCore\Seeds\PagesTableSeeder');
         $this->call('GrahamCampbell\CMSCore\Seeds\PostsTableSeeder');

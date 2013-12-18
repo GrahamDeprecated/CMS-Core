@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -12,18 +12,23 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- *
- * @package    CMS-Core
- * @author     Graham Campbell
- * @license    GNU AFFERO GENERAL PUBLIC LICENSE
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @link       https://github.com/GrahamCampbell/CMS-Core
  */
+
+namespace GrahamCampbell\CMSCore\Models;
 
 use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
 use GrahamCampbell\Core\Models\Interfaces\IBaseModel;
 use GrahamCampbell\Core\Models\Common\TraitBaseModel;
 
+/**
+ * This is the throttle model class.
+ *
+ * @package    CMS-Core
+ * @author     Graham Campbell
+ * @copyright  Copyright (C) 2013  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/CMS-Core
+ */
 class Throttle extends SentryThrottle implements IBaseModel
 {
     use TraitBaseModel;

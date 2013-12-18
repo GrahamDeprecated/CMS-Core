@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Seeds;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -12,13 +12,9 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- *
- * @package    CMS-Core
- * @author     Graham Campbell
- * @license    GNU AFFERO GENERAL PUBLIC LICENSE
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @link       https://github.com/GrahamCampbell/CMS-Core
  */
+
+namespace GrahamCampbell\CMSCore\Seeds;
 
 use DateTime;
 use Illuminate\Database\Seeder;
@@ -26,6 +22,15 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use GrahamCampbell\Markdown\Facades\Markdown;
 
+/**
+ * This is the pages table seeder class.
+ *
+ * @package    CMS-Core
+ * @author     Graham Campbell
+ * @copyright  Copyright (C) 2013  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/CMS-Core
+ */
 class PagesTableSeeder extends Seeder
 {
     /**
