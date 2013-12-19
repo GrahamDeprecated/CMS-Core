@@ -32,29 +32,29 @@
     ],
     "require": {
         "php": ">=5.4.7",
-        "laravel/framework": "4.0.*",
-        "symfony/config": "2.3.*",
-        "symfony/filesystem": "2.3.*",
+        "laravel/framework": "4.1.*",
+        "symfony/config": "2.4.*",
+        "symfony/filesystem": "2.4.*",
         "cartalyst/sentry": "2.1.*",
         "lightgear/asset": "1.2",
-        "graham-campbell/core": "0.1.*",
-        "graham-campbell/queuing": "0.1.*",
-        "graham-campbell/htmlmin": "0.3.*",
-        "graham-campbell/markdown": "0.2.*",
-        "graham-campbell/binput": "0.3.*",
-        "graham-campbell/passwd": "0.3.*",
-        "graham-campbell/navigation": "0.1.*"
+        "graham-campbell/core": "0.2.*",
+        "graham-campbell/queuing": "0.2.*",
+        "graham-campbell/htmlmin": "0.4.*",
+        "graham-campbell/markdown": "0.3.*",
+        "graham-campbell/binput": "0.4.*",
+        "graham-campbell/passwd": "0.4.*",
+        "graham-campbell/navigation": "0.2.*"
     },
     "require-dev": {
-        "orchestra/testbench": "2.0.*",
+        "orchestra/testbench": "2.1.*",
         "mockery/mockery": "0.8.*",
         "phpunit/phpunit": "3.7.*",
         "sebastian/finder-facade": "1.1.*",
         "sebastianbergmann/phpcov": "1.1.0",
         "satooshi/php-coveralls": "dev-master",
-        "symfony/event-dispatcher": "2.3.*",
-        "symfony/stopwatch": "2.3.*",
-        "symfony/yaml": "2.3.*",
+        "symfony/event-dispatcher": "2.4.*",
+        "symfony/stopwatch": "2.4.*",
+        "symfony/yaml": "2.4.*",
         "guzzle/guzzle": "3.8.*"
     },
     "autoload": {
@@ -64,6 +64,11 @@
         "psr-0": {
             "GrahamCampbell\\CMSCore\\": "src/",
             "GrahamCampbell\\Tests\\CMSCore": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "0.2-dev"
         }
     },
     "minimum-stability": "dev",

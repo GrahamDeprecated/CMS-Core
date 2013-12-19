@@ -26,7 +26,7 @@ CMS Core provides some core functionality for applications like [Bootstrap CMS](
 ## System Requirements
 
 * PHP 5.4.7+ or PHP 5.5+ is required.  
-* You will need [Laravel 4.0](http://laravel.com) because this package is designed for it.  
+* You will need [Laravel 4.1](http://laravel.com) because this package is designed for it.  
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of CMS Core.  
 
 
