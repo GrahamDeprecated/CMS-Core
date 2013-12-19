@@ -13,6 +13,7 @@ CHANGE LOG
 ## V0.1.2 Alpha (Upcoming)
 #### Minor Release
 
+* Coding style fixes
 * Other minor tweaks
 
 

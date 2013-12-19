@@ -94,7 +94,7 @@ Please submit pull requests against the develop branch.
 
 GNU AFFERO GENERAL PUBLIC LICENSE  
 
-CMS Core Provides Some Core Functionality For Bootstrap CMS  
+CMS Core Provides Some Core Functionality For Applications Like Bootstrap CMS  
 Copyright (C) 2013  Graham Campbell  
 
 This program is free software: you can redistribute it and/or modify
