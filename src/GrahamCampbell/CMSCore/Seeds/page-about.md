@@ -1,21 +1,21 @@
 ## THIS ALPHA RELEASE IS FOR TESTING ONLY
 
-#### I'd appreciate it if you'd leave my name in the footer unless you have changed my source significantly. If you do feel you have changed it significantly, I'd still appreciate some kind of link back. Thank you, and enjoy!
+#### I'd appreciate it if you'd leave my name in the footer unless you have changed my source significantly. If you do feel you have changed it significantly, I'd still appreciate some kind of link back, and remember that attribution is still required as stated in the license. Thank you, and enjoy!
 
 <br>
 
 ## What Is Bootstrap CMS?
 
-Bootstrap CMS is a PHP CMS powered by [Laravel 4.0](http://laravel.com) with [Sentry 2.1](http://docs.cartalyst.com/sentry-2).  
+Bootstrap CMS is a PHP CMS powered by [Laravel 4.0](http://laravel.com) with [CMS Core](https://github.com/GrahamCampbell/CMS-Core) and [Sentry 2](https://cartalyst.com/manual/sentry).  
 
 * Bootstrap CMS was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * Bootstrap CMS relies on my [CMS Core](https://github.com/GrahamCampbell/CMS-Core) package.  
 * Bootstrap CMS uses [Travis CI](https://travis-ci.org/GrahamCampbell/Bootstrap-CMS) to run tests to check if it's working as it should.  
-* Bootstrap CMS uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Bootstrap-CMS) to run additional tests and checks.  
+* Bootstrap CMS uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Bootstrap-CMS) and [Coveralls](https://coveralls.io/r/GrahamCampbell/Bootstrap-CMS) to run additional tests and checks.  
 * Bootstrap CMS uses [Composer](https://getcomposer.org) to load and manage dependencies.  
-* Bootstrap CMS provides a [change log](https://github.com/GrahamCampbell/Bootstrap-CMS/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Bootstrap-CMS/releases), and a [wiki](https://github.com/GrahamCampbell/Bootstrap-CMS/wiki).  
-* Bootstrap CMS is licensed under the GNU AGPLv3, available [here](https://github.com/GrahamCampbell/Bootstrap-CMS/blob/master/LICENSE.md).  
-* Licenses for included components are available [here](https://github.com/GrahamCampbell/Bootstrap-CMS/tree/master/licenses), excluding [Composer](https://getcomposer.org) installed components.  
+* Bootstrap CMS provides a [change log](https://github.com/GrahamCampbell/Bootstrap-CMS/blob/develop/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Bootstrap-CMS/releases), and a [wiki](https://github.com/GrahamCampbell/Bootstrap-CMS/wiki).  
+* Bootstrap CMS is licensed under the GNU AGPLv3, available [here](https://github.com/GrahamCampbell/Bootstrap-CMS/blob/develop/LICENSE.md).  
+* Licenses for included components are available [here](https://github.com/GrahamCampbell/Bootstrap-CMS/tree/develop/licenses), excluding [Composer](https://getcomposer.org) installed components.  
 
 <br>
 
@@ -40,7 +40,7 @@ Basically, expect no support what so ever. This includes, but is not exclusive t
 
 Bootstrap CMS was designed to run on a Linux machine with PHP 5.5 and MySQL 5.5.  
 
-* PHP 5.4.7+ or PHP 5.5+ is required.
+* PHP 5.4.7+ or PHP 5.5+ is required.  
 * MySQL 5.1+, 5.5+, or 5.6+ is required. MySQL 5.7+ may work, but is untested.  
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of Bootstrap CMS.  
 * You will need to configure the site in the app/config folder before production.  
@@ -121,6 +121,23 @@ Bootstrap CMS also ships with 14 themes, 12 from [Bootswatch](http://bootswatch.
 
 <br>
 
+## Setting Up Plugins
+
+Bootstrap CMS supports plugins through [CMS Core](https://github.com/GrahamCampbell/CMS-Core).  
+Note that Bootstrap CMS already ships with the [CMS LogViewer](https://github.com/GrahamCampbell/CMS-LogViewer) plugin.  
+
+1. Add the plugin's package name to your `composer.json`.  
+2. Add the service provider for the plugin in`app/config/cms.php`.  
+3. Run `composer update` then `php artisan app:update` to install the plugin.  
+
+<br>
+
+## Usage
+
+There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/Bootstrap-CMS) for Bootstrap CMS.  
+
+<br>
+
 ## Updating Your Fork
 
 The latest and greatest source can be found on [GitHub](https://github.com/GrahamCampbell/Bootstrap-CMS).  
@@ -148,7 +165,7 @@ Please submit pull requests against the develop branch.
 * Any pull requests made against the master branch will be closed immediately.  
 * If you plan to fix a bug, please create a branch called `fix-`, followed by an appropriate name.  
 * If you plan to add a feature, please create a branch called `feature-`, followed by an appropriate name.  
-* Please follow PSR-2 standards except namespace declarations should be on the same line as `<?php`.  
+* Please follow the [PSR-2 Coding Style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) and [PHP-FIG Naming Conventions](https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-naming-conventions.md).  
 
 <br>
 
@@ -156,7 +173,7 @@ Please submit pull requests against the develop branch.
 
 GNU AFFERO GENERAL PUBLIC LICENSE  
 
-Bootstrap CMS Is A PHP CMS Powered By Laravel 4.0 With Sentry 2.1  
+Bootstrap CMS Is A PHP CMS Powered By Laravel 4.0 With CMS Core And Sentry 2 
 Copyright (C) 2013  Graham Campbell  
 
 This program is free software: you can redistribute it and/or modify

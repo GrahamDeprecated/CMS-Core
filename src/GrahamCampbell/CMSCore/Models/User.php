@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Models;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -12,13 +12,9 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- *
- * @package    CMS-Core
- * @author     Graham Campbell
- * @license    GNU AFFERO GENERAL PUBLIC LICENSE
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @link       https://github.com/GrahamCampbell/CMS-Core
  */
+
+namespace GrahamCampbell\CMSCore\Models;
 
 use Carbon\Carbon;
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
@@ -41,6 +37,15 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyComments;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToManyEvents;
 use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToManyEvents;
 
+/**
+ * This is the user model class.
+ *
+ * @package    CMS-Core
+ * @author     Graham Campbell
+ * @copyright  Copyright (C) 2013  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/CMS-Core
+ */
 class User extends SentryUser implements IBaseModel, INameModel, IHasManyPages, IHasManyPosts, IHasManyEvents, IHasManyFolders, IHasManyFiles, IHasManyComments, IBelongsToManyEvents
 {
     use TraitBaseModel, TraitNameModel, TraitHasManyPages, TraitHasManyPosts, TraitHasManyEvents, TraitHasManyFolders, TraitHasManyFiles, TraitHasManyComments, TraitBelongsToManyEvents;

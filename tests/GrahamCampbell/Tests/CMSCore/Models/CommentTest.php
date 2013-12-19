@@ -12,20 +12,23 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
+ */
+
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces\BelongsToUserTestCaseInterface;
+use GrahamCampbell\Tests\CMSCore\Models\Relations\Common\BelongsToUserTestCaseTrait;
+
+/**
+ * This is the comment test case class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @license    GNU AFFERO GENERAL PUBLIC LICENSE
  * @copyright  Copyright (C) 2013  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-
-use GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces\IBelongsToUserTestCase;
-use GrahamCampbell\Tests\CMSCore\Models\Relations\Common\TraitBelongsToUserTestCase;
-
-class CommentTest extends ModelTestCase implements IBelongsToUserTestCase
+class CommentTest extends AbstractModelTestCase implements BelongsToUserTestCaseInterface
 {
-    use TraitBelongsToUserTestCase;
+    use BelongsToUserTestCaseTrait;
 
     protected $model = 'GrahamCampbell\CMSCore\Models\Comment';
 

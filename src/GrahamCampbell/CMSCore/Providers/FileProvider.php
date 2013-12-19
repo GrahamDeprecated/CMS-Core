@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Providers;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -12,18 +12,23 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- *
- * @package    CMS-Core
- * @author     Graham Campbell
- * @license    GNU AFFERO GENERAL PUBLIC LICENSE
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @link       https://github.com/GrahamCampbell/CMS-Core
  */
+
+namespace GrahamCampbell\CMSCore\Providers;
 
 use GrahamCampbell\Core\Providers\BaseProvider;
 use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
 use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
 
+/**
+ * This is the file provider class.
+ *
+ * @package    CMS-Core
+ * @author     Graham Campbell
+ * @copyright  Copyright (C) 2013  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/CMS-Core
+ */
 class FileProvider extends BaseProvider implements IPaginateProvider
 {
     use TraitPaginateProvider;

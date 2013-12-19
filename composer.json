@@ -1,6 +1,6 @@
 {
     "name": "graham-campbell/cms-core",
-    "description": "CMS Core Provides Some Core Functionality For Bootstrap CMS",
+    "description": "CMS Core Provides Some Core Functionality For Applications Like Bootstrap CMS",
     "keywords": ["laravel", "framework", "cms core", "cms", "core", "CMS", "CMS Core", "CMS-Core", "Graham Campbell", "GrahamCampbell"],
     "license": "GNU Affero General Public License v3",
     "authors": [
@@ -33,6 +33,8 @@
     "require": {
         "php": ">=5.4.7",
         "laravel/framework": "4.0.*",
+        "symfony/config": "2.3.*",
+        "symfony/filesystem": "2.3.*",
         "cartalyst/sentry": "2.1.*",
         "lightgear/asset": "1.2",
         "graham-campbell/core": "0.1.*",
@@ -50,7 +52,6 @@
         "sebastian/finder-facade": "1.1.*",
         "sebastianbergmann/phpcov": "1.1.0",
         "satooshi/php-coveralls": "dev-master",
-        "symfony/config": "2.3.*",
         "symfony/event-dispatcher": "2.3.*",
         "symfony/stopwatch": "2.3.*",
         "symfony/yaml": "2.3.*",

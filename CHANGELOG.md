@@ -8,11 +8,13 @@ CHANGE LOG
 * Support only laravel 4.1
 * Improved authentication
 * Improved events
+* Added more tests
 
 
-## V0.1.2 Alpha (Upcoming)
+## V0.1.2 Alpha (19/12/2013)
 #### Minor Release
 
+* Coding style fixes
 * Other minor tweaks
 
 

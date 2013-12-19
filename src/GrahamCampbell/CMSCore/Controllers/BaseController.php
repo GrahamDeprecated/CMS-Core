@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CMSCore\Controllers;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -12,13 +12,9 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- *
- * @package    CMS-Core
- * @author     Graham Campbell
- * @license    GNU AFFERO GENERAL PUBLIC LICENSE
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @link       https://github.com/GrahamCampbell/CMS-Core
  */
+
+namespace GrahamCampbell\CMSCore\Controllers;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
@@ -29,6 +25,15 @@ use GrahamCampbell\Navigation\Facades\Navigation;
 use GrahamCampbell\CMSCore\Facades\PageProvider;
 use GrahamCampbell\Core\Controllers\BaseController as Controller;
 
+/**
+ * This is the abstract base controller class.
+ *
+ * @package    CMS-Core
+ * @author     Graham Campbell
+ * @copyright  Copyright (C) 2013  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/CMS-Core
+ */
 abstract class BaseController extends Controller
 {
     /**
