@@ -37,10 +37,10 @@
         "symfony/filesystem": "2.3.*",
         "cartalyst/sentry": "2.1.*",
         "lightgear/asset": "1.2",
-        "vtalbot/markdown": "1.4.*",
         "graham-campbell/core": "0.1.*",
         "graham-campbell/queuing": "0.1.*",
         "graham-campbell/htmlmin": "0.3.*",
+        "graham-campbell/markdown": "0.2.*",
         "graham-campbell/binput": "0.3.*",
         "graham-campbell/passwd": "0.3.*",
         "graham-campbell/navigation": "0.1.*"
