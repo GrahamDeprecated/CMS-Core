@@ -44,9 +44,9 @@ abstract class AbstractTestCase extends Testbench
         return array(
             'Cartalyst\Sentry\SentryServiceProvider',
             'Lightgear\Asset\AssetServiceProvider',
+            'VTalbot\Markdown\MarkdownServiceProvider',
             'GrahamCampbell\Queuing\QueuingServiceProvider',
             'GrahamCampbell\HTMLMin\HTMLMinServiceProvider',
-            'GrahamCampbell\Markdown\MarkdownServiceProvider',
             'GrahamCampbell\Security\SecurityServiceProvider',
             'GrahamCampbell\Binput\BinputServiceProvider',
             'GrahamCampbell\Passwd\PasswdServiceProvider',
