@@ -14,7 +14,7 @@
  * GNU Affero General Public License for more details.
  */
 
-use Orchestra\Testbench\TestCase as Testbench;
+use GrahamCampbell\TestBench\Classes\AbstractTestCase as TestCase;
 
 /**
  * This is the abstract test case class.
@@ -25,20 +25,23 @@ use Orchestra\Testbench\TestCase as Testbench;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-abstract class AbstractTestCase extends Testbench
+abstract class AbstractTestCase extends TestCase
 {
-    protected function getEnvironmentSetUp($app)
+    /**
+     * Get the application base path.
+     *
+     * @return string
+     */
+    protected function getBasePath()
     {
-        $app['path.base'] = realpath(__DIR__.'/../../../../src');
-
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', array(
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-            'prefix'   => ''
-        ));
+        return __DIR__.'/../../../../src';
     }
 
+    /**
+     * Get the package service providers.
+     *
+     * @return array
+     */
     protected function getPackageProviders()
     {
         return array(
