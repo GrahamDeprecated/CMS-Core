@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\Tests\CMSCore;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -13,6 +13,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  */
+
+namespace GrahamCampbell\Tests\CMSCore;
 
 use GrahamCampbell\TestBench\Classes\AbstractTestCase as TestCase;
 

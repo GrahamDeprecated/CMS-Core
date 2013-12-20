@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\Tests\CMSCore\Facades;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -14,6 +14,8 @@
  * GNU Affero General Public License for more details.
  */
 
+namespace GrahamCampbell\Tests\CMSCore\Facades;
+
 /**
  * This is the group provider facade test case class.
  *
@@ -25,15 +27,33 @@
  */
 class GroupProviderTest extends AbstractFacadeTestCase
 {
-    protected function getFacadeAccessor() {
+    /**
+     * Get the facade accessor.
+     *
+     * @return string
+     */
+    protected function getFacadeAccessor()
+    {
         return 'groupprovider';
     }
 
-    protected function getFacadeClass() {
+    /**
+     * Get the facade class.
+     *
+     * @return string
+     */
+    protected function getFacadeClass()
+    {
         return 'GrahamCampbell\CMSCore\Facades\GroupProvider';
     }
 
-    protected function getFacadeRoot() {
+    /**
+     * Get the facade route.
+     *
+     * @return string
+     */
+    protected function getFacadeRoot()
+    {
         return 'GrahamCampbell\CMSCore\Providers\GroupProvider';
     }
 }

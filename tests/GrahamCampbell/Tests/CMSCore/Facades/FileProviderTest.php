@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\Tests\CMSCore\Facades;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -14,6 +14,8 @@
  * GNU Affero General Public License for more details.
  */
 
+namespace GrahamCampbell\Tests\CMSCore\Facades;
+
 /**
  * This is the file provider facade test case class.
  *
@@ -25,15 +27,33 @@
  */
 class FileProviderTest extends AbstractFacadeTestCase
 {
-    protected function getFacadeAccessor() {
+    /**
+     * Get the facade accessor.
+     *
+     * @return string
+     */
+    protected function getFacadeAccessor()
+    {
         return 'fileprovider';
     }
 
-    protected function getFacadeClass() {
+    /**
+     * Get the facade class.
+     *
+     * @return string
+     */
+    protected function getFacadeClass()
+    {
         return 'GrahamCampbell\CMSCore\Facades\FileProvider';
     }
 
-    protected function getFacadeRoot() {
+    /**
+     * Get the facade route.
+     *
+     * @return string
+     */
+    protected function getFacadeRoot()
+    {
         return 'GrahamCampbell\CMSCore\Providers\FileProvider';
     }
 }

@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\Tests\CMSCore\Facades;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -14,8 +14,11 @@
  * GNU Affero General Public License for more details.
  */
 
+namespace GrahamCampbell\Tests\CMSCore\Facades;
+
 use ReflectionClass;
 use GrahamCampbell\Tests\CMSCore\AbstractTestCase;
+use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
 
 /**
  * This is the abstract facade test case class.
@@ -28,30 +31,5 @@ use GrahamCampbell\Tests\CMSCore\AbstractTestCase;
  */
 abstract class AbstractFacadeTestCase extends AbstractTestCase
 {
-    abstract protected function getFacadeAccessor();
-
-    abstract protected function getFacadeClass();
-
-    abstract protected function getFacadeRoot();
-
-    protected function getFacade() {
-        return new $this->getFacadeClass();
-    }
-
-    public function testIsAFacade()
-    {
-        $this->assertInstanceOf('Illuminate\Support\Facades\Facade', $this->getFacade());
-    }
-
-    public function testFacadeAccessor() {
-        $reflection = new ReflectionClass($this->getFacadeClass());
-        $method = $reflection->getMethod("getFacadeAccessor");
-        $method->setAccessible(true);
-
-        $this->assertEquals($this->getFacadeAccessor(), $method->invoke($this->getFacade()));
-    }
-
-    public function testFacadeRoot() {
-        $this->assertInstanceOf($this->getFacadeRoot(), $this->getFacade()->getFacadeRoot());
-    }
+    use FacadeTestCaseTrait;
 }
