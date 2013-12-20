@@ -40,7 +40,7 @@
         "symfony/config": "2.4.*",
         "symfony/filesystem": "2.4.*",
         "cartalyst/sentry": "2.1.*",
-        "lightgear/asset": "1.2",
+        "lightgear/asset": "2.0.*",
         "graham-campbell/core": "0.2.*",
         "graham-campbell/queuing": "0.2.*",
         "graham-campbell/htmlmin": "0.4.*",
