@@ -17,8 +17,8 @@
 namespace GrahamCampbell\CMSCore\Providers;
 
 use GrahamCampbell\Core\Providers\AbstractProvider;
-use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
-use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
+use GrahamCampbell\Core\Providers\Interfaces\PaginateProviderInterface;
+use GrahamCampbell\Core\Providers\Common\PaginateProviderTrait;
 
 /**
  * This is the file provider class.
@@ -29,9 +29,9 @@ use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class FileProvider extends AbstractProvider implements IPaginateProvider
+class FileProvider extends AbstractProvider implements PaginateProviderInterface
 {
-    use TraitPaginateProvider;
+    use PaginateProviderTrait;
 
     /**
      * The name of the model to provide.

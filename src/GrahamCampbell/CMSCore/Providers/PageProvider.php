@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use GrahamCampbell\CMSCore\Models\Page;
 use GrahamCampbell\Core\Providers\AbstractProvider;
-use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
-use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
-use GrahamCampbell\Core\Providers\Interfaces\ISlugProvider;
-use GrahamCampbell\Core\Providers\Common\TraitSlugProvider;
+use GrahamCampbell\Core\Providers\Interfaces\PaginateProviderInterface;
+use GrahamCampbell\Core\Providers\Common\PaginateProviderTrait;
+use GrahamCampbell\Core\Providers\Interfaces\SlugProviderInterface;
+use GrahamCampbell\Core\Providers\Common\SlugProviderTrait;
 
 /**
  * This is the page provider class.
@@ -34,9 +34,9 @@ use GrahamCampbell\Core\Providers\Common\TraitSlugProvider;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class PageProvider extends AbstractProvider implements IPaginateProvider, ISlugProvider
+class PageProvider extends AbstractProvider implements PaginateProviderInterface, SlugProviderInterface
 {
-    use TraitPaginateProvider, TraitSlugProvider;
+    use PaginateProviderTrait, SlugProviderTrait;
 
     /**
      * The name of the model to provide.
