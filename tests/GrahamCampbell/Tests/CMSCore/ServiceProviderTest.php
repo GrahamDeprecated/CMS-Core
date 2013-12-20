@@ -14,13 +14,12 @@
  * GNU Affero General Public License for more details.
  */
 
-namespace GrahamCampbell\Tests\CMSCore\Facades;
+namespace GrahamCampbell\Tests\CMSCore;
 
-use GrahamCampbell\Tests\CMSCore\AbstractTestCase;
-use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
+use GrahamCampbell\TestBench\Traits\ServiceProviderTestCaseTrait;
 
 /**
- * This is the abstract facade test case class.
+ * This is the service provider test class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
@@ -28,9 +27,9 @@ use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-abstract class AbstractFacadeTestCase extends AbstractTestCase
+abstract class ServiceProviderTest extends AbstractTestCase
 {
-    use FacadeTestCaseTrait;
+    use ServiceProviderTestCaseTrait;
 
     /**
      * Get the service provider class.
