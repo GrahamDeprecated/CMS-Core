@@ -14,14 +14,10 @@
  * GNU Affero General Public License for more details.
  */
 
-namespace GrahamCampbell\CMSCore\Models;
-
-use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
-use GrahamCampbell\Core\Models\Interfaces\BaseModelInterface;
-use GrahamCampbell\Core\Models\Common\BaseModelTrait;
+namespace GrahamCampbell\CMSCore\Models\Relations\Common;
 
 /**
- * This is the throttle model class.
+ * This is the belongs to post trait.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
@@ -29,21 +25,36 @@ use GrahamCampbell\Core\Models\Common\BaseModelTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Throttle extends SentryThrottle implements BaseModelInterface
+trait BelongsToPostTrait
 {
-    use BaseModelTrait;
+    /**
+     * Get the post relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function post()
+    {
+        return $this->belongsTo('GrahamCampbell\CMSCore\Models\Post');
+    }
 
     /**
-     * The table the throttles are stored in.
+     * Get the post model.
      *
-     * @var string
+     * @param  array  $columns
+     * @return \GrahamCampbell\CMSCore\Models\Post
      */
-    protected $table = 'throttle';
+    public function getPost($columns = array('*'))
+    {
+        return $this->post()->first($columns);
+    }
 
     /**
-     * The model name.
+     * Get the post id.
      *
-     * @var string
+     * @return int
      */
-    public static $name = 'throttle';
+    public function getPostId()
+    {
+        return $this->post_id;
+    }
 }

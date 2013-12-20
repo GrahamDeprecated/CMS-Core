@@ -18,24 +18,24 @@ namespace GrahamCampbell\CMSCore\Models;
 
 use Carbon\Carbon;
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
-use GrahamCampbell\Core\Models\Interfaces\IBaseModel;
-use GrahamCampbell\Core\Models\Common\TraitBaseModel;
-use GrahamCampbell\Core\Models\Interfaces\INameModel;
-use GrahamCampbell\Core\Models\Common\TraitNameModel;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyPages;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyPages;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyPosts;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyPosts;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyEvents;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyEvents;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyFolders;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyFolders;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyFiles;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyFiles;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyComments;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyComments;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToManyEvents;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToManyEvents;
+use GrahamCampbell\Core\Models\Interfaces\BaseModelInterface;
+use GrahamCampbell\Core\Models\Common\BaseModelTrait;
+use GrahamCampbell\Core\Models\Interfaces\NameModelInterface;
+use GrahamCampbell\Core\Models\Common\NameModelTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyPagesInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyPagesTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyPostsInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyPostsTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyEventsInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyEventsTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyFoldersInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyFoldersTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyFilesInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyFilesTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyCommentsInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyCommentsTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToManyEventsInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToManyEventsTrait;
 
 /**
  * This is the user model class.
@@ -46,9 +46,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToManyEvents;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class User extends SentryUser implements IBaseModel, INameModel, IHasManyPages, IHasManyPosts, IHasManyEvents, IHasManyFolders, IHasManyFiles, IHasManyComments, IBelongsToManyEvents
+class User extends SentryUser implements BaseModelInterface, NameModelInterface, HasManyPagesInterface, HasManyPostsInterface, HasManyEventsInterface, HasManyFoldersInterface, HasManyFilesInterface, HasManyCommentsInterface, BelongsToManyEventsInterface
 {
-    use TraitBaseModel, TraitNameModel, TraitHasManyPages, TraitHasManyPosts, TraitHasManyEvents, TraitHasManyFolders, TraitHasManyFiles, TraitHasManyComments, TraitBelongsToManyEvents;
+    use BaseModelTrait, NameModelTrait, HasManyPagesTrait, HasManyPostsTrait, HasManyEventsTrait, HasManyFoldersTrait, HasManyFilesTrait, HasManyCommentsTrait, BelongsToManyEventsTrait;
 
     /**
      * The table the users are stored in.

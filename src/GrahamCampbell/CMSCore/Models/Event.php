@@ -17,20 +17,20 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use GrahamCampbell\Core\Models\AbstractModel;
-use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
-use GrahamCampbell\Core\Models\Common\TraitTitleModel;
-use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
-use GrahamCampbell\Core\Models\Common\TraitBodyModel;
-use GrahamCampbell\Core\Models\Interfaces\IDateModel;
-use GrahamCampbell\Core\Models\Common\TraitDateModel;
-use GrahamCampbell\CMSCore\Models\Interfaces\IMailedModel;
-use GrahamCampbell\CMSCore\Models\Common\TraitMailedModel;
-use GrahamCampbell\CMSCore\Models\Interfaces\ILocationModel;
-use GrahamCampbell\CMSCore\Models\Common\TraitLocationModel;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToManyUsers;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToManyUsers;
+use GrahamCampbell\Core\Models\Interfaces\TitleModelInterface;
+use GrahamCampbell\Core\Models\Common\TitleModelTrait;
+use GrahamCampbell\Core\Models\Interfaces\BodyModelInterface;
+use GrahamCampbell\Core\Models\Common\BodyModelTrait;
+use GrahamCampbell\Core\Models\Interfaces\DateModelInterface;
+use GrahamCampbell\Core\Models\Common\DateModelTrait;
+use GrahamCampbell\CMSCore\Models\Interfaces\MailedModelInterface;
+use GrahamCampbell\CMSCore\Models\Common\MailedModelTrait;
+use GrahamCampbell\CMSCore\Models\Interfaces\LocationModelInterface;
+use GrahamCampbell\CMSCore\Models\Common\LocationModelTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToManyUsersInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToManyUsersTrait;
 
 /**
  * This is the event model class.
@@ -41,9 +41,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToManyUsers;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Event extends AbstractModel implements ITitleModel, IBodyModel, IDateModel, IMailedModel, ILocationModel, IBelongsToUser, IBelongsToManyUsers
+class Event extends AbstractModel implements TitleModelInterface, BodyModelInterface, DateModelInterface, MailedModelInterface, LocationModelInterface, BelongsToUserInterface, BelongsToManyUsersInterface
 {
-    use TraitTitleModel, TraitBodyModel, TraitDateModel, TraitMailedModel, TraitLocationModel, TraitBelongsToUser, TraitBelongsToManyUsers;
+    use TitleModelTrait, BodyModelTrait, DateModelTrait, MailedModelTrait, LocationModelTrait, BelongsToUserTrait, BelongsToManyUsersTrait;
 
     /**
      * The table the events are stored in.

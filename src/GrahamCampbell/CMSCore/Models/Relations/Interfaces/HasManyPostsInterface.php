@@ -14,14 +14,10 @@
  * GNU Affero General Public License for more details.
  */
 
-namespace GrahamCampbell\CMSCore\Models;
-
-use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
-use GrahamCampbell\Core\Models\Interfaces\BaseModelInterface;
-use GrahamCampbell\Core\Models\Common\BaseModelTrait;
+namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
 
 /**
- * This is the throttle model class.
+ * This is the has many posts interface.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
@@ -29,21 +25,36 @@ use GrahamCampbell\Core\Models\Common\BaseModelTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Throttle extends SentryThrottle implements BaseModelInterface
+interface HasManyPostsInterface
 {
-    use BaseModelTrait;
+    /**
+     * Get the post relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
+     */
+    public function posts();
 
     /**
-     * The table the throttles are stored in.
+     * Get the post collection.
      *
-     * @var string
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
      */
-    protected $table = 'throttle';
+    public function getPosts($columns = null);
 
     /**
-     * The model name.
+     * Get the specified post.
      *
-     * @var string
+     * @param  int    $id
+     * @param  array  $columns
+     * @return \GrahamCampbell\CMSCore\Models\Post
      */
-    public static $name = 'throttle';
+    public function findPost($id, $columns = array('*'));
+
+    /**
+     * Delete all posts.
+     *
+     * @return void
+     */
+    public function deletePosts();
 }

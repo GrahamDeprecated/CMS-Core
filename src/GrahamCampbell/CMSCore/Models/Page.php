@@ -17,18 +17,18 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use GrahamCampbell\Core\Models\AbstractModel;
-use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
-use GrahamCampbell\Core\Models\Common\TraitTitleModel;
-use GrahamCampbell\Core\Models\Interfaces\ISlugModel;
-use GrahamCampbell\Core\Models\Common\TraitSlugModel;
-use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
-use GrahamCampbell\Core\Models\Common\TraitBodyModel;
-use GrahamCampbell\CMSCore\Models\Interfaces\INavModel;
-use GrahamCampbell\CMSCore\Models\Common\TraitNavModel;
-use GrahamCampbell\CMSCore\Models\Interfaces\IPageModel;
-use GrahamCampbell\CMSCore\Models\Common\TraitPageModel;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
+use GrahamCampbell\Core\Models\Interfaces\TitleModelInterface;
+use GrahamCampbell\Core\Models\Common\TitleModelTrait;
+use GrahamCampbell\Core\Models\Interfaces\SlugModelInterface;
+use GrahamCampbell\Core\Models\Common\SlugModelTrait;
+use GrahamCampbell\Core\Models\Interfaces\BodyModelInterface;
+use GrahamCampbell\Core\Models\Common\BodyModelTrait;
+use GrahamCampbell\CMSCore\Models\Interfaces\NavModelInterface;
+use GrahamCampbell\CMSCore\Models\Common\NavModelTrait;
+use GrahamCampbell\CMSCore\Models\Interfaces\PageModelInterface;
+use GrahamCampbell\CMSCore\Models\Common\PageModelTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
 
 /**
  * This is the page model class.
@@ -39,9 +39,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Page extends AbstractModel implements ITitleModel, ISlugModel, IBodyModel, INavModel, IPageModel, IBelongsToUser
+class Page extends AbstractModel implements TitleModelInterface, SlugModelInterface, BodyModelInterface, NavModelInterface, PageModelInterface, BelongsToUserInterface
 {
-    use TraitTitleModel, TraitSlugModel, TraitBodyModel, TraitNavModel, TraitPageModel, TraitBelongsToUser;
+    use TitleModelTrait, SlugModelTrait, BodyModelTrait, NavModelTrait, PageModelTrait, BelongsToUserTrait;
 
     /**
      * The table the pages are stored in.

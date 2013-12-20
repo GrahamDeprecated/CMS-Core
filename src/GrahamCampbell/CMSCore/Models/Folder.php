@@ -17,14 +17,14 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use GrahamCampbell\Core\Models\AbstractModel;
-use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
-use GrahamCampbell\Core\Models\Common\TraitTitleModel;
-use GrahamCampbell\Core\Models\Interfaces\ISummaryModel;
-use GrahamCampbell\Core\Models\Common\TraitSummaryModel;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyFiles;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyFiles;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
+use GrahamCampbell\Core\Models\Interfaces\TitleModelInterface;
+use GrahamCampbell\Core\Models\Common\TitleModelTrait;
+use GrahamCampbell\Core\Models\Interfaces\SummaryModelInterface;
+use GrahamCampbell\Core\Models\Common\SummaryModelTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyFilesInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyFilesTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
 
 /**
  * This is the folder model class.
@@ -35,9 +35,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Folder extends AbstractModel implements ITitleModel, ISummaryModel, IHasManyFiles, IBelongsToUser
+class Folder extends AbstractModel implements TitleModelInterface, SummaryModelInterface, HasManyFilesInterface, BelongsToUserInterface
 {
-    use TraitTitleModel, TraitSummaryModel, TraitHasManyFiles, TraitBelongsToUser;
+    use TitleModelTrait, SummaryModelTrait, HasManyFilesTrait, BelongsToUserTrait;
 
     /**
      * The table the folders are stored in.

@@ -14,14 +14,10 @@
  * GNU Affero General Public License for more details.
  */
 
-namespace GrahamCampbell\CMSCore\Models;
-
-use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
-use GrahamCampbell\Core\Models\Interfaces\BaseModelInterface;
-use GrahamCampbell\Core\Models\Common\BaseModelTrait;
+namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
 
 /**
- * This is the throttle model class.
+ * This is the has many files interface.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
@@ -29,21 +25,36 @@ use GrahamCampbell\Core\Models\Common\BaseModelTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Throttle extends SentryThrottle implements BaseModelInterface
+interface HasManyFilesInterface
 {
-    use BaseModelTrait;
+    /**
+     * Get the file relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
+     */
+    public function files();
 
     /**
-     * The table the throttles are stored in.
+     * Get the file collection.
      *
-     * @var string
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
      */
-    protected $table = 'throttle';
+    public function getFiles($columns = null);
 
     /**
-     * The model name.
+     * Get the specified file.
      *
-     * @var string
+     * @param  int    $id
+     * @param  array  $columns
+     * @return \GrahamCampbell\CMSCore\Models\File
      */
-    public static $name = 'throttle';
+    public function findFile($id, $columns = array('*'));
+
+    /**
+     * Delete all files.
+     *
+     * @return void
+     */
+    public function deleteFiles();
 }

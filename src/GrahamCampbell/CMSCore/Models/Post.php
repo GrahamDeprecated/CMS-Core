@@ -17,16 +17,16 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use GrahamCampbell\Core\Models\AbstractModel;
-use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
-use GrahamCampbell\Core\Models\Common\TraitTitleModel;
-use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
-use GrahamCampbell\Core\Models\Common\TraitBodyModel;
-use GrahamCampbell\Core\Models\Interfaces\ISummaryModel;
-use GrahamCampbell\Core\Models\Common\TraitSummaryModel;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyComments;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyComments;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
+use GrahamCampbell\Core\Models\Interfaces\TitleModelInterface;
+use GrahamCampbell\Core\Models\Common\TitleModelTrait;
+use GrahamCampbell\Core\Models\Interfaces\BodyModelInterface;
+use GrahamCampbell\Core\Models\Common\BodyModelTrait;
+use GrahamCampbell\Core\Models\Interfaces\SummaryModelInterface;
+use GrahamCampbell\Core\Models\Common\SummaryModelTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyCommentsInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyCommentsTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
 
 /**
  * This is the post model class.
@@ -37,9 +37,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Post extends AbstractModel implements ITitleModel, IBodyModel, ISummaryModel, IHasManyComments, IBelongsToUser
+class Post extends AbstractModel implements TitleModelInterface, BodyModelInterface, SummaryModelInterface, HasManyCommentsInterface, BelongsToUserInterface
 {
-    use TraitTitleModel, TraitBodyModel, TraitSummaryModel, TraitHasManyComments, TraitBelongsToUser;
+    use TitleModelTrait, BodyModelTrait, SummaryModelTrait, HasManyCommentsTrait, BelongsToUserTrait;
 
     /**
      * The table the posts are stored in.

@@ -17,8 +17,8 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use Cartalyst\Sentry\Groups\Eloquent\Group as SentryGroup;
-use GrahamCampbell\Core\Models\Interfaces\IBaseModel;
-use GrahamCampbell\Core\Models\Common\TraitBaseModel;
+use GrahamCampbell\Core\Models\Interfaces\BaseModelInterface;
+use GrahamCampbell\Core\Models\Common\BaseModelTrait;
 
 /**
  * This is the group model class.
@@ -29,9 +29,9 @@ use GrahamCampbell\Core\Models\Common\TraitBaseModel;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Group extends SentryGroup implements IBaseModel
+class Group extends SentryGroup implements BaseModelInterface
 {
-    use TraitBaseModel;
+    use BaseModelTrait;
 
     /**
      * The table the groups are stored in.

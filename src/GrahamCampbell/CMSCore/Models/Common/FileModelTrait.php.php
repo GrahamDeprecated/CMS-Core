@@ -14,14 +14,10 @@
  * GNU Affero General Public License for more details.
  */
 
-namespace GrahamCampbell\CMSCore\Models;
-
-use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
-use GrahamCampbell\Core\Models\Interfaces\BaseModelInterface;
-use GrahamCampbell\Core\Models\Common\BaseModelTrait;
+namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
- * This is the throttle model class.
+ * This is the file model trait.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
@@ -29,21 +25,35 @@ use GrahamCampbell\Core\Models\Common\BaseModelTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Throttle extends SentryThrottle implements BaseModelInterface
+trait FileModelTrait
 {
-    use BaseModelTrait;
+    /**
+     * Get the file format.
+     *
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->format;
+    }
 
     /**
-     * The table the throttles are stored in.
+     * Get the file name.
      *
-     * @var string
+     * @return string
      */
-    protected $table = 'throttle';
+    public function getName()
+    {
+        return $this->id.'.'.$this->format;
+    }
 
     /**
-     * The model name.
+     * Get the file path.
      *
-     * @var string
+     * @return string
      */
-    public static $name = 'throttle';
+    public function getPath()
+    {
+        return storage_path().'/files/'.$this->getName();
+    }
 }

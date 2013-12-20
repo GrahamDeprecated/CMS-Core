@@ -14,14 +14,10 @@
  * GNU Affero General Public License for more details.
  */
 
-namespace GrahamCampbell\CMSCore\Models;
-
-use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
-use GrahamCampbell\Core\Models\Interfaces\BaseModelInterface;
-use GrahamCampbell\Core\Models\Common\BaseModelTrait;
+namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
 
 /**
- * This is the throttle model class.
+ * This is the belongs to folder interface.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
@@ -29,21 +25,27 @@ use GrahamCampbell\Core\Models\Common\BaseModelTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Throttle extends SentryThrottle implements BaseModelInterface
+interface BelongsToFolderInterface
 {
-    use BaseModelTrait;
+    /**
+     * Get the folder relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function folder();
 
     /**
-     * The table the throttles are stored in.
+     * Get the folder model.
      *
-     * @var string
+     * @param  array  $columns
+     * @return \GrahamCampbell\CMSCore\Models\Folder
      */
-    protected $table = 'throttle';
+    public function getFolder($columns = array('*'));
 
     /**
-     * The model name.
+     * Get the folder id.
      *
-     * @var string
+     * @return int
      */
-    public static $name = 'throttle';
+    public function getFolderId();
 }

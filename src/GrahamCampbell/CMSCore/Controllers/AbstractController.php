@@ -26,7 +26,7 @@ use GrahamCampbell\CMSCore\Facades\PageProvider;
 use GrahamCampbell\Core\Controllers\AbstractController as Controller;
 
 /**
- * This is the abstract base controller class.
+ * This is the abstract controller class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell

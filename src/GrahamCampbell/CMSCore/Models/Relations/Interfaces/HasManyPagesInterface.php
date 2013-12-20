@@ -14,14 +14,10 @@
  * GNU Affero General Public License for more details.
  */
 
-namespace GrahamCampbell\CMSCore\Models;
-
-use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
-use GrahamCampbell\Core\Models\Interfaces\BaseModelInterface;
-use GrahamCampbell\Core\Models\Common\BaseModelTrait;
+namespace GrahamCampbell\CMSCore\Models\Relations\Interfaces;
 
 /**
- * This is the throttle model class.
+ * This is the has many pages interface.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
@@ -29,21 +25,36 @@ use GrahamCampbell\Core\Models\Common\BaseModelTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Throttle extends SentryThrottle implements BaseModelInterface
+interface HasManyPagesInterface
 {
-    use BaseModelTrait;
+    /**
+     * Get the page relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
+     */
+    public function pages();
 
     /**
-     * The table the throttles are stored in.
+     * Get the page collection.
      *
-     * @var string
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Collection
      */
-    protected $table = 'throttle';
+    public function getPages($columns = null);
 
     /**
-     * The model name.
+     * Get the specified page.
      *
-     * @var string
+     * @param  string  $slug
+     * @param  array   $columns
+     * @return \GrahamCampbell\CMSCore\Models\Page
      */
-    public static $name = 'throttle';
+    public function findPage($slug, $columns = array('*'));
+
+    /**
+     * Delete all pages.
+     *
+     * @return void
+     */
+    public function deletePages();
 }

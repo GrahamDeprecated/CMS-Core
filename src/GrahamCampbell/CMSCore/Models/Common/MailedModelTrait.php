@@ -14,14 +14,10 @@
  * GNU Affero General Public License for more details.
  */
 
-namespace GrahamCampbell\CMSCore\Models;
-
-use Cartalyst\Sentry\Throttling\Eloquent\Throttle as SentryThrottle;
-use GrahamCampbell\Core\Models\Interfaces\BaseModelInterface;
-use GrahamCampbell\Core\Models\Common\BaseModelTrait;
+namespace GrahamCampbell\CMSCore\Models\Common;
 
 /**
- * This is the throttle model class.
+ * This is the mailed model trait.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
@@ -29,21 +25,15 @@ use GrahamCampbell\Core\Models\Common\BaseModelTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Throttle extends SentryThrottle implements BaseModelInterface
+trait MailedModelTrait
 {
-    use BaseModelTrait;
-
     /**
-     * The table the throttles are stored in.
+     * Get mailed.
      *
-     * @var string
+     * @return boolean
      */
-    protected $table = 'throttle';
-
-    /**
-     * The model name.
-     *
-     * @var string
-     */
-    public static $name = 'throttle';
+    public function getMailed()
+    {
+        return $this->mailed;
+    }
 }
