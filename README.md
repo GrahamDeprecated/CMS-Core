@@ -10,6 +10,11 @@ CMS Core
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/CMS-Core.png)](http://stillmaintained.com/GrahamCampbell/CMS-Core)
 
 
+## WARNING
+
+#### This branch currently holds the very unstable 0.2 code. Expect things to be broken and tests to fail.
+
+
 ## What Is CMS Core?
 
 CMS Core provides some core functionality for applications like [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS).  
