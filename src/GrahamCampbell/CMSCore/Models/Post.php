@@ -16,7 +16,7 @@
 
 namespace GrahamCampbell\CMSCore\Models;
 
-use GrahamCampbell\Core\Models\BaseModel;
+use GrahamCampbell\Core\Models\AbstractModel;
 use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
 use GrahamCampbell\Core\Models\Common\TraitTitleModel;
 use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
@@ -37,7 +37,7 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Post extends BaseModel implements ITitleModel, IBodyModel, ISummaryModel, IHasManyComments, IBelongsToUser
+class Post extends AbstractModel implements ITitleModel, IBodyModel, ISummaryModel, IHasManyComments, IBelongsToUser
 {
     use TraitTitleModel, TraitBodyModel, TraitSummaryModel, TraitHasManyComments, TraitBelongsToUser;
 

@@ -16,7 +16,7 @@
 
 namespace GrahamCampbell\CMSCore\Providers;
 
-use GrahamCampbell\Core\Providers\BaseProvider;
+use GrahamCampbell\Core\Providers\AbstractProvider;
 use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
 use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
 
@@ -29,7 +29,7 @@ use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class PostProvider extends BaseProvider implements IPaginateProvider
+class PostProvider extends AbstractProvider implements IPaginateProvider
 {
     use TraitPaginateProvider;
 

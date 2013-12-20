@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\View;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use GrahamCampbell\Navigation\Facades\Navigation;
 use GrahamCampbell\CMSCore\Facades\PageProvider;
-use GrahamCampbell\Core\Controllers\BaseController as Controller;
+use GrahamCampbell\Core\Controllers\AbstractController as Controller;
 
 /**
  * This is the abstract base controller class.
@@ -34,7 +34,7 @@ use GrahamCampbell\Core\Controllers\BaseController as Controller;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-abstract class BaseController extends Controller
+abstract class AbstractController extends Controller
 {
     /**
      * A list of methods protected by user permissions.

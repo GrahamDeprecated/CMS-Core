@@ -35,7 +35,7 @@ class EventTest extends AbstractModelTestCase implements BelongsToUserTestCaseIn
 
     protected function extraModelTests()
     {
-        $this->assertInstanceOf('GrahamCampbell\Core\Models\BaseModel', $this->object);
+        $this->assertInstanceOf('GrahamCampbell\Core\Models\AbstractModel', $this->object);
     }
 
     public function testGetTitle()

@@ -25,10 +25,10 @@ namespace GrahamCampbell\CMSCore\Handlers;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class TestHandler extends BaseHandler
+class TestHandler extends AbstractHandler
 {
     /**
-     * Run the task (called by BaseHandler).
+     * Run the task (called by AbstractHandler).
      *
      * @return void
      */

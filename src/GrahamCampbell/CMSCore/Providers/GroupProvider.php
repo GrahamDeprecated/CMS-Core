@@ -16,7 +16,7 @@
 
 namespace GrahamCampbell\CMSCore\Providers;
 
-use GrahamCampbell\Core\Providers\BaseProvider;
+use GrahamCampbell\Core\Providers\AbstractProvider;
 
 /**
  * This is the group provider class.
@@ -27,7 +27,7 @@ use GrahamCampbell\Core\Providers\BaseProvider;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class GroupProvider extends BaseProvider
+class GroupProvider extends AbstractProvider
 {
     /**
      * The name of the model to provide.

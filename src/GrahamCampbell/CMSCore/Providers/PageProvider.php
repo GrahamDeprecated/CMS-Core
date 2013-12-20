@@ -19,7 +19,7 @@ namespace GrahamCampbell\CMSCore\Providers;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use GrahamCampbell\CMSCore\Models\Page;
-use GrahamCampbell\Core\Providers\BaseProvider;
+use GrahamCampbell\Core\Providers\AbstractProvider;
 use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
 use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
 use GrahamCampbell\Core\Providers\Interfaces\ISlugProvider;
@@ -34,7 +34,7 @@ use GrahamCampbell\Core\Providers\Common\TraitSlugProvider;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvider
+class PageProvider extends AbstractProvider implements IPaginateProvider, ISlugProvider
 {
     use TraitPaginateProvider, TraitSlugProvider;
 

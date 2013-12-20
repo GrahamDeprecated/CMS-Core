@@ -17,7 +17,7 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use Illuminate\Support\Facades\File as LaravelFile;
-use GrahamCampbell\Core\Models\BaseModel;
+use GrahamCampbell\Core\Models\AbstractModel;
 use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
 use GrahamCampbell\Core\Models\Common\TraitTitleModel;
 use GrahamCampbell\CMSCore\Models\Interfaces\IFileModel;
@@ -36,7 +36,7 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToFolder;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class File extends BaseModel implements ITitleModel, IFileModel, IBelongsToUser, IBelongsToFolder
+class File extends AbstractModel implements ITitleModel, IFileModel, IBelongsToUser, IBelongsToFolder
 {
     use TraitTitleModel, TraitFileModel, TraitBelongsToUser, TraitBelongsToFolder;
 
