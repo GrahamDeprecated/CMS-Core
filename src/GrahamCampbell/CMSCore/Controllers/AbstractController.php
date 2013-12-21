@@ -161,15 +161,4 @@ abstract class AbstractController extends Controller
             return 1;
         }
     }
-
-    /**
-     * Handle calls to missing methods on the controller.
-     *
-     * @param  array   $parameters
-     * @return \Illuminate\Http\Response
-     */
-    public function missingMethod($parameters = array())
-    {
-        return App::abort(405, 'Missing Controller Method');
-    }
 }
