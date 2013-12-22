@@ -43,7 +43,7 @@ class CMSCoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('graham-campbell/cmscore');
+        $this->package('graham-campbell/cms-core');
     }
 
     /**
