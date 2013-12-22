@@ -32,11 +32,4 @@ use GrahamCampbell\Core\Providers\Common\PaginateProviderTrait;
 class FolderProvider extends AbstractProvider implements PaginateProviderInterface
 {
     use PaginateProviderTrait;
-
-    /**
-     * The name of the model to provide.
-     *
-     * @var string
-     */
-    protected $model = 'GrahamCampbell\CMSCore\Models\Folder';
 }

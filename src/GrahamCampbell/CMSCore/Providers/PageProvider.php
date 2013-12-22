@@ -16,9 +16,9 @@
 
 namespace GrahamCampbell\CMSCore\Providers;
 
+// TODO: inject cache and config instead of using facades
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
-use GrahamCampbell\CMSCore\Models\Page;
 use GrahamCampbell\Core\Providers\AbstractProvider;
 use GrahamCampbell\Core\Providers\Interfaces\PaginateProviderInterface;
 use GrahamCampbell\Core\Providers\Common\PaginateProviderTrait;
@@ -37,13 +37,6 @@ use GrahamCampbell\Core\Providers\Common\SlugProviderTrait;
 class PageProvider extends AbstractProvider implements PaginateProviderInterface, SlugProviderInterface
 {
     use PaginateProviderTrait, SlugProviderTrait;
-
-    /**
-     * The name of the model to provide.
-     *
-     * @var string
-     */
-    protected $model = 'GrahamCampbell\CMSCore\Models\Page';
 
     /**
      * A cache of the page navigation.
@@ -123,7 +116,8 @@ class PageProvider extends AbstractProvider implements PaginateProviderInterface
      */
     protected function sendGet()
     {
-        return Page::where('show_nav', '=', true)->get(array('title', 'slug', 'icon'))->toArray();
+        $model = $this->model;
+        return $model::where('show_nav', '=', true)->get(array('title', 'slug', 'icon'))->toArray();
     }
 
     /**

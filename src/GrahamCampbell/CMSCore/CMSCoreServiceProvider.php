@@ -54,35 +54,33 @@ class CMSCoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['commentprovider'] = $this->app->share(function ($app) {
-            return new Providers\CommentProvider;
+            $model = $app['config']['graham-campbell/cms-core::comment'];
+            return new Providers\CommentProvider($model);
         });
 
         $this->app['eventprovider'] = $this->app->share(function ($app) {
-            return new Providers\EventProvider;
+            $model = $app['config']['graham-campbell/cms-core::event'];
+            return new Providers\EventProvider($model);
         });
 
         $this->app['fileprovider'] = $this->app->share(function ($app) {
-            return new Providers\FileProvider;
+            $model = $app['config']['graham-campbell/cms-core::file'];
+            return new Providers\FileProvider($model);
         });
 
         $this->app['folderprovider'] = $this->app->share(function ($app) {
-            return new Providers\FolderProvider;
-        });
-
-        $this->app['groupprovider'] = $this->app->share(function ($app) {
-            return new Providers\GroupProvider;
+            $model = $app['config']['graham-campbell/cms-core::folder'];
+            return new Providers\FolderProvider($model);
         });
 
         $this->app['pageprovider'] = $this->app->share(function ($app) {
-            return new Providers\PageProvider;
+            $model = $app['config']['graham-campbell/cms-core::page'];
+            return new Providers\PageProvider($model);
         });
 
         $this->app['postprovider'] = $this->app->share(function ($app) {
-            return new Providers\PostProvider;
-        });
-
-        $this->app['userprovider'] = $this->app->share(function ($app) {
-            return new Providers\UserProvider;
+            $model = $app['config']['graham-campbell/cms-core::post'];
+            return new Providers\PostProvider($model);
         });
     }
 
@@ -93,6 +91,6 @@ class CMSCoreServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'groupprovider', 'pageprovider', 'postprovider', 'userprovider');
+        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'pageprovider', 'postprovider');
     }
 }

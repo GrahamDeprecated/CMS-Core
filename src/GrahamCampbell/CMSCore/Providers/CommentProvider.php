@@ -29,10 +29,5 @@ use GrahamCampbell\Core\Providers\AbstractProvider;
  */
 class CommentProvider extends AbstractProvider
 {
-    /**
-     * The name of the model to provide.
-     *
-     * @var string
-     */
-    protected $model = 'GrahamCampbell\CMSCore\Models\Comment';
+    //
 }
