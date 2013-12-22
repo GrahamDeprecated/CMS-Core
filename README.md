@@ -12,7 +12,7 @@ CMS Core
 
 ## WARNING
 
-#### This branch currently holds the very unstable 0.2 code. Expect things to be broken and tests to fail.
+#### This branch currently holds the very unstable 0.2 code. Expect things to be broken and tests to fail, and documentation to be inaccurate in places.
 
 
 ## What Is CMS Core?
