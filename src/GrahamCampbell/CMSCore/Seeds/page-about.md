@@ -68,6 +68,7 @@ Please check the system requirements before installing Bootstrap CMS.
   * Some things, like [caching](#setting-up-caching) and [queuing](#setting-up-queing), are disabled out of the box
   * This is to allow Bootstrap CMS to work with minimal setup
   * Please note that queuing is required in order to use the cron functionality which can do things like notify users of upcoming events, or send out weekly activity digests
+  * Also note that if you choose to roll without caching, you will find page loads can take a while due to the fact you are generating assets that would normally be cached
 
 <br>
 
@@ -97,7 +98,7 @@ Note that caching will not work with Laravel's `file` or `database` cache driver
 
 1. Choose your poison - I'd recommend [Redis](http://redis.io).  
 2. Enter your cache server details into `app/config/cache.php`.  
-3. Enable Bootstrap CMS's caching in `app/config/cms.php`.  
+3. Setting the driver to array will effectively disable caching.  
 
 <br>
 
@@ -173,7 +174,7 @@ Please submit pull requests against the develop branch.
 
 GNU AFFERO GENERAL PUBLIC LICENSE  
 
-Bootstrap CMS Is A PHP CMS Powered By Laravel 4.1 With CMS Core And Sentry 2 
+Bootstrap CMS Is A PHP CMS Powered By Laravel 4.1 With CMS Core And Sentry 2  
 Copyright (C) 2013  Graham Campbell  
 
 This program is free software: you can redistribute it and/or modify

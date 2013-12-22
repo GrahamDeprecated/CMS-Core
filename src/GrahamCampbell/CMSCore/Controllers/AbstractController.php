@@ -105,18 +105,18 @@ abstract class AbstractController extends Controller
                     $data['site_name'] = 'Admin Panel';
                     $data['navigation'] = Navigation::getHTML('admin', 'admin', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
                 } else {
-                    $data['site_name'] = Config::get('cms.name');
+                    $data['site_name'] = Config::get('platform.name');
                     $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
                 }
             } else {
-                $data['site_name'] = Config::get('cms.name');
+                $data['site_name'] = Config::get('platform.name');
                 $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
             }
         } else {
             PageProvider::setNavUser(false);
             Event::fire('view.make', array(array('View' => $view, 'User' => false)));
 
-            $data['site_name'] = Config::get('cms.name');
+            $data['site_name'] = Config::get('platform.name');
             $data['navigation'] = Navigation::getHTML('default', false, array('title' => $data['site_name'], 'inverse' => Config::get('theme.inverse')));
         }
 
