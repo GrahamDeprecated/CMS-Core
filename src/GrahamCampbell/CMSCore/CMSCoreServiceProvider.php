@@ -54,32 +54,32 @@ class CMSCoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['commentprovider'] = $this->app->share(function ($app) {
-            $model = $app['config']['graham-campbell/cms-core::comment'];
+            $model = $app['config']['cms-core::comment'];
             return new Providers\CommentProvider($model);
         });
 
         $this->app['eventprovider'] = $this->app->share(function ($app) {
-            $model = $app['config']['graham-campbell/cms-core::event'];
+            $model = $app['config']['cms-core::event'];
             return new Providers\EventProvider($model);
         });
 
         $this->app['fileprovider'] = $this->app->share(function ($app) {
-            $model = $app['config']['graham-campbell/cms-core::file'];
+            $model = $app['config']['cms-core::file'];
             return new Providers\FileProvider($model);
         });
 
         $this->app['folderprovider'] = $this->app->share(function ($app) {
-            $model = $app['config']['graham-campbell/cms-core::folder'];
+            $model = $app['config']['cms-core::folder'];
             return new Providers\FolderProvider($model);
         });
 
         $this->app['pageprovider'] = $this->app->share(function ($app) {
-            $model = $app['config']['graham-campbell/cms-core::page'];
+            $model = $app['config']['cms-core::page'];
             return new Providers\PageProvider($model);
         });
 
         $this->app['postprovider'] = $this->app->share(function ($app) {
-            $model = $app['config']['graham-campbell/cms-core::post'];
+            $model = $app['config']['cms-core::post'];
             return new Providers\PostProvider($model);
         });
     }
