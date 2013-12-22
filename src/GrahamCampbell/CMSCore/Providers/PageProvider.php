@@ -61,10 +61,10 @@ class PageProvider extends AbstractProvider implements PaginateProviderInterface
     {
         // caching logic
         if ($this->validCache($this->nav)) {
-            // if is valid, get the value from the class cache
+            // get the value from the class cache
             $value = $this->nav;
-        } elseif (Config::get('cms.cache') === true) {
-            // if caching is enabled, pull from the cache
+        } else {
+            // pull from the cache
             $value = $this->getCache();
             // check if the value is valid
             if (!$this->validCache($value)) {
@@ -73,9 +73,6 @@ class PageProvider extends AbstractProvider implements PaginateProviderInterface
                 // add the value from the work to the cache
                 $this->setCache($value);
             }
-        } else {
-            // do the work because caching is disabled
-            $value = $this->sendGet();
         }
 
         // cache the value in the class
@@ -92,9 +89,7 @@ class PageProvider extends AbstractProvider implements PaginateProviderInterface
      */
     public function flush()
     {
-        if (Config::get('cms.cache') === true) {
-            Cache::forget('navigation');
-        }
+        Cache::forget('navigation');
     }
 
     /**
@@ -104,9 +99,7 @@ class PageProvider extends AbstractProvider implements PaginateProviderInterface
      */
     public function refresh()
     {
-        if (Config::get('cms.cache') === true) {
-            $this->setCache($this->sendGet());
-        }
+        $this->setCache($this->sendGet());
     }
 
     /**
