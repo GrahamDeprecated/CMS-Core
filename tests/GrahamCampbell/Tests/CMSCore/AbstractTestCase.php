@@ -46,17 +46,28 @@ abstract class AbstractTestCase extends TestCase
      */
     protected function getPackageProviders()
     {
-        return array(
-            'Cartalyst\Sentry\SentryServiceProvider',
+        return array_merge(array(
             'Lightgear\Asset\AssetServiceProvider',
+            'Cartalyst\Sentry\SentryServiceProvider',
             'GrahamCampbell\Queuing\QueuingServiceProvider',
             'GrahamCampbell\HTMLMin\HTMLMinServiceProvider',
             'GrahamCampbell\Markdown\MarkdownServiceProvider',
             'GrahamCampbell\Security\SecurityServiceProvider',
             'GrahamCampbell\Binput\BinputServiceProvider',
             'GrahamCampbell\Passwd\PasswdServiceProvider',
+            'GrahamCampbell\Credentials\CredentialsServiceProvider',
             'GrahamCampbell\Navigation\NavigationServiceProvider',
             'GrahamCampbell\CMSCore\CMSCoreServiceProvider'
-        );
+        ), $this->getPluginProviders());
+    }
+
+    /**
+     * Get the plugin service providers.
+     *
+     * @return array
+     */
+    protected function getPluginProviders()
+    {
+        return array();
     }
 }

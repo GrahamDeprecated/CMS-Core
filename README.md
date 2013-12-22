@@ -47,13 +47,14 @@ You'll then need to run `composer install` or `composer update` to download it a
 
 You will need to register many service providers before you attempt to load the CMS Core service provider. Open up `app/config/app.php` and add the following to the `providers` key.  
 
+`'Lightgear\Asset\AssetServiceProvider'`  
+`'Cartalyst\Sentry\SentryServiceProvider'`  
 `'GrahamCampbell\Queuing\QueuingServiceProvider'`  
 `'GrahamCampbell\HTMLMin\HTMLMinServiceProvider'`  
 `'GrahamCampbell\Markdown\MarkdownServiceProvider'`  
 `'GrahamCampbell\Security\SecurityMinServiceProvider'`  
 `'GrahamCampbell\Binput\BinputServiceProvider'`  
 `'GrahamCampbell\Passwd\PasswdServiceProvider'`  
-`'Cartalyst\Sentry\SentryServiceProvider'`  
 `'GrahamCampbell\Credentials\CredentialsServiceProvider'`  
 `'GrahamCampbell\Navigation\NavigationServiceProvider'`  
 
