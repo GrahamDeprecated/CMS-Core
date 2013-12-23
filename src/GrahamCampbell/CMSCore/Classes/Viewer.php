@@ -20,10 +20,9 @@ use Cartalyst\Sentry\Sentry;
 use Illuminate\Config\Repository;
 use Illuminate\Events\Dispatcher;
 use Illuminate\View\Environment;
-use Illuminate\View\ViewFinderInterface;
-use Illuminate\View\Engines\EngineResolver;
 use GrahamCampbell\Navigation\Classes\Navigation;
 use GrahamCampbell\CMSCore\Providers\PageProvider;
+use GrahamCampbell\Credentials\Classes\Viewer as CredentialsViewer;
 
 /**
  * This is the view class.
@@ -34,21 +33,21 @@ use GrahamCampbell\CMSCore\Providers\PageProvider;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class View extends Environment
+class Viewer extends CredentialsViewer
 {
-    /**
-     * The sentry instance.
-     *
-     * @var \Cartalyst\Sentry\Sentry
-     */
-    protected $sentry;
-
     /**
      * The config instance.
      *
      * @var \Illuminate\Config\Repository
      */
     protected $config;
+
+    /**
+     * The event instance.
+     *
+     * @var \Illuminate\Events\Dispatcher
+     */
+    protected $event;
 
     /**
      * The navigation instance.
@@ -69,22 +68,22 @@ class View extends Environment
      *
      * @param  \Illuminate\View\Engines\EngineResolver  $engines
      * @param  \Illuminate\View\ViewFinderInterface  $finder
-     * @param  \Illuminate\Events\Dispatcher  $events
+     * @param  \Illuminate\Events\Dispatcher  $event
      * @param  \Cartalyst\Sentry\Sentry  $sentry
      * @return void
      */
-    public function __construct(EngineResolver $engines, ViewFinderInterface $finder, Dispatcher $events, Sentry $sentry, Repository $config, Navigation $navigation, PageProvider $pageprovider)
+    public function __construct(Environment $view, Sentry $sentry, Repository $config, Dispatcher $event, Navigation $navigation, PageProvider $pageprovider)
     {
-        parent::__construct($engines, $finder, $events);
+        parent::__construct($view, $sentry);
 
-        $this->sentry = $sentry;
         $this->config = $config;
+        $this->event = $event;
         $this->navigation = $navigation;
         $this->pageprovider = $pageprovider;
     }
 
     /**
-     * Get a evaluated view contents for the given page.
+     * Get a evaluated view contents for the given view.
      *
      * @param  string  $view
      * @param  array   $data
@@ -92,11 +91,11 @@ class View extends Environment
      * @param  bool    $admin
      * @return \Illuminate\View\View
      */
-    public function page($view, $data = array(), $mergeData = array(), $admin = false)
+    public function make($view, $data = array(), $admin = false)
     {
         if ($this->sentry->check()) {
             $this->pageprovider->setNavUser(true);
-            $this->events->fire('view.page', array(array('View' => $view, 'User' => true, 'Admin' => $admin)));
+            $this->event->fire('viewer.make', array(array('View' => $view, 'User' => true, 'Admin' => $admin)));
 
             if ($admin) {
                 if ($this->sentry->getUser()->hasAccess('admin')) {
@@ -112,12 +111,12 @@ class View extends Environment
             }
         } else {
             $this->pageprovider->setNavUser(false);
-            $this->events->fire('view.page', array(array('View' => $view, 'User' => false, 'Admin' => $admin)));
+            $this->event->fire('viewer.make', array(array('View' => $view, 'User' => false, 'Admin' => $admin)));
 
             $data['site_name'] = $this->config['platform.name'];
             $data['navigation'] = $this->navigation->getHTML('default', false, array('title' => $data['site_name'], 'inverse' => $this->config['theme.inverse']));
         }
 
-        return $this->make($view, $data, $mergeData);
+        return $this->make($view, $data);
     }
 }

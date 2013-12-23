@@ -83,9 +83,9 @@ class CMSCoreServiceProvider extends ServiceProvider
             return new Providers\PostProvider($model);
         });
 
-        // $this->app['view'] = $this->app->share(function ($app) {
-        //     return new Classes\View($app['view.engine.resolver'], $app['view.finder'], $app['events'], $app['sentry'], $app['config'], $app['navigation'], $app['pageprovider']);
-        // });
+        $this->app['viewer'] = $this->app->share(function ($app) {
+            return new Classes\View($app['view'], $app['sentry'], $app['config'], $app['events'], $app['navigation'], $app['pageprovider']);
+        });
     }
 
     /**
@@ -95,6 +95,6 @@ class CMSCoreServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'pageprovider', 'postprovider', 'view');
+        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'pageprovider', 'postprovider', 'viewer');
     }
 }
