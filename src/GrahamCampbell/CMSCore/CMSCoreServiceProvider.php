@@ -82,6 +82,10 @@ class CMSCoreServiceProvider extends ServiceProvider
             $model = $app['config']['cms-core::post'];
             return new Providers\PostProvider($model);
         });
+
+        $this->app['view'] = $this->app->share(function ($app) {
+            return new Classes['view']($app['view.engine.resolver'], $app['view.finder'], $app['events'], $app['sentry'], $app['config'], $app['navigation'], $app['pageprovider']);
+        });
     }
 
     /**
@@ -91,6 +95,6 @@ class CMSCoreServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'pageprovider', 'postprovider');
+        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'pageprovider', 'postprovider', 'view');
     }
 }
