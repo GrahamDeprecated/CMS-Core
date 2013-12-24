@@ -44,10 +44,6 @@ class CMSCoreServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->package('graham-campbell/cms-core');
-
-        $this->app['viewer'] = $this->app->share(function ($app) {
-            return new Classes\Viewer($app['view'], $app['sentry'], $app['config'], $app['events'], $app['navigation'], $app['pageprovider']);
-        });
     }
 
     /**
@@ -85,6 +81,10 @@ class CMSCoreServiceProvider extends ServiceProvider
         $this->app['postprovider'] = $this->app->share(function ($app) {
             $model = $app['config']['cms-core::post'];
             return new Providers\PostProvider($model);
+        });
+
+        $this->app['viewer'] = $this->app->share(function ($app) {
+            return new Classes\Viewer($app['view'], $app['sentry'], $app['config'], $app['events'], $app['navigation'], $app['pageprovider']);
         });
     }
 
