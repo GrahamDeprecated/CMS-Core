@@ -16,9 +16,7 @@
 
 namespace GrahamCampbell\CMSCore\Controllers;
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\View;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use GrahamCampbell\Navigation\Facades\Navigation;
@@ -98,7 +96,6 @@ abstract class AbstractController extends Controller
     {
         if (Sentry::check()) {
             PageProvider::setNavUser(true);
-            Event::fire('view.make', array(array('View' => $view, 'User' => true)));
 
             if ($admin) {
                 if (Sentry::getUser()->hasAccess('admin')) {
@@ -114,7 +111,6 @@ abstract class AbstractController extends Controller
             }
         } else {
             PageProvider::setNavUser(false);
-            Event::fire('view.make', array(array('View' => $view, 'User' => false)));
 
             $data['site_name'] = Config::get('platform.name');
             $data['navigation'] = Navigation::getHTML('default', false, array('title' => $data['site_name'], 'inverse' => Config::get('theme.inverse')));
