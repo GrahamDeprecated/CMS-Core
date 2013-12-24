@@ -69,7 +69,8 @@ class CMSCoreServiceProvider extends ServiceProvider
     protected function registerCommentProvider()
     {
         $this->app->bindShared('commentprovider', function ($app) {
-            $comment = $app['config']['cms-core::comment'];
+            $model = $app['config']['cms-core::comment'];
+            $comment = new $model();
 
             return new Providers\CommentProvider($comment);
         });
@@ -83,7 +84,8 @@ class CMSCoreServiceProvider extends ServiceProvider
     protected function registerEventProvider()
     {
         $this->app->bindShared('eventprovider', function ($app) {
-            $event = $app['config']['cms-core::event'];
+            $model = $app['config']['cms-core::event'];
+            $event = new $model();
 
             return new Providers\EventProvider($event);
         });
@@ -97,7 +99,8 @@ class CMSCoreServiceProvider extends ServiceProvider
     protected function registerFileProvider()
     {
         $this->app->bindShared('fileprovider', function ($app) {
-            $file = $app['config']['cms-core::file'];
+            $model = $app['config']['cms-core::file'];
+            $file = new $model();
 
             return new Providers\FileProvider($file);
         });
@@ -111,7 +114,8 @@ class CMSCoreServiceProvider extends ServiceProvider
     protected function registerFolderProvider()
     {
         $this->app->bindShared('folderprovider', function ($app) {
-            $folder = $app['config']['cms-core::folder'];
+            $model = $app['config']['cms-core::folder'];
+            $folder = new $model();
 
             return new Providers\FolderProvider($folder);
         });
@@ -125,7 +129,8 @@ class CMSCoreServiceProvider extends ServiceProvider
     protected function registerPageProvider()
     {
         $this->app->bindShared('pageprovider', function ($app) {
-            $page = $app['config']['cms-core::page'];
+            $model = $app['config']['cms-core::page'];
+            $page = new $model();
 
             return new Providers\PageProvider($page);
         });
@@ -139,7 +144,8 @@ class CMSCoreServiceProvider extends ServiceProvider
     protected function registerPostProvider()
     {
         $this->app->bindShared('postprovider', function ($app) {
-            $post = $app['config']['cms-core::post'];
+            $model = $app['config']['cms-core::post'];
+            $post = new $model();
 
             return new Providers\PostProvider($post);
         });
