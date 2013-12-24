@@ -16,7 +16,14 @@
 
 namespace GrahamCampbell\CMSCore\Controllers;
 
-use GrahamCampbell\Credentials\Controllers\AbstractController as Controller;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\View;
+use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use GrahamCampbell\Navigation\Facades\Navigation;
+use GrahamCampbell\CMSCore\Facades\PageProvider;
+use GrahamCampbell\Core\Controllers\AbstractController as Controller;
 
 /**
  * This is the abstract controller class.
@@ -30,18 +37,39 @@ use GrahamCampbell\Credentials\Controllers\AbstractController as Controller;
 abstract class AbstractController extends Controller
 {
     /**
+     * A list of methods protected by user permissions.
+     *
+     * @var array
+     */
+    private $users = array();
+
+    /**
      * A list of methods protected by edit permissions.
      *
      * @var array
      */
-    protected $edits = array();
+    private $edits = array();
 
     /**
      * A list of methods protected by blog permissions.
      *
      * @var array
      */
-    protected $blogs = array();
+    private $blogs = array();
+
+    /**
+     * A list of methods protected by mod permissions.
+     *
+     * @var array
+     */
+    private $mods = array();
+
+    /**
+     * A list of methods protected by admin permissions.
+     *
+     * @var array
+     */
+    private $admins = array();
 
     /**
      * Constructor (setup protection and permissions).
@@ -50,11 +78,87 @@ abstract class AbstractController extends Controller
      */
     public function __construct()
     {
-        parent::__construct();
+        $this->beforeFilter('csrf', array('on' => 'post'));
 
+        Sentry::getThrottleProvider()->enable();
+
+        $this->beforeFilter('auth:user', array('only' => $this->users));
         $this->beforeFilter('auth:edit', array('only' => $this->edits));
         $this->beforeFilter('auth:blog', array('only' => $this->blogs));
+        $this->beforeFilter('auth:mod', array('only' => $this->mods));
+        $this->beforeFilter('auth:admin', array('only' => $this->admins));
+    }
 
-        $this->beforeFilter('csrf', array('on' => 'post'));
+    /**
+     * Make a page view.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function viewMake($view, $data = array(), $admin = false)
+    {
+        if (Sentry::check()) {
+            PageProvider::setNavUser(true);
+            Event::fire('view.make', array(array('View' => $view, 'User' => true)));
+
+            if ($admin) {
+                if (Sentry::getUser()->hasAccess('admin')) {
+                    $data['site_name'] = 'Admin Panel';
+                    $data['navigation'] = Navigation::getHTML('admin', 'admin', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
+                } else {
+                    $data['site_name'] = Config::get('platform.name');
+                    $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
+                }
+            } else {
+                $data['site_name'] = Config::get('platform.name');
+                $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
+            }
+        } else {
+            PageProvider::setNavUser(false);
+            Event::fire('view.make', array(array('View' => $view, 'User' => false)));
+
+            $data['site_name'] = Config::get('platform.name');
+            $data['navigation'] = Navigation::getHTML('default', false, array('title' => $data['site_name'], 'inverse' => Config::get('theme.inverse')));
+        }
+
+        return View::make($view, $data);
+    }
+
+    /**
+     * Set the permission.
+     *
+     * @pram  string  $action
+     * @pram  string  $permission
+     * @return void
+     */
+    protected function setPermission($action, $permission)
+    {
+        $this->{$permission.'s'}[] = $action;
+    }
+
+    /**
+     * Set the permissions.
+     *
+     * @pram  array  $permissions
+     * @return void
+     */
+    protected function setPermissions($permissions)
+    {
+        foreach ($permissions as $action => $permission) {
+            $this->setPermission($action, $permission);
+        }
+    }
+
+    /**
+     * Set the user id.
+     *
+     * @return int
+     */
+    protected function getUserId()
+    {
+        if (Sentry::getUser()) {
+            return Sentry::getUser()->getId();
+        } else {
+            return 1;
+        }
     }
 }
