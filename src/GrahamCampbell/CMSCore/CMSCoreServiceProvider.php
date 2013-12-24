@@ -84,7 +84,7 @@ class CMSCoreServiceProvider extends ServiceProvider
         });
 
         $this->app['viewer'] = $this->app->share(function ($app) {
-            return new Classes\Viewer($app['view'], $app['sentry'], $app['config'], $app['events'], $app['navigation'], $app['pageprovider']);
+            return new Classes\View($app['view'], $app['sentry'], $app['config'], $app['events'], $app['navigation'], $app['pageprovider']);
         });
     }
 
