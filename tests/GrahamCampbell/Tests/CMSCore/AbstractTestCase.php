@@ -55,6 +55,7 @@ abstract class AbstractTestCase extends TestCase
             'GrahamCampbell\Security\SecurityServiceProvider',
             'GrahamCampbell\Binput\BinputServiceProvider',
             'GrahamCampbell\Passwd\PasswdServiceProvider',
+            'GrahamCampbell\Throttle\ThrottleServiceProvider',
             'GrahamCampbell\Credentials\CredentialsServiceProvider',
             'GrahamCampbell\Navigation\NavigationServiceProvider',
             'GrahamCampbell\CMSCore\CMSCoreServiceProvider'
