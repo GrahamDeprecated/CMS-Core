@@ -42,7 +42,8 @@
         "graham-campbell/markdown": "0.3.*",
         "graham-campbell/binput": "0.4.*",
         "graham-campbell/credentials": "0.1.*",
-        "graham-campbell/navigation": "0.2.*"
+        "graham-campbell/navigation": "0.2.*",
+        "graham-campbell/throttle": "0.1.*"
     },
     "require-dev": {
         "graham-campbell/testbench": "0.2.*"
