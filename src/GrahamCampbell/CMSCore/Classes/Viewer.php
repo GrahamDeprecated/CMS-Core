@@ -99,7 +99,7 @@ class Viewer extends BaseViewer
      * @param  string  $type
      * @return \Illuminate\View\View
      */
-    public function make($view, $data = array(), $type = 'default')
+    public function make($view, array $data = array(), $type = 'default')
     {
         if ($this->sentry->check()) {
             $this->pageprovider->setNavUser(true);
