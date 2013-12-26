@@ -45,26 +45,25 @@ class CMSCoreServiceProvider extends ServiceProvider
     {
         $this->package('graham-campbell/cms-core');
 
-        $this->setupView();
+        $this->setupViewer();
     }
 
     /**
-     * Setup the view class.
+     * Setup the viewer class.
      *
      * @return void
      */
-    protected function setupView()
+    protected function setupViewer()
     {
-        $this->app->bindShared('view', function ($app) {
-            $engines = $app['view.engine.resolver'];
-            $finder = $app['view.finder'];
-            $events = $app['events'];
+        $this->app->bindShared('viewer', function ($app) {
+            $view = $app['view'];
             $sentry = $app['sentry'];
-            $config = $app['config'];
             $navigation = $app['navigation'];
             $pageprovider = $app['pageprovider'];
+            $name = $app['config']['platform.name'];
+            $inverse = $app['config']['theme.inverse'];
 
-            return new Classes\View($engines, $finder, $events, $sentry, $config, $navigation, $pageprovider);
+            return new Classes\Viewer($view, $sentry, $navigation, $pageprovider, $name, $inverse);
         });
     }
 
@@ -180,6 +179,14 @@ class CMSCoreServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'pageprovider', 'postprovider');
+        return array(
+            'commentprovider',
+            'eventprovider',
+            'fileprovider',
+            'folderprovider',
+            'pageprovider',
+            'postprovider',
+            'viewer'
+        );
     }
 }
