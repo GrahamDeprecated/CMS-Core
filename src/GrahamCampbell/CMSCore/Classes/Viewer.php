@@ -18,12 +18,10 @@ namespace GrahamCampbell\CMSCore\Classes;
 
 use Cartalyst\Sentry\Sentry;
 use Illuminate\Config\Repository;
-use Illuminate\Events\Dispatcher;
 use Illuminate\View\Environment;
-use Illuminate\View\ViewFinderInterface;
-use Illuminate\View\Engines\EngineResolver;
 use GrahamCampbell\Navigation\Classes\Navigation;
 use GrahamCampbell\CMSCore\Providers\PageProvider;
+use GrahamCampbell\Viewer\Classes\Viewer as BaseViewer;
 
 /**
  * This is the view class.
@@ -34,7 +32,7 @@ use GrahamCampbell\CMSCore\Providers\PageProvider;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class View extends Environment
+class Viewer extends BaseViewer
 {
     /**
      * The sentry instance.
@@ -42,13 +40,6 @@ class View extends Environment
      * @var \Cartalyst\Sentry\Sentry
      */
     protected $sentry;
-
-    /**
-     * The config instance.
-     *
-     * @var \Illuminate\Config\Repository
-     */
-    protected $config;
 
     /**
      * The navigation instance.
@@ -65,36 +56,50 @@ class View extends Environment
     protected $pageprovider;
 
     /**
-     * Constructor (setup protection and permissions).
+     * The platform name.
      *
-     * @param  \Illuminate\View\Engines\EngineResolver  $engines
-     * @param  \Illuminate\View\ViewFinderInterface  $finder
-     * @param  \Illuminate\Events\Dispatcher  $events
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * The inverse navigation.
+     *
+     * @var bool
+     */
+    protected $inverse;
+
+    /**
+     * Create a new instance.
+     *
+     * @param  \Illuminate\View\Environment  $view
      * @param  \Cartalyst\Sentry\Sentry  $sentry
-     * @param  \Illuminate\Config\Repository  $config
      * @param  \GrahamCampbell\Navigation\Classes\Navigation  $navigation
      * @param  \GrahamCampbell\CMSCore\Providers\PageProvider  $pageprovider
+     * @param  string  $name
+     * @param  bool  $inverse
      * @return void
      */
-    public function __construct(EngineResolver $engines, ViewFinderInterface $finder, Dispatcher $events, Sentry $sentry, Repository $config, Navigation $navigation, PageProvider $pageprovider)
+    public function __construct(Environment $view, Sentry $sentry, Navigation $navigation, PageProvider $pageprovider, $name, $inverse)
     {
-        parent::__construct($engines, $finder, $events);
+        parent::__construct($view);
 
         $this->sentry = $sentry;
-        $this->config = $config;
         $this->navigation = $navigation;
         $this->pageprovider = $pageprovider;
+        $this->name = $name;
+        $this->inverse = $inverse;
     }
 
     /**
-     * Get a evaluated view contents for the given page.
+     * Get a evaluated view contents for the given view.
      *
      * @param  string  $view
      * @param  array   $data
      * @param  string  $type
      * @return \Illuminate\View\View
      */
-    public function page($view, $data = array(), $type = 'default')
+    public function make($view, $data = array(), $type = 'default')
     {
         if ($this->sentry->check()) {
             $this->pageprovider->setNavUser(true);
@@ -102,22 +107,22 @@ class View extends Environment
             if ($type === 'admin') {
                 if ($this->sentry->getUser()->hasAccess('admin')) {
                     $data['site_name'] = 'Admin Panel';
-                    $data['navigation'] = $this->navigation->getHTML('admin', 'admin', array('title' => $data['site_name'], 'side' => $this->sentry->getUser()->email, 'inverse' => $this->config['theme.inverse']));
+                    $data['navigation'] = $this->navigation->getHTML('admin', 'admin', array('title' => $data['site_name'], 'side' => $this->sentry->getUser()->email, 'inverse' => $this->inverse));
                 } else {
-                    $data['site_name'] = $this->config['platform.name'];
-                    $data['navigation'] = $this->navigation->getHTML('default', 'default', array('title' => $data['site_name'], 'side' => $this->sentry->getUser()->email, 'inverse' => $this->config['theme.inverse']));
+                    $data['site_name'] = $this->name;
+                    $data['navigation'] = $this->navigation->getHTML('default', 'default', array('title' => $data['site_name'], 'side' => $this->sentry->getUser()->email, 'inverse' => $this->inverse));
                 }
             } else {
-                $data['site_name'] = $this->config['platform.name'];
-                $data['navigation'] = $this->navigation->getHTML('default', 'default', array('title' => $data['site_name'], 'side' => $this->sentry->getUser()->email, 'inverse' => $this->config['theme.inverse']));
+                $data['site_name'] = $this->name;
+                $data['navigation'] = $this->navigation->getHTML('default', 'default', array('title' => $data['site_name'], 'side' => $this->sentry->getUser()->email, 'inverse' => $this->inverse));
             }
         } else {
             $this->pageprovider->setNavUser(false);
 
-            $data['site_name'] = $this->config['platform.name'];
-            $data['navigation'] = $this->navigation->getHTML('default', false, array('title' => $data['site_name'], 'inverse' => $this->config['theme.inverse']));
+            $data['site_name'] = $this->name;
+            $data['navigation'] = $this->navigation->getHTML('default', false, array('title' => $data['site_name'], 'inverse' => $this->inverse));
         }
 
-        return $this->make($view, $data);
+        return parent::make($view, $data);
     }
 }

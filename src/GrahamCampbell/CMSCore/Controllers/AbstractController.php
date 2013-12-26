@@ -88,38 +88,6 @@ abstract class AbstractController extends Controller
     }
 
     /**
-     * Make a page view.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    protected function viewMake($view, $data = array(), $admin = false)
-    {
-        if (Sentry::check()) {
-            PageProvider::setNavUser(true);
-
-            if ($admin) {
-                if (Sentry::getUser()->hasAccess('admin')) {
-                    $data['site_name'] = 'Admin Panel';
-                    $data['navigation'] = Navigation::getHTML('admin', 'admin', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
-                } else {
-                    $data['site_name'] = Config::get('platform.name');
-                    $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
-                }
-            } else {
-                $data['site_name'] = Config::get('platform.name');
-                $data['navigation'] = Navigation::getHTML('default', 'default', array('title' => $data['site_name'], 'side' => Sentry::getUser()->email, 'inverse' => Config::get('theme.inverse')));
-            }
-        } else {
-            PageProvider::setNavUser(false);
-
-            $data['site_name'] = Config::get('platform.name');
-            $data['navigation'] = Navigation::getHTML('default', false, array('title' => $data['site_name'], 'inverse' => Config::get('theme.inverse')));
-        }
-
-        return View::make($view, $data);
-    }
-
-    /**
      * Set the permission.
      *
      * @pram  string  $action

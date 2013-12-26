@@ -37,6 +37,7 @@
         "symfony/filesystem": "2.4.*",
         "lightgear/asset": "1.2",
         "graham-campbell/core": "0.2.*",
+        "graham-campbell/viewer": "0.1.*",
         "graham-campbell/queuing": "0.2.*",
         "graham-campbell/htmlmin": "0.4.*",
         "graham-campbell/markdown": "0.3.*",
