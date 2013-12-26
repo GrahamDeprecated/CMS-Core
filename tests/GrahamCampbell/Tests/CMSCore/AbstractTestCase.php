@@ -40,15 +40,16 @@ abstract class AbstractTestCase extends TestCase
     }
 
     /**
-     * Get the package service providers.
+     * Get the required service providers.
      *
      * @return array
      */
-    protected function getPackageProviders()
+    protected function getRequiredServiceProviders()
     {
-        return array_merge(array(
+        return array(
             'Lightgear\Asset\AssetServiceProvider',
             'Cartalyst\Sentry\SentryServiceProvider',
+            'GrahamCampbell\Viewer\ViewerServiceProvider',
             'GrahamCampbell\Queuing\QueuingServiceProvider',
             'GrahamCampbell\HTMLMin\HTMLMinServiceProvider',
             'GrahamCampbell\Markdown\MarkdownServiceProvider',
@@ -57,18 +58,17 @@ abstract class AbstractTestCase extends TestCase
             'GrahamCampbell\Passwd\PasswdServiceProvider',
             'GrahamCampbell\Throttle\ThrottleServiceProvider',
             'GrahamCampbell\Credentials\CredentialsServiceProvider',
-            'GrahamCampbell\Navigation\NavigationServiceProvider',
-            'GrahamCampbell\CMSCore\CMSCoreServiceProvider'
-        ), $this->getPluginProviders());
+            'GrahamCampbell\Navigation\NavigationServiceProvider'
+        );
     }
 
     /**
-     * Get the plugin service providers.
+     * Get the service provider class.
      *
-     * @return array
+     * @return string
      */
-    protected function getPluginProviders()
+    protected function getServiceProviderClass()
     {
-        return array();
+        return 'GrahamCampbell\CMSCore\CMSCoreServiceProvider';
     }
 }
