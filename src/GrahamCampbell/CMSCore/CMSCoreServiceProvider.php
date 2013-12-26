@@ -44,6 +44,28 @@ class CMSCoreServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->package('graham-campbell/cms-core');
+
+        $this->setupView();
+    }
+
+    /**
+     * Setup the view class.
+     *
+     * @return void
+     */
+    protected function setupView()
+    {
+        $this->app->bindShared('view', function ($app) {
+            $engines = $app['view.engine.resolver'];
+            $finder = $app['view.finder'];
+            $events = $app['events'];
+            $sentry = $app['sentry'];
+            $config = $app['config'];
+            $navigation = $app['navigation'];
+            $pageprovider = $app['pageprovider'];
+
+            return new Classes\View($engines, $finder, $events, $sentry, $config, $navigation, $pageprovider);
+        });
     }
 
     /**
