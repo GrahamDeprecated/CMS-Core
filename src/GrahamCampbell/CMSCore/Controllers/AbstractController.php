@@ -52,7 +52,7 @@ abstract class AbstractController extends Controller
     {
         parent::__construct();
 
-        $this->beforeFilter('auth:edit', array('only' => $this->edits));
-        $this->beforeFilter('auth:blog', array('only' => $this->blogs));
+        $this->beforeFilter('credentials:edit', array('only' => $this->edits));
+        $this->beforeFilter('credentials:blog', array('only' => $this->blogs));
     }
 }
