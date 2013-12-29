@@ -18,7 +18,6 @@ namespace GrahamCampbell\CMSCore\Providers;
 
 // TODO: inject cache and config instead of using facades
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 use GrahamCampbell\Core\Providers\AbstractProvider;
 use GrahamCampbell\Core\Providers\Interfaces\PaginateProviderInterface;
 use GrahamCampbell\Core\Providers\Common\PaginateProviderTrait;

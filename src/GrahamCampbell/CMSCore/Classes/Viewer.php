@@ -17,7 +17,6 @@
 namespace GrahamCampbell\CMSCore\Classes;
 
 use Cartalyst\Sentry\Sentry;
-use Illuminate\Config\Repository;
 use Illuminate\View\Environment;
 use GrahamCampbell\Navigation\Classes\Navigation;
 use GrahamCampbell\CMSCore\Providers\PageProvider;

@@ -2,7 +2,7 @@
     "name": "graham-campbell/cms-core",
     "description": "CMS Core Provides Some Core Functionality For Applications Like Bootstrap CMS",
     "keywords": ["laravel", "framework", "cms core", "cms", "core", "CMS", "CMS Core", "CMS-Core", "Graham Campbell", "GrahamCampbell"],
-    "license": "GNU Affero General Public License v3",
+    "license": "AGPL-3.0",
     "authors": [
         {
             "name": "Graham Campbell",
