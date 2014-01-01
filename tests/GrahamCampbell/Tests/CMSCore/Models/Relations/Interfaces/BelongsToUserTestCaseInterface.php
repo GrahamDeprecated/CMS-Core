@@ -21,7 +21,7 @@ namespace GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces;
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
