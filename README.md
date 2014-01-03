@@ -12,7 +12,7 @@ CMS Core
 
 ## WARNING
 
-#### This branch currently holds the very unstable 0.2 code. Expect things to be broken and tests to fail, and documentation to be inaccurate in places.
+#### This package will depreciated soon. The final release will be V0.2 Alpha. This package will be re-merged with Bootstrap CMS because the original reason for abstracting out the classes to this separate repo has now been invalidated because much of the functionality this package used to provide has now been refactored to separate repos.
 
 
 ## What Is CMS Core?
