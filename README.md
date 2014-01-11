@@ -53,7 +53,8 @@ You will need to register many service providers before you attempt to load the 
 `'GrahamCampbell\Queuing\QueuingServiceProvider'`  
 `'GrahamCampbell\HTMLMin\HTMLMinServiceProvider'`  
 `'GrahamCampbell\Markdown\MarkdownServiceProvider'`  
-`'GrahamCampbell\Security\SecurityMinServiceProvider'`  
+`'GrahamCampbell\Flysystem\FlysystemServiceProvider'`  
+`'GrahamCampbell\Security\SecurityServiceProvider'`  
 `'GrahamCampbell\Binput\BinputServiceProvider'`  
 `'GrahamCampbell\Passwd\PasswdServiceProvider'`  
 `'GrahamCampbell\Throttle\ThrottleServiceProvider'`  
