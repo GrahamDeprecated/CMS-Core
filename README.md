@@ -41,7 +41,7 @@ Please check the system requirements before installing CMS Core.
 
 To get the latest version of CMS Core, simply require it in your `composer.json` file.  
 
-`"graham-campbell/cms-core": "dev-master"`  
+`"graham-campbell/cms-core": "*"`  
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.  
 
