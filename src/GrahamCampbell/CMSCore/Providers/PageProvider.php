@@ -84,21 +84,23 @@ class PageProvider extends AbstractProvider implements PaginateProviderInterface
     /**
      * Flush the page navigation from the cache.
      *
-     * @return void
+     * @return $this
      */
     public function flush()
     {
         Cache::forget('navigation');
+
+        return $this;
     }
 
     /**
      * Refresh the page navigation cache.
      *
-     * @return void
+     * @return $this
      */
     public function refresh()
     {
-        $this->setCache($this->sendGet());
+        return $this->setCache($this->sendGet());
     }
 
     /**
@@ -126,11 +128,13 @@ class PageProvider extends AbstractProvider implements PaginateProviderInterface
      * Set the page navigation in the cache.
      *
      * @param  array  $value
-     * @return void
+     * @return $this
      */
     protected function setCache($value)
     {
         Cache::forever('navigation', $value);
+
+        return $this;
     }
 
     /**
@@ -162,10 +166,12 @@ class PageProvider extends AbstractProvider implements PaginateProviderInterface
      * Set the navigation user boolean.
      *
      * @param  bool  $user
-     * @return void
+     * @return $this
      */
     public function setNavUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 }
