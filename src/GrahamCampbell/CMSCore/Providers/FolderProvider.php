@@ -16,27 +16,20 @@
 
 namespace GrahamCampbell\CMSCore\Providers;
 
-use GrahamCampbell\Core\Providers\BaseProvider;
-use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
-use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
+use GrahamCampbell\Core\Providers\AbstractProvider;
+use GrahamCampbell\Core\Providers\Interfaces\PaginateProviderInterface;
+use GrahamCampbell\Core\Providers\Common\PaginateProviderTrait;
 
 /**
  * This is the folder provider class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class FolderProvider extends BaseProvider implements IPaginateProvider
+class FolderProvider extends AbstractProvider implements PaginateProviderInterface
 {
-    use TraitPaginateProvider;
-
-    /**
-     * The name of the model to provide.
-     *
-     * @var string
-     */
-    protected $model = 'GrahamCampbell\CMSCore\Models\Folder';
+    use PaginateProviderTrait;
 }

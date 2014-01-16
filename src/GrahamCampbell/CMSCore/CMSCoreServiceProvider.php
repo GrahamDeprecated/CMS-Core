@@ -23,8 +23,8 @@ use Illuminate\Support\ServiceProvider;
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 class CMSCoreServiceProvider extends ServiceProvider
@@ -43,7 +43,28 @@ class CMSCoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('graham-campbell/cmscore');
+        $this->package('graham-campbell/cms-core');
+
+        $this->setupViewer();
+    }
+
+    /**
+     * Setup the viewer class.
+     *
+     * @return void
+     */
+    protected function setupViewer()
+    {
+        $this->app->bindShared('viewer', function ($app) {
+            $view = $app['view'];
+            $sentry = $app['sentry'];
+            $navigation = $app['navigation'];
+            $pageprovider = $app['pageprovider'];
+            $name = $app['config']['platform.name'];
+            $inverse = $app['config']['theme.inverse'];
+
+            return new Classes\Viewer($view, $sentry, $navigation, $pageprovider, $name, $inverse);
+        });
     }
 
     /**
@@ -53,36 +74,101 @@ class CMSCoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['commentprovider'] = $this->app->share(function ($app) {
-            return new Providers\CommentProvider;
-        });
+        $this->registerCommentProvider();
+        $this->registerEventProvider();
+        $this->registerFileProvider();
+        $this->registerFolderProvider();
+        $this->registerPageProvider();
+        $this->registerPostProvider();
+    }
 
-        $this->app['eventprovider'] = $this->app->share(function ($app) {
-            return new Providers\EventProvider;
-        });
+    /**
+     * Register the comment provider class.
+     *
+     * @return void
+     */
+    protected function registerCommentProvider()
+    {
+        $this->app->bindShared('commentprovider', function ($app) {
+            $model = $app['config']['cms-core::comment'];
+            $comment = new $model();
 
-        $this->app['fileprovider'] = $this->app->share(function ($app) {
-            return new Providers\FileProvider;
+            return new Providers\CommentProvider($comment);
         });
+    }
 
-        $this->app['folderprovider'] = $this->app->share(function ($app) {
-            return new Providers\FolderProvider;
+    /**
+     * Register the event provider class.
+     *
+     * @return void
+     */
+    protected function registerEventProvider()
+    {
+        $this->app->bindShared('eventprovider', function ($app) {
+            $model = $app['config']['cms-core::event'];
+            $event = new $model();
+
+            return new Providers\EventProvider($event);
         });
+    }
 
-        $this->app['groupprovider'] = $this->app->share(function ($app) {
-            return new Providers\GroupProvider;
+    /**
+     * Register the file provider class.
+     *
+     * @return void
+     */
+    protected function registerFileProvider()
+    {
+        $this->app->bindShared('fileprovider', function ($app) {
+            $model = $app['config']['cms-core::file'];
+            $file = new $model();
+
+            return new Providers\FileProvider($file);
         });
+    }
 
-        $this->app['pageprovider'] = $this->app->share(function ($app) {
-            return new Providers\PageProvider;
+    /**
+     * Register the folder provider class.
+     *
+     * @return void
+     */
+    protected function registerFolderProvider()
+    {
+        $this->app->bindShared('folderprovider', function ($app) {
+            $model = $app['config']['cms-core::folder'];
+            $folder = new $model();
+
+            return new Providers\FolderProvider($folder);
         });
+    }
 
-        $this->app['postprovider'] = $this->app->share(function ($app) {
-            return new Providers\PostProvider;
+    /**
+     * Register the page provider class.
+     *
+     * @return void
+     */
+    protected function registerPageProvider()
+    {
+        $this->app->bindShared('pageprovider', function ($app) {
+            $model = $app['config']['cms-core::page'];
+            $page = new $model();
+
+            return new Providers\PageProvider($page);
         });
+    }
 
-        $this->app['userprovider'] = $this->app->share(function ($app) {
-            return new Providers\UserProvider;
+    /**
+     * Register the post provider class.
+     *
+     * @return void
+     */
+    protected function registerPostProvider()
+    {
+        $this->app->bindShared('postprovider', function ($app) {
+            $model = $app['config']['cms-core::post'];
+            $post = new $model();
+
+            return new Providers\PostProvider($post);
         });
     }
 
@@ -93,6 +179,14 @@ class CMSCoreServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('commentprovider', 'eventprovider', 'fileprovider', 'folderprovider', 'groupprovider', 'pageprovider', 'postprovider', 'userprovider');
+        return array(
+            'commentprovider',
+            'eventprovider',
+            'fileprovider',
+            'folderprovider',
+            'pageprovider',
+            'postprovider',
+            'viewer'
+        );
     }
 }

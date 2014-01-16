@@ -16,125 +16,34 @@
 
 namespace GrahamCampbell\CMSCore\Models;
 
-use Carbon\Carbon;
-use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
-use GrahamCampbell\Core\Models\Interfaces\IBaseModel;
-use GrahamCampbell\Core\Models\Common\TraitBaseModel;
-use GrahamCampbell\Core\Models\Interfaces\INameModel;
-use GrahamCampbell\Core\Models\Common\TraitNameModel;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyPages;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyPages;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyPosts;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyPosts;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyEvents;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyEvents;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyFolders;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyFolders;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyFiles;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyFiles;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IHasManyComments;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitHasManyComments;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToManyEvents;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToManyEvents;
+use GrahamCampbell\Credentials\Models\User as CredentialsUser;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyPagesInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyPagesTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyPostsInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyPostsTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyEventsInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyEventsTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyFoldersInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyFoldersTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyFilesInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyFilesTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyCommentsInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyCommentsTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToManyEventsInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToManyEventsTrait;
 
 /**
  * This is the user model class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class User extends SentryUser implements IBaseModel, INameModel, IHasManyPages, IHasManyPosts, IHasManyEvents, IHasManyFolders, IHasManyFiles, IHasManyComments, IBelongsToManyEvents
+class User extends CredentialsUser implements HasManyPagesInterface, HasManyPostsInterface, HasManyEventsInterface, HasManyFoldersInterface, HasManyFilesInterface, HasManyCommentsInterface, BelongsToManyEventsInterface
 {
-    use TraitBaseModel, TraitNameModel, TraitHasManyPages, TraitHasManyPosts, TraitHasManyEvents, TraitHasManyFolders, TraitHasManyFiles, TraitHasManyComments, TraitBelongsToManyEvents;
-
-    /**
-     * The table the users are stored in.
-     *
-     * @var string
-     */
-    protected $table = 'users';
-
-    /**
-     * The model name.
-     *
-     * @var string
-     */
-    public static $name = 'user';
-
-    /**
-     * The columns to select when displaying an index.
-     *
-     * @var array
-     */
-    public static $index = array('id', 'email', 'first_name', 'last_name');
-
-    /**
-     * The max users per page when displaying a paginated index.
-     *
-     * @var int
-     */
-    public static $paginate = 20;
-
-    /**
-     * The columns to order by when displaying an index.
-     *
-     * @var string
-     */
-    public static $order = 'email';
-
-    /**
-     * The direction to order by when displaying an index.
-     *
-     * @var string
-     */
-    public static $sort = 'asc';
-
-    /**
-     * Get email.
-     *
-     * @param  array  $input
-     * @return void
-     */
-    public function getEmail()
-    {
-        // TODO: Use the TraitEmailModel from the Core package
-        return $this->email;
-    }
-
-    /**
-     * Get activated.
-     *
-     * @return bool
-     */
-    public function getActivated()
-    {
-        // TODO: Use the TraitActivatedModel from the Core package
-        return $this->activated;
-    }
-
-    /**
-     * Get activated_at.
-     *
-     * @return \Carbon\Carbon
-     */
-    public function getActivatedAt()
-    {
-        // TODO: Use the TraitActivatedModel from the Core package
-        $activated_at = $this->activated_at;
-
-        if ($activated_at) {
-            return new Carbon($activated_at);
-        }
-
-        if ($this->activated) {
-            return $this->created_at;
-        }
-
-        return null;
-    }
+    use HasManyPagesTrait, HasManyPostsTrait, HasManyEventsTrait, HasManyFoldersTrait, HasManyFilesTrait, HasManyCommentsTrait, BelongsToManyEventsTrait;
 
     /**
      * Before deleting an existing model.

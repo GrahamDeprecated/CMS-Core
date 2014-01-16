@@ -16,34 +16,26 @@
 
 namespace GrahamCampbell\CMSCore\Providers;
 
+// TODO: inject cache and config instead of using facades
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
-use GrahamCampbell\CMSCore\Models\Page;
-use GrahamCampbell\Core\Providers\BaseProvider;
-use GrahamCampbell\Core\Providers\Interfaces\IPaginateProvider;
-use GrahamCampbell\Core\Providers\Common\TraitPaginateProvider;
-use GrahamCampbell\Core\Providers\Interfaces\ISlugProvider;
-use GrahamCampbell\Core\Providers\Common\TraitSlugProvider;
+use GrahamCampbell\Core\Providers\AbstractProvider;
+use GrahamCampbell\Core\Providers\Interfaces\PaginateProviderInterface;
+use GrahamCampbell\Core\Providers\Common\PaginateProviderTrait;
+use GrahamCampbell\Core\Providers\Interfaces\SlugProviderInterface;
+use GrahamCampbell\Core\Providers\Common\SlugProviderTrait;
 
 /**
  * This is the page provider class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvider
+class PageProvider extends AbstractProvider implements PaginateProviderInterface, SlugProviderInterface
 {
-    use TraitPaginateProvider, TraitSlugProvider;
-
-    /**
-     * The name of the model to provide.
-     *
-     * @var string
-     */
-    protected $model = 'GrahamCampbell\CMSCore\Models\Page';
+    use PaginateProviderTrait, SlugProviderTrait;
 
     /**
      * A cache of the page navigation.
@@ -68,10 +60,10 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
     {
         // caching logic
         if ($this->validCache($this->nav)) {
-            // if is valid, get the value from the class cache
+            // get the value from the class cache
             $value = $this->nav;
-        } elseif (Config::get('cms.cache') === true) {
-            // if caching is enabled, pull from the cache
+        } else {
+            // pull from the cache
             $value = $this->getCache();
             // check if the value is valid
             if (!$this->validCache($value)) {
@@ -80,9 +72,6 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
                 // add the value from the work to the cache
                 $this->setCache($value);
             }
-        } else {
-            // do the work because caching is disabled
-            $value = $this->sendGet();
         }
 
         // cache the value in the class
@@ -95,25 +84,23 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
     /**
      * Flush the page navigation from the cache.
      *
-     * @return void
+     * @return $this
      */
     public function flush()
     {
-        if (Config::get('cms.cache') === true) {
-            Cache::forget('navigation');
-        }
+        Cache::forget('navigation');
+
+        return $this;
     }
 
     /**
      * Refresh the page navigation cache.
      *
-     * @return void
+     * @return $this
      */
     public function refresh()
     {
-        if (Config::get('cms.cache') === true) {
-            $this->setCache($this->sendGet());
-        }
+        return $this->setCache($this->sendGet());
     }
 
     /**
@@ -123,7 +110,8 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      */
     protected function sendGet()
     {
-        return Page::where('show_nav', '=', true)->get(array('title', 'slug', 'icon'))->toArray();
+        $model = $this->model;
+        return $model::where('show_nav', '=', true)->get(array('title', 'slug', 'icon'))->toArray();
     }
 
     /**
@@ -140,11 +128,13 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      * Set the page navigation in the cache.
      *
      * @param  array  $value
-     * @return void
+     * @return $this
      */
     protected function setCache($value)
     {
         Cache::forever('navigation', $value);
+
+        return $this;
     }
 
     /**
@@ -176,10 +166,12 @@ class PageProvider extends BaseProvider implements IPaginateProvider, ISlugProvi
      * Set the navigation user boolean.
      *
      * @param  bool  $user
-     * @return void
+     * @return $this
      */
     public function setNavUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 }

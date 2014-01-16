@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\Tests\CMSCore\Models;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -14,6 +14,8 @@
  * GNU Affero General Public License for more details.
  */
 
+namespace GrahamCampbell\Tests\CMSCore\Models;
+
 use GrahamCampbell\Tests\CMSCore\AbstractTestCase;
 
 /**
@@ -21,8 +23,8 @@ use GrahamCampbell\Tests\CMSCore\AbstractTestCase;
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 abstract class AbstractModelTestCase extends AbstractTestCase

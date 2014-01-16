@@ -16,28 +16,28 @@
 
 namespace GrahamCampbell\CMSCore\Models;
 
-use GrahamCampbell\Core\Models\BaseModel;
-use GrahamCampbell\Core\Models\Interfaces\IBodyModel;
-use GrahamCampbell\Core\Models\Common\TraitBodyModel;
-use GrahamCampbell\Core\Models\Interfaces\IVersionModel;
-use GrahamCampbell\Core\Models\Common\TraitVersionModel;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToPost;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToPost;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
+use GrahamCampbell\Core\Models\AbstractModel;
+use GrahamCampbell\Core\Models\Interfaces\BodyModelInterface;
+use GrahamCampbell\Core\Models\Common\BodyModelTrait;
+use GrahamCampbell\Core\Models\Interfaces\VersionModelInterface;
+use GrahamCampbell\Core\Models\Common\VersionModelTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToPostInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToPostTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
 
 /**
  * This is the comment model class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Comment extends BaseModel implements IBodyModel, IVersionModel, IBelongsToPost, IBelongsToUser
+class Comment extends AbstractModel implements BodyModelInterface, VersionModelInterface, BelongsToPostInterface, BelongsToUserInterface
 {
-    use TraitBodyModel, TraitVersionModel, TraitBelongsToPost, TraitBelongsToUser;
+    use BodyModelTrait, VersionModelTrait, BelongsToPostTrait, BelongsToUserTrait;
 
     /**
      * The table the comments are stored in.

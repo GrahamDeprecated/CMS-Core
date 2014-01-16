@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\Tests\CMSCore;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -14,44 +14,62 @@
  * GNU Affero General Public License for more details.
  */
 
-use Orchestra\Testbench\TestCase as Testbench;
+namespace GrahamCampbell\Tests\CMSCore;
+
+use GrahamCampbell\TestBench\Classes\AbstractLaravelTestCase as TestCase;
 
 /**
  * This is the abstract test case class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-abstract class AbstractTestCase extends Testbench
+abstract class AbstractTestCase extends TestCase
 {
-    protected function getEnvironmentSetUp($app)
+    /**
+     * Get the application base path.
+     *
+     * @return string
+     */
+    protected function getBasePath()
     {
-        $app['path.base'] = realpath(__DIR__.'/../../../../src');
-
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', array(
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-            'prefix'   => ''
-        ));
+        return __DIR__.'/../../../../src';
     }
 
-    protected function getPackageProviders()
+    /**
+     * Get the required service providers.
+     *
+     * @return array
+     */
+    protected function getRequiredServiceProviders()
     {
         return array(
-            'Cartalyst\Sentry\SentryServiceProvider',
             'Lightgear\Asset\AssetServiceProvider',
+            'Cartalyst\Sentry\SentryServiceProvider',
+            'GrahamCampbell\Viewer\ViewerServiceProvider',
             'GrahamCampbell\Queuing\QueuingServiceProvider',
             'GrahamCampbell\HTMLMin\HTMLMinServiceProvider',
             'GrahamCampbell\Markdown\MarkdownServiceProvider',
+            'GrahamCampbell\Flysystem\FlysystemServiceProvider',
             'GrahamCampbell\Security\SecurityServiceProvider',
             'GrahamCampbell\Binput\BinputServiceProvider',
             'GrahamCampbell\Passwd\PasswdServiceProvider',
-            'GrahamCampbell\Navigation\NavigationServiceProvider',
-            'GrahamCampbell\CMSCore\CMSCoreServiceProvider'
+            'GrahamCampbell\Throttle\ThrottleServiceProvider',
+            'GrahamCampbell\Credentials\CredentialsServiceProvider',
+            'GrahamCampbell\Navigation\NavigationServiceProvider'
         );
+    }
+
+    /**
+     * Get the service provider class.
+     *
+     * @return string
+     */
+    protected function getServiceProviderClass()
+    {
+        return 'GrahamCampbell\CMSCore\CMSCoreServiceProvider';
     }
 }

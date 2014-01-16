@@ -6,7 +6,7 @@
 
 ## What Is Bootstrap CMS?
 
-Bootstrap CMS is a PHP CMS powered by [Laravel 4.0](http://laravel.com) with [CMS Core](https://github.com/GrahamCampbell/CMS-Core) and [Sentry 2](https://cartalyst.com/manual/sentry).  
+Bootstrap CMS is a PHP CMS powered by [Laravel 4.1](http://laravel.com) with [CMS Core](https://github.com/GrahamCampbell/CMS-Core) and [Sentry 2](https://cartalyst.com/manual/sentry).  
 
 * Bootstrap CMS was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * Bootstrap CMS relies on my [CMS Core](https://github.com/GrahamCampbell/CMS-Core) package.  
@@ -14,7 +14,7 @@ Bootstrap CMS is a PHP CMS powered by [Laravel 4.0](http://laravel.com) with [CM
 * Bootstrap CMS uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Bootstrap-CMS) and [Coveralls](https://coveralls.io/r/GrahamCampbell/Bootstrap-CMS) to run additional tests and checks.  
 * Bootstrap CMS uses [Composer](https://getcomposer.org) to load and manage dependencies.  
 * Bootstrap CMS provides a [change log](https://github.com/GrahamCampbell/Bootstrap-CMS/blob/develop/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Bootstrap-CMS/releases), and a [wiki](https://github.com/GrahamCampbell/Bootstrap-CMS/wiki).  
-* Bootstrap CMS is licensed under the GNU AGPLv3, available [here](https://github.com/GrahamCampbell/Bootstrap-CMS/blob/develop/LICENSE.md).  
+* Bootstrap CMS is licensed under the GNU AGPLv3, available [here](https://github.com/GrahamCampbell/Bootstrap-CMS/blob/master/LICENSE.md).  
 * Licenses for included components are available [here](https://github.com/GrahamCampbell/Bootstrap-CMS/tree/develop/licenses), excluding [Composer](https://getcomposer.org) installed components.  
 
 <br>
@@ -68,6 +68,7 @@ Please check the system requirements before installing Bootstrap CMS.
   * Some things, like [caching](#setting-up-caching) and [queuing](#setting-up-queing), are disabled out of the box
   * This is to allow Bootstrap CMS to work with minimal setup
   * Please note that queuing is required in order to use the cron functionality which can do things like notify users of upcoming events, or send out weekly activity digests
+  * Also note, without caching asset generation will cause page load delay - to reduce this, I have turned off minification in `app/config/packages/lightgear/asset/config.php` by default
 
 <br>
 
@@ -85,7 +86,7 @@ Also note that `sqs` support is not 100% complete and is mainly untested.
 1. Choose your poison - I'd recommend [IronMQ](http://www.iron.io/mq).  
 2. Enter your queuing server details into `app/config/queue.php`.  
 3. You can also set a separate mail queue in `app/config/mail.php`.  
-4. For [IronMQ](http://www.iron.io/mq), you can run the command `php artisan queue:iron`.  
+4. For [IronMQ](http://www.iron.io/mq), you can run the command `php artisan queue:iron`, and the `php artisan cron:start`.  
 5. You can find out more about queuing by heading over to the [Laravel Docs](http://laravel.com/docs/queues).  
 
 <br>
@@ -97,7 +98,8 @@ Note that caching will not work with Laravel's `file` or `database` cache driver
 
 1. Choose your poison - I'd recommend [Redis](http://redis.io).  
 2. Enter your cache server details into `app/config/cache.php`.  
-3. Enable Bootstrap CMS's caching in `app/config/cms.php`.  
+3. You will probably want to enabled minification in `app/config/packages/lightgear/asset/config.php`.  
+4. Setting the driver to array will effectively disable caching if you don't want the overhead.  
 
 <br>
 
@@ -151,7 +153,7 @@ The first command is only necessary the first time. If you have issues merging, 
 
 You can then update the branch:  
 
-    git pull --rebase upstream develop
+    git pull --rebase upstream master
     git push --force origin <branch_name>
 
 Once it is set up, run `git mergetool`. Once all conflicts are fixed, run `git rebase --continue`, and `git push --force origin <branch_name>`.  
@@ -162,9 +164,8 @@ Once it is set up, run `git mergetool`. Once all conflicts are fixed, run `git r
 
 Please submit pull requests against the develop branch.  
 
-* Any pull requests made against the master branch will be closed immediately.  
-* If you plan to fix a bug, please create a branch called `fix-`, followed by an appropriate name.  
-* If you plan to add a feature, please create a branch called `feature-`, followed by an appropriate name.  
+* Bug fixes shouldn't be sent to the master branch unless they fix features that exist only in the upcoming release.  
+* Before sending a pull request for a new feature, you should first create an issue with [Proposal] in the title.  
 * Please follow the [PSR-2 Coding Style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) and [PHP-FIG Naming Conventions](https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-naming-conventions.md).  
 
 <br>
@@ -173,8 +174,8 @@ Please submit pull requests against the develop branch.
 
 GNU AFFERO GENERAL PUBLIC LICENSE  
 
-Bootstrap CMS Is A PHP CMS Powered By Laravel 4.0 With CMS Core And Sentry 2 
-Copyright (C) 2013  Graham Campbell  
+Bootstrap CMS Is A PHP CMS Powered By Laravel 4.1 With CMS Core And Sentry 2  
+Copyright (C) 2013-2014  Graham Campbell  
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by

@@ -3,11 +3,16 @@ CMS Core
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/CMS-Core/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-[![Build Status](https://travis-ci.org/GrahamCampbell/CMS-Core.png?branch=develop)](https://travis-ci.org/GrahamCampbell/CMS-Core)
-[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/CMS-Core/badge.png?branch=develop)](https://coveralls.io/r/GrahamCampbell/CMS-Core)
+[![Build Status](https://travis-ci.org/GrahamCampbell/CMS-Core.png)](https://travis-ci.org/GrahamCampbell/CMS-Core)
+[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/CMS-Core/badge.png)](https://coveralls.io/r/GrahamCampbell/CMS-Core)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core/badges/quality-score.png?s=abade2f7af64ae1b36516618be72c26f9fd560bc)](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core)
 [![Latest Version](https://poser.pugx.org/graham-campbell/cms-core/v/stable.png)](https://packagist.org/packages/graham-campbell/cms-core)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/CMS-Core.png)](http://stillmaintained.com/GrahamCampbell/CMS-Core)
+
+
+## WARNING
+
+#### This package will depreciated soon. The final release will be V0.2 Alpha. This package will be re-merged with [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS) because the original reason for abstracting out the classes to this separate repo has now been invalidated because much of the functionality this package used to provide has now been refactored to separate repos.
 
 
 ## What Is CMS Core?
@@ -26,7 +31,7 @@ CMS Core provides some core functionality for applications like [Bootstrap CMS](
 ## System Requirements
 
 * PHP 5.4.7+ or PHP 5.5+ is required.  
-* You will need [Laravel 4.0](http://laravel.com) because this package is designed for it.  
+* You will need [Laravel 4.1](http://laravel.com) because this package is designed for it.  
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of CMS Core.  
 
 
@@ -36,17 +41,24 @@ Please check the system requirements before installing CMS Core.
 
 To get the latest version of CMS Core, simply require it in your `composer.json` file.  
 
-`"graham-campbell/cms-core": "dev-master"`  
+`"graham-campbell/cms-core": "*"`  
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.  
 
 You will need to register many service providers before you attempt to load the CMS Core service provider. Open up `app/config/app.php` and add the following to the `providers` key.  
 
+`'Lightgear\Asset\AssetServiceProvider'`  
+`'Cartalyst\Sentry\SentryServiceProvider'`  
+`'GrahamCampbell\Viewer\ViewerServiceProvider'`  
 `'GrahamCampbell\Queuing\QueuingServiceProvider'`  
 `'GrahamCampbell\HTMLMin\HTMLMinServiceProvider'`  
-`'GrahamCampbell\Security\SecurityMinServiceProvider'`  
+`'GrahamCampbell\Markdown\MarkdownServiceProvider'`  
+`'GrahamCampbell\Flysystem\FlysystemServiceProvider'`  
+`'GrahamCampbell\Security\SecurityServiceProvider'`  
 `'GrahamCampbell\Binput\BinputServiceProvider'`  
 `'GrahamCampbell\Passwd\PasswdServiceProvider'`  
+`'GrahamCampbell\Throttle\ThrottleServiceProvider'`  
+`'GrahamCampbell\Credentials\CredentialsServiceProvider'`  
 `'GrahamCampbell\Navigation\NavigationServiceProvider'`  
 
 Once CMS Core is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.  
@@ -74,7 +86,7 @@ The first command is only necessary the first time. If you have issues merging, 
 
 You can then update the branch:  
 
-    git pull --rebase upstream develop
+    git pull --rebase upstream master
     git push --force origin <branch_name>
 
 Once it is set up, run `git mergetool`. Once all conflicts are fixed, run `git rebase --continue`, and `git push --force origin <branch_name>`.  
@@ -84,10 +96,9 @@ Once it is set up, run `git mergetool`. Once all conflicts are fixed, run `git r
 
 Please submit pull requests against the develop branch.  
 
-* Any pull requests made against the master branch will be closed immediately.  
-* If you plan to fix a bug, please create a branch called `fix-`, followed by an appropriate name.  
-* If you plan to add a feature, please create a branch called `feature-`, followed by an appropriate name.  
-* Please follow the [PSR-2 Coding Style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md). CMS Core will follow the [PHP-FIG Naming Conventions](https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-naming-conventions.md) in the near future.  
+* Bug fixes shouldn't be sent to the master branch unless they fix features that exist only in the upcoming release.  
+* Before sending a pull request for a new feature, you should first create an issue with [Proposal] in the title.  
+* Please follow the [PSR-2 Coding Style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) and [PHP-FIG Naming Conventions](https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-naming-conventions.md).  
 
 
 ## License
@@ -95,7 +106,7 @@ Please submit pull requests against the develop branch.
 GNU AFFERO GENERAL PUBLIC LICENSE  
 
 CMS Core Provides Some Core Functionality For Applications Like Bootstrap CMS  
-Copyright (C) 2013  Graham Campbell  
+Copyright (C) 2013-2014  Graham Campbell  
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by

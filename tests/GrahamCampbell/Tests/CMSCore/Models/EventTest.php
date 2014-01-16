@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\Tests\CMSCore\Models;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -14,6 +14,8 @@
  * GNU Affero General Public License for more details.
  */
 
+namespace GrahamCampbell\Tests\CMSCore\Models;
+
 use Carbon\Carbon;
 use GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces\BelongsToUserTestCaseInterface;
 use GrahamCampbell\Tests\CMSCore\Models\Relations\Common\BelongsToUserTestCaseTrait;
@@ -23,8 +25,8 @@ use GrahamCampbell\Tests\CMSCore\Models\Relations\Common\BelongsToUserTestCaseTr
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 class EventTest extends AbstractModelTestCase implements BelongsToUserTestCaseInterface
@@ -35,7 +37,7 @@ class EventTest extends AbstractModelTestCase implements BelongsToUserTestCaseIn
 
     protected function extraModelTests()
     {
-        $this->assertInstanceOf('GrahamCampbell\Core\Models\BaseModel', $this->object);
+        $this->assertInstanceOf('GrahamCampbell\Core\Models\AbstractModel', $this->object);
     }
 
     public function testGetTitle()

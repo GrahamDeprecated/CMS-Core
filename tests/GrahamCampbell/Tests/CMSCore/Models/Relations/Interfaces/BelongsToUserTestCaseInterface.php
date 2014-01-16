@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces;
+<?php
 
 /**
  * This file is part of CMS Core by Graham Campbell.
@@ -14,13 +14,15 @@
  * GNU Affero General Public License for more details.
  */
 
+namespace GrahamCampbell\Tests\CMSCore\Models\Relations\Interfaces;
+
 /**
  * This is the belongs to user test case interface.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 interface BelongsToUserTestCaseInterface

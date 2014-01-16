@@ -16,23 +16,18 @@
 
 namespace GrahamCampbell\CMSCore\Providers;
 
-use GrahamCampbell\Core\Providers\BaseProvider;
+use GrahamCampbell\Core\Providers\AbstractProvider;
 
 /**
  * This is the comment provider class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class CommentProvider extends BaseProvider
+class CommentProvider extends AbstractProvider
 {
-    /**
-     * The name of the model to provide.
-     *
-     * @var string
-     */
-    protected $model = 'GrahamCampbell\CMSCore\Models\Comment';
+    //
 }

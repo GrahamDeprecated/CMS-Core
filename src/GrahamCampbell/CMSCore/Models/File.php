@@ -17,28 +17,28 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use Illuminate\Support\Facades\File as LaravelFile;
-use GrahamCampbell\Core\Models\BaseModel;
-use GrahamCampbell\Core\Models\Interfaces\ITitleModel;
-use GrahamCampbell\Core\Models\Common\TraitTitleModel;
-use GrahamCampbell\CMSCore\Models\Interfaces\IFileModel;
-use GrahamCampbell\CMSCore\Models\Common\TraitFileModel;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToUser;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToUser;
-use GrahamCampbell\CMSCore\Models\Relations\Interfaces\IBelongsToFolder;
-use GrahamCampbell\CMSCore\Models\Relations\Common\TraitBelongsToFolder;
+use GrahamCampbell\Core\Models\AbstractModel;
+use GrahamCampbell\Core\Models\Interfaces\TitleModelInterface;
+use GrahamCampbell\Core\Models\Common\TitleModelTrait;
+use GrahamCampbell\CMSCore\Models\Interfaces\FileModelInterface;
+use GrahamCampbell\CMSCore\Models\Common\FileModelTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
+use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToFolderInterface;
+use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToFolderTrait;
 
 /**
  * This is the file model class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
- * @copyright  Copyright (C) 2013  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @copyright  Copyright (C) 2013-2014  Graham Campbell
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class File extends BaseModel implements ITitleModel, IFileModel, IBelongsToUser, IBelongsToFolder
+class File extends AbstractModel implements TitleModelInterface, FileModelInterface, BelongsToUserInterface, BelongsToFolderInterface
 {
-    use TraitTitleModel, TraitFileModel, TraitBelongsToUser, TraitBelongsToFolder;
+    use TitleModelTrait, FileModelTrait, BelongsToUserTrait, BelongsToFolderTrait;
 
     /**
      * The table the files are stored in.
