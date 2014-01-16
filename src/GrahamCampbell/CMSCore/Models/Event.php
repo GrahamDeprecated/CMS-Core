@@ -38,7 +38,7 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToManyUsersTrait;
  * @package    CMS-Core
  * @author     Graham Campbell
  * @copyright  Copyright (C) 2013-2014  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 class Event extends AbstractModel implements TitleModelInterface, BodyModelInterface, DateModelInterface, MailedModelInterface, LocationModelInterface, BelongsToUserInterface, BelongsToManyUsersInterface

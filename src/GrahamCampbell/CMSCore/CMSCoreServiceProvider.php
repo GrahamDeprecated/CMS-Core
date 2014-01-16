@@ -24,7 +24,7 @@ use Illuminate\Support\ServiceProvider;
  * @package    CMS-Core
  * @author     Graham Campbell
  * @copyright  Copyright (C) 2013-2014  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 class CMSCoreServiceProvider extends ServiceProvider

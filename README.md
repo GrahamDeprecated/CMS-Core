@@ -3,8 +3,8 @@ CMS Core
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/CMS-Core/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-[![Build Status](https://travis-ci.org/GrahamCampbell/CMS-Core.png?branch=develop)](https://travis-ci.org/GrahamCampbell/CMS-Core)
-[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/CMS-Core/badge.png?branch=develop)](https://coveralls.io/r/GrahamCampbell/CMS-Core)
+[![Build Status](https://travis-ci.org/GrahamCampbell/CMS-Core.png)](https://travis-ci.org/GrahamCampbell/CMS-Core)
+[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/CMS-Core/badge.png)](https://coveralls.io/r/GrahamCampbell/CMS-Core)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core/badges/quality-score.png?s=abade2f7af64ae1b36516618be72c26f9fd560bc)](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core)
 [![Latest Version](https://poser.pugx.org/graham-campbell/cms-core/v/stable.png)](https://packagist.org/packages/graham-campbell/cms-core)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/CMS-Core.png)](http://stillmaintained.com/GrahamCampbell/CMS-Core)
@@ -86,7 +86,7 @@ The first command is only necessary the first time. If you have issues merging, 
 
 You can then update the branch:  
 
-    git pull --rebase upstream develop
+    git pull --rebase upstream master
     git push --force origin <branch_name>
 
 Once it is set up, run `git mergetool`. Once all conflicts are fixed, run `git rebase --continue`, and `git push --force origin <branch_name>`.  
@@ -96,9 +96,8 @@ Once it is set up, run `git mergetool`. Once all conflicts are fixed, run `git r
 
 Please submit pull requests against the develop branch.  
 
-* Any pull requests made against the master branch will be closed immediately.  
-* If you plan to fix a bug, please create a branch called `fix-`, followed by an appropriate name.  
-* If you plan to add a feature, please create a branch called `feature-`, followed by an appropriate name.  
+* Bug fixes shouldn't be sent to the master branch unless they fix features that exist only in the upcoming release.  
+* Before sending a pull request for a new feature, you should first create an issue with [Proposal] in the title.  
 * Please follow the [PSR-2 Coding Style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) and [PHP-FIG Naming Conventions](https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-naming-conventions.md).  
 
 

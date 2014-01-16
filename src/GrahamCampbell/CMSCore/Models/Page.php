@@ -36,7 +36,7 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
  * @package    CMS-Core
  * @author     Graham Campbell
  * @copyright  Copyright (C) 2013-2014  Graham Campbell
- * @license    https://github.com/GrahamCampbell/CMS-Core/blob/develop/LICENSE.md
+ * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
 class Page extends AbstractModel implements TitleModelInterface, SlugModelInterface, BodyModelInterface, NavModelInterface, PageModelInterface, BelongsToUserInterface
