@@ -6,8 +6,8 @@ CMS Core
 [![Build Status](https://travis-ci.org/GrahamCampbell/CMS-Core.png)](https://travis-ci.org/GrahamCampbell/CMS-Core)
 [![Coverage Status](https://coveralls.io/repos/GrahamCampbell/CMS-Core/badge.png)](https://coveralls.io/r/GrahamCampbell/CMS-Core)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core/badges/quality-score.png?s=abade2f7af64ae1b36516618be72c26f9fd560bc)](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4704d948-2c7e-46c6-8d28-2c93594a600e/mini.png)](https://insight.sensiolabs.com/projects/4704d948-2c7e-46c6-8d28-2c93594a600e)
 [![Latest Version](https://poser.pugx.org/graham-campbell/cms-core/v/stable.png)](https://packagist.org/packages/graham-campbell/cms-core)
-[![Still Maintained](http://stillmaintained.com/GrahamCampbell/CMS-Core.png)](http://stillmaintained.com/GrahamCampbell/CMS-Core)
 
 
 ## WARNING
@@ -24,7 +24,7 @@ CMS Core provides some core functionality for applications like [Bootstrap CMS](
 * CMS Core uses [Travis CI](https://travis-ci.org/GrahamCampbell/CMS-Core) to run tests to check if it's working as it should.  
 * CMS Core uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core) and [Coveralls](https://coveralls.io/r/GrahamCampbell/CMS-Core) to run additional tests and checks.  
 * CMS Core uses [Composer](https://getcomposer.org) to load and manage dependencies.  
-* CMS Core provides a [change log](https://github.com/GrahamCampbell/CMS-Core/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/CMS-Core/releases), and a [wiki](https://github.com/GrahamCampbell/CMS-Core/wiki).  
+* CMS Core provides a [change log](https://github.com/GrahamCampbell/CMS-Core/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/CMS-Core/releases), and [api docs](http://grahamcampbell.github.io/CMS-Core).  
 * CMS Core is licensed under the GNU AGPLv3, available [here](https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md).  
 
 
@@ -96,7 +96,7 @@ Once it is set up, run `git mergetool`. Once all conflicts are fixed, run `git r
 
 Please review these guidelines before submitting any pull requests.  
 
-* Bug fixes shouldn't be sent to the master branch unless they fix features that exist only in the upcoming release.  
+* When submitting bug fixes, check if a maintenance branch exists for an older series, then pull against that older branch if the bug is present in it.  
 * Before sending a pull request for a new feature, you should first create an issue with [Proposal] in the title.  
 * Please follow the [PSR-2 Coding Style](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) and [PHP-FIG Naming Conventions](https://github.com/php-fig/fig-standards/blob/master/bylaws/002-psr-naming-conventions.md).  
 
