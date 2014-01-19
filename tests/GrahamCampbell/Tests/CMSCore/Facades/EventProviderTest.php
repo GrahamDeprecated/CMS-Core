@@ -16,6 +16,9 @@
 
 namespace GrahamCampbell\Tests\CMSCore\Facades;
 
+use GrahamCampbell\Tests\CMSCore\AbstractTestCase;
+use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
+
 /**
  * This is the event provider facade test case class.
  *
@@ -25,8 +28,10 @@ namespace GrahamCampbell\Tests\CMSCore\Facades;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class EventProviderTest extends AbstractFacadeTestCase
+class EventProviderTest extends AbstractTestCase
 {
+    use FacadeTestCaseTrait;
+
     /**
      * Get the facade accessor.
      *
