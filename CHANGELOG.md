@@ -3,23 +3,23 @@ CHANGE LOG
 
 
 ## V0.2 Alpha (Upcoming)
-#### Major Release
 
 * Support only laravel 4.1
 * Improved authentication
 * Improved events
+* Some refactoring
+* PSR naming conventions
 * Added more tests
+* Minor tweaks
 
 
 ## V0.1.2 Alpha (19/12/2013)
-#### Minor Release
 
 * Coding style fixes
 * Other minor tweaks
 
 
 ## V0.1.1 Alpha (17/12/2013)
-#### Minor Release
 
 * Travis and Scrutinizer tweaks
 * Testing improvements
@@ -29,6 +29,5 @@ CHANGE LOG
 
 
 ## V0.1 Alpha (12/12/2013)
-#### Major Release
 
 * Initial testing release
