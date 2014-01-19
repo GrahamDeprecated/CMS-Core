@@ -20,7 +20,7 @@ use GrahamCampbell\Tests\CMSCore\AbstractTestCase;
 use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
 
 /**
- * This is the post provider facade test case class.
+ * This is the post provider facade test class.
  *
  * @package    CMS-Core
  * @author     Graham Campbell
