@@ -7,6 +7,7 @@ CMS Core
 [![Coverage Status](https://coveralls.io/repos/GrahamCampbell/CMS-Core/badge.png)](https://coveralls.io/r/GrahamCampbell/CMS-Core)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core/badges/quality-score.png?s=abade2f7af64ae1b36516618be72c26f9fd560bc)](https://scrutinizer-ci.com/g/GrahamCampbell/CMS-Core)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4704d948-2c7e-46c6-8d28-2c93594a600e/mini.png)](https://insight.sensiolabs.com/projects/4704d948-2c7e-46c6-8d28-2c93594a600e)
+[![Software License](https://poser.pugx.org/graham-campbell/cms-core/license.png)](https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md)
 [![Latest Version](https://poser.pugx.org/graham-campbell/cms-core/v/stable.png)](https://packagist.org/packages/graham-campbell/cms-core)
 
 
