@@ -35,23 +35,6 @@ interface HasManyCommentsInterface
     public function comments();
 
     /**
-     * Get the comment collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getComments($columns = null);
-
-    /**
-     * Get the specified comment.
-     *
-     * @param  int    $id
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Comment
-     */
-    public function findComment($id, $columns = array('*'));
-
-    /**
      * Delete all comments.
      *
      * @return void

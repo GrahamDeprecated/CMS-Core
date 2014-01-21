@@ -38,46 +38,13 @@ trait HasManyFilesTrait
     }
 
     /**
-     * Get the file collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getFiles($columns = null)
-    {
-        $model = 'GrahamCampbell\CMSCore\Models\File';
-
-        if (is_null($columns)) {
-            $columns = $model::$index;
-        }
-
-        if (property_exists($model, 'order')) {
-            return $this->files()->orderBy($model::$order, $model::$sort)->get($columns);
-        }
-       
-        return $this->files()->get($columns);
-    }
-
-    /**
-     * Get the specified file.
-     *
-     * @param  int    $id
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\File
-     */
-    public function findFile($id, $columns = array('*'))
-    {
-        return $this->files()->find($id, $columns);
-    }
-
-    /**
      * Delete all files.
      *
      * @return void
      */
     public function deleteFiles()
     {
-        foreach ($this->getFiles(array('id')) as $file) {
+        foreach ($this->files()->get(array('id')) as $file) {
             $file->delete();
         }
     }

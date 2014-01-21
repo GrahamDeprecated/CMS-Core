@@ -33,19 +33,4 @@ interface BelongsToPostInterface
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function post();
-
-    /**
-     * Get the post model.
-     *
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Post
-     */
-    public function getPost($columns = array('*'));
-
-    /**
-     * Get the post id.
-     *
-     * @return int
-     */
-    public function getPostId();
 }

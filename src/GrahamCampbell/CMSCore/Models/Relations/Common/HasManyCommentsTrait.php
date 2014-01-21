@@ -38,46 +38,13 @@ trait HasManyCommentsTrait
     }
 
     /**
-     * Get the comment collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getComments($columns = null)
-    {
-        $model = 'GrahamCampbell\CMSCore\Models\Comment';
-
-        if (is_null($columns)) {
-            $columns = $model::$index;
-        }
-
-        if (property_exists($model, 'order')) {
-            return $this->comments()->orderBy($model::$order, $model::$sort)->get($columns);
-        }
-
-        return $this->comments()->get($columns);
-    }
-
-    /**
-     * Get the specified comment.
-     *
-     * @param  int    $id
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Comment
-     */
-    public function findComment($id, $columns = array('*'))
-    {
-        return $this->comments()->find($id, $columns);
-    }
-
-    /**
      * Delete all comments.
      *
      * @return void
      */
     public function deleteComments()
     {
-        foreach ($this->getComments(array('id')) as $comment) {
+        foreach ($this->comments()->get(array('id')) as $comment) {
             $comment->delete();
         }
     }

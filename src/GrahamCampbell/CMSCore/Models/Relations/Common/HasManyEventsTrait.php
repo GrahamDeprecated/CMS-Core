@@ -38,46 +38,13 @@ trait HasManyEventsTrait
     }
 
     /**
-     * Get the event collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getEvents($columns = null)
-    {
-        $model = 'GrahamCampbell\CMSCore\Models\Event';
-
-        if (is_null($columns)) {
-            $columns = $model::$index;
-        }
-
-        if (property_exists($model, 'order')) {
-            return $this->events()->orderBy($model::$order, $model::$sort)->get($columns);
-        }
-
-        return $this->events()->get($columns);
-    }
-
-    /**
-     * Get the specified event.
-     *
-     * @param  int    $id
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Event
-     */
-    public function findEvent($id, $columns = array('*'))
-    {
-        return $this->events()->find($id, $columns);
-    }
-
-    /**
      * Delete all events.
      *
      * @return void
      */
     public function deleteEvents()
     {
-        foreach ($this->getEvents(array('id')) as $event) {
+        foreach ($this->events()->get(array('id')) as $event) {
             $event->delete();
         }
     }

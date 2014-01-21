@@ -33,33 +33,4 @@ interface BelongsToUserInterface
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user();
-
-    /**
-     * Get the user model.
-     *
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\User
-     */
-    public function getUser($columns = array('*'));
-
-    /**
-     * Get the user id.
-     *
-     * @return int
-     */
-    public function getUserId();
-
-    /**
-     * Get the user email.
-     *
-     * @return string
-     */
-    public function getUserEmail();
-
-    /**
-     * Get the user name.
-     *
-     * @return string
-     */
-    public function getUserName();
 }

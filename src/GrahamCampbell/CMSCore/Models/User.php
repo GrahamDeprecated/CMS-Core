@@ -52,7 +52,7 @@ class User extends CredentialsUser implements HasManyPagesInterface, HasManyPost
      */
     public function beforeDelete()
     {
-        $this->deleteInvites();
+        $this->invites()->sync(array());
         $this->deletePages();
         $this->deletePosts();
         $this->deleteEvents();

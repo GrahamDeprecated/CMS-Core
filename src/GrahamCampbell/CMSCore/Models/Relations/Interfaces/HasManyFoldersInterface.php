@@ -35,23 +35,6 @@ interface HasManyFoldersInterface
     public function folders();
 
     /**
-     * Get the folder collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getFolders($columns = null);
-
-    /**
-     * Get the specified folder.
-     *
-     * @param  int    $id
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Folder
-     */
-    public function findFolder($id, $columns = array('*'));
-
-    /**
      * Delete all folders.
      *
      * @return void

@@ -36,25 +36,4 @@ trait BelongsToPostTrait
     {
         return $this->belongsTo('GrahamCampbell\CMSCore\Models\Post');
     }
-
-    /**
-     * Get the post model.
-     *
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Post
-     */
-    public function getPost($columns = array('*'))
-    {
-        return $this->post()->first($columns);
-    }
-
-    /**
-     * Get the post id.
-     *
-     * @return int
-     */
-    public function getPostId()
-    {
-        return $this->post_id;
-    }
 }

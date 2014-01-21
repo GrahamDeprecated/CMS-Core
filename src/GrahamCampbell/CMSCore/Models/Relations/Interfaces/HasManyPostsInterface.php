@@ -35,23 +35,6 @@ interface HasManyPostsInterface
     public function posts();
 
     /**
-     * Get the post collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getPosts($columns = null);
-
-    /**
-     * Get the specified post.
-     *
-     * @param  int    $id
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Post
-     */
-    public function findPost($id, $columns = array('*'));
-
-    /**
      * Delete all posts.
      *
      * @return void

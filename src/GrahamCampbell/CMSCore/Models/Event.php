@@ -114,6 +114,6 @@ class Event extends AbstractModel implements DateModelInterface, BelongsToUserIn
      */
     public function beforeDelete()
     {
-        $this->deleteInvites();
+        $this->invites()->sync(array());
     }
 }

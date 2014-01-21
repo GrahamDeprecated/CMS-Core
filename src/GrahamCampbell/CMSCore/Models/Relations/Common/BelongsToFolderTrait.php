@@ -36,25 +36,4 @@ trait BelongsToFolderTrait
     {
         return $this->belongsTo('GrahamCampbell\CMSCore\Models\Folder');
     }
-
-    /**
-     * Get the folder model.
-     *
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Folder
-     */
-    public function getFolder($columns = array('*'))
-    {
-        return $this->folder()->first($columns);
-    }
-
-    /**
-     * Get the folder id.
-     *
-     * @return int
-     */
-    public function getFolderId()
-    {
-        return $this->folder_id;
-    }
 }

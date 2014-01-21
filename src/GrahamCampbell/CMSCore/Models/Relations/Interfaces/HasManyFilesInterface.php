@@ -35,23 +35,6 @@ interface HasManyFilesInterface
     public function files();
 
     /**
-     * Get the file collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getFiles($columns = null);
-
-    /**
-     * Get the specified file.
-     *
-     * @param  int    $id
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\File
-     */
-    public function findFile($id, $columns = array('*'));
-
-    /**
      * Delete all files.
      *
      * @return void

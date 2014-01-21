@@ -38,46 +38,13 @@ trait HasManyFoldersTrait
     }
 
     /**
-     * Get the folder collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getFolders($columns = null)
-    {
-        $model = 'GrahamCampbell\CMSCore\Models\Folder';
-
-        if (is_null($columns)) {
-            $columns = $model::$index;
-        }
-
-        if (property_exists($model, 'order')) {
-            return $this->folders()->orderBy($model::$order, $model::$sort)->get($columns);
-        }        
-
-        return $this->folders()->get($columns);
-    }
-
-    /**
-     * Get the specified folder.
-     *
-     * @param  int    $id
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Folder
-     */
-    public function findFolder($id, $columns = array('*'))
-    {
-        return $this->folders()->find($id, $columns);
-    }
-
-    /**
      * Delete all folders.
      *
      * @return void
      */
     public function deleteFolders()
     {
-        foreach ($this->getFolders(array('id')) as $folder) {
+        foreach ($this->folders()->get(array('id')) as $folder) {
             $folder->delete();
         }
     }

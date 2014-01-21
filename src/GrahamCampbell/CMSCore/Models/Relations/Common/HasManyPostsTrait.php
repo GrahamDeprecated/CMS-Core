@@ -38,45 +38,13 @@ trait HasManyPostsTrait
     }
 
     /**
-     * Get the post collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getPosts($columns = null)
-    {
-        $model = 'GrahamCampbell\CMSCore\Models\Post';
-
-        if (is_null($columns)) {
-            $columns = $model::$index;
-        }
-
-        if (property_exists($model, 'order')) {
-            return $this->posts()->orderBy($model::$order, $model::$sort)->get($columns);
-        }
-        return $this->posts()->get($columns);
-    }
-
-    /**
-     * Get the specified post.
-     *
-     * @param  int    $id
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Post
-     */
-    public function findPost($id, $columns = array('*'))
-    {
-        return $this->posts()->find($id, $columns);
-    }
-
-    /**
      * Delete all posts.
      *
      * @return void
      */
     public function deletePosts()
     {
-        foreach ($this->getPosts(array('id')) as $post) {
+        foreach ($this->posts()->get(array('id')) as $post) {
             $post->delete();
         }
     }

@@ -35,23 +35,6 @@ interface HasManyEventsInterface
     public function events();
 
     /**
-     * Get the event collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getEvents($columns = null);
-
-    /**
-     * Get the specified event.
-     *
-     * @param  int    $id
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Event
-     */
-    public function findEvent($id, $columns = array('*'));
-
-    /**
      * Delete all events.
      *
      * @return void

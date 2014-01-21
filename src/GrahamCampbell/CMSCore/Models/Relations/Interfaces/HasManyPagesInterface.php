@@ -35,23 +35,6 @@ interface HasManyPagesInterface
     public function pages();
 
     /**
-     * Get the page collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getPages($columns = null);
-
-    /**
-     * Get the specified page.
-     *
-     * @param  string  $slug
-     * @param  array   $columns
-     * @return \GrahamCampbell\CMSCore\Models\Page
-     */
-    public function findPage($slug, $columns = array('*'));
-
-    /**
      * Delete all pages.
      *
      * @return void

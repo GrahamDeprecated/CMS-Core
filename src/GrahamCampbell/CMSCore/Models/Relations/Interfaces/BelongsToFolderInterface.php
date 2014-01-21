@@ -33,19 +33,4 @@ interface BelongsToFolderInterface
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function folder();
-
-    /**
-     * Get the folder model.
-     *
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\Folder
-     */
-    public function getFolder($columns = array('*'));
-
-    /**
-     * Get the folder id.
-     *
-     * @return int
-     */
-    public function getFolderId();
 }

@@ -38,46 +38,13 @@ trait HasManyPagesTrait
     }
 
     /**
-     * Get the page collection.
-     *
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function getPages($columns = null)
-    {
-        $model = 'GrahamCampbell\CMSCore\Models\Page';
-
-        if (is_null($columns)) {
-            $columns = $model::$index;
-        }
-
-        if (property_exists($model, 'order')) {
-            return $this->pages()->orderBy($model::$order, $model::$sort)->get($columns);
-        }
-
-        return $this->pages()->get($columns);
-    }
-
-    /**
-     * Get the specified page.
-     *
-     * @param  string  $slug
-     * @param  array   $columns
-     * @return \GrahamCampbell\CMSCore\Models\Page
-     */
-    public function findPage($slug, $columns = array('*'))
-    {
-        return $this->pages()->where('slug', '=', $slug)->first($columns);
-    }
-
-    /**
      * Delete all pages.
      *
      * @return void
      */
     public function deletePages()
     {
-        foreach ($this->getPages(array('id')) as $page) {
+        foreach ($this->pages()->get(array('id')) as $page) {
             $page->delete();
         }
     }

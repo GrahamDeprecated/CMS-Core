@@ -36,47 +36,4 @@ trait BelongsToUserTrait
     {
         return $this->belongsTo('GrahamCampbell\CMSCore\Models\User');
     }
-
-    /**
-     * Get the user model.
-     *
-     * @param  array  $columns
-     * @return \GrahamCampbell\CMSCore\Models\User
-     */
-    public function getUser($columns = array('*'))
-    {
-        return $this->user()->first($columns);
-    }
-
-    /**
-     * Get the user id.
-     *
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
-
-    /**
-     * Get the user email.
-     *
-     * @return string
-     */
-    public function getUserEmail()
-    {
-        $user = $this->getUser(array('email'));
-        return $user->email;
-    }
-
-    /**
-     * Get the user name.
-     *
-     * @return string
-     */
-    public function getUserName()
-    {
-        $user = $this->getUser(array('first_name', 'last_name'));
-        return $user->getName();
-    }
 }
