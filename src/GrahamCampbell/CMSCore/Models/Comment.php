@@ -17,10 +17,6 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use GrahamCampbell\Core\Models\AbstractModel;
-use GrahamCampbell\Core\Models\Interfaces\BodyModelInterface;
-use GrahamCampbell\Core\Models\Common\BodyModelTrait;
-use GrahamCampbell\Core\Models\Interfaces\VersionModelInterface;
-use GrahamCampbell\Core\Models\Common\VersionModelTrait;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToPostInterface;
 use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToPostTrait;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
@@ -35,9 +31,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Comment extends AbstractModel implements BodyModelInterface, VersionModelInterface, BelongsToPostInterface, BelongsToUserInterface
+class Comment extends AbstractModel implements BelongsToPostInterface, BelongsToUserInterface
 {
-    use BodyModelTrait, VersionModelTrait, BelongsToPostTrait, BelongsToUserTrait;
+    use BelongsToPostTrait, BelongsToUserTrait;
 
     /**
      * The table the comments are stored in.

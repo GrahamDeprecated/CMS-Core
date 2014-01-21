@@ -18,8 +18,6 @@ namespace GrahamCampbell\CMSCore\Models;
 
 use Illuminate\Support\Facades\File as LaravelFile;
 use GrahamCampbell\Core\Models\AbstractModel;
-use GrahamCampbell\Core\Models\Interfaces\TitleModelInterface;
-use GrahamCampbell\Core\Models\Common\TitleModelTrait;
 use GrahamCampbell\CMSCore\Models\Interfaces\FileModelInterface;
 use GrahamCampbell\CMSCore\Models\Common\FileModelTrait;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
@@ -36,9 +34,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToFolderTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class File extends AbstractModel implements TitleModelInterface, FileModelInterface, BelongsToUserInterface, BelongsToFolderInterface
+class File extends AbstractModel implements FileModelInterface, BelongsToUserInterface, BelongsToFolderInterface
 {
-    use TitleModelTrait, FileModelTrait, BelongsToUserTrait, BelongsToFolderTrait;
+    use FileModelTrait, BelongsToUserTrait, BelongsToFolderTrait;
 
     /**
      * The table the files are stored in.

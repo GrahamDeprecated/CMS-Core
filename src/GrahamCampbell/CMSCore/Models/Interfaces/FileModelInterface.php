@@ -28,13 +28,6 @@ namespace GrahamCampbell\CMSCore\Models\Interfaces;
 interface FileModelInterface
 {
     /**
-     * Get the file format.
-     *
-     * @return string
-     */
-    public function getFormat();
-
-    /**
      * Get the file name.
      *
      * @return string

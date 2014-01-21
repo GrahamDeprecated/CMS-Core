@@ -28,16 +28,6 @@ namespace GrahamCampbell\CMSCore\Models\Common;
 trait FileModelTrait
 {
     /**
-     * Get the file format.
-     *
-     * @return string
-     */
-    public function getFormat()
-    {
-        return $this->format;
-    }
-
-    /**
      * Get the file name.
      *
      * @return string

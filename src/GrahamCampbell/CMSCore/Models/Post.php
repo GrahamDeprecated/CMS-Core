@@ -17,12 +17,6 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use GrahamCampbell\Core\Models\AbstractModel;
-use GrahamCampbell\Core\Models\Interfaces\TitleModelInterface;
-use GrahamCampbell\Core\Models\Common\TitleModelTrait;
-use GrahamCampbell\Core\Models\Interfaces\BodyModelInterface;
-use GrahamCampbell\Core\Models\Common\BodyModelTrait;
-use GrahamCampbell\Core\Models\Interfaces\SummaryModelInterface;
-use GrahamCampbell\Core\Models\Common\SummaryModelTrait;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyCommentsInterface;
 use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyCommentsTrait;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
@@ -37,9 +31,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Post extends AbstractModel implements TitleModelInterface, BodyModelInterface, SummaryModelInterface, HasManyCommentsInterface, BelongsToUserInterface
+class Post extends AbstractModel implements HasManyCommentsInterface, BelongsToUserInterface
 {
-    use TitleModelTrait, BodyModelTrait, SummaryModelTrait, HasManyCommentsTrait, BelongsToUserTrait;
+    use HasManyCommentsTrait, BelongsToUserTrait;
 
     /**
      * The table the posts are stored in.

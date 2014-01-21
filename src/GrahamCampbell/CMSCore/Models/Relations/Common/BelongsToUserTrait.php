@@ -66,7 +66,7 @@ trait BelongsToUserTrait
     public function getUserEmail()
     {
         $user = $this->getUser(array('email'));
-        return $user->getEmail();
+        return $user->email;
     }
 
     /**

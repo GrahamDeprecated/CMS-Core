@@ -17,16 +17,6 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use GrahamCampbell\Core\Models\AbstractModel;
-use GrahamCampbell\Core\Models\Interfaces\TitleModelInterface;
-use GrahamCampbell\Core\Models\Common\TitleModelTrait;
-use GrahamCampbell\Core\Models\Interfaces\SlugModelInterface;
-use GrahamCampbell\Core\Models\Common\SlugModelTrait;
-use GrahamCampbell\Core\Models\Interfaces\BodyModelInterface;
-use GrahamCampbell\Core\Models\Common\BodyModelTrait;
-use GrahamCampbell\CMSCore\Models\Interfaces\NavModelInterface;
-use GrahamCampbell\CMSCore\Models\Common\NavModelTrait;
-use GrahamCampbell\CMSCore\Models\Interfaces\PageModelInterface;
-use GrahamCampbell\CMSCore\Models\Common\PageModelTrait;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
 use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
 
@@ -39,9 +29,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Page extends AbstractModel implements TitleModelInterface, SlugModelInterface, BodyModelInterface, NavModelInterface, PageModelInterface, BelongsToUserInterface
+class Page extends AbstractModel implements BelongsToUserInterface
 {
-    use TitleModelTrait, SlugModelTrait, BodyModelTrait, NavModelTrait, PageModelTrait, BelongsToUserTrait;
+    use BelongsToUserTrait;
 
     /**
      * The table the pages are stored in.

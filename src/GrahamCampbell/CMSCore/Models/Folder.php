@@ -17,10 +17,6 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use GrahamCampbell\Core\Models\AbstractModel;
-use GrahamCampbell\Core\Models\Interfaces\TitleModelInterface;
-use GrahamCampbell\Core\Models\Common\TitleModelTrait;
-use GrahamCampbell\Core\Models\Interfaces\SummaryModelInterface;
-use GrahamCampbell\Core\Models\Common\SummaryModelTrait;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\HasManyFilesInterface;
 use GrahamCampbell\CMSCore\Models\Relations\Common\HasManyFilesTrait;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
@@ -35,9 +31,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Folder extends AbstractModel implements TitleModelInterface, SummaryModelInterface, HasManyFilesInterface, BelongsToUserInterface
+class Folder extends AbstractModel implements HasManyFilesInterface, BelongsToUserInterface
 {
-    use TitleModelTrait, SummaryModelTrait, HasManyFilesTrait, BelongsToUserTrait;
+    use HasManyFilesTrait, BelongsToUserTrait;
 
     /**
      * The table the folders are stored in.
