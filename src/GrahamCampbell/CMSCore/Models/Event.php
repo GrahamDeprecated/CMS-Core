@@ -17,6 +17,8 @@
 namespace GrahamCampbell\CMSCore\Models;
 
 use GrahamCampbell\Core\Models\AbstractModel;
+use GrahamCampbell\Core\Models\Interfaces\DateModelInterface;
+use GrahamCampbell\Core\Models\Common\DateModelTrait;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToUserInterface;
 use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToUserTrait;
 use GrahamCampbell\CMSCore\Models\Relations\Interfaces\BelongsToManyUsersInterface;
@@ -31,9 +33,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToManyUsersTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class Event extends AbstractModel implements BelongsToUserInterface, BelongsToManyUsersInterface
+class Event extends AbstractModel implements DateModelInterface, BelongsToUserInterface, BelongsToManyUsersInterface
 {
-    use BelongsToUserTrait, BelongsToManyUsersTrait;
+    use DateModelTrait, BelongsToUserTrait, BelongsToManyUsersTrait;
 
     /**
      * The table the events are stored in.
