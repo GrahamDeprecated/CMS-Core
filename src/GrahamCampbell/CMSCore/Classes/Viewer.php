@@ -125,4 +125,3 @@ class Viewer extends BaseViewer
         return parent::make($view, $data);
     }
 }
-g
