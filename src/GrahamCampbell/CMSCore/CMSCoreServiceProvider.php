@@ -57,13 +57,13 @@ class CMSCoreServiceProvider extends ServiceProvider
     {
         $this->app->bindShared('viewer', function ($app) {
             $view = $app['view'];
-            $sentry = $app['sentry'];
+            $credentials = $app['credentials'];
             $navigation = $app['navigation'];
             $pageprovider = $app['pageprovider'];
             $name = $app['config']['platform.name'];
             $inverse = $app['config']['theme.inverse'];
 
-            return new Classes\Viewer($view, $sentry, $navigation, $pageprovider, $name, $inverse);
+            return new Classes\Viewer($view, $credentials, $navigation, $pageprovider, $name, $inverse);
         });
     }
 

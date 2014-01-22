@@ -19,7 +19,7 @@ namespace GrahamCampbell\CMSCore\Seeds;
 use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use GrahamCampbell\Credentials\Facades\Credentials;
 
 /**
  * This is the users table seeder class.
@@ -49,7 +49,7 @@ class UsersTableSeeder extends Seeder
             'activated'    => 1,
             'activated_at' => new DateTime
         );
-        Sentry::getUserProvider()->create($user);
+        Credentials::getUserProvider()->create($user);
 
         $user = array(
             'first_name'   => 'CMS',
@@ -59,7 +59,7 @@ class UsersTableSeeder extends Seeder
             'activated'    => 1,
             'activated_at' => new DateTime
         );
-        Sentry::getUserProvider()->create($user);
+        Credentials::getUserProvider()->create($user);
 
         $user = array(
             'first_name'   => 'CMS',
@@ -69,7 +69,7 @@ class UsersTableSeeder extends Seeder
             'activated'    => 1,
             'activated_at' => new DateTime
         );
-        Sentry::getUserProvider()->create($user);
+        Credentials::getUserProvider()->create($user);
 
         $user = array(
             'first_name'   => 'CMS',
@@ -79,7 +79,7 @@ class UsersTableSeeder extends Seeder
             'activated'    => 1,
             'activated_at' => new DateTime
         );
-        Sentry::getUserProvider()->create($user);
+        Credentials::getUserProvider()->create($user);
 
         $user = array(
             'first_name'   => 'CMS',
@@ -89,7 +89,7 @@ class UsersTableSeeder extends Seeder
             'activated'    => 1,
             'activated_at' => new DateTime
         );
-        Sentry::getUserProvider()->create($user);
+        Credentials::getUserProvider()->create($user);
 
         $user = array(
             'first_name'   => 'CMS',
@@ -99,6 +99,6 @@ class UsersTableSeeder extends Seeder
             'activated'    => 1,
             'activated_at' => new DateTime
         );
-        Sentry::getUserProvider()->create($user);
+        Credentials::getUserProvider()->create($user);
     }
 }

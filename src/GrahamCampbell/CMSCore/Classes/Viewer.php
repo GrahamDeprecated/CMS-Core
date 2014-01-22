@@ -34,11 +34,11 @@ use GrahamCampbell\Viewer\Classes\Viewer as BaseViewer;
 class Viewer extends BaseViewer
 {
     /**
-     * The sentry instance.
+     * The credentials instance.
      *
-     * @var \Cartalyst\Sentry\Sentry
+     * @var \GrahamCampbell\Credentials\Classes\Credentials
      */
-    protected $sentry;
+    protected $credentials;
 
     /**
      * The navigation instance.
@@ -72,18 +72,18 @@ class Viewer extends BaseViewer
      * Create a new instance.
      *
      * @param  \Illuminate\View\Environment  $view
-     * @param  \Cartalyst\Sentry\Sentry  $sentry
+     * @param  \GrahamCampbell\Credentials\Classes\Credentials  $credentials
      * @param  \GrahamCampbell\Navigation\Classes\Navigation  $navigation
      * @param  \GrahamCampbell\CMSCore\Providers\PageProvider  $pageprovider
      * @param  string  $name
      * @param  bool  $inverse
      * @return void
      */
-    public function __construct(Environment $view, Sentry $sentry, Navigation $navigation, PageProvider $pageprovider, $name, $inverse)
+    public function __construct(Environment $view, Credentials $credentials, Navigation $navigation, PageProvider $pageprovider, $name, $inverse)
     {
         parent::__construct($view);
 
-        $this->sentry = $sentry;
+        $this->credentials = $credentials;
         $this->navigation = $navigation;
         $this->pageprovider = $pageprovider;
         $this->name = $name;
@@ -100,20 +100,20 @@ class Viewer extends BaseViewer
      */
     public function make($view, array $data = array(), $type = 'default')
     {
-        if ($this->sentry->check()) {
+        if ($this->credentials->check()) {
             $this->pageprovider->setNavUser(true);
 
             if ($type === 'admin') {
-                if ($this->sentry->getUser()->hasAccess('admin')) {
+                if ($this->credentials->hasAccess('admin')) {
                     $data['site_name'] = 'Admin Panel';
-                    $data['navigation'] = $this->navigation->getHTML('admin', 'admin', array('title' => $data['site_name'], 'side' => $this->sentry->getUser()->email, 'inverse' => $this->inverse));
+                    $data['navigation'] = $this->navigation->getHTML('admin', 'admin', array('title' => $data['site_name'], 'side' => $this->credentials->getUser()->email, 'inverse' => $this->inverse));
                 } else {
                     $data['site_name'] = $this->name;
-                    $data['navigation'] = $this->navigation->getHTML('default', 'default', array('title' => $data['site_name'], 'side' => $this->sentry->getUser()->email, 'inverse' => $this->inverse));
+                    $data['navigation'] = $this->navigation->getHTML('default', 'default', array('title' => $data['site_name'], 'side' => $this->credentials->getUser()->email, 'inverse' => $this->inverse));
                 }
             } else {
                 $data['site_name'] = $this->name;
-                $data['navigation'] = $this->navigation->getHTML('default', 'default', array('title' => $data['site_name'], 'side' => $this->sentry->getUser()->email, 'inverse' => $this->inverse));
+                $data['navigation'] = $this->navigation->getHTML('default', 'default', array('title' => $data['site_name'], 'side' => $this->credentials->getUser()->email, 'inverse' => $this->inverse));
             }
         } else {
             $this->pageprovider->setNavUser(false);
@@ -125,3 +125,4 @@ class Viewer extends BaseViewer
         return parent::make($view, $data);
     }
 }
+g

@@ -18,7 +18,7 @@ namespace GrahamCampbell\CMSCore\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use GrahamCampbell\Credentials\Facades\Credentials;
 
 /**
  * This is the groups table seeder class.
@@ -43,26 +43,26 @@ class GroupsTableSeeder extends Seeder
         // users
         $permissions = array('user' => 1, 'edit' => 0, 'blog' => 0, 'mod' => 0, 'admin' => 0);
         $group = array('name' => 'Users', 'permissions' => $permissions);
-        Sentry::getGroupProvider()->create($group);
+        Credentials::getGroupProvider()->create($group);
 
         // editors
         $permissions = array('user' => 1, 'edit' => 1, 'blog' => 0, 'mod' => 0, 'admin' => 0);
         $group = array('name' => 'Editors', 'permissions' => $permissions);
-        Sentry::getGroupProvider()->create($group);
+        Credentials::getGroupProvider()->create($group);
 
         // bloggers
         $permissions = array('user' => 1, 'edit' => 0, 'blog' => 1, 'mod' => 0, 'admin' => 0);
         $group = array('name' => 'Bloggers', 'permissions' => $permissions);
-        Sentry::getGroupProvider()->create($group);
+        Credentials::getGroupProvider()->create($group);
 
         // moderators
         $permissions = array('user' => 1, 'edit' => 0, 'blog' => 0, 'mod' => 1, 'admin' => 0);
         $group = array('name' => 'Moderators', 'permissions' => $permissions);
-        Sentry::getGroupProvider()->create($group);
+        Credentials::getGroupProvider()->create($group);
 
         // admins
         $permissions = array('user' => 1, 'edit' => 1, 'blog' => 1, 'mod' => 1, 'admin' => 1);
         $group = array('name' => 'Admins', 'permissions' => $permissions);
-        Sentry::getGroupProvider()->create($group);
+        Credentials::getGroupProvider()->create($group);
     }
 }

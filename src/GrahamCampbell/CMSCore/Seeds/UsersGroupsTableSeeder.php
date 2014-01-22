@@ -18,7 +18,7 @@ namespace GrahamCampbell\CMSCore\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use GrahamCampbell\Credentials\Facades\Credentials;
 
 /**
  * This is the users/groups table seeder class.
@@ -59,6 +59,6 @@ class UsersGroupsTableSeeder extends Seeder
      */
     protected function matchUser($email, $group)
     {
-        return Sentry::getUserProvider()->findByLogin($email)->addGroup(Sentry::getGroupProvider()->findByName($group));
+        return Credentials::getUserProvider()->findByLogin($email)->addGroup(Credentials::getGroupProvider()->findByName($group));
     }
 }
