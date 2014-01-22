@@ -20,6 +20,7 @@ use Cartalyst\Sentry\Sentry;
 use Illuminate\View\Environment;
 use GrahamCampbell\Navigation\Classes\Navigation;
 use GrahamCampbell\CMSCore\Providers\PageProvider;
+use GrahamCampbell\Credentials\Classes\Credentials;
 use GrahamCampbell\Viewer\Classes\Viewer as BaseViewer;
 
 /**
