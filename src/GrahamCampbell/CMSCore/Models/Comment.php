@@ -80,17 +80,4 @@ class Comment extends AbstractModel implements BelongsToPostInterface, BelongsTo
         'user_id' => 'required',
         'post_id' => 'required'
     );
-
-    /**
-     * The comment factory.
-     *
-     * @var array
-     */
-    public static $factory = array(
-        'id'      => 1,
-        'body'    => 'This a comment!',
-        'user_id' => 1,
-        'post_id' => 1,
-        'version' => 1
-    );
 }

@@ -90,19 +90,6 @@ class Post extends AbstractModel implements HasManyCommentsInterface, BelongsToU
     );
 
     /**
-     * The post factory.
-     *
-     * @var array
-     */
-    public static $factory = array(
-        'id'      => 1,
-        'title'   => 'String',
-        'summary' => 'Summary of a post.',
-        'body'    => 'The body of a post.',
-        'user_id' => 1
-    );
-
-    /**
      * Before deleting an existing model.
      *
      * @return mixed

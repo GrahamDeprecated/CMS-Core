@@ -94,20 +94,6 @@ class File extends AbstractModel implements FileModelInterface, BelongsToUserInt
     );
 
     /**
-     * The file factory.
-     *
-     * @var array
-     */
-    public static $factory = array(
-        'id'        => 1,
-        'title'     => 'File',
-        'format'    => 'docx',
-        'summary'   => 'This is an example word document.',
-        'user_id'   => 1,
-        'folder_id' => 1
-    );
-
-    /**
      * Before deleting an existing model.
      *
      * @return mixed

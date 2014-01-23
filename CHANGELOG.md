@@ -9,7 +9,8 @@ CHANGE LOG
 * Improved events
 * Some refactoring
 * PSR naming conventions
-* Added more tests
+* Removed broken tests
+* Model refactoring
 * Minor tweaks
 
 

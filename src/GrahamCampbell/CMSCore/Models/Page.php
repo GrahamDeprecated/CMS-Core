@@ -88,22 +88,4 @@ class Page extends AbstractModel implements BelongsToUserInterface
         'show_nav'   => 'required',
         'user_id'    => 'required'
     );
-
-    /**
-     * The page factory.
-     *
-     * @var array
-     */
-    public static $factory = array(
-        'id'         => 1,
-        'title'      => 'Page Title',
-        'slug'       => 'page-title',
-        'body'       => 'This is the page body!',
-        'css'        => 'ccs',
-        'js'         => 'js',
-        'show_title' => true,
-        'show_nav'   => true,
-        'icon'       => 'home',
-        'user_id'    => 1
-    );
 }

@@ -93,21 +93,6 @@ class Event extends AbstractModel implements DateModelInterface, BelongsToUserIn
     );
 
     /**
-     * The event factory.
-     *
-     * @var array
-     */
-    public static $factory = array(
-        'id'       => 1,
-        'title'    => 'String',
-        'location' => 'text',
-        'date'     => '2013-08-01 12:34:56',
-        'body'     => 'The body of a post.',
-        'mailed'   => 0,
-        'user_id'  => 1
-    );
-
-    /**
      * Before deleting an existing model.
      *
      * @return mixed

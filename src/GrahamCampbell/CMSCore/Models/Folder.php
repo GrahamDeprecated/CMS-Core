@@ -89,18 +89,6 @@ class Folder extends AbstractModel implements HasManyFilesInterface, BelongsToUs
     );
 
     /**
-     * The folder factory.
-     *
-     * @var array
-     */
-    public static $factory = array(
-        'id'      => 1,
-        'title'   => 'Folder',
-        'summary' => 'The is a folder with stuff in.',
-        'user_id' => 1
-    );
-
-    /**
      * Before deleting an existing model.
      *
      * @return mixed
