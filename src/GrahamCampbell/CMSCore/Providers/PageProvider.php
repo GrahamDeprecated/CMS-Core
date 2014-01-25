@@ -45,13 +45,6 @@ class PageProvider extends AbstractProvider implements PaginateProviderInterface
     protected $nav = array();
 
     /**
-     * The navigation user boolean.
-     *
-     * @var bool
-     */
-    protected $user = false;
-
-    /**
      * Get the page navigation.
      *
      * @return array
@@ -150,28 +143,5 @@ class PageProvider extends AbstractProvider implements PaginateProviderInterface
         }
 
         return true;
-    }
-
-    /**
-     * Get the navigation user boolean.
-     *
-     * @return bool
-     */
-    public function getNavUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set the navigation user boolean.
-     *
-     * @param  bool  $user
-     * @return $this
-     */
-    public function setNavUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
     }
 }

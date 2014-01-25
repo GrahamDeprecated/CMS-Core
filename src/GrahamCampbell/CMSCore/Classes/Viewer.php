@@ -101,8 +101,6 @@ class Viewer extends BaseViewer
     public function make($view, array $data = array(), $type = 'default')
     {
         if ($this->credentials->check()) {
-            $this->pageprovider->setNavUser(true);
-
             if ($type === 'admin') {
                 if ($this->credentials->hasAccess('admin')) {
                     $data['site_name'] = 'Admin Panel';
@@ -116,8 +114,6 @@ class Viewer extends BaseViewer
                 $data['navigation'] = $this->navigation->getHTML('default', 'default', array('title' => $data['site_name'], 'side' => $this->credentials->getUser()->email, 'inverse' => $this->inverse));
             }
         } else {
-            $this->pageprovider->setNavUser(false);
-
             $data['site_name'] = $this->name;
             $data['navigation'] = $this->navigation->getHTML('default', false, array('title' => $data['site_name'], 'inverse' => $this->inverse));
         }
