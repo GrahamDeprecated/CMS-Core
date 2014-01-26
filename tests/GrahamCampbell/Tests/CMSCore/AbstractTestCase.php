@@ -49,6 +49,7 @@ abstract class AbstractTestCase extends TestCase
         return array(
             'Lightgear\Asset\AssetServiceProvider',
             'Cartalyst\Sentry\SentryServiceProvider',
+            'GrahamCampbell\Core\CoreServiceProvider',
             'GrahamCampbell\Viewer\ViewerServiceProvider',
             'GrahamCampbell\Queuing\QueuingServiceProvider',
             'GrahamCampbell\HTMLMin\HTMLMinServiceProvider',

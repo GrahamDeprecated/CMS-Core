@@ -50,6 +50,7 @@ You will need to register many service providers before you attempt to load the 
 
 `'Lightgear\Asset\AssetServiceProvider'`  
 `'Cartalyst\Sentry\SentryServiceProvider'`  
+`'GrahamCampbell\Core\CoreServiceProvider'`  
 `'GrahamCampbell\Viewer\ViewerServiceProvider'`  
 `'GrahamCampbell\Queuing\QueuingServiceProvider'`  
 `'GrahamCampbell\HTMLMin\HTMLMinServiceProvider'`  
