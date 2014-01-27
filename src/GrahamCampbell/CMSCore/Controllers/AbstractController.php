@@ -16,6 +16,7 @@
 
 namespace GrahamCampbell\CMSCore\Controllers;
 
+use GrahamCampbell\Credentials\Classes\Credentials;
 use GrahamCampbell\Credentials\Controllers\AbstractController as Controller;
 
 /**
@@ -44,13 +45,14 @@ abstract class AbstractController extends Controller
     protected $blogs = array();
 
     /**
-     * Constructor (setup protection and permissions).
+     * Create a new instance.
      *
+     * @param  \GrahamCampbell\Credentials\Classes\Credentials  $credentials
      * @return void
      */
-    public function __construct()
+    public function __construct(Credentials $credentials)
     {
-        parent::__construct();
+        parent::__construct($credentials);
 
         $this->beforeFilter('credentials:edit', array('only' => $this->edits));
         $this->beforeFilter('credentials:blog', array('only' => $this->blogs));
