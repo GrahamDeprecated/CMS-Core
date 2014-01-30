@@ -43,7 +43,7 @@
         "graham-campbell/core": "0.2.*",
         "graham-campbell/viewer": "0.1.*",
         "graham-campbell/queuing": "0.2.*",
-        "graham-campbell/flysystem": "0.1.*",
+        "graham-campbell/flysystem": "0.2.*",
         "graham-campbell/htmlmin": "1.0.*",
         "graham-campbell/markdown": "1.0.*",
         "graham-campbell/binput": "1.0.*",
