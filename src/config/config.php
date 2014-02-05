@@ -44,32 +44,6 @@ return array(
 
     /*
     |--------------------------------------------------------------------------
-    | File Model
-    |--------------------------------------------------------------------------
-    |
-    | This defines the file model to be used.
-    |
-    | Default: 'GrahamCampbell\CMSCore\Models\File'
-    |
-    */
-
-    'file' => 'GrahamCampbell\CMSCore\Models\File',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Folder Model
-    |--------------------------------------------------------------------------
-    |
-    | This defines the folder model to be used.
-    |
-    | Default: 'GrahamCampbell\CMSCore\Models\Folder'
-    |
-    */
-
-    'folder' => 'GrahamCampbell\CMSCore\Models\Folder',
-
-    /*
-    |--------------------------------------------------------------------------
     | Page Model
     |--------------------------------------------------------------------------
     |

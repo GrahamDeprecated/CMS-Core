@@ -76,8 +76,6 @@ class CMSCoreServiceProvider extends ServiceProvider
     {
         $this->registerCommentProvider();
         $this->registerEventProvider();
-        $this->registerFileProvider();
-        $this->registerFolderProvider();
         $this->registerPageProvider();
         $this->registerPostProvider();
     }
@@ -109,36 +107,6 @@ class CMSCoreServiceProvider extends ServiceProvider
             $event = new $model();
 
             return new Providers\EventProvider($event);
-        });
-    }
-
-    /**
-     * Register the file provider class.
-     *
-     * @return void
-     */
-    protected function registerFileProvider()
-    {
-        $this->app->bindShared('fileprovider', function ($app) {
-            $model = $app['config']['cms-core::file'];
-            $file = new $model();
-
-            return new Providers\FileProvider($file);
-        });
-    }
-
-    /**
-     * Register the folder provider class.
-     *
-     * @return void
-     */
-    protected function registerFolderProvider()
-    {
-        $this->app->bindShared('folderprovider', function ($app) {
-            $model = $app['config']['cms-core::folder'];
-            $folder = new $model();
-
-            return new Providers\FolderProvider($folder);
         });
     }
 
