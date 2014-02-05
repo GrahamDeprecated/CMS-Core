@@ -54,7 +54,6 @@ abstract class AbstractTestCase extends TestCase
             'GrahamCampbell\Queuing\QueuingServiceProvider',
             'GrahamCampbell\HTMLMin\HTMLMinServiceProvider',
             'GrahamCampbell\Markdown\MarkdownServiceProvider',
-            'GrahamCampbell\Flysystem\FlysystemServiceProvider',
             'GrahamCampbell\Security\SecurityServiceProvider',
             'GrahamCampbell\Binput\BinputServiceProvider',
             'GrahamCampbell\Passwd\PasswdServiceProvider',
