@@ -41,9 +41,9 @@ use GrahamCampbell\CMSCore\Models\Relations\Common\BelongsToManyEventsTrait;
  * @license    https://github.com/GrahamCampbell/CMS-Core/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/CMS-Core
  */
-class User extends CredentialsUser implements HasManyPagesInterface, HasManyPostsInterface, HasManyEventsInterface, HasManyFoldersInterface, HasManyFilesInterface, HasManyCommentsInterface, BelongsToManyEventsInterface
+class User extends CredentialsUser implements HasManyPagesInterface, HasManyPostsInterface, HasManyEventsInterface, HasManyCommentsInterface, BelongsToManyEventsInterface
 {
-    use HasManyPagesTrait, HasManyPostsTrait, HasManyEventsTrait, HasManyFoldersTrait, HasManyFilesTrait, HasManyCommentsTrait, BelongsToManyEventsTrait;
+    use HasManyPagesTrait, HasManyPostsTrait, HasManyEventsTrait, HasManyCommentsTrait, BelongsToManyEventsTrait;
 
     /**
      * Before deleting an existing model.
@@ -56,8 +56,6 @@ class User extends CredentialsUser implements HasManyPagesInterface, HasManyPost
         $this->deletePages();
         $this->deletePosts();
         $this->deleteEvents();
-        $this->deleteFolders();
-        $this->deleteFiles();
         $this->deleteComments();
     }
 }

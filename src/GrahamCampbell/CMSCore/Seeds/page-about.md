@@ -143,6 +143,7 @@ There is currently no usage documentation besides the [API Documentation](http:/
 ## Updating Your Fork
 
 The latest and greatest source can be found on [GitHub](https://github.com/GrahamCampbell/Bootstrap-CMS).
+
 Before submitting a pull request, you should ensure that your fork is up to date.
 
 You may fork Bootstrap CMS:
