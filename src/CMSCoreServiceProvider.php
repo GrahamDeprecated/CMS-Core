@@ -43,7 +43,7 @@ class CMSCoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('graham-campbell/cms-core');
+        $this->package('graham-campbell/cms-core', 'graham-campbell/cms-core', __DIR__);
 
         $this->setupViewer();
     }
@@ -88,7 +88,7 @@ class CMSCoreServiceProvider extends ServiceProvider
     protected function registerCommentProvider()
     {
         $this->app->bindShared('commentprovider', function ($app) {
-            $model = $app['config']['cms-core::comment'];
+            $model = $app['config']['graham-campbell/cms-core::comment'];
             $comment = new $model();
 
             return new Providers\CommentProvider($comment);
@@ -103,7 +103,7 @@ class CMSCoreServiceProvider extends ServiceProvider
     protected function registerEventProvider()
     {
         $this->app->bindShared('eventprovider', function ($app) {
-            $model = $app['config']['cms-core::event'];
+            $model = $app['config']['graham-campbell/cms-core::event'];
             $event = new $model();
 
             return new Providers\EventProvider($event);
@@ -118,7 +118,7 @@ class CMSCoreServiceProvider extends ServiceProvider
     protected function registerPageProvider()
     {
         $this->app->bindShared('pageprovider', function ($app) {
-            $model = $app['config']['cms-core::page'];
+            $model = $app['config']['graham-campbell/cms-core::page'];
             $page = new $model();
 
             return new Providers\PageProvider($page);
@@ -133,7 +133,7 @@ class CMSCoreServiceProvider extends ServiceProvider
     protected function registerPostProvider()
     {
         $this->app->bindShared('postprovider', function ($app) {
-            $model = $app['config']['cms-core::post'];
+            $model = $app['config']['graham-campbell/cms-core::post'];
             $post = new $model();
 
             return new Providers\PostProvider($post);

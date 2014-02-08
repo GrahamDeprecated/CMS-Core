@@ -57,9 +57,9 @@
         "classmap": [
             "src/migrations"
         ],
-        "psr-0": {
+        "psr-4": {
             "GrahamCampbell\\CMSCore\\": "src/",
-            "GrahamCampbell\\Tests\\CMSCore": "tests/"
+            "GrahamCampbell\\Tests\\CMSCore\\": "tests/"
         }
     },
     "extra": {
