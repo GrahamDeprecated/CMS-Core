@@ -67,6 +67,33 @@ Once CMS Core is installed, you need to register the service provider. Open up `
 * `'GrahamCampbell\CMSCore\CMSCoreServiceProvider'`
 
 
+## Configuration
+
+CMS Core supports optional configuration.
+
+To get started, first publish the package config file:
+
+    php artisan config:publish graham-campbell/cms-core
+
+There are a few config options:
+
+**Comment Model**
+
+This option (`'comment'`) defines the comment model to be used. The default value for this setting is `'GrahamCampbell\CMSCore\Models\Comment'`.
+
+**Event Model**
+
+This option (`'event'`) defines the event model to be used. The default value for this setting is `'GrahamCampbell\CMSCore\Models\Event'`.
+
+**Page Model**
+
+This option (`'page'`) defines the page model to be used. The default value for this setting is `'GrahamCampbell\CMSCore\Models\Page'`.
+
+**Post Model**
+
+This option (`'post'`) defines the post model to be used. The default value for this setting is `'GrahamCampbell\CMSCore\Models\Post'`.
+
+
 ## Usage
 
 There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/CMS-Core) for CMS Core.

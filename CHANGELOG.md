@@ -4,6 +4,8 @@ CHANGE LOG
 
 ## V0.2 Alpha (Upcoming)
 
+* PSR-4 autoloading
+* Updated docs
 * Support only laravel 4.1
 * Improved authentication
 * Improved events
