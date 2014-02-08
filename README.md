@@ -13,7 +13,7 @@ CMS Core
 
 ## WARNING
 
-#### This package will depreciated soon. The final release will be V0.2 Alpha. This package will be re-merged with [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS) because the original reason for abstracting out the classes to this separate repo has now been invalidated because much of the functionality this package used to provide has now been refactored to separate repos.
+#### This package has been re-merged with [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS), and is no longer maintained.
 
 
 ## What Is CMS Core?
